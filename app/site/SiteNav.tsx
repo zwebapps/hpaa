@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { siteData } from "@/data/siteData";
+import { useTheme } from "@/app/theme/ThemeProvider";
 
 const links = siteData.navigation.links;
 
@@ -31,6 +32,7 @@ function useHash(pathname: string) {
 export function SiteNav() {
   const pathname = usePathname();
   const hash = useHash(pathname);
+  const { theme, setTheme } = useTheme();
 
   const onHome =
     pathname === "/" && (!hash || hash === "" || hash === "#" || hash === "#home" || hash === "#approach");
@@ -84,6 +86,33 @@ export function SiteNav() {
       >
         {siteData.navigation.cta.label}
       </Link>
+
+      <div className="theme-switcher" aria-label="Theme switcher">
+        <button
+          type="button"
+          className={`theme-chip ${theme === "royal" ? "active" : ""}`}
+          onClick={() => setTheme("royal")}
+          aria-label="Use royal theme"
+        >
+          Royal
+        </button>
+        <button
+          type="button"
+          className={`theme-chip ${theme === "ocean" ? "active" : ""}`}
+          onClick={() => setTheme("ocean")}
+          aria-label="Use ocean theme"
+        >
+          Ocean
+        </button>
+        <button
+          type="button"
+          className={`theme-chip ${theme === "sunset" ? "active" : ""}`}
+          onClick={() => setTheme("sunset")}
+          aria-label="Use sunset theme"
+        >
+          Sunset
+        </button>
+      </div>
     </nav>
   );
 }

@@ -1,9 +1,9 @@
 {
   "brand": {
     "name": "KUM Services GmbH",
-    "shortName": "KUM Services",
-    "subName": "Aviation GmbH",
-    "tagline": "Aviation Specialists · Konstanz, Germany",
+    "shortName": "KUM",
+    "subName": "Services GmbH",
+    "tagline": "Haltnauer Weg 17 · D-78464 Konstanz",
     "copyright": "© 2025 KUM Services GmbH · All Rights Reserved"
   },
   "heroCarousel": {
@@ -67,7 +67,7 @@
   "approach": {
     "eyebrow": "Our Approach",
     "title": { "pre": "Purpose-Built.", "emphasis": "Proven Performance." },
-    "description": "We take the world's most trusted civil aircraft and transform them into mission-specific platforms — combining thousands of hours of proven reliability with the exact capabilities you need, at a fraction of the cost of purpose-built alternatives.",
+    "description": "The conversion of civil aircrafts to flying drones is the easiest and fastest way. Civil aircrafts equipped for special mission are built for many different usage and customer requirements can be met at an affordable price.",
     "primaryCta": { "href": "/#why-us", "label": "Our Advantage" },
     "secondaryCta": { "href": "/#aircraft", "label": "View Aircraft" },
     "featureImage": {
@@ -80,28 +80,28 @@
   "whyUs": {
     "headerBg": "/theme/hpaa1.jpg",
     "eyebrow": "The Case for Customization",
-    "title": { "pre": "Why Choose", "emphasis": "KUM Services?" },
-    "lead": "Off-the-shelf solutions rarely satisfy demanding operational requirements. Bespoke platforms built on proven civil airframes deliver superior value, faster deployment, and genuine operational fit.",
+    "title": { "pre": "Why Customized", "emphasis": "Drones?" },
+    "lead": "There are a variety of manufacturers offering ready-made drone systems for purchase. These systems do not always meet customer requirements and are very costly with long delivery times. For this reason, it is important to offer a drone according to customer needs and available resources.",
     "cards": [
       {
         "number": "01",
-        "title": "Established Reliability",
-        "description": "Every platform we convert has accumulated thousands of verified flight hours. You inherit decades of engineering validation, approved designs, and a globally trusted maintenance ecosystem from day one."
+        "title": "Availability of Aircrafts",
+        "description": "Civil platforms are available on the market and can be selected based on mission and resource constraints."
       },
       {
         "number": "02",
-        "title": "Rapid Time-to-Operation",
-        "description": "Aircraft retain civil registration and can be ferried directly to your location by pilots. The conversion process takes just one to two days on-site — no special permits, no lengthy approvals, no delays."
+        "title": "Low Cost",
+        "description": "A simple conversion path avoids lengthy development and construction timelines and keeps programme cost affordable."
       },
       {
         "number": "03",
-        "title": "Significant Cost Savings",
-        "description": "Eliminating ground-up design and development slashes program costs dramatically. Worldwide parts availability and accessible technical personnel ensure long-term operating costs remain competitive."
+        "title": "Design is Approved",
+        "description": "The base aircraft design is already approved and proven in civil operation."
       },
       {
         "number": "04",
-        "title": "Operational Flexibility",
-        "description": "Our approach is not limited to any single airframe or mission type. From light single-engine turboprops to heavy transports, we identify and configure the right platform for your precise requirements."
+        "title": "Reliability Proven",
+        "description": "Reliability is proven by thousands of flying hours, with worldwide maintenance options and spare parts supply."
       }
     ],
     "callout": {
@@ -109,7 +109,7 @@
       "imageAlt": "King Air 350",
       "eyebrow": "Key Advantage",
       "title": { "pre": "Not Identifiable.", "emphasis": "Fully Capable." },
-      "description": "Converted platforms maintain the external appearance of standard civil aircraft. They remain on civil registers, can be operated worldwide with standard flight procedures, and require no special authority clearance for ferry flights — providing significant operational advantage.",
+      "description": "The aircrafts stay on civil registration and can be ferried to the place of operation with pilots. There is no need for special flight permits from authorities. Conversion to a drone takes about one to two days at the place of operation, and the aircraft is not identifiable as a drone.",
       "cta": { "href": "/#aircraft", "label": "View Platforms →" }
     }
   },
@@ -117,90 +117,70 @@
     "headerBg": "/theme/hpaa2.jpg",
     "eyebrow": "Platform Catalogue",
     "title": { "pre": "Available", "emphasis": "Aircraft" },
-    "lead": "Each platform is selected based on its operational suitability, global availability, and proven track record. We match the airframe to your mission — not the other way around.",
-    "postImages": ["/theme/hpaa4.jpg", "/theme/hpaa3.jpg", "/theme/hpaa2.jpg"],
+    "lead": "Each platform is selected for operational suitability, global availability, and a proven civil-airframe track record.",
     "aircrafts": [
       {
         "slug": "citation-525b",
-        "name": "Cessna Citation 525B",
-        "category": "Business Jet · High-Altitude / Long-Range",
-        "images": [
-          "/theme/hpaa9.jpeg",
-          "/theme/hpaa10.jpg",
-          "/theme/hpaa3.jpg",
-          "/theme/hpaa2.jpg"
-        ],
+        "name": "CESSNA CITATION 525B",
+        "category": "EXAMPLE · Business Jet",
+        "images": ["/theme/hpaa2.jpg"],
         "specs": [
-          { "label": "Max Speed", "value": "417 kts / 772 km/h" },
-          { "label": "Service Ceiling", "value": "45,000 ft / 13,700 m" },
-          { "label": "Range", "value": "1,875 NM / 3,473 km" },
+          { "label": "SPEED", "value": "417 kts / 772 kmh" },
+          { "label": "SERVICE CEILING", "value": "45.000 ft / 13.700 m" },
+          { "label": "RANGE", "value": "1875 NM / 3.473 km" },
           { "label": "Powerplant", "value": "Twin Turbofan" },
           { "label": "Availability", "value": "Worldwide" }
         ],
-        "description": "Exceptional speed and altitude capability make the Citation 525B ideal for high-speed, long-range operations. Its jet performance delivers wide-area coverage and rapid response times — a proven platform with a global support network.",
+        "description": "The Cessna Citation 525B is a light business jet with twin turbofan power, offering high cruise speed, high-altitude operation, and long range for rapid coverage and response. Civil-registered aircraft can be ferried to the operating location; conversion is typically completed on site within one to two days.",
         "details": [
-          "Best suited for fast turnarounds and mission profiles requiring high cruise performance.",
-          "Conversion keeps the civil register and enables worldwide operational flexibility.",
-          "We tailor mission systems to your payload, endurance, and installation constraints."
+          "Well suited to missions requiring jet speed, FL450-class ceiling, and transcontinental range while retaining a standard civil-aircraft footprint.",
+          "Ideal where wide-area transit, time-sensitive repositioning, or high-altitude sensor lines of sight are required.",
+          "Mission equipment and avionics interfaces are engineered to your payload, certification path, and installation constraints."
         ]
       },
       {
         "slug": "cessna-208",
-        "name": "Cessna 208",
-        "category": "Single Turboprop · Multi-Role / Utility",
-        "images": [
-          "/theme/hpaa6.jpg",
-          "/theme/hpaa1.jpg",
-          "/theme/hpaa4.jpg",
-          "/theme/hpaa2.jpg"
-        ],
+        "name": "CESSNA 208",
+        "category": "EXAMPLE · SPECIAL MISSION",
+        "images": ["/theme/hpaa3.jpg"],
         "specs": [
-          { "label": "Cruise Speed", "value": "~186 kts / 344 km/h" },
-          { "label": "Service Ceiling", "value": "25,000 ft / 7,620 m" },
-          { "label": "Range", "value": "~1,070 NM / 1,980 km" },
+          { "label": "SPEED", "value": "185 kts / 340 kmh" },
+          { "label": "SERVICE CEILING", "value": "25.000 ft / 7600 m" },
+          { "label": "RANGE", "value": "912 NM / 1700 km" },
           { "label": "Powerplant", "value": "Single Turboprop" },
           { "label": "Availability", "value": "Worldwide" }
         ],
-        "description": "A rugged workhorse with strong short-field performance and flexible interior configuration. The 208 is ideal for logistics, ISR payloads, and operations into austere environments.",
+        "description": "The Cessna 208 is a high-wing single turboprop utility aircraft with a strong record in cargo, special mission, and austere-field operations. Its flexible cabin and large cargo door support sensors, mission equipment, and logistics payloads while keeping worldwide parts and maintenance access.",
         "details": [
-          "Optimized for multi-role configurations and payload integration.",
-          "Suitable for missions that require frequent routing changes and quick deployment.",
-          "We define interfaces for sensors, mission computers, and power distribution."
+          "Strong short-field and unpaved-surface capability; well suited to logistics, surveillance, and multi-role mission kits.",
+          "Turboprop economics and global support networks keep operating cost predictable for sustained programmes.",
+          "Electrical, structural, and datalink interfaces are defined with your mission computers, sensors, and power budget."
         ]
       },
       {
         "slug": "c130j",
-        "name": "C-130J Hercules",
-        "category": "Heavy Transport · Long-Range / High-Payload",
-        "images": [
-          "/theme/hpaa7.jpg",
-          "/theme/hpaa4.jpg"
-        ],
+        "name": "C-130J",
+        "category": "POSSIBLE · SPECIAL MISSION",
+        "images": ["/theme/hpaa4.jpg"],
         "specs": [
-          { "label": "Cruise Speed", "value": "~355 kts / 657 km/h" },
-          { "label": "Service Ceiling", "value": "28,000 ft / 8,534 m" },
-          { "label": "Range", "value": "~2,835 NM / 5,250 km" },
+          { "label": "SPEED", "value": "339 kts / 628 kmh" },
+          { "label": "SERVICE CEILING", "value": "28.000 ft / 8500 m" },
+          { "label": "RANGE", "value": "2835 NM / 5250 km" },
           { "label": "Powerplant", "value": "4× Turboprop" },
           { "label": "Availability", "value": "Worldwide" }
         ],
-        "description": "Maximum range and payload capacity in a single platform. The C-130J conversion represents the pinnacle of large-scale customized aviation capability — suited to the most demanding long-range, high-payload requirements.",
+        "description": "The Lockheed Martin C-130J Super Hercules is a four-engine turboprop tactical transport with very long range and a high-volume cargo hold. It suits the most demanding payloads and mission-system footprints where smaller platforms cannot deliver the required volume or endurance.",
         "details": [
-          "Designed for high-capacity cargo and mission systems integration.",
-          "We support end-to-end project planning with clear milestones.",
-          "Payload and mission installation are engineered around your operating environment."
+          "Exceptional range and payload for strategic lift, large sensor suites, or heavy mission equipment in a single airframe.",
+          "Rear loading and roll-on/roll-off flexibility support pallets, vehicles, and specialized mission racks.",
+          "Integration planning covers structural interfaces, power and cooling, EMI considerations, and certification-aligned milestones."
         ]
       },
       {
         "slug": "king-air-350",
         "name": "Beech King Air 350",
         "category": "Twin Turboprop · ISR / Multi-Mission",
-        "images": [
-          "/theme/hpaa6.jpg",
-          "/theme/hpaa1.jpg",
-          "/theme/hpaa2.jpg",
-          "/theme/hpaa3.jpg",
-          "/theme/hpaa4.jpg"
-        ],
+        "images": ["/theme/hpaa6.jpg"],
         "specs": [
           { "label": "Cruise Speed", "value": "~310 kts / 574 km/h" },
           { "label": "Service Ceiling", "value": "35,000 ft / 10,670 m" },
@@ -208,10 +188,10 @@
           { "label": "Powerplant", "value": "Twin Turboprop" },
           { "label": "Availability", "value": "Worldwide" }
         ],
-        "description": "A highly capable and widely supported multi-mission platform with excellent endurance. The King Air 350 is a proven choice for ISR, special missions, and multi-role configurations.",
+        "description": "The Beech King Air 350 is a pressurized twin turboprop with long endurance, stable cruise, and a proven multi-mission record. It is widely used for ISR, special missions, and executive transport, with global support and a mature maintenance ecosystem.",
         "details": [
-          "A flexible platform for sensors, communications, and operational mission kits.",
-          "We engineer mission integration to support predictable performance and maintenance.",
+          "Flexible for sensors, communications, and operational mission kits.",
+          "We engineer integration to match your performance and maintenance expectations.",
           "A strong option when you need endurance plus operational versatility."
         ]
       }
@@ -221,55 +201,55 @@
     "headerBg": "/theme/hpaa3.jpg",
     "eyebrow": "What We Enable",
     "title": { "pre": "Operational", "emphasis": "Applications" },
-    "lead": "Our customized platforms serve a broad spectrum of operational roles, each tailored to the precise requirements of the customer — from ISR to long-range cargo delivery.",
+    "lead": "Civil aircrafts converted to a drone can be used for the following operations.",
     "cards": [
       {
         "icon": "📷",
         "title": "Surveillance & ISR",
-        "description": "Integrated camera and multi-sensor systems for intelligence gathering, border monitoring, maritime patrol, and persistent area surveillance over extended missions."
+        "description": "Surveillance with camera systems."
       },
       {
         "icon": "📦",
         "title": "Cargo & Delivery",
-        "description": "Transportation and precision delivery of materials and equipment, including parachute-assisted airdrop for austere or inaccessible locations."
+        "description": "Transportation and dropping of materials, possibly with a parachute."
       },
       {
         "icon": "🛡",
         "title": "Defensive Operations",
-        "description": "Platform configuration for deploying countermeasures, electronic warfare payloads, and protective system packages for defensive mission sets."
+        "description": "Defense or attack of targets by dropping defensive measures."
       },
       {
         "icon": "🚀",
         "title": "Range Extension",
-        "description": "Configured as an airborne range extension and launch platform for cruise and standoff weapon systems, increasing effective strike radius significantly."
+        "description": "Used as range extension system for cruise missiles."
       },
       {
         "icon": "⚡",
         "title": "Attritable Platforms",
-        "description": "Low-cost, high-availability platforms configured for expendable missions where loss of the aircraft is an acceptable operational outcome."
+        "description": "Self-destructive use to destroy attackers."
       },
       {
         "icon": "🎯",
         "title": "Counter-UAS",
-        "description": "Detection, tracking, and neutralization of hostile unmanned aerial systems using on-board sensor and effector integration."
+        "description": "Destruction of enemy drones."
       }
     ]
   },
   "partners": {
     "headerBg": "/theme/hpaa4.jpg",
     "eyebrow": "Our Network",
-    "title": { "pre": "Partners &", "emphasis": "Expertise" },
-    "lead": "Our strength lies in a carefully assembled network of certified technical partners, academic institutions, and aviation specialists — ensuring every platform meets the highest engineering and regulatory standards.",
+    "title": { "pre": "KUM Services", "emphasis": "And Partners" },
+    "lead": "University of Stuttgart and Part One-Forty Five GmbH provide academic and certified maintenance support for the programme.",
     "items": [
       {
         "id": "part145",
         "layout": "image-text",
         "imageUrl": "/theme/hpaa1.jpg",
         "imageAlt": "Part One-Forty Five GmbH",
-        "label": "Certified Maintenance & Repair Organisation",
+        "label": "EASA Part-145 Certified Maintenance & Repair Organisation",
         "title": "Part One-Forty Five GmbH",
-        "role": "EASA Part-145 Certified · Neuhausen ob Eck Airfield · Patrick Köpfer",
-        "text": "An authorized EASA PART-145 maintenance and repair organisation specializing in turbine-powered turboprops and jets. Provides the certified technical backbone for all conversion, maintenance, and airworthiness activities across the programme."
+        "role": "Patrick Kopfer · Neuhausen ob Eck Airfield",
+        "text": "Part One-Forty Five GmbH is an authorized EASA PART-145 maintenance and repair organisation. The organisation maintains turbine powered turboprops and jets."
       },
       {
         "id": "stuttgart",
@@ -278,8 +258,8 @@
         "imageAlt": "University of Stuttgart",
         "label": "Academic Partner",
         "title": "University of Stuttgart",
-        "role": "Institute of Flight Mechanics & Control (iFR) · Prof. Dr. Walter Fichter",
-        "text": "The iFR specializes in guidance, control, and navigation of aerospace vehicles. Their Cirrus SR22 (D-EXPT) serves as the autonomous flight demonstration platform, bridging academic research with real-world application."
+        "role": "Institute of Flight Mechanics and Flight Control · Prof. Dr. Walter Fichter",
+        "text": "The Institute of Flight Mechanics and Control (iFR) works in guidance, control and navigation of aerospace vehicles and instruments. Cirrus SR22 / D-EXPT is used as autonomous flight demonstration platform."
       },
       {
         "id": "kum",

@@ -10,10 +10,13 @@ export function AircraftMagnifier({
   src,
   alt,
   zoom = 2.5,
+  variant = 0,
 }: {
   src: string;
   alt: string;
   zoom?: number;
+  /** Visual variant when the same image is shown in multiple “angles” (0–2). */
+  variant?: 0 | 1 | 2;
 }) {
   const wrapRef = useRef<HTMLDivElement | null>(null);
   const [hover, setHover] = useState(false);
@@ -47,7 +50,11 @@ export function AircraftMagnifier({
       onMouseLeave={() => setHover(false)}
       onMouseMove={onMove}
     >
-      <img src={src} alt={alt} className="ac-magnifier-main" />
+      <img
+        src={src}
+        alt={alt}
+        className={`ac-magnifier-main ac-magnifier-main--v${variant}`}
+      />
 
       {hover ? (
         <div

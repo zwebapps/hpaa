@@ -3,9 +3,6 @@
 import Link from "next/link";
 import { aircrafts } from "./aircraftData";
 import { AircraftImageSlider } from "./AircraftImageSlider";
-import { siteData } from "@/data/siteData";
-
-const postImages = siteData.aircraft.postImages;
 
 export function AircraftTabs() {
   // Render all aircraft panels stacked vertically (no tab buttons).
@@ -14,7 +11,7 @@ export function AircraftTabs() {
       {aircrafts.map((aircraft) => (
         <div key={aircraft.slug} className="aircraft-panel active">
           <div className="aircraft-img-side">
-            <AircraftImageSlider images={[...postImages]} altBase={aircraft.name} />
+            <AircraftImageSlider images={[...aircraft.images]} altBase={aircraft.name} />
             <div className="aircraft-img-overlay">
               <span className="aircraft-badge-img">Platform Gallery</span>
             </div>
@@ -22,20 +19,22 @@ export function AircraftTabs() {
 
           <div className="aircraft-info-side">
             <div className="aircraft-model">{aircraft.name}</div>
-            <div className="aircraft-category">{aircraft.category}</div>
+            {aircraft.category ? <div className="aircraft-category">{aircraft.category}</div> : null}
 
-            <table className="spec-table">
-              <tbody>
-                {aircraft.specs.map((row) => (
-                  <tr key={row.label}>
-                    <td>{row.label}</td>
-                    <td>{row.value}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+            {aircraft.specs.length > 0 ? (
+              <table className="spec-table">
+                <tbody>
+                  {aircraft.specs.map((row) => (
+                    <tr key={row.label}>
+                      <td>{row.label}</td>
+                      <td>{row.value}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            ) : null}
 
-            <p className="aircraft-desc-text">{aircraft.description}</p>
+            {aircraft.description ? <p className="aircraft-desc-text">{aircraft.description}</p> : null}
 
             <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
               <Link className="btn-gold" href={`/aircraft/${aircraft.slug}`}>

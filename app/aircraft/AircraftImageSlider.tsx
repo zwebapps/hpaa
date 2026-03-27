@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { expandAircraftSlides } from "@/lib/aircraftImageSlides";
 
 export function AircraftImageSlider({
   images,
@@ -10,19 +11,21 @@ export function AircraftImageSlider({
   altBase: string;
 }) {
   const [active, setActive] = useState(0);
-  const safeImages = useMemo(() => images.filter(Boolean), [images]);
+  const slides = useMemo(() => expandAircraftSlides(images), [images]);
 
-  if (safeImages.length === 0) return null;
+  if (slides.length === 0) return null;
 
-  const prev = () => setActive((i) => (i - 1 + safeImages.length) % safeImages.length);
-  const next = () => setActive((i) => (i + 1) % safeImages.length);
+  const prev = () => setActive((i) => (i - 1 + slides.length) % slides.length);
+  const next = () => setActive((i) => (i + 1) % slides.length);
+
+  const slide = slides[active];
 
   return (
     <div className="ac-img-slider" aria-label={`${altBase} image slider`}>
       <img
-        src={safeImages[active]}
-        alt={`${altBase} ${active + 1}`}
-        className="ac-img-slider-img"
+        src={slide.src}
+        alt={`${altBase} — view ${active + 1} of ${slides.length}`}
+        className={`ac-img-slider-img ac-img-slider-img--v${slide.variant}`}
       />
 
       <div className="ac-img-slider-controls" aria-hidden="false">
@@ -30,7 +33,7 @@ export function AircraftImageSlider({
           ‹
         </button>
         <div className="ac-img-slider-dots" aria-label="Choose image">
-          {safeImages.map((_, idx) => (
+          {slides.map((_, idx) => (
             <button
               key={idx}
               type="button"
@@ -48,4 +51,3 @@ export function AircraftImageSlider({
     </div>
   );
 }
-

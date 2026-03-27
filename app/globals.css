@@ -868,6 +868,7 @@ nav {
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 .ac-img-slider-img {
   width: 100%;
@@ -875,6 +876,23 @@ nav {
   object-fit: cover;
   object-position: center;
   display: block;
+  transition: filter 0.35s ease, object-position 0.35s ease, transform 0.35s ease;
+}
+/* One source photo, three “views”: crop / position / grade */
+.ac-img-slider-img--v0 {
+  object-position: 50% 45%;
+  filter: none;
+  transform: scale(1);
+}
+.ac-img-slider-img--v1 {
+  object-position: 72% 40%;
+  filter: brightness(1.06) contrast(1.05) saturate(1.1);
+  transform: scale(1.08);
+}
+.ac-img-slider-img--v2 {
+  object-position: 28% 52%;
+  filter: brightness(0.96) contrast(1.08) saturate(0.88);
+  transform: scale(1.06);
 }
 .ac-img-slider-controls {
   position: absolute;
@@ -976,14 +994,19 @@ nav {
   height: 60px;
   cursor: pointer;
   opacity: 0.7;
+  overflow: hidden;
   transition: opacity 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
 }
-.ac-thumb img {
+.ac-thumb img,
+.ac-thumb-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
+.ac-thumb-img--v0 { object-position: 50% 45%; filter: none; transform: scale(1.05); }
+.ac-thumb-img--v1 { object-position: 72% 40%; filter: brightness(1.06) contrast(1.05) saturate(1.1); transform: scale(1.08); }
+.ac-thumb-img--v2 { object-position: 28% 52%; filter: brightness(0.96) contrast(1.08) saturate(0.88); transform: scale(1.06); }
 .ac-thumb.active {
   opacity: 1;
   border-color: var(--gold);
@@ -999,8 +1022,13 @@ nav {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   display: block;
+  transition: filter 0.35s ease, object-position 0.35s ease, transform 0.35s ease;
 }
+.ac-magnifier-main--v0 { object-position: 50% 45%; filter: none; transform: scale(1); }
+.ac-magnifier-main--v1 { object-position: 72% 40%; filter: brightness(1.06) contrast(1.05) saturate(1.1); transform: scale(1.03); }
+.ac-magnifier-main--v2 { object-position: 28% 52%; filter: brightness(0.96) contrast(1.08) saturate(0.88); transform: scale(1.03); }
 .ac-magnifier-lens {
   position: absolute;
   border: 2px solid rgba(184,150,90,0.85);

@@ -2,6 +2,7 @@
 
 import { useMemo, useRef, useState } from "react";
 import { AircraftMagnifier } from "./AircraftMagnifier";
+import { expandAircraftSlides } from "@/lib/aircraftImageSlides";
 
 export function AircraftGallery({
   images,
@@ -11,19 +12,20 @@ export function AircraftGallery({
   altBase: string;
 }) {
   const safeImages = useMemo(() => images.filter(Boolean), [images]);
+  const slides = useMemo(() => expandAircraftSlides(safeImages), [safeImages]);
   const [active, setActive] = useState(0);
   const thumbsRef = useRef<HTMLDivElement | null>(null);
 
-  if (safeImages.length === 0) return null;
-  const activeImg = safeImages[active]!;
+  if (slides.length === 0) return null;
+  const current = slides[active]!;
 
   return (
     <div className="ac-gallery">
       <div className="ac-gallery-main">
-        <AircraftMagnifier src={activeImg} alt={altBase} />
+        <AircraftMagnifier src={current.src} alt={altBase} variant={current.variant} />
       </div>
 
-      {safeImages.length > 1 ? (
+      {slides.length > 1 ? (
         <div className="ac-gallery-thumbs-wrap" aria-label="Aircraft image thumbnails">
           <button
             type="button"
@@ -39,15 +41,19 @@ export function AircraftGallery({
             className="ac-gallery-thumbs"
             aria-label="Aircraft image thumbnails"
           >
-            {safeImages.map((img, idx) => (
+            {slides.map((slide, idx) => (
               <button
-                key={img}
+                key={idx}
                 type="button"
                 className={`ac-thumb ${idx === active ? "active" : ""}`}
                 onClick={() => setActive(idx)}
                 aria-label={`Select image ${idx + 1}`}
               >
-                <img src={img} alt={`${altBase} thumbnail ${idx + 1}`} />
+                <img
+                  src={slide.src}
+                  alt={`${altBase} thumbnail ${idx + 1}`}
+                  className={`ac-thumb-img ac-thumb-img--v${slide.variant}`}
+                />
               </button>
             ))}
           </div>
@@ -65,4 +71,3 @@ export function AircraftGallery({
     </div>
   );
 }
-

@@ -42,9 +42,11 @@ export function AircraftDetailsClient() {
       </div>
 
       <section className="section" style={{ paddingTop: "4rem" }}>
-        <p className="section-lead" style={{ marginBottom: "3rem" }}>
-          {aircraft.description}
-        </p>
+        {aircraft.description ? (
+          <p className="section-lead" style={{ marginBottom: "3rem" }}>
+            {aircraft.description}
+          </p>
+        ) : null}
 
         <div
           style={{
@@ -59,28 +61,34 @@ export function AircraftDetailsClient() {
           </div>
 
           <div>
-            <div className="section-eyebrow" style={{ marginBottom: "1rem" }}>
-              {aircraft.category}
-            </div>
+            {aircraft.category ? (
+              <div className="section-eyebrow" style={{ marginBottom: "1rem" }}>
+                {aircraft.category}
+              </div>
+            ) : null}
 
-            <table className="spec-table">
-              <tbody>
-                {aircraft.specs.map((row) => (
-                  <tr key={row.label}>
-                    <td>{row.label}</td>
-                    <td>{row.value}</td>
-                  </tr>
+            {aircraft.specs.length > 0 ? (
+              <table className="spec-table">
+                <tbody>
+                  {aircraft.specs.map((row) => (
+                    <tr key={row.label}>
+                      <td>{row.label}</td>
+                      <td>{row.value}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            ) : null}
+
+            {aircraft.details.length > 0 ? (
+              <div className="aircraft-desc-text" style={{ borderTop: "none", paddingTop: 0 }}>
+                {aircraft.details.map((t, idx) => (
+                  <p key={idx} style={{ marginTop: idx === 0 ? 0 : "1rem" }}>
+                    {t}
+                  </p>
                 ))}
-              </tbody>
-            </table>
-
-            <div className="aircraft-desc-text" style={{ borderTop: "none", paddingTop: 0 }}>
-              {aircraft.details.map((t, idx) => (
-                <p key={idx} style={{ marginTop: idx === 0 ? 0 : "1rem" }}>
-                  {t}
-                </p>
-              ))}
-            </div>
+              </div>
+            ) : null}
 
             <div style={{ display: "flex", gap: "1rem", marginTop: "2rem", flexWrap: "wrap" }}>
               <a className="btn-gold" href="/#contact">

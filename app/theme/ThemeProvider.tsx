@@ -2,10 +2,10 @@
 
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 
-export type ThemeName = "royal" | "ocean" | "sunset";
+export type ThemeName = "royal" | "ocean" | "sunset" | "ember";
 
 const THEME_STORAGE_KEY = "hpaa-theme";
-const THEMES: ThemeName[] = ["royal", "ocean", "sunset"];
+const THEMES: ThemeName[] = ["royal", "ocean", "sunset", "ember"];
 
 type ThemeContextValue = {
   theme: ThemeName;

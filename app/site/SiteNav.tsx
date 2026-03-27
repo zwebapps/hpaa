@@ -9,6 +9,7 @@ import { useTheme } from "@/app/theme/ThemeProvider";
 const links = siteData.navigation.links;
 
 const HASH_SYNC_EVENT = "hpaa:hash-sync";
+const SECTION_FOCUS_EVENT = "hpaa:section-focus";
 
 function useHash(pathname: string) {
   const [hash, setHash] = useState("");
@@ -34,6 +35,21 @@ export function SiteNav() {
   const hash = useHash(pathname);
   const { theme, setTheme } = useTheme();
 
+  const handleSectionLinkClick = (event: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (pathname !== "/" || !href.startsWith("/#")) return;
+    const id = href.slice(2);
+    if (!id) return;
+
+    event.preventDefault();
+    const target = document.getElementById(id);
+    if (!target) return;
+
+    target.scrollIntoView({ behavior: "smooth" });
+    window.history.replaceState(null, "", `/#${id}`);
+    window.dispatchEvent(new Event(HASH_SYNC_EVENT));
+    window.dispatchEvent(new CustomEvent(SECTION_FOCUS_EVENT, { detail: { id } }));
+  };
+
   const onHome =
     pathname === "/" && (!hash || hash === "" || hash === "#" || hash === "#home" || hash === "#approach");
   const onWhyUs = pathname === "/" && hash === "#why-us";
@@ -50,6 +66,7 @@ export function SiteNav() {
         scroll={false}
         className="nav-brand"
         style={{ textDecoration: "none", color: "inherit" }}
+        onClick={(e) => handleSectionLinkClick(e, "/#home")}
       >
         <div className="nav-brand-mark">
           <span>K</span>
@@ -71,7 +88,12 @@ export function SiteNav() {
 
           return (
             <li key={l.href}>
-              <Link href={l.href} scroll={false} className={active ? "active" : ""}>
+              <Link
+                href={l.href}
+                scroll={false}
+                className={active ? "active" : ""}
+                onClick={(e) => handleSectionLinkClick(e, l.href)}
+              >
                 {l.label}
               </Link>
             </li>
@@ -83,6 +105,7 @@ export function SiteNav() {
         href={siteData.navigation.cta.href}
         scroll={false}
         className={`nav-cta ${onContact ? "active" : ""}`}
+        onClick={(e) => handleSectionLinkClick(e, siteData.navigation.cta.href)}
       >
         {siteData.navigation.cta.label}
       </Link>
@@ -111,6 +134,14 @@ export function SiteNav() {
           aria-label="Use sunset theme"
         >
           Sunset
+        </button>
+        <button
+          type="button"
+          className={`theme-chip ${theme === "ember" ? "active" : ""}`}
+          onClick={() => setTheme("ember")}
+          aria-label="Use ember theme"
+        >
+          Ember
         </button>
       </div>
     </nav>

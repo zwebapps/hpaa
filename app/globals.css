@@ -79,6 +79,26 @@
   --border: rgba(201,168,76,0.32);
   --border-light: rgba(201,168,76,0.18);
 }
+[data-theme="ember"] {
+  --font-body: var(--font-dm-sans);
+  --font-heading: var(--font-bebas);
+  --font-accent: var(--font-bebas);
+  --font-mono-accent: var(--font-space-mono);
+  --ui-radius: 14px;
+  --ui-card-shadow: 0 14px 36px rgba(121, 58, 21, 0.2);
+  --ui-panel-border: 1px solid rgba(242,128,34,0.22);
+  --navy: #1a120f;
+  --navy-mid: #3c2619;
+  --cream: #fff1e7;
+  --warm-white: #fff8f3;
+  --gold: #f28022;
+  --gold-light: #ff9f4a;
+  --gold-pale: #ffd8bb;
+  --slate: #40281e;
+  --slate-light: #7a503b;
+  --border: rgba(242,128,34,0.34);
+  --border-light: rgba(242,128,34,0.2);
+}
 html { scroll-behavior: smooth; }
 [id] { scroll-margin-top: 88px; }
 body {
@@ -372,6 +392,134 @@ nav {
 }
 [data-theme="sunset"] .contact-right-new .form-sub {
   color: #394450;
+}
+
+/* Ember: Sunset-like style with stronger orange palette */
+[data-theme="ember"] nav {
+  background: rgba(26,18,15,0.93);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(242,128,34,0.72);
+  box-shadow: 0 12px 30px rgba(26,18,15,0.58);
+}
+[data-theme="ember"] .nav-brand-mark {
+  background: rgba(242,128,34,0.98);
+}
+[data-theme="ember"] .nav-brand-mark span {
+  color: #1a120f;
+  font-family: var(--font-accent), sans-serif;
+}
+[data-theme="ember"] .nav-brand-name { color: var(--warm-white); }
+[data-theme="ember"] .nav-brand-sub { color: var(--gold-light); }
+[data-theme="ember"] .nav-links a { color: rgba(255,248,243,0.94); }
+[data-theme="ember"] .nav-links a:hover,
+[data-theme="ember"] .nav-links a.active { color: #ffffff; border-bottom-color: var(--gold-light); }
+[data-theme="ember"] .nav-cta {
+  background: rgba(242,128,34,0.98);
+  color: #1a120f;
+}
+[data-theme="ember"] .theme-switcher {
+  background: rgba(26,18,15,0.62);
+  border-color: rgba(242,128,34,0.5);
+}
+[data-theme="ember"] .theme-chip {
+  color: rgba(255,248,243,0.93);
+  border-color: rgba(242,128,34,0.28);
+  background: rgba(242,128,34,0.07);
+}
+[data-theme="ember"] .theme-chip.active {
+  background: rgba(242,128,34,0.98);
+  color: #1a120f;
+  border-color: rgba(242,128,34,0.98);
+}
+[data-theme="ember"] .hero-scrim {
+  background: linear-gradient(
+    115deg,
+    rgba(26,18,15,0.82) 0%,
+    rgba(60,38,25,0.56) 55%,
+    rgba(242,128,34,0.25) 100%
+  );
+}
+[data-theme="ember"] .hero-title,
+[data-theme="ember"] .section-heading,
+[data-theme="ember"] .callout-heading,
+[data-theme="ember"] .aircraft-model,
+[data-theme="ember"] .partner-title,
+[data-theme="ember"] .form-heading {
+  font-family: var(--font-accent), sans-serif;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  line-height: 0.98;
+  color: rgba(255,248,243,0.18);
+  -webkit-text-stroke: 1.2px rgba(255,248,243,0.92);
+}
+[data-theme="ember"] .hero-title {
+  color: rgba(255,248,243,0.96);
+  -webkit-text-stroke: 0 transparent;
+}
+[data-theme="ember"] .hero-title em,
+[data-theme="ember"] .section-heading em,
+[data-theme="ember"] .callout-heading em {
+  font-style: normal;
+  color: rgba(242,128,34,0.2);
+  -webkit-text-stroke: 1.2px rgba(242,128,34,0.98);
+}
+[data-theme="ember"] .hero-badge-text,
+[data-theme="ember"] .section-eyebrow,
+[data-theme="ember"] .section-eyebrow::before,
+[data-theme="ember"] .hero-stat-label,
+[data-theme="ember"] .contact-info-label,
+[data-theme="ember"] .partner-label,
+[data-theme="ember"] .form-label {
+  font-family: var(--font-mono-accent), monospace;
+}
+[data-theme="ember"] .partner-card-new.partner-row {
+  background: #1d1511;
+  border-color: rgba(242,128,34,0.3);
+}
+[data-theme="ember"] .partner-card-body {
+  background: linear-gradient(135deg, rgba(26,18,15,0.96), rgba(42,28,20,0.94));
+}
+[data-theme="ember"] .partner-title,
+[data-theme="ember"] .contact-right-new .form-heading {
+  color: #fff8f3;
+  -webkit-text-stroke: 0 transparent;
+  text-shadow: none;
+}
+[data-theme="ember"] .partner-role,
+[data-theme="ember"] .partner-text,
+[data-theme="ember"] .callout-body,
+[data-theme="ember"] .contact-left-new .section-lead,
+[data-theme="ember"] .contact-info-value,
+[data-theme="ember"] .footer-links a {
+  color: rgba(255,248,243,0.9);
+}
+
+/* Keep regular section headings readable on light backgrounds. */
+[data-theme="sunset"] .section .section-heading {
+  color: var(--navy);
+  -webkit-text-stroke: 0 transparent;
+  text-shadow: none;
+}
+[data-theme="sunset"] .section .section-heading em {
+  color: var(--gold);
+  -webkit-text-stroke: 0 transparent;
+}
+[data-theme="ember"] .section .section-heading {
+  color: var(--navy);
+  -webkit-text-stroke: 0 transparent;
+  text-shadow: none;
+}
+[data-theme="ember"] .section .section-heading em {
+  color: var(--gold);
+  -webkit-text-stroke: 0 transparent;
+}
+[data-theme="sunset"] #approach .section-heading em {
+  color: rgba(216,187,109,0.2);
+  -webkit-text-stroke: 1.2px rgba(216,187,109,0.95);
+}
+[data-theme="ember"] #approach .section-heading em {
+  color: rgba(242,128,34,0.2);
+  -webkit-text-stroke: 1.2px rgba(242,128,34,0.98);
 }
 
 /* ── HERO ── */
@@ -1041,6 +1189,58 @@ footer {
 .reveal-delay-1 { transition-delay: 0.1s; }
 .reveal-delay-2 { transition-delay: 0.2s; }
 .reveal-delay-3 { transition-delay: 0.3s; }
+
+/* Focus animation for the Available Aircraft section. */
+@keyframes aircraftFocusPulse {
+  0% { box-shadow: 0 0 0 0 rgba(184,150,90,0.35); }
+  100% { box-shadow: 0 0 0 16px rgba(184,150,90,0); }
+}
+@keyframes aircraftPostLift {
+  0% {
+    opacity: 0.85;
+    transform: translateY(26px) scale(0.995);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-8px) scale(1);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+@keyframes aircraftTitleSweep {
+  0% { background-position: -220% 0; }
+  100% { background-position: 220% 0; }
+}
+#aircraft.section-focus-active .aircraft-wrapper,
+#aircraft:target .aircraft-wrapper {
+  will-change: transform, opacity;
+  animation: aircraftPostLift 760ms cubic-bezier(0.2, 0.8, 0.2, 1) 1;
+}
+#aircraft.section-focus-active .aircraft-focus-target,
+#aircraft:target .aircraft-focus-target {
+  animation: aircraftFocusPulse 900ms ease-out 1;
+}
+#aircraft.section-focus-active .aircraft-focus-animate .section-heading,
+#aircraft:target .aircraft-focus-animate .section-heading {
+  background-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255,255,255,0.22) 45%,
+    transparent 100%
+  );
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: aircraftTitleSweep 1100ms ease-out 1;
+}
+[data-theme="sunset"] #aircraft.section-focus-active .aircraft-focus-target,
+[data-theme="ember"] #aircraft.section-focus-active .aircraft-focus-target,
+[data-theme="sunset"] #aircraft:target .aircraft-focus-target,
+[data-theme="ember"] #aircraft:target .aircraft-focus-target {
+  animation: aircraftFocusPulse 900ms ease-out 1;
+}
 
 /* responsive */
 @media (max-width: 900px) {

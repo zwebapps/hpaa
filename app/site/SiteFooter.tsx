@@ -1,27 +1,26 @@
 import Link from "next/link";
+import { siteData } from "@/data/siteData";
 
 export function SiteFooter() {
   return (
     <footer>
       <div className="footer-brand">
-        KUM Services GmbH
-        <span>Aviation Specialists · Konstanz, Germany</span>
+        {siteData.brand.name}
+        <span>{siteData.brand.tagline}</span>
       </div>
       <div className="footer-links">
-        <Link href="/#home" scroll={false}>
-          Home
-        </Link>
-        <Link href="/#aircraft" scroll={false}>
-          Aircraft
-        </Link>
-        <Link href="/#partners" scroll={false}>
-          Partners
-        </Link>
-        <Link href="/#contact" scroll={false}>
+        {siteData.navigation.links
+          .filter((link) => ["Home", "Aircraft", "Partners"].includes(link.label))
+          .map((link) => (
+            <Link key={link.href} href={link.href} scroll={false}>
+              {link.label}
+            </Link>
+          ))}
+        <Link href={siteData.navigation.cta.href} scroll={false}>
           Contact
         </Link>
       </div>
-      <div className="footer-copy">© 2025 KUM Services GmbH · All Rights Reserved</div>
+      <div className="footer-copy">{siteData.brand.copyright}</div>
     </footer>
   );
 }

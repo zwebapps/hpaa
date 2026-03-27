@@ -3,14 +3,9 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { siteData } from "@/data/siteData";
 
-const links = [
-  { href: "/#home", hash: "#home", label: "Home" },
-  { href: "/#why-us", hash: "#why-us", label: "Why Us" },
-  { href: "/#aircraft", hash: "#aircraft", label: "Aircraft" },
-  { href: "/#applications", hash: "#applications", label: "Applications" },
-  { href: "/#partners", hash: "#partners", label: "Partners" },
-] as const;
+const links = siteData.navigation.links;
 
 const HASH_SYNC_EVENT = "hpaa:hash-sync";
 
@@ -58,8 +53,8 @@ export function SiteNav() {
           <span>K</span>
         </div>
         <div className="nav-brand-text">
-          <span className="nav-brand-name">KUM Services</span>
-          <span className="nav-brand-sub">Aviation GmbH</span>
+          <span className="nav-brand-name">{siteData.brand.shortName}</span>
+          <span className="nav-brand-sub">{siteData.brand.subName}</span>
         </div>
       </Link>
 
@@ -82,8 +77,12 @@ export function SiteNav() {
         })}
       </ul>
 
-      <Link href="/#contact" scroll={false} className={`nav-cta ${onContact ? "active" : ""}`}>
-        Enquire Now
+      <Link
+        href={siteData.navigation.cta.href}
+        scroll={false}
+        className={`nav-cta ${onContact ? "active" : ""}`}
+      >
+        {siteData.navigation.cta.label}
       </Link>
     </nav>
   );

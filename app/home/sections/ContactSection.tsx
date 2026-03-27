@@ -1,6 +1,10 @@
 "use client";
 
+import { siteData } from "@/data/siteData";
+
 export function ContactSection() {
+  const section = siteData.contact;
+
   return (
     <div id="contact">
       <div className="contact-wrapper">
@@ -8,53 +12,41 @@ export function ContactSection() {
           className="contact-left-new"
           style={{
             backgroundImage:
-              "linear-gradient(180deg, rgba(11,17,32,0.88), rgba(11,17,32,0.88)), url('/theme/hpaa5.jpg')",
+              `linear-gradient(180deg, rgba(11,17,32,0.88), rgba(11,17,32,0.88)), url('${section.backgroundImage}')`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
         >
-          <p className="section-eyebrow">Start a Conversation</p>
+          <p className="section-eyebrow">{section.eyebrow}</p>
           <h2 className="section-heading">
-            Request a<br />
-            <em>Proposal</em>
+            {section.title.pre}
+            <br />
+            <em>{section.title.emphasis}</em>
           </h2>
-          <p className="section-lead">
-            Describe your operational needs and we will prepare a tailored aircraft recommendation
-            with full technical specification and commercial terms.
-          </p>
+          <p className="section-lead">{section.lead}</p>
           <div className="contact-info-blocks">
-            <div className="contact-info-block">
-              <span className="contact-info-label">Company</span>
-              <span className="contact-info-value">KUM Services GmbH</span>
-            </div>
-            <div className="contact-info-block">
-              <span className="contact-info-label">Address</span>
-              <span className="contact-info-value">
-                Haltnauer Weg 17
-                <br />
-                D-78464 Konstanz, Germany
-              </span>
-            </div>
-            <div className="contact-info-block">
-              <span className="contact-info-label">Phone</span>
-              <span className="contact-info-value">
-                <a href="tel:+491723875262">+49 172 387 5262</a>
-              </span>
-            </div>
-            <div className="contact-info-block">
-              <span className="contact-info-label">Email</span>
-              <span className="contact-info-value">
-                <a href="mailto:info@kum-trading.consulting">info@kum-trading.consulting</a>
-              </span>
-            </div>
+            {section.companyInfo.map((info) => (
+              <div key={info.label} className="contact-info-block">
+                <span className="contact-info-label">{info.label}</span>
+                <span className="contact-info-value">
+                  {"valueLines" in info && info.valueLines
+                    ? info.valueLines.map((line) => (
+                        <span key={line}>
+                          {line}
+                          <br />
+                        </span>
+                      ))
+                    : info.href && info.value
+                      ? <a href={info.href}>{info.value}</a>
+                      : info.value}
+                </span>
+              </div>
+            ))}
           </div>
         </div>
         <div className="contact-right-new">
-          <div className="form-heading">Send an Enquiry</div>
-          <p className="form-sub">
-            All enquiries are handled with strict confidentiality. We typically respond within one
-            business day.
-          </p>
+          <div className="form-heading">{section.form.heading}</div>
+          <p className="form-sub">{section.form.sub}</p>
           <form className="form-fields" onSubmit={(e) => e.preventDefault()}>
             <div className="form-row">
               <div className="form-group">
@@ -122,12 +114,9 @@ export function ContactSection() {
             </div>
             <div>
               <button className="form-submit" type="submit">
-                Submit Enquiry →
+                {section.form.submitLabel}
               </button>
-              <p className="form-note">
-                Your information is treated with complete confidentiality and will not be shared
-                with third parties.
-              </p>
+              <p className="form-note">{section.form.note}</p>
             </div>
           </form>
         </div>

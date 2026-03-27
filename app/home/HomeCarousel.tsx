@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { siteData } from "@/data/siteData";
 
 type Slide = {
   id: string;
@@ -12,38 +13,7 @@ type Slide = {
   secondaryCta: { href: string; label: string };
 };
 
-const slides: Slide[] = [
-  {
-    id: "mission",
-    imageUrl: "/theme/hpaa9.jpeg",
-    badgeText: "Konstanz, Germany · Aviation Specialists",
-    title: { pre: "Aircraft Built", emphasis: "Your Mission" },
-    description:
-      "KUM Services GmbH converts proven civil aircraft into customized platforms—delivering performance, reliability, and value faster than traditional programs.",
-    primaryCta: { href: "/#aircraft", label: "Browse Aircraft" },
-    secondaryCta: { href: "/#contact", label: "Request a Quote" },
-  },
-  {
-    id: "speed",
-    imageUrl: "/theme/hpaa10.jpg",
-    badgeText: "Rapid conversion · Worldwide support",
-    title: { pre: "Deploy Faster", emphasis: "Operate Sooner" },
-    description:
-      "Civil-registered platforms can ferry to your location and convert on-site—minimizing approvals, delays, and total time-to-operation.",
-    primaryCta: { href: "/#why-us", label: "Why Us" },
-    secondaryCta: { href: "/#contact", label: "Talk to Us" },
-  },
-  {
-    id: "capability",
-    imageUrl: "/theme/hpaa3.jpg",
-    badgeText: "Multi-mission · Proven airframes",
-    title: { pre: "Capability First", emphasis: "No Compromises" },
-    description:
-      "From ISR and surveillance to cargo delivery and counter-UAS—configure the airframe to match mission needs, not the other way around.",
-    primaryCta: { href: "/#applications", label: "View Applications" },
-    secondaryCta: { href: "/#aircraft", label: "See Platforms" },
-  },
-] as const;
+const slides: Slide[] = siteData.heroCarousel.slides;
 
 function clampIndex(idx: number, len: number) {
   return ((idx % len) + len) % len;
@@ -141,18 +111,12 @@ export function HomeCarousel() {
           </div>
 
           <div className="hero-stats">
-            <div className="hero-stat">
-              <div className="hero-stat-val">1–2</div>
-              <div className="hero-stat-label">Day Conversion</div>
-            </div>
-            <div className="hero-stat">
-              <div className="hero-stat-val">417kt</div>
-              <div className="hero-stat-label">Top Speed</div>
-            </div>
-            <div className="hero-stat">
-              <div className="hero-stat-val">5,250km</div>
-              <div className="hero-stat-label">Max Range</div>
-            </div>
+            {siteData.heroCarousel.stats.map((stat) => (
+              <div key={stat.label} className="hero-stat">
+                <div className="hero-stat-val">{stat.value}</div>
+                <div className="hero-stat-label">{stat.label}</div>
+              </div>
+            ))}
           </div>
         </div>
       </div>

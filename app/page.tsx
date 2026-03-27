@@ -4,6 +4,7 @@ import { AircraftSection } from "./home/sections/AircraftSection";
 import { ApplicationsSection } from "./home/sections/ApplicationsSection";
 import { PartnersSection } from "./home/sections/PartnersSection";
 import { ContactSection } from "./home/sections/ContactSection";
+import { siteData } from "@/data/siteData";
 
 export default function Home() {
   return (
@@ -11,68 +12,42 @@ export default function Home() {
       <HomeCarousel />
 
       <div className="trust-bar">
-        <div className="trust-item">
-          <div className="trust-icon">✈</div>
-          <div className="trust-text">
-            <strong>EASA Part-145 Certified</strong>
-            <span>Certified maintenance partner</span>
+        {siteData.trustBar.map((item) => (
+          <div key={item.title} className="trust-item">
+            <div className="trust-icon">{item.icon}</div>
+            <div className="trust-text">
+              <strong>{item.title}</strong>
+              <span>{item.subtitle}</span>
+            </div>
           </div>
-        </div>
-        <div className="trust-item">
-          <div className="trust-icon">⚙</div>
-          <div className="trust-text">
-            <strong>1–2 Day Conversion</strong>
-            <span>On-site, no permits required</span>
-          </div>
-        </div>
-        <div className="trust-item">
-          <div className="trust-icon">🌐</div>
-          <div className="trust-text">
-            <strong>Worldwide Support</strong>
-            <span>Global parts & maintenance</span>
-          </div>
-        </div>
-        <div className="trust-item">
-          <div className="trust-icon">🎓</div>
-          <div className="trust-text">
-            <strong>University of Stuttgart</strong>
-            <span>Academic flight control partner</span>
-          </div>
-        </div>
+        ))}
       </div>
 
       <section id="approach" className="section">
         <div className="home-split-grid">
           <div>
-            <p className="section-eyebrow">Our Approach</p>
+            <p className="section-eyebrow">{siteData.approach.eyebrow}</p>
             <h2 className="section-heading">
-              Purpose-Built.
+              {siteData.approach.title.pre}
               <br />
-              <em>Proven Performance.</em>
+              <em>{siteData.approach.title.emphasis}</em>
             </h2>
-            <p className="section-lead">
-              We take the world&apos;s most trusted civil aircraft and transform them into
-              mission-specific platforms — combining thousands of hours of proven reliability with
-              the exact capabilities you need, at a fraction of the cost of purpose-built
-              alternatives.
-            </p>
+            <p className="section-lead">{siteData.approach.description}</p>
             <div style={{ marginTop: "2.5rem", display: "flex", gap: "1rem" }}>
-              <a className="btn-gold" href="/#why-us">
-                Our Advantage
-              </a>
+              <a className="btn-gold" href={siteData.approach.primaryCta.href}>{siteData.approach.primaryCta.label}</a>
               <a
                 className="btn-ghost"
-                href="/#aircraft"
+                href={siteData.approach.secondaryCta.href}
                 style={{ color: "var(--navy)", borderColor: "rgba(11,17,32,0.25)" }}
               >
-                View Aircraft
+                {siteData.approach.secondaryCta.label}
               </a>
             </div>
           </div>
           <div style={{ position: "relative", height: 380 }}>
             <img
-              src="/pdf/customized-drones/customized-drones_p04_x36.jpeg"
-              alt="Aircraft fleet"
+              src={siteData.approach.featureImage.url}
+              alt={siteData.approach.featureImage.alt}
               style={{
                 width: "100%",
                 height: "100%",
@@ -99,7 +74,7 @@ export default function Home() {
                   lineHeight: 1,
                 }}
               >
-                20+
+                {siteData.approach.featureImage.metricValue}
               </div>
               <div
                 style={{
@@ -110,7 +85,7 @@ export default function Home() {
                   marginTop: 4,
                 }}
               >
-                Aircraft Types Available
+                {siteData.approach.featureImage.metricLabel}
               </div>
             </div>
           </div>

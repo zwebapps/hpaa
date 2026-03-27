@@ -3,8 +3,9 @@
 import Link from "next/link";
 import { aircrafts } from "./aircraftData";
 import { AircraftImageSlider } from "./AircraftImageSlider";
+import { siteData } from "@/data/siteData";
 
-const postImages = ["/theme/hpaa4.jpg", "/theme/hpaa3.jpg", "/theme/hpaa2.jpg"] as const;
+const postImages = siteData.aircraft.postImages;
 
 export function AircraftTabs() {
   // Render all aircraft panels stacked vertically (no tab buttons).

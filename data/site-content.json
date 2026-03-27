@@ -1,0 +1,328 @@
+{
+  "brand": {
+    "name": "KUM Services GmbH",
+    "shortName": "KUM Services",
+    "subName": "Aviation GmbH",
+    "tagline": "Aviation Specialists · Konstanz, Germany",
+    "copyright": "© 2025 KUM Services GmbH · All Rights Reserved"
+  },
+  "heroCarousel": {
+    "slides": [
+      {
+        "id": "mission",
+        "imageUrl": "/theme/hpaa9.jpeg",
+        "badgeText": "Konstanz, Germany · Aviation Specialists",
+        "title": { "pre": "Aircraft Built", "emphasis": "Your Mission" },
+        "description": "KUM Services GmbH converts proven civil aircraft into customized platforms—delivering performance, reliability, and value faster than traditional programs.",
+        "primaryCta": { "href": "/#aircraft", "label": "Browse Aircraft" },
+        "secondaryCta": { "href": "/#contact", "label": "Request a Quote" }
+      },
+      {
+        "id": "speed",
+        "imageUrl": "/theme/hpaa10.jpg",
+        "badgeText": "Rapid conversion · Worldwide support",
+        "title": { "pre": "Deploy Faster", "emphasis": "Operate Sooner" },
+        "description": "Civil-registered platforms can ferry to your location and convert on-site—minimizing approvals, delays, and total time-to-operation.",
+        "primaryCta": { "href": "/#why-us", "label": "Why Us" },
+        "secondaryCta": { "href": "/#contact", "label": "Talk to Us" }
+      },
+      {
+        "id": "capability",
+        "imageUrl": "/theme/hpaa3.jpg",
+        "badgeText": "Multi-mission · Proven airframes",
+        "title": { "pre": "Capability First", "emphasis": "No Compromises" },
+        "description": "From ISR and surveillance to cargo delivery and counter-UAS—configure the airframe to match mission needs, not the other way around.",
+        "primaryCta": { "href": "/#applications", "label": "View Applications" },
+        "secondaryCta": { "href": "/#aircraft", "label": "See Platforms" }
+      }
+    ],
+    "stats": [
+      { "value": "1–2", "label": "Day Conversion" },
+      { "value": "417kt", "label": "Top Speed" },
+      { "value": "5,250km", "label": "Max Range" }
+    ]
+  },
+  "trustBar": [
+    {
+      "icon": "✈",
+      "title": "EASA Part-145 Certified",
+      "subtitle": "Certified maintenance partner"
+    },
+    {
+      "icon": "⚙",
+      "title": "1–2 Day Conversion",
+      "subtitle": "On-site, no permits required"
+    },
+    {
+      "icon": "🌐",
+      "title": "Worldwide Support",
+      "subtitle": "Global parts & maintenance"
+    },
+    {
+      "icon": "🎓",
+      "title": "University of Stuttgart",
+      "subtitle": "Academic flight control partner"
+    }
+  ],
+  "approach": {
+    "eyebrow": "Our Approach",
+    "title": { "pre": "Purpose-Built.", "emphasis": "Proven Performance." },
+    "description": "We take the world's most trusted civil aircraft and transform them into mission-specific platforms — combining thousands of hours of proven reliability with the exact capabilities you need, at a fraction of the cost of purpose-built alternatives.",
+    "primaryCta": { "href": "/#why-us", "label": "Our Advantage" },
+    "secondaryCta": { "href": "/#aircraft", "label": "View Aircraft" },
+    "featureImage": {
+      "url": "/pdf/customized-drones/customized-drones_p04_x36.jpeg",
+      "alt": "Aircraft fleet",
+      "metricValue": "20+",
+      "metricLabel": "Aircraft Types Available"
+    }
+  },
+  "whyUs": {
+    "headerBg": "/theme/hpaa1.jpg",
+    "eyebrow": "The Case for Customization",
+    "title": { "pre": "Why Choose", "emphasis": "KUM Services?" },
+    "lead": "Off-the-shelf solutions rarely satisfy demanding operational requirements. Bespoke platforms built on proven civil airframes deliver superior value, faster deployment, and genuine operational fit.",
+    "cards": [
+      {
+        "number": "01",
+        "title": "Established Reliability",
+        "description": "Every platform we convert has accumulated thousands of verified flight hours. You inherit decades of engineering validation, approved designs, and a globally trusted maintenance ecosystem from day one."
+      },
+      {
+        "number": "02",
+        "title": "Rapid Time-to-Operation",
+        "description": "Aircraft retain civil registration and can be ferried directly to your location by pilots. The conversion process takes just one to two days on-site — no special permits, no lengthy approvals, no delays."
+      },
+      {
+        "number": "03",
+        "title": "Significant Cost Savings",
+        "description": "Eliminating ground-up design and development slashes program costs dramatically. Worldwide parts availability and accessible technical personnel ensure long-term operating costs remain competitive."
+      },
+      {
+        "number": "04",
+        "title": "Operational Flexibility",
+        "description": "Our approach is not limited to any single airframe or mission type. From light single-engine turboprops to heavy transports, we identify and configure the right platform for your precise requirements."
+      }
+    ],
+    "callout": {
+      "imageUrl": "/theme/hpaa6.jpg",
+      "imageAlt": "King Air 350",
+      "eyebrow": "Key Advantage",
+      "title": { "pre": "Not Identifiable.", "emphasis": "Fully Capable." },
+      "description": "Converted platforms maintain the external appearance of standard civil aircraft. They remain on civil registers, can be operated worldwide with standard flight procedures, and require no special authority clearance for ferry flights — providing significant operational advantage.",
+      "cta": { "href": "/#aircraft", "label": "View Platforms →" }
+    }
+  },
+  "aircraft": {
+    "headerBg": "/theme/hpaa2.jpg",
+    "eyebrow": "Platform Catalogue",
+    "title": { "pre": "Available", "emphasis": "Aircraft" },
+    "lead": "Each platform is selected based on its operational suitability, global availability, and proven track record. We match the airframe to your mission — not the other way around.",
+    "postImages": ["/theme/hpaa4.jpg", "/theme/hpaa3.jpg", "/theme/hpaa2.jpg"],
+    "aircrafts": [
+      {
+        "slug": "citation-525b",
+        "name": "Cessna Citation 525B",
+        "category": "Business Jet · High-Altitude / Long-Range",
+        "images": [
+          "/pdf/customized-drones/customized-drones_p03_x27.jpeg",
+          "/pdf/customized-drones/customized-drones_p03_x28.jpeg",
+          "/pdf/customized-drones/customized-drones_p03_x29.jpeg",
+          "/pdf/customized-drones/customized-drones_p03_x30.jpeg"
+        ],
+        "specs": [
+          { "label": "Max Speed", "value": "417 kts / 772 km/h" },
+          { "label": "Service Ceiling", "value": "45,000 ft / 13,700 m" },
+          { "label": "Range", "value": "1,875 NM / 3,473 km" },
+          { "label": "Powerplant", "value": "Twin Turbofan" },
+          { "label": "Availability", "value": "Worldwide" }
+        ],
+        "description": "Exceptional speed and altitude capability make the Citation 525B ideal for high-speed, long-range operations. Its jet performance delivers wide-area coverage and rapid response times — a proven platform with a global support network.",
+        "details": [
+          "Best suited for fast turnarounds and mission profiles requiring high cruise performance.",
+          "Conversion keeps the civil register and enables worldwide operational flexibility.",
+          "We tailor mission systems to your payload, endurance, and installation constraints."
+        ]
+      },
+      {
+        "slug": "cessna-208",
+        "name": "Cessna 208",
+        "category": "Single Turboprop · Multi-Role / Utility",
+        "images": [
+          "/pdf/customized-drones/customized-drones_p05_x42.jpeg",
+          "/pdf/customized-drones/customized-drones_p05_x43.jpeg",
+          "/pdf/customized-drones/customized-drones_p05_x44.jpeg",
+          "/pdf/customized-drones/customized-drones_p05_x45.jpeg"
+        ],
+        "specs": [
+          { "label": "Cruise Speed", "value": "~186 kts / 344 km/h" },
+          { "label": "Service Ceiling", "value": "25,000 ft / 7,620 m" },
+          { "label": "Range", "value": "~1,070 NM / 1,980 km" },
+          { "label": "Powerplant", "value": "Single Turboprop" },
+          { "label": "Availability", "value": "Worldwide" }
+        ],
+        "description": "A rugged workhorse with strong short-field performance and flexible interior configuration. The 208 is ideal for logistics, ISR payloads, and operations into austere environments.",
+        "details": [
+          "Optimized for multi-role configurations and payload integration.",
+          "Suitable for missions that require frequent routing changes and quick deployment.",
+          "We define interfaces for sensors, mission computers, and power distribution."
+        ]
+      },
+      {
+        "slug": "c130j",
+        "name": "C-130J Hercules",
+        "category": "Heavy Transport · Long-Range / High-Payload",
+        "images": [
+          "/pdf/customized-drones/customized-drones_p06_x51.jpeg",
+          "/pdf/customized-drones/customized-drones_p06_x52.jpeg"
+        ],
+        "specs": [
+          { "label": "Cruise Speed", "value": "~355 kts / 657 km/h" },
+          { "label": "Service Ceiling", "value": "28,000 ft / 8,534 m" },
+          { "label": "Range", "value": "~2,835 NM / 5,250 km" },
+          { "label": "Powerplant", "value": "4× Turboprop" },
+          { "label": "Availability", "value": "Worldwide" }
+        ],
+        "description": "Maximum range and payload capacity in a single platform. The C-130J conversion represents the pinnacle of large-scale customized aviation capability — suited to the most demanding long-range, high-payload requirements.",
+        "details": [
+          "Designed for high-capacity cargo and mission systems integration.",
+          "We support end-to-end project planning with clear milestones.",
+          "Payload and mission installation are engineered around your operating environment."
+        ]
+      },
+      {
+        "slug": "king-air-350",
+        "name": "Beech King Air 350",
+        "category": "Twin Turboprop · ISR / Multi-Mission",
+        "images": [
+          "/pdf/customized-drones/customized-drones_p08_x65.jpeg",
+          "/pdf/customized-drones/customized-drones_p08_x66.jpeg",
+          "/pdf/customized-drones/customized-drones_p08_x67.jpeg",
+          "/pdf/customized-drones/customized-drones_p08_x68.jpeg",
+          "/pdf/customized-drones/customized-drones_p08_x69.jpeg"
+        ],
+        "specs": [
+          { "label": "Cruise Speed", "value": "~310 kts / 574 km/h" },
+          { "label": "Service Ceiling", "value": "35,000 ft / 10,670 m" },
+          { "label": "Range", "value": "~1,750 NM / 3,240 km" },
+          { "label": "Powerplant", "value": "Twin Turboprop" },
+          { "label": "Availability", "value": "Worldwide" }
+        ],
+        "description": "A highly capable and widely supported multi-mission platform with excellent endurance. The King Air 350 is a proven choice for ISR, special missions, and multi-role configurations.",
+        "details": [
+          "A flexible platform for sensors, communications, and operational mission kits.",
+          "We engineer mission integration to support predictable performance and maintenance.",
+          "A strong option when you need endurance plus operational versatility."
+        ]
+      }
+    ]
+  },
+  "applications": {
+    "headerBg": "/theme/hpaa3.jpg",
+    "eyebrow": "What We Enable",
+    "title": { "pre": "Operational", "emphasis": "Applications" },
+    "lead": "Our customized platforms serve a broad spectrum of operational roles, each tailored to the precise requirements of the customer — from ISR to long-range cargo delivery.",
+    "cards": [
+      {
+        "icon": "📷",
+        "title": "Surveillance & ISR",
+        "description": "Integrated camera and multi-sensor systems for intelligence gathering, border monitoring, maritime patrol, and persistent area surveillance over extended missions."
+      },
+      {
+        "icon": "📦",
+        "title": "Cargo & Delivery",
+        "description": "Transportation and precision delivery of materials and equipment, including parachute-assisted airdrop for austere or inaccessible locations."
+      },
+      {
+        "icon": "🛡",
+        "title": "Defensive Operations",
+        "description": "Platform configuration for deploying countermeasures, electronic warfare payloads, and protective system packages for defensive mission sets."
+      },
+      {
+        "icon": "🚀",
+        "title": "Range Extension",
+        "description": "Configured as an airborne range extension and launch platform for cruise and standoff weapon systems, increasing effective strike radius significantly."
+      },
+      {
+        "icon": "⚡",
+        "title": "Attritable Platforms",
+        "description": "Low-cost, high-availability platforms configured for expendable missions where loss of the aircraft is an acceptable operational outcome."
+      },
+      {
+        "icon": "🎯",
+        "title": "Counter-UAS",
+        "description": "Detection, tracking, and neutralization of hostile unmanned aerial systems using on-board sensor and effector integration."
+      }
+    ]
+  },
+  "partners": {
+    "headerBg": "/theme/hpaa4.jpg",
+    "eyebrow": "Our Network",
+    "title": { "pre": "Partners &", "emphasis": "Expertise" },
+    "lead": "Our strength lies in a carefully assembled network of certified technical partners, academic institutions, and aviation specialists — ensuring every platform meets the highest engineering and regulatory standards.",
+    "items": [
+      {
+        "id": "part145",
+        "layout": "image-text",
+        "imageUrl": "/theme/hpaa1.jpg",
+        "imageAlt": "Part One-Forty Five GmbH",
+        "label": "Certified Maintenance & Repair Organisation",
+        "title": "Part One-Forty Five GmbH",
+        "role": "EASA Part-145 Certified · Neuhausen ob Eck Airfield · Patrick Köpfer",
+        "text": "An authorized EASA PART-145 maintenance and repair organisation specializing in turbine-powered turboprops and jets. Provides the certified technical backbone for all conversion, maintenance, and airworthiness activities across the programme."
+      },
+      {
+        "id": "stuttgart",
+        "layout": "text-image",
+        "imageUrl": "/theme/hpaa7.jpg",
+        "imageAlt": "University of Stuttgart",
+        "label": "Academic Partner",
+        "title": "University of Stuttgart",
+        "role": "Institute of Flight Mechanics & Control (iFR) · Prof. Dr. Walter Fichter",
+        "text": "The iFR specializes in guidance, control, and navigation of aerospace vehicles. Their Cirrus SR22 (D-EXPT) serves as the autonomous flight demonstration platform, bridging academic research with real-world application."
+      },
+      {
+        "id": "kum",
+        "layout": "image-text",
+        "imageUrl": "/theme/hpaa6.jpg",
+        "imageAlt": "KUM Services GmbH",
+        "label": "Lead Integrator",
+        "title": "KUM Services GmbH",
+        "role": "Konstanz, Germany · Programme Management & Delivery",
+        "text": "Prime contractor responsible for end-to-end project management, system integration, and customer delivery. Located at Haltnauer Weg 17, D-78464 Konstanz. Direct contact: +49 172 387 5262 · info@kum-trading.consulting"
+      }
+    ]
+  },
+  "contact": {
+    "backgroundImage": "/theme/hpaa5.jpg",
+    "eyebrow": "Start a Conversation",
+    "title": { "pre": "Request a", "emphasis": "Proposal" },
+    "lead": "Describe your operational needs and we will prepare a tailored aircraft recommendation with full technical specification and commercial terms.",
+    "companyInfo": [
+      { "label": "Company", "value": "KUM Services GmbH" },
+      { "label": "Address", "valueLines": ["Haltnauer Weg 17", "D-78464 Konstanz, Germany"] },
+      { "label": "Phone", "value": "+49 172 387 5262", "href": "tel:+491723875262" },
+      {
+        "label": "Email",
+        "value": "info@kum-trading.consulting",
+        "href": "mailto:info@kum-trading.consulting"
+      }
+    ],
+    "form": {
+      "heading": "Send an Enquiry",
+      "sub": "All enquiries are handled with strict confidentiality. We typically respond within one business day.",
+      "submitLabel": "Submit Enquiry →",
+      "note": "Your information is treated with complete confidentiality and will not be shared with third parties."
+    }
+  },
+  "navigation": {
+    "links": [
+      { "href": "/#home", "hash": "#home", "label": "Home" },
+      { "href": "/#why-us", "hash": "#why-us", "label": "Why Us" },
+      { "href": "/#aircraft", "hash": "#aircraft", "label": "Aircraft" },
+      { "href": "/#applications", "hash": "#applications", "label": "Applications" },
+      { "href": "/#partners", "hash": "#partners", "label": "Partners" }
+    ],
+    "cta": { "href": "/#contact", "label": "Enquire Now" }
+  }
+}

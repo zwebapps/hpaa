@@ -1246,7 +1246,14 @@ footer {
 @media (max-width: 900px) {
   nav { padding: 0 1.5rem; }
   .nav-links { display: none; }
-  .theme-switcher { display: none; }
+  .theme-switcher {
+    display: inline-flex;
+    max-width: 52vw;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .theme-switcher::-webkit-scrollbar { display: none; }
+  .theme-chip { padding: 0.35rem 0.55rem; }
   .hero-stats { display: none; }
   .hero { padding: 0 1.5rem 4rem; }
   .section { padding: 4rem 1.5rem; }

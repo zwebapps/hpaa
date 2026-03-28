@@ -339,14 +339,14 @@
         "description": "Used as range extension system for cruise missiles."
       },
       {
-        "icon": "⚡",
-        "title": "Attritable Platforms",
-        "description": "Affordable unmanned systems for surveillance, jamming, or strike in dangerous areas—taking risk so crewed aircraft stay safe. Losable when needed; not one-way suicide weapons."
+        "icon": "🧠",
+        "title": "Adaptive Platforms",
+        "description": "Cost-effective unmanned systems for monitoring, disruption, defense, and precision operations in high-risk environments—built to adapt to dynamic mission demands."
       },
       {
         "icon": "🎯",
         "title": "Counter-UAS",
-        "description": "Destruction of hostile high performance autonomous aircraft."
+        "description": "Destruction of hostile."
       }
     ]
   },
@@ -383,7 +383,7 @@
         "imageAlt": "KUM Services GmbH",
         "label": "Lead Integrator",
         "title": "KUM Services GmbH",
-        "role": "Konstanz, Germany · Programme Management & Delivery",
+        "role": "Programme Management",
         "text": "Prime contractor responsible for end-to-end project management, system integration, and customer delivery. Located at Haltnauer Weg 17, D-78464 Konstanz. Direct contact: info@kum-trading.consulting"
       }
     ]

@@ -39,6 +39,11 @@ const spaceMono = Space_Mono({
 export const metadata: Metadata = {
   title: env.NEXT_PUBLIC_APP_NAME,
   description: `${env.NEXT_PUBLIC_APP_NAME} web app`,
+  /** Discourage browser auto-translation so UI stays English for all visitors */
+  openGraph: { locale: "en_US" },
+  other: {
+    google: "notranslate",
+  },
 };
 
 export default function RootLayout({
@@ -49,9 +54,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${outfit.variable} ${cormorant.variable} ${playfair.variable} ${bebas.variable} ${dmSans.variable} ${spaceMono.variable} h-full antialiased`}
+      translate="no"
+      className={`notranslate ${outfit.variable} ${cormorant.variable} ${playfair.variable} ${bebas.variable} ${dmSans.variable} ${spaceMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col" translate="no">
         <ThemeProvider>
           <RevealObserver />
           <ScrollToHash />

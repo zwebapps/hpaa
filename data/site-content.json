@@ -33,7 +33,7 @@
       },
       {
         "id": "capability",
-        "imageUrl": "/theme/hpaa3.jpg",
+        "imageUrl": "/theme/hpaa3.png",
         "badgeText": "Multi-mission · Proven airframes",
         "title": { "pre": "Capability First", "emphasis": "No Compromises" },
         "description": "From ISR and surveillance to cargo delivery and countering hostile high performance autonomous aircraft—configure the airframe to match mission needs, not the other way around.",
@@ -209,10 +209,9 @@
         "name": "F-15 Eagle / F-15E Strike Eagle",
         "category": "Fighter · Air superiority & multirole strike",
         "images": [
-          "/theme/F-15-1.jpg",
-          "/theme/F-15-2.jpg",
-          "/theme/F-15-3.jpg",
-          "/theme/F-15-4.jpg"
+          "/theme/F-15-1.png",
+          "/theme/F-15-2.png",
+          "/theme/F-15-3.png"
         ],
         "specs": [
           { "label": "Max speed", "value": "Mach 2.5+ (~1,650+ mph / 2,660+ km/h)" },
@@ -232,7 +231,7 @@
         "slug": "merag-fighter",
         "name": "Merag Fighter Jet",
         "category": "Fighter · Special mission",
-        "images": ["/theme/Mirage-1.jpg", "/theme/Mirage-2.jpg"],
+        "images": ["/theme/Mirage-1.png", "/theme/Mirage-2.png"],
         "specs": [
           { "label": "Max speed", "value": "1,900 kts / 3,520 km/h (≈ Mach 3.0)" },
           { "label": "Service ceiling", "value": "70,000 ft / 21,300 m" },
@@ -269,7 +268,7 @@
     ]
   },
   "applications": {
-    "headerBg": "/theme/hpaa3.jpg",
+    "headerBg": "/theme/hpaa3.png",
     "eyebrow": "What We Enable",
     "title": { "pre": "Operational", "emphasis": "Applications" },
     "lead": "Civil aircrafts converted to high performance autonomous aircraft (HPAA) can be used for the following operations.",

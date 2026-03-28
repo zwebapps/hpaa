@@ -1197,6 +1197,22 @@ nav {
 }
 .form-submit:hover { background: var(--gold); color: var(--navy); transform: translateY(-1px); }
 .form-note { font-size: 0.72rem; color: var(--slate-light); margin-top: 0.8rem; }
+.form-honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+.form-feedback {
+  font-size: 0.85rem;
+  margin-top: 0.9rem;
+  line-height: 1.45;
+}
+.form-feedback--ok { color: rgba(180, 200, 160, 0.95); }
+.form-feedback--err { color: #e8a598; }
 
 /* ── FOOTER ── */
 footer {

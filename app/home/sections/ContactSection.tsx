@@ -43,6 +43,7 @@ export function ContactSection() {
   const [country, setCountry] = useState("");
   const [interest, setInterest] = useState("");
   const [requirements, setRequirements] = useState("");
+  const [honeypot, setHoneypot] = useState("");
   const [status, setStatus] = useState<FormStatus>("idle");
   const [feedback, setFeedback] = useState<string | null>(null);
 
@@ -61,7 +62,7 @@ export function ContactSection() {
           country,
           interest,
           requirements,
-          _hp: "",
+          _hp: honeypot,
         }),
       });
       const data = (await res.json().catch(() => ({}))) as { error?: string };
@@ -146,6 +147,8 @@ export function ContactSection() {
               autoComplete="off"
               aria-hidden="true"
               className="form-honeypot"
+              value={honeypot}
+              onChange={(e) => setHoneypot(e.target.value)}
             />
             <div className="form-row">
               <div className="form-group">

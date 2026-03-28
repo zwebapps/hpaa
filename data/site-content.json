@@ -4,7 +4,12 @@
     "shortName": "KUM",
     "subName": "Services GmbH",
     "tagline": "Haltnauer Weg 17 · D-78464 Konstanz",
-    "copyright": "© 2025 KUM Services GmbH · All Rights Reserved"
+    "copyright": "© 2025 KUM Services GmbH · All Rights Reserved",
+    "taxNo": "09048/02916 · FA Konstanz",
+    "vatNo": "DE259550054",
+    "iban": "DE55 6435 0070 0008 5281 51",
+    "bic": "SOLADES1TUT",
+    "bankName": "Kreissparkasse Tuttlingen"
   },
   "heroCarousel": {
     "slides": [
@@ -31,7 +36,7 @@
         "imageUrl": "/theme/hpaa3.jpg",
         "badgeText": "Multi-mission · Proven airframes",
         "title": { "pre": "Capability First", "emphasis": "No Compromises" },
-        "description": "From ISR and surveillance to cargo delivery and counter-UAS—configure the airframe to match mission needs, not the other way around.",
+        "description": "From ISR and surveillance to cargo delivery and countering hostile high performance autonomous aircraft—configure the airframe to match mission needs, not the other way around.",
         "primaryCta": { "href": "/#applications", "label": "View Applications" },
         "secondaryCta": { "href": "/#aircraft", "label": "See Platforms" }
       }
@@ -67,7 +72,7 @@
   "approach": {
     "eyebrow": "Our Approach",
     "title": { "pre": "Purpose-Built.", "emphasis": "Proven Performance." },
-    "description": "The conversion of civil aircrafts to flying drones is the easiest and fastest way. Civil aircrafts equipped for special mission are built for many different usage and customer requirements can be met at an affordable price.",
+    "description": "The conversion of civil aircrafts to high performance autonomous aircraft (HPAA) is the easiest and fastest way. Civil aircrafts equipped for special mission are built for many different usage and customer requirements can be met at an affordable price.",
     "primaryCta": { "href": "/#why-us", "label": "Our Advantage" },
     "secondaryCta": { "href": "/#aircraft", "label": "View Aircraft" },
     "featureImage": {
@@ -80,8 +85,8 @@
   "whyUs": {
     "headerBg": "/theme/hpaa1.jpg",
     "eyebrow": "The Case for Customization",
-    "title": { "pre": "Why Customized", "emphasis": "Drones?" },
-    "lead": "There are a variety of manufacturers offering ready-made drone systems for purchase. These systems do not always meet customer requirements and are very costly with long delivery times. For this reason, it is important to offer a drone according to customer needs and available resources.",
+    "title": { "pre": "Why Customized", "emphasis": "HPAA?" },
+    "lead": "There are a variety of manufacturers offering ready-made systems for purchase. These systems do not always meet customer requirements and are very costly with long delivery times. For this reason, it is important to offer high performance autonomous aircraft (HPAA) according to customer needs and available resources.",
     "cards": [
       {
         "number": "01",
@@ -105,11 +110,11 @@
       }
     ],
     "callout": {
-      "imageUrl": "/theme/hpaa6.jpg",
-      "imageAlt": "King Air 350",
+      "imageUrl": "/theme/beech-king-air-350-5.png",
+      "imageAlt": "Beech King Air 350 on the runway",
       "eyebrow": "Key Advantage",
       "title": { "pre": "Not Identifiable.", "emphasis": "Fully Capable." },
-      "description": "The aircrafts stay on civil registration and can be ferried to the place of operation with pilots. There is no need for special flight permits from authorities. Conversion to a drone takes about one to two days at the place of operation, and the aircraft is not identifiable as a drone.",
+      "description": "The aircrafts stay on civil registration and can be ferried to the place of operation with pilots. There is no need for special flight permits from authorities. Conversion to high performance autonomous aircraft (HPAA) takes about one to two days at the place of operation, and the aircraft is not identifiable as HPAA.",
       "cta": { "href": "/#aircraft", "label": "View Platforms →" }
     }
   },
@@ -142,7 +147,7 @@
         "slug": "cessna-208",
         "name": "CESSNA 208",
         "category": "EXAMPLE · SPECIAL MISSION",
-        "images": ["/theme/hpaa3.jpg"],
+        "images": ["/theme/hpaa6.jpg"],
         "specs": [
           { "label": "SPEED", "value": "185 kts / 340 kmh" },
           { "label": "SERVICE CEILING", "value": "25.000 ft / 7600 m" },
@@ -180,7 +185,11 @@
         "slug": "king-air-350",
         "name": "Beech King Air 350",
         "category": "Twin Turboprop · ISR / Multi-Mission",
-        "images": ["/theme/hpaa6.jpg"],
+        "images": [
+          "/theme/beech-king-air-350-5.png",
+          "/theme/beech-king-air-3500-1.png",
+          "/theme/beech-king-air-3500-2.png"
+        ],
         "specs": [
           { "label": "Cruise Speed", "value": "~310 kts / 574 km/h" },
           { "label": "Service Ceiling", "value": "35,000 ft / 10,670 m" },
@@ -194,6 +203,68 @@
           "We engineer integration to match your performance and maintenance expectations.",
           "A strong option when you need endurance plus operational versatility."
         ]
+      },
+      {
+        "slug": "f-15-eagle",
+        "name": "F-15 Eagle / F-15E Strike Eagle",
+        "category": "Fighter · Air superiority & multirole strike",
+        "images": [
+          "/theme/F-15-1.jpg",
+          "/theme/F-15-2.jpg",
+          "/theme/F-15-3.jpg",
+          "/theme/F-15-4.jpg"
+        ],
+        "specs": [
+          { "label": "Max speed", "value": "Mach 2.5+ (~1,650+ mph / 2,660+ km/h)" },
+          { "label": "Service ceiling", "value": "~65,000 ft / ~20,000 m" },
+          { "label": "Range (ferry)", "value": "~3,450 mi / ~5,550 km (external tanks)" },
+          { "label": "Powerplant", "value": "2 × Pratt & Whitney F100 (PW-100 / -220 / -229)" },
+          { "label": "Availability", "value": "USAF & allied forces worldwide; 1,300+ built" }
+        ],
+        "description": "The F-15 Eagle and F-15E Strike Eagle are twin-engine supersonic all-weather tactical fighters for air superiority and multirole strike. Crew layouts range from single-seat (F-15A/C) to two-seat (F-15B/D/E); the Strike Eagle adds a weapon systems officer for long-range precision attack. Twin afterburning F100 turbofans, advanced pulse-Doppler radar, EW systems, and heavy stores capacity make the family a benchmark for high-end contested operations.",
+        "details": [
+          "Role: twin-engine supersonic all-weather tactical fighter — air superiority plus multirole strike. F-15E typically carries two crew; earlier variants include single-seat configurations.",
+          "Armament (varies by variant): 20 mm M61A1 Vulcan; up to ~16,000 lb (~7,300 kg) of missiles and bombs on multiple hardpoints — e.g. AIM-9 Sidewinder, AIM-120 AMRAAM, and precision-guided weapons on strike configurations.",
+          "Avionics: advanced pulse-Doppler radar (e.g. AN/APG-63/70 family), electronic warfare, inertial/GPS navigation, secure comms, and targeting/navigation pods on strike models. Combat radius typically ~1,000–1,200 nmi depending on mission load; max take-off weight up to ~68,000–81,000 lb on relevant variants."
+        ]
+      },
+      {
+        "slug": "merag-fighter",
+        "name": "Merag Fighter Jet",
+        "category": "Fighter · Special mission",
+        "images": ["/theme/Mirage-1.jpg", "/theme/Mirage-2.jpg"],
+        "specs": [
+          { "label": "Max speed", "value": "1,900 kts / 3,520 km/h (≈ Mach 3.0)" },
+          { "label": "Service ceiling", "value": "70,000 ft / 21,300 m" },
+          { "label": "Range", "value": "1,500 NM / 2,780 km (combat radius 750 NM / 1,390 km)" },
+          { "label": "Powerplant", "value": "Twin adaptive thrust-vectoring turbofan engines" },
+          { "label": "Availability", "value": "Prototype / advanced deployment" }
+        ],
+        "description": "The Merag Fighter Jet is a next-generation stealth multirole aircraft designed for air superiority, deep strike, and electronic warfare. Advanced aerodynamics, adaptive thrust vectoring, and integrated AI-assisted systems deliver high maneuverability, high-speed intercepts, and multi-mission flexibility. Stealth coating reduces radar signature; AI-assisted targeting and flight control pair with modular weapon bays for missiles, precision-guided weapons, and electronic warfare pods; sensor fusion spans radar, infrared, and electronic intelligence.",
+        "details": [
+          "Crew: single-seat. Dimensions: length ~64 ft / 19.5 m, wingspan ~42 ft / 12.8 m, height ~18 ft / 5.5 m. Empty weight ~28,500 lb / 12,930 kg; max take-off weight ~75,000 lb / 34,000 kg.",
+          "Armament: 20 mm internal cannon; up to ~16,000 lb / 7,250 kg of ordnance on 12 hardpoints; compatible with air-to-air, air-to-ground, and electronic warfare payloads.",
+          "Avionics & systems: adaptive radar with AI target prediction; electronic warfare and countermeasure suites; full networked battlefield communications; optional stealth reconnaissance pods."
+        ]
+      },
+      {
+        "slug": "pilatus-pc-12",
+        "name": "Pilatus PC-12",
+        "category": "Single turboprop · Utility / special mission",
+        "images": ["/theme/pilatus-pc-12-1.png", "/theme/pilatus-pc-12-2.png"],
+        "specs": [
+          { "label": "Max cruise speed", "value": "~290 kt / 537 km/h" },
+          { "label": "Service ceiling", "value": "30,000 ft / 9,144 m" },
+          { "label": "Max range", "value": "~1,803 NM / ~3,340 km" },
+          { "label": "Powerplant", "value": "Pratt & Whitney Canada PT6A-67P (single turboprop)" },
+          { "label": "Availability", "value": "Worldwide; in production since 1991" }
+        ],
+        "description": "The Pilatus PC-12 is a versatile single-engine turboprop utility aircraft from Switzerland. It is known for strong short-field performance, a pressurized cabin, and multi-role use — executive transport, cargo, air ambulance, surveillance, and special-mission configurations. It combines turboprop efficiency with a spacious cabin and rugged field capability.",
+        "details": [
+          "Crew: 1–2 pilots; cabin up to ~9 passengers depending on layout. Dimensions (approx.): length ~47 ft 3 in / 14.4 m, wingspan ~53 ft 4 in / 16.3 m, height ~14 ft / 4.3 m. Typical empty weight ~5,867 lb / 2,661 kg; max take-off weight ~10,450 lb / 4,740 kg.",
+          "Performance: excellent short-runway operation from paved and unpaved strips. Cabin can be configured for executive, medevac, cargo, surveillance, and other roles.",
+          "Powerplant: single PT6A-67P driving a four-blade propeller; pressurized cabin and large cargo door on typical configurations."
+        ]
       }
     ]
   },
@@ -201,7 +272,7 @@
     "headerBg": "/theme/hpaa3.jpg",
     "eyebrow": "What We Enable",
     "title": { "pre": "Operational", "emphasis": "Applications" },
-    "lead": "Civil aircrafts converted to a drone can be used for the following operations.",
+    "lead": "Civil aircrafts converted to high performance autonomous aircraft (HPAA) can be used for the following operations.",
     "cards": [
       {
         "icon": "📷",
@@ -231,7 +302,7 @@
       {
         "icon": "🎯",
         "title": "Counter-UAS",
-        "description": "Destruction of enemy drones."
+        "description": "Destruction of hostile high performance autonomous aircraft."
       }
     ]
   },
@@ -269,7 +340,7 @@
         "label": "Lead Integrator",
         "title": "KUM Services GmbH",
         "role": "Konstanz, Germany · Programme Management & Delivery",
-        "text": "Prime contractor responsible for end-to-end project management, system integration, and customer delivery. Located at Haltnauer Weg 17, D-78464 Konstanz. Direct contact: +49 172 387 5262 · info@kum-trading.consulting"
+        "text": "Prime contractor responsible for end-to-end project management, system integration, and customer delivery. Located at Haltnauer Weg 17, D-78464 Konstanz. Direct contact: info@kum-trading.consulting"
       }
     ]
   },
@@ -281,7 +352,6 @@
     "companyInfo": [
       { "label": "Company", "value": "KUM Services GmbH" },
       { "label": "Address", "valueLines": ["Haltnauer Weg 17", "D-78464 Konstanz, Germany"] },
-      { "label": "Phone", "value": "+49 172 387 5262", "href": "tel:+491723875262" },
       {
         "label": "Email",
         "value": "info@kum-trading.consulting",

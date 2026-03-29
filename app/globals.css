@@ -1178,6 +1178,7 @@ nav {
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
 .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
 .form-label { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--slate); }
+.form-required { color: var(--gold); font-weight: 600; letter-spacing: 0; }
 .form-input, .form-textarea {
   background: var(--warm-white); border: 1px solid rgba(11,17,32,0.12);
   padding: 0.85rem 1rem; color: var(--navy);

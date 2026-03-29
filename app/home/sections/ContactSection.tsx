@@ -33,6 +33,32 @@ function ContactInfoBlock({
 
 type FormStatus = "idle" | "sending" | "success" | "error";
 
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+function validateContactFields(input: {
+  fullName: string;
+  email: string;
+  interest: string;
+  requirements: string;
+}): string | null {
+  if (!input.fullName.trim()) {
+    return "Please enter your full name.";
+  }
+  if (!input.email.trim()) {
+    return "Please enter your email address.";
+  }
+  if (!EMAIL_RE.test(input.email.trim())) {
+    return "Please enter a valid email address.";
+  }
+  if (!input.interest.trim()) {
+    return "Please enter Aircraft Interest / General Inquiry.";
+  }
+  if (!input.requirements.trim()) {
+    return "Please enter Mission Requirements.";
+  }
+  return null;
+}
+
 export function ContactSection() {
   const section = siteData.contact;
   const b = siteData.brand;
@@ -50,6 +76,17 @@ export function ContactSection() {
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setFeedback(null);
+    const clientError = validateContactFields({
+      fullName,
+      email,
+      interest,
+      requirements,
+    });
+    if (clientError) {
+      setStatus("error");
+      setFeedback(clientError);
+      return;
+    }
     setStatus("sending");
     try {
       const res = await fetch("/api/contact", {
@@ -111,7 +148,7 @@ export function ContactSection() {
               ))}
             </div>
             <div className="contact-info-col">
-              <div className="contact-reg-details" aria-label="Tax, VAT and bank details">
+              <div className="contact-reg-details" aria-label="Tax and VAT details">
                 <div className="contact-info-block">
                   <span className="contact-info-label">Tax number</span>
                   <span className="contact-info-value">{regValue(b.taxNo)}</span>
@@ -119,18 +156,6 @@ export function ContactSection() {
                 <div className="contact-info-block">
                   <span className="contact-info-label">VAT ID</span>
                   <span className="contact-info-value">{regValue(b.vatNo)}</span>
-                </div>
-                <div className="contact-info-block">
-                  <span className="contact-info-label">IBAN</span>
-                  <span className="contact-info-value contact-info-mono">{regValue(b.iban)}</span>
-                </div>
-                <div className="contact-info-block">
-                  <span className="contact-info-label">BIC</span>
-                  <span className="contact-info-value contact-info-mono">{regValue(b.bic)}</span>
-                </div>
-                <div className="contact-info-block">
-                  <span className="contact-info-label">Bank</span>
-                  <span className="contact-info-value">{regValue(b.bankName)}</span>
                 </div>
               </div>
             </div>
@@ -153,7 +178,7 @@ export function ContactSection() {
             <div className="form-row">
               <div className="form-group">
                 <label className="form-label" htmlFor="fullName">
-                  Full Name
+                  Full Name <span className="form-required" aria-hidden="true">*</span>
                 </label>
                 <input
                   id="fullName"
@@ -162,6 +187,7 @@ export function ContactSection() {
                   className="form-input"
                   placeholder="Your name"
                   required
+                  aria-required="true"
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
                   disabled={status === "sending"}
@@ -188,7 +214,7 @@ export function ContactSection() {
             <div className="form-row">
               <div className="form-group">
                 <label className="form-label" htmlFor="email">
-                  Email Address
+                  Email Address <span className="form-required" aria-hidden="true">*</span>
                 </label>
                 <input
                   id="email"
@@ -197,6 +223,7 @@ export function ContactSection() {
                   className="form-input"
                   placeholder="your@email.com"
                   required
+                  aria-required="true"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   disabled={status === "sending"}
@@ -222,7 +249,7 @@ export function ContactSection() {
             </div>
             <div className="form-group">
               <label className="form-label" htmlFor="interest">
-                Aircraft Interest
+                Aircraft Interest / General Inquiry
               </label>
               <input
                 id="interest"
@@ -237,13 +264,15 @@ export function ContactSection() {
             </div>
             <div className="form-group">
               <label className="form-label" htmlFor="requirements">
-                Mission Requirements
+                Mission Requirements <span className="form-required" aria-hidden="true">*</span>
               </label>
               <textarea
                 id="requirements"
                 name="requirements"
                 className="form-textarea"
                 placeholder="Briefly describe your operational requirements, mission profile, and any specific performance parameters…"
+                required
+                aria-required="true"
                 value={requirements}
                 onChange={(e) => setRequirements(e.target.value)}
                 disabled={status === "sending"}

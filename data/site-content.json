@@ -3,13 +3,10 @@
     "name": "KUM Services GmbH",
     "shortName": "KUM",
     "subName": "Services GmbH",
-    "tagline": "Haltnauer Weg 17 · D-78464 Konstanz",
+    "tagline": "Konstanz, Germany",
     "copyright": "© 2025 KUM Services GmbH · All Rights Reserved",
     "taxNo": "09048/02916 · FA Konstanz",
-    "vatNo": "DE259550054",
-    "iban": "DE55 6435 0070 0008 5281 51",
-    "bic": "SOLADES1TUT",
-    "bankName": "Kreissparkasse Tuttlingen"
+    "vatNo": "DE259550054"
   },
   "heroCarousel": {
     "slides": [
@@ -209,48 +206,6 @@
         ]
       },
       {
-        "slug": "f-15-eagle",
-        "name": "F-15 Eagle / F-15E Strike Eagle",
-        "category": "Fighter · Air superiority & multirole strike",
-        "images": [
-          "/theme/F-15-1.png",
-          "/theme/F-15-2.png",
-          "/theme/F-15-3.png"
-        ],
-        "specs": [
-          { "label": "Max speed", "value": "Mach 2.5+ (~1,650+ mph / 2,660+ km/h)" },
-          { "label": "Service ceiling", "value": "~65,000 ft / ~20,000 m" },
-          { "label": "Range (ferry)", "value": "~3,450 mi / ~5,550 km (external tanks)" },
-          { "label": "Powerplant", "value": "2 × Pratt & Whitney F100 (PW-100 / -220 / -229)" },
-          { "label": "Availability", "value": "USAF & allied forces worldwide; 1,300+ built" }
-        ],
-        "description": "The F-15 Eagle and F-15E Strike Eagle are twin-engine supersonic all-weather tactical fighters for air superiority and multirole strike. Specifications describe the base aircraft class; where customer and regulatory scope allow, programme integration aligns mission systems and autonomy layers with high performance autonomous aircraft (HPAA) objectives for approved profiles.",
-        "details": [
-          "Base role: twin-engine supersonic all-weather tactical fighter — air superiority plus multirole strike; crew layouts vary by variant. HPAA integration is scoped to programme and operating constraints.",
-          "Stores and armament vary by variant; mission-system integration for HPAA follows your payload, rules of engagement, and certification path.",
-          "Avionics and datalinks (radar, EW, navigation, targeting) are integrated toward autonomous mission performance consistent with HPAA architecture where applicable."
-        ]
-      },
-      {
-        "slug": "mirage-fighter",
-        "name": "Mirage Fighter Jet",
-        "category": "Fighter · Special mission",
-        "images": ["/theme/Mirage-1.png", "/theme/Mirage-2.png"],
-        "specs": [
-          { "label": "Max speed", "value": "1,900 kts / 3,520 km/h (≈ Mach 3.0)" },
-          { "label": "Service ceiling", "value": "70,000 ft / 21,300 m" },
-          { "label": "Range", "value": "1,500 NM / 2,780 km (combat radius 750 NM / 1,390 km)" },
-          { "label": "Powerplant", "value": "Twin adaptive thrust-vectoring turbofan engines" },
-          { "label": "Availability", "value": "Prototype / advanced deployment" }
-        ],
-        "description": "This Mirage-class fighter jet concept represents a next-generation stealth multirole platform for air superiority, deep strike, and electronic warfare. Described for illustration; where such platforms fall within programme scope, integration targets high performance autonomous aircraft (HPAA) mission systems—sensor fusion, modular stores, and autonomy-assisted flight and targeting layers.",
-        "details": [
-          "Representative dimensions and weights support mission planning; HPAA conversion scope is defined per customer programme and airworthiness constraints.",
-          "Armament and stores interfaces are planned alongside HPAA command, datalink, and autonomous engagement logic where approved.",
-          "Avionics, EW, and communications are integrated toward HPAA-style autonomous operation and contested-environment performance."
-        ]
-      },
-      {
         "slug": "pilatus-pc-12",
         "name": "Pilatus PC-12",
         "category": "Single turboprop · Utility / special mission",
@@ -384,7 +339,7 @@
         "label": "Lead Integrator",
         "title": "KUM Services GmbH",
         "role": "Programme Management",
-        "text": "Prime contractor responsible for end-to-end project management, system integration, and customer delivery. Located at Haltnauer Weg 17, D-78464 Konstanz. Direct contact: info@kum-trading.consulting"
+        "text": "Prime contractor responsible for end-to-end project management, system integration, and customer delivery. Based in Konstanz, Germany. Direct contact: info@kum-trading.consulting"
       }
     ]
   },
@@ -395,7 +350,7 @@
     "lead": "Describe your operational needs and we will prepare a tailored aircraft recommendation with full technical specification and commercial terms.",
     "companyInfo": [
       { "label": "Company", "value": "KUM Services GmbH" },
-      { "label": "Address", "valueLines": ["Haltnauer Weg 17", "D-78464 Konstanz, Germany"] },
+      { "label": "Address", "valueLines": ["Konstanz, Germany"] },
       {
         "label": "Email",
         "value": "info@kum-trading.consulting",

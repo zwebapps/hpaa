@@ -209,7 +209,11 @@
         "slug": "pilatus-pc-12",
         "name": "Pilatus PC-12",
         "category": "Single turboprop · Utility / special mission",
-        "images": ["/theme/pilatus-pc-12-1.png", "/theme/pilatus-pc-12-2.png"],
+        "images": [
+          "/theme/Pilatus-c-12-1.png",
+          "/theme/pilatus-pc-12-3.png",
+          "/theme/pilatus-pc-12-4.png"
+        ],
         "specs": [
           { "label": "Max cruise speed", "value": "~290 kt / 537 km/h" },
           { "label": "Service ceiling", "value": "30,000 ft / 9,144 m" },

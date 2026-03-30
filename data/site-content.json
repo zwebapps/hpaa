@@ -223,47 +223,6 @@
           "Excellent short-runway operation from paved and unpaved strips supports HPAA deployment to austere locations.",
           "Single PT6A-67P power and cabin/cargo flexibility are integrated with your HPAA sensors, datalinks, and mission computers."
         ]
-      },
-      {
-        "slug": "boeing-747",
-        "name": "Boeing 747",
-        "category": "Wide-body · Long-haul / cargo",
-        "images": ["/theme/747-1.png", "/theme/747.png"],
-        "specs": [
-          { "label": "Max cruise speed", "value": "~490 kt / 907 km/h" },
-          { "label": "Service ceiling", "value": "43,000 ft / 13,100 m" },
-          { "label": "Max range", "value": "~7,730 NM / ~14,320 km (varies by variant)" },
-          { "label": "Powerplant", "value": "4 × high-bypass turbofan (e.g. CF6, RB211, GEnx on 747-8)" },
-          { "label": "Availability", "value": "Worldwide; since 1970 — freighter & select passenger ops" }
-        ],
-        "description": "The Boeing 747 is an iconic wide-body airliner with a distinctive upper-deck “hump” and very high payload or passenger capacity. Where programme and regulatory scope allow, selected 747-class airframes can be integrated toward high performance autonomous aircraft (HPAA) operation for special-mission cargo, oversized payloads, or unique long-range roles—building on the type’s size, range, and reliability.",
-        "details": [
-          "Representative capacity and weights reflect the base aircraft class; HPAA integration defines sensors, autonomy, and mission volume for your programme.",
-          "Passenger and freighter variants (including 747-8) offer different HPAA integration paths; freighter configurations support large mission bays and nose-loading where applicable.",
-          "Four high-bypass turbofans provide the power and redundancy baseline for HPAA mission systems and endurance."
-        ]
-      },
-      {
-        "slug": "airbus-a380",
-        "name": "Airbus A380",
-        "category": "Wide-body · High-capacity long-haul",
-        "images": [
-          "/theme/airbus-380-2.png",
-          "/theme/airbus-380-3.png"
-        ],
-        "specs": [
-          { "label": "Max cruise speed", "value": "~490 kt / 907 km/h" },
-          { "label": "Service ceiling", "value": "43,000 ft / 13,100 m" },
-          { "label": "Max range", "value": "~8,200 NM / ~15,200 km" },
-          { "label": "Powerplant", "value": "4 × high-bypass turbofan (Engine Alliance GP7200 or Rolls-Royce Trent 900)" },
-          { "label": "Availability", "value": "Worldwide; introduced 2007 — production ended 2021" }
-        ],
-        "description": "The Airbus A380 is the world’s largest passenger airliner, with a full-length double-deck cabin and very high internal volume. For exceptional programmes, A380-class platforms can be considered for integration toward high performance autonomous aircraft (HPAA) objectives—using that volume and long-haul efficiency for specialized payloads, mission systems, or non-standard roles subject to feasibility and approvals.",
-        "details": [
-          "Representative capacity and dimensions reflect the base aircraft; HPAA integration tailors double-deck volume, fly-by-wire interfaces, and mission architecture to your requirements.",
-          "Full double-deck layout and hub-to-hub economics inform HPAA planning for large-scale sensor, relay, or special-mission concepts where appropriate.",
-          "Four high-bypass turbofans and advanced flight controls provide the baseline for long-endurance HPAA cruise and smooth ride characteristics for sensitive payloads."
-        ]
       }
     ]
   },
@@ -309,7 +268,7 @@
     "headerBg": "/theme/hpaa4.jpg",
     "eyebrow": "Our Network",
     "title": { "pre": "KUM Services", "emphasis": "And Partners" },
-    "lead": "University of Stuttgart and Part One-Forty Five GmbH provide academic and certified maintenance support for the programme.",
+    "lead": "Part One-Forty Five GmbH provides academic and certified maintenance support for the programme.",
     "items": [
       {
         "id": "part145",
@@ -320,16 +279,6 @@
         "title": "Part One-Forty Five GmbH",
         "role": "Patrick Kopfer · Neuhausen ob Eck Airfield",
         "text": "Part One-Forty Five GmbH is an authorized EASA PART-145 maintenance and repair organisation. The organisation maintains turbine powered turboprops and jets."
-      },
-      {
-        "id": "stuttgart",
-        "layout": "text-image",
-        "imageUrl": "/theme/university-of-stuttgart.png",
-        "imageAlt": "University of Stuttgart",
-        "label": "Academic Partner",
-        "title": "University of Stuttgart",
-        "role": "Institute of Flight Mechanics and Flight Control · Prof. Dr. Walter Fichter",
-        "text": "The Institute of Flight Mechanics and Control (iFR) works in guidance, control and navigation of aerospace vehicles and instruments. Cirrus SR22 / D-EXPT is used as autonomous flight demonstration platform."
       },
       {
         "id": "kum",

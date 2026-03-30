@@ -268,7 +268,7 @@
     "headerBg": "/theme/hpaa4.jpg",
     "eyebrow": "Our Network",
     "title": { "pre": "KUM Services", "emphasis": "And Partners" },
-    "lead": "Part One-Forty Five GmbH provides academic and certified maintenance support for the programme.",
+    "lead": "We collaborate with leading academic and industry partners, bringing deep expertise in cutting-edge autonomous aviation and system integration",
     "items": [
       {
         "id": "part145",
@@ -279,6 +279,16 @@
         "title": "Part One-Forty Five GmbH",
         "role": "Patrick Kopfer · Neuhausen ob Eck Airfield",
         "text": "Part One-Forty Five GmbH is an authorized EASA PART-145 maintenance and repair organisation. The organisation maintains turbine powered turboprops and jets."
+      },
+      {
+        "id": "stuttgart",
+        "layout": "text-image",
+        "imageUrl": "/theme/university-academic-partners.png",
+        "imageAlt": "Academic & Avionics Partners",
+        "label": "Academic & Avionics Partners",
+        "title": "Universities, Avionics & Electronics Partners",
+        "role": "German universities · avionics · electronics",
+        "text": "Principal partners include leading German universities, established avionics integrators, and major electronics suppliers with significant experience in flight control systems for autonomous flight."
       },
       {
         "id": "kum",

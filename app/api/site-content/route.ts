@@ -1,6 +1,9 @@
 import { getSiteContent, saveSiteContent } from "@/lib/siteContentStore";
+import { requireAdmin } from "@/lib/adminAuth";
 
-export async function GET() {
+export async function GET(request: Request) {
+  const guard = requireAdmin(request);
+  if (guard) return guard;
   try {
     const data = await getSiteContent();
     return Response.json({ ok: true, data });
@@ -11,6 +14,8 @@ export async function GET() {
 }
 
 export async function PUT(request: Request) {
+  const guard = requireAdmin(request);
+  if (guard) return guard;
   try {
     const body = (await request.json()) as { data?: unknown } | unknown;
     const payload =

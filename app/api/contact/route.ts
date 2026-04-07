@@ -245,7 +245,7 @@ export async function POST(req: Request) {
 
       const from =
         process.env.CONTACT_FROM_EMAIL?.trim() ||
-        `HPAA Website <${process.env.SMTP_USER!.trim()}>`;
+        `High Performance Autonomous Aircraft KUM Services GmbH <${process.env.SMTP_USER!.trim()}>`;
 
       const info = await transporter.sendMail({
         from,
@@ -277,7 +277,7 @@ export async function POST(req: Request) {
     }
     const from =
       process.env.CONTACT_FROM_EMAIL?.trim() ||
-      "HPAA Website <onboarding@resend.dev>";
+      "High Performance Autonomous Aircraft KUM Services GmbH <onboarding@resend.dev>";
 
     const resend = new Resend(apiKey);
     const { data, error } = await resend.emails.send({

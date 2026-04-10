@@ -1,6 +1,7 @@
 import { siteData } from "@/data/siteData";
 import { absoluteUrl } from "@/lib/absoluteUrl";
 import { env } from "@/app/env";
+import { getSeoRootDescription } from "@/lib/siteMetadata";
 import { getSiteUrl } from "@/lib/siteUrl";
 
 /**
@@ -25,15 +26,21 @@ export function SiteJsonLd() {
         address: {
           "@type": "PostalAddress",
           addressLocality: "Konstanz",
+          addressRegion: "Baden-Württemberg",
           addressCountry: "DE",
         },
+        areaServed: [
+          { "@type": "City", name: "Konstanz" },
+          { "@type": "AdministrativeArea", name: "Baden-Württemberg" },
+          { "@type": "Country", name: "Germany" },
+        ],
       },
       {
         "@type": "WebSite",
         "@id": `${base}/#website`,
         url: `${base}/`,
         name: appName,
-        description: siteData.heroCarousel.slides[0]?.description,
+        description: getSeoRootDescription(),
         inLanguage: "en",
         publisher: { "@id": `${base}/#organization` },
       },

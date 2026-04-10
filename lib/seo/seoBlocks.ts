@@ -1,0 +1,172 @@
+import type { SeoMetaBlock } from "./seoTypes";
+
+/**
+ * Keyword clusters and meta copy only — no standalone article URLs.
+ * Wire blocks to real routes via `segmentMetadata` and `buildRootMetadata` in `lib/siteMetadata.ts`.
+ */
+export const seoMetaBlocks: SeoMetaBlock[] = [
+  {
+    id: "hpaa-overview",
+    title: "What Is a High Performance Autonomous Aircraft (HPAA)?",
+    metaTitle: "HPAA Aircraft Conversion | KUM Services GmbH Germany",
+    metaDescription:
+      "KUM Services GmbH converts proven civil aircraft into High Performance Autonomous Aircraft (HPAA) for ISR, cargo, strike and special missions. Fast, affordable, EASA-certified.",
+    targetKeywords: [
+      "HPAA",
+      "high performance autonomous aircraft",
+      "autonomous aircraft conversion",
+      "civil aircraft conversion",
+      "KUM Services GmbH",
+    ],
+  },
+  {
+    id: "hpaa-vs-purpose-built",
+    title: "Why Convert a Civil Aircraft Instead of Buying a Purpose-Built UAV?",
+    metaTitle: "HPAA vs Purpose-Built UAV — Why Civil Conversion Wins",
+    metaDescription:
+      "Civil aircraft conversion delivers faster fielding, lower cost, global support and proven reliability versus purpose-built UAV programmes. Learn why HPAA is the smarter choice.",
+    targetKeywords: [
+      "civil aircraft conversion",
+      "affordable autonomous aircraft",
+      "low cost ISR",
+      "fast aircraft conversion",
+      "rapid fielding aircraft",
+      "manned to unmanned conversion",
+      "HPAA vs UAV",
+      "autonomous aircraft supplier",
+    ],
+  },
+  {
+    id: "payload-delivery-aircraft",
+    title: "Autonomous Payload Delivery: From Cargo Resupply to Precision Strike",
+    metaTitle: "Autonomous Payload Delivery Aircraft | HPAA Platforms",
+    metaDescription:
+      "KUM Services HPAA platforms deliver payloads autonomously — from cargo and aerial resupply to precision munitions and kinetic effects. Configurable for any mission profile.",
+    targetKeywords: [
+      "payload delivery aircraft",
+      "autonomous payload delivery",
+      "precision payload drop",
+      "combat payload aircraft",
+      "kinetic effects platform",
+      "aerial resupply unmanned",
+      "parachute payload drop",
+      "PGM delivery",
+      "loitering munition carrier",
+      "autonomous bomb drop",
+      "attritable aircraft",
+    ],
+  },
+  {
+    id: "isr-surveillance-aircraft",
+    title: "Autonomous ISR Aircraft: Persistent Surveillance Without the Cost",
+    metaTitle: "Autonomous ISR Surveillance Aircraft | HPAA Germany",
+    metaDescription:
+      "HPAA platforms from KUM Services deliver persistent ISR, SIGINT, SAR and EO/IR surveillance at a fraction of the cost of purpose-built systems. Global support included.",
+    targetKeywords: [
+      "ISR aircraft",
+      "surveillance aircraft",
+      "intelligence surveillance reconnaissance",
+      "SIGINT platform",
+      "SAR integration",
+      "EO/IR sensor integration",
+      "airborne surveillance",
+      "border surveillance aircraft",
+      "maritime patrol aircraft",
+      "special mission aircraft",
+      "affordable ISR platform",
+    ],
+  },
+  {
+    id: "counter-uas-aircraft",
+    title: "Airborne Counter-UAS: Defeating Drone Threats with HPAA Platforms",
+    metaTitle: "Counter-UAS Aircraft | Airborne Drone Defeat | HPAA",
+    metaDescription:
+      "KUM Services HPAA platforms provide kinetic and electronic counter-UAS capability against drone swarms and individual UAS threats. Faster, higher, further than ground-based C-UAS.",
+    targetKeywords: [
+      "counter-UAS aircraft",
+      "counter-drone aircraft",
+      "C-UAS platform",
+      "anti-drone platform",
+      "UAS defeat",
+      "drone interception aircraft",
+      "kinetic counter-drone",
+      "airborne counter-UAS",
+      "drone swarm defeat",
+    ],
+  },
+  {
+    id: "hpaa-platform-guide",
+    title: "Choosing the Right HPAA Platform: From PC-12 to C-130J",
+    metaTitle: "HPAA Platform Guide: King Air, PC-12, C-130 & More",
+    metaDescription:
+      "Compare HPAA-capable aircraft platforms — King Air 350, Pilatus PC-12, Cessna 208, Citation 525B and C-130J. Find the right airframe for your ISR, cargo or strike mission.",
+    targetKeywords: [
+      "King Air 350",
+      "Pilatus PC-12",
+      "Cessna 208",
+      "Cessna Citation 525",
+      "C-130J",
+      "turboprop ISR platform",
+      "business jet conversion",
+      "special mission aircraft",
+      "HPAA platform provider",
+    ],
+  },
+  {
+    id: "autonomous-flight-control",
+    title: "Autonomous Flight Control Systems for HPAA Platforms",
+    metaTitle: "Autonomous Flight Control & AI Systems for HPAA Aircraft",
+    metaDescription:
+      "KUM Services integrates advanced autonomous flight control, AI targeting, BVLOS datalinks and GCS systems into HPAA platforms. University of Stuttgart flight control partner.",
+    targetKeywords: [
+      "autonomous flight control",
+      "flight control system",
+      "AI flight control",
+      "autonomous mission planning",
+      "BVLOS operations",
+      "beyond visual line of sight",
+      "ground control station",
+      "datalink integration",
+      "GCS",
+      "target acquisition system",
+      "autonomous targeting",
+    ],
+  },
+  {
+    id: "defence-procurement-hpaa",
+    title: "Procuring an HPAA: A Guide for Defence and Government Buyers",
+    metaTitle: "HPAA Defence Procurement Guide | KUM Services Germany",
+    metaDescription:
+      "A practical guide for defence ministries, government agencies and NATO forces procuring an HPAA autonomous aircraft. Fast fielding, low cost, EASA-certified. Request a proposal.",
+    targetKeywords: [
+      "defence procurement",
+      "defense procurement",
+      "buy autonomous aircraft",
+      "HPAA manufacturer",
+      "HPAA supplier",
+      "NATO UAS",
+      "NATO autonomous systems",
+      "rapid capability acquisition",
+      "RFP autonomous aircraft",
+      "turnkey UAV solution",
+      "autonomous aircraft quote",
+      "military aircraft conversion",
+    ],
+  },
+  {
+    id: "hpaa-faq",
+    title: "Frequently Asked Questions: HPAA and Autonomous Aircraft Conversion",
+    metaTitle: "HPAA FAQ — Autonomous Aircraft Conversion Questions Answered",
+    metaDescription:
+      "Answers to the most common questions about HPAA conversion, platform selection, mission capability, EASA certification, and procurement. KUM Services GmbH Konstanz.",
+    targetKeywords: [
+      "HPAA",
+      "autonomous aircraft conversion",
+      "how to convert civil aircraft to UAV",
+      "EASA Part-145",
+      "special mission aircraft for sale",
+      "civil aircraft to autonomous platform",
+      "aircraft conversion company Europe",
+    ],
+  },
+];

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { env } from "@/app/env";
 import { siteData } from "@/data/siteData";
+import { buildPageMetadataFromSeoBlockId } from "./seo/buildSeoMetadata";
+import { collectAllSeoMetaKeywords, getSeoMetaById } from "./seo/helpers";
 import { absoluteUrl } from "./absoluteUrl";
 import { getSiteUrl } from "./siteUrl";
 
@@ -336,15 +338,19 @@ export function buildRootMetadata(): Metadata {
   /** Include location from brand for local/geo-related queries (e.g. aircraft + Konstanz). */
   const titleDefault = `${appName} · ${siteData.brand.name} · ${siteData.brand.tagline}`;
   const defaultDescription = getSeoRootDescription();
+  const overview = getSeoMetaById("hpaa-overview");
+  const rootTitle = overview?.metaTitle ?? titleDefault;
+  const rootDescription = overview?.metaDescription ?? defaultDescription;
+  const rootKeywords = Array.from(new Set([...siteKeywords, ...collectAllSeoMetaKeywords()]));
 
   return {
     metadataBase,
     title: {
-      default: titleDefault,
+      default: rootTitle,
       template: `%s · ${appName}`,
     },
-    description: defaultDescription,
-    keywords: siteKeywords,
+    description: rootDescription,
+    keywords: rootKeywords,
     applicationName: appName,
     authors: [{ name: siteData.brand.name, url: base }],
     creator: siteData.brand.name,
@@ -389,8 +395,8 @@ export function buildRootMetadata(): Metadata {
     },
     twitter: {
       card: "summary_large_image",
-      title: titleDefault,
-      description: defaultDescription,
+      title: rootTitle,
+      description: rootDescription,
       images: [defaultOgImage],
     },
     category: "technology",
@@ -400,66 +406,13 @@ export function buildRootMetadata(): Metadata {
   };
 }
 
-export type PageMetaInput = {
-  /** Short segment title (becomes `Title · ${appName}` via template). */
-  title: string;
-  description: string;
-  /** Path starting with `/` (e.g. `/contact`). */
-  path: string;
-};
-
-export function buildPageMetadata({ title, description, path }: PageMetaInput): Metadata {
-  const url = absoluteUrl(path);
-  const pageTitle = `${title} · ${appName}`;
-
-  return {
-    title,
-    description,
-    alternates: {
-      canonical: url,
-    },
-    openGraph: {
-      type: "website",
-      url,
-      title: pageTitle,
-      description,
-      siteName: appName,
-      images: [{ url: absoluteUrl("/theme/hpaa9.jpeg") }],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: pageTitle,
-      description,
-      images: [absoluteUrl("/theme/hpaa9.jpeg")],
-    },
-  };
-}
-
 /** Pre-built metadata for hash-redirect routes (unique URLs for crawlers and sharing). */
 export const segmentMetadata = {
-  aircraft: buildPageMetadata({
-    title: "Aircraft",
-    description: siteData.aircraft.lead,
-    path: "/aircraft",
+  aircraft: buildPageMetadataFromSeoBlockId("hpaa-platform-guide", "/aircraft"),
+  applications: buildPageMetadataFromSeoBlockId("isr-surveillance-aircraft", "/applications", {
+    extraKeywordBlockIds: ["payload-delivery-aircraft", "counter-uas-aircraft"],
   }),
-  applications: buildPageMetadata({
-    title: "Applications",
-    description: siteData.applications.lead,
-    path: "/applications",
-  }),
-  whyUs: buildPageMetadata({
-    title: "Why Us",
-    description: siteData.whyUs.lead,
-    path: "/why-us",
-  }),
-  partners: buildPageMetadata({
-    title: "Partners",
-    description: siteData.partners.lead,
-    path: "/partners",
-  }),
-  contact: buildPageMetadata({
-    title: "Contact",
-    description: siteData.contact.lead,
-    path: "/contact",
-  }),
+  whyUs: buildPageMetadataFromSeoBlockId("hpaa-vs-purpose-built", "/why-us"),
+  partners: buildPageMetadataFromSeoBlockId("autonomous-flight-control", "/partners"),
+  contact: buildPageMetadataFromSeoBlockId("defence-procurement-hpaa", "/contact"),
 } as const;

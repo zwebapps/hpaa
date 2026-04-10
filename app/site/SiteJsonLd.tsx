@@ -19,7 +19,9 @@ export function SiteJsonLd() {
         "@type": "Organization",
         "@id": `${base}/#organization`,
         name: siteData.brand.name,
-        alternateName: [appName, siteData.brand.shortName],
+        alternateName: [appName, siteData.brand.shortName, "HPAA Konstanz", "aircraft robot Konstanz"],
+        description:
+          "KUM Services GmbH, Konstanz: civil aircraft conversion to HPAA (high performance autonomous aircraft) and autonomous aircraft robot platforms for government and special missions.",
         url: base,
         logo: { "@type": "ImageObject", url: logoUrl },
         email: "info@kum-trading.consulting",

@@ -13,8 +13,8 @@ const appName = env.NEXT_PUBLIC_APP_NAME;
  */
 export function getSeoRootDescription(): string {
   return [
-    `${siteData.brand.name}, ${siteData.brand.tagline}: civil aircraft conversion to high performance autonomous aircraft (HPAA) for mission-specific platforms.`,
-    "Faster timelines than traditional programmes; EASA Part-145 partner network; worldwide support.",
+    `${siteData.brand.name}, ${siteData.brand.tagline}: civil aircraft conversion to HPAA (high performance autonomous aircraft) and autonomous aircraft robot platforms.`,
+    "Aircraft robot and HPAA integration from Konstanz, Germany. Faster timelines than traditional programmes; EASA Part-145 partner network; worldwide support.",
   ]
     .join(" ")
     .replace(/\s+/g, " ")
@@ -23,6 +23,13 @@ export function getSeoRootDescription(): string {
 
 export const siteKeywords: string[] = [
   "HPAA",
+  "hpaa",
+  "aircraft robot",
+  "aircraft robot Konstanz",
+  "robot aircraft",
+  "robot aircraft Konstanz",
+  "autonomous aircraft robot",
+  "HPAA Konstanz",
   "high performance autonomous aircraft",
   "high performance autonomous aircraft conversion",
   "autonomous aircraft",

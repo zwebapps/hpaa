@@ -8,15 +8,20 @@ export const seoMetaBlocks: SeoMetaBlock[] = [
   {
     id: "hpaa-overview",
     title: "What Is a High Performance Autonomous Aircraft (HPAA)?",
-    metaTitle: "HPAA Aircraft Conversion | KUM Services GmbH Germany",
+    metaTitle: "HPAA & Aircraft Robot | KUM Services Konstanz",
     metaDescription:
-      "KUM Services GmbH converts proven civil aircraft into High Performance Autonomous Aircraft (HPAA) for ISR, cargo, strike and special missions. Fast, affordable, EASA-certified.",
+      "KUM Services Konstanz: civil aircraft to HPAA and aircraft robot platforms for ISR, cargo, strike & special missions. Fast fielding, EASA Part-145 partner, worldwide support.",
     targetKeywords: [
       "HPAA",
+      "hpaa",
+      "aircraft robot",
+      "aircraft robot Konstanz",
+      "robot aircraft",
       "high performance autonomous aircraft",
       "autonomous aircraft conversion",
       "civil aircraft conversion",
       "KUM Services GmbH",
+      "KUM Services Konstanz",
     ],
   },
   {
@@ -99,7 +104,7 @@ export const seoMetaBlocks: SeoMetaBlock[] = [
     title: "Choosing the Right HPAA Platform: From PC-12 to C-130J",
     metaTitle: "HPAA Platform Guide: King Air, PC-12, C-130 & More",
     metaDescription:
-      "Compare HPAA-capable aircraft platforms — King Air 350, Pilatus PC-12, Cessna 208, Citation 525B and C-130J. Find the right airframe for your ISR, cargo or strike mission.",
+      "Compare HPAA and aircraft robot-capable platforms — King Air 350, Pilatus PC-12, Cessna 208, Citation 525B and C-130J. Konstanz-based integration for ISR, cargo or strike.",
     targetKeywords: [
       "King Air 350",
       "Pilatus PC-12",
@@ -110,6 +115,8 @@ export const seoMetaBlocks: SeoMetaBlock[] = [
       "business jet conversion",
       "special mission aircraft",
       "HPAA platform provider",
+      "aircraft robot",
+      "HPAA Konstanz",
     ],
   },
   {

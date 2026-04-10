@@ -57,6 +57,7 @@ export default function RootLayout({
       translate="no"
       className={`notranslate ${outfit.variable} ${cormorant.variable} ${playfair.variable} ${bebas.variable} ${dmSans.variable} ${spaceMono.variable} h-full antialiased`}
     >
+      <meta name="google-site-verification" content="h2Ewg-tRNzTwDdnNLGtHKYI9kavgozjWxB7BYM_xQa0" />
       <body className="min-h-full flex flex-col" translate="no">
         <ThemeProvider>
           <RevealObserver />

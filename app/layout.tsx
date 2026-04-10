@@ -1,8 +1,8 @@
-import type { Metadata } from "next";
 import { Bebas_Neue, Cormorant_Garamond, DM_Sans, Outfit, Playfair_Display, Space_Mono } from "next/font/google";
 import "./globals.css";
-import { env } from "./env";
+import { buildRootMetadata } from "@/lib/siteMetadata";
 import { SiteFooter } from "./site/SiteFooter";
+import { SiteJsonLd } from "./site/SiteJsonLd";
 import { SiteNav } from "./site/SiteNav";
 import { RevealObserver } from "./site/RevealObserver";
 import { ScrollSpy } from "./site/ScrollSpy";
@@ -36,15 +36,7 @@ const spaceMono = Space_Mono({
   weight: ["400", "700"],
 });
 
-export const metadata: Metadata = {
-  title: env.NEXT_PUBLIC_APP_NAME,
-  description: `${env.NEXT_PUBLIC_APP_NAME} web app`,
-  /** Discourage browser auto-translation so UI stays English for all visitors */
-  openGraph: { locale: "en_US" },
-  other: {
-    google: "notranslate",
-  },
-};
+export const metadata = buildRootMetadata();
 
 export default function RootLayout({
   children,
@@ -57,8 +49,8 @@ export default function RootLayout({
       translate="no"
       className={`notranslate ${outfit.variable} ${cormorant.variable} ${playfair.variable} ${bebas.variable} ${dmSans.variable} ${spaceMono.variable} h-full antialiased`}
     >
-      <meta name="google-site-verification" content="h2Ewg-tRNzTwDdnNLGtHKYI9kavgozjWxB7BYM_xQa0" />
       <body className="min-h-full flex flex-col" translate="no">
+        <SiteJsonLd />
         <ThemeProvider>
           <RevealObserver />
           <ScrollToHash />

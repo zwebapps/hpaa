@@ -64,7 +64,7 @@ export function SiteJsonLd() {
         name: siteData.brand.name,
         alternateName: [appName, siteData.brand.shortName],
         description:
-          "Aircraft robot Konstanz: KUM Services GmbH — civil aircraft conversion to HPAA (high performance autonomous aircraft) and autonomous aircraft robot platforms for government and special missions.",
+          "HPAA (High Performance Autonomous Aircraft) — robot aircraft Germany: KUM Services GmbH, Konstanz converts civil aircraft into high performance autonomous aircraft platforms for ISR, cargo, strike and special missions.",
         url: base,
         logo: { "@type": "ImageObject", url: logoUrl },
         image: ogImage,
@@ -82,9 +82,12 @@ export function SiteJsonLd() {
           { "@type": "Country", name: "Germany" },
         ],
         knowsAbout: [
+          { "@id": `${base}/#hpaa` },
           "HPAA",
-          "high performance autonomous aircraft",
+          "High Performance Autonomous Aircraft",
+          "high performance autonomous aircraft conversion",
           "civil aircraft conversion",
+          "robot aircraft Germany",
           "autonomous aircraft robot",
           "aircraft robot Konstanz",
           "ISR platforms",
@@ -100,6 +103,21 @@ export function SiteJsonLd() {
         },
       },
 
+      // ── DefinedTerm — HPAA concept ───────────────────────────────────────
+      {
+        "@type": "DefinedTerm",
+        "@id": `${base}/#hpaa`,
+        name: "HPAA",
+        alternateName: "High Performance Autonomous Aircraft",
+        description:
+          "HPAA (High Performance Autonomous Aircraft) — a civil-registered aircraft converted into a fully autonomous or optionally piloted platform for military, government, and special-mission operations. Specialist integrator: KUM Services GmbH, Konstanz, Germany.",
+        termCode: "HPAA",
+        inDefinedTermSet: {
+          "@type": "DefinedTermSet",
+          name: "Autonomous Aviation and Defence Terminology",
+        },
+      },
+
       // ── WebSite ──────────────────────────────────────────────────────────
       {
         "@type": "WebSite",
@@ -107,6 +125,7 @@ export function SiteJsonLd() {
         url: `${base}/`,
         name: appName,
         description: getSeoRootDescription(),
+        about: { "@id": `${base}/#hpaa` },
         inLanguage: "en",
         publisher: { "@id": `${base}/#organization` },
       },

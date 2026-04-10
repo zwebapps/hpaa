@@ -8,9 +8,9 @@ export const seoMetaBlocks: SeoMetaBlock[] = [
   {
     id: "hpaa-overview",
     title: "What Is a High Performance Autonomous Aircraft (HPAA)?",
-    metaTitle: "HPAA Aircraft Conversion | KUM Services GmbH Germany",
+    metaTitle: "HPAA — High Performance Autonomous Aircraft | Robot Aircraft Germany",
     metaDescription:
-      "Aircraft robot Konstanz — KUM Services: civil aircraft to HPAA and mission platforms for ISR, cargo, strike & special missions. Fast fielding, EASA Part-145 partner, worldwide support.",
+      "HPAA — High Performance Autonomous Aircraft. Robot aircraft Germany: KUM Services GmbH, Konstanz converts civil platforms into HPAA for ISR, cargo, strike & special missions. EASA Part-145 certified.",
     targetKeywords: [
       "aircraft robot Konstanz",
       "robot aircraft Konstanz",

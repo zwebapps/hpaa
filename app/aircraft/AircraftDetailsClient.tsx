@@ -1,14 +1,9 @@
 "use client";
 
-import { usePathname } from "next/navigation";
 import { AircraftGallery } from "./AircraftGallery";
 import { getAircraftBySlug } from "./aircraftData";
 
-export function AircraftDetailsClient() {
-  const pathname = usePathname();
-  const parts = pathname.split("/").filter(Boolean);
-  const slug = parts[parts.length - 1] ?? "";
-
+export function AircraftDetailsClient({ slug }: { slug: string }) {
   const aircraft = getAircraftBySlug(slug);
   if (!aircraft) {
     return (

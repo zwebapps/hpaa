@@ -28,13 +28,16 @@ export const seoMetaBlocks: SeoMetaBlock[] = [
   {
     id: "hpaa-vs-purpose-built",
     title: "Why Convert a Civil Aircraft Instead of Buying a Purpose-Built UAV?",
-    metaTitle: "HPAA vs Purpose-Built UAV — Why Civil Conversion Wins",
+    metaTitle: "Civil Aircraft to Autonomous Platform Germany | HPAA Conversion",
     metaDescription:
-      "Civil aircraft conversion delivers faster fielding, lower cost, global support and proven reliability versus purpose-built UAV programmes. Learn why HPAA is the smarter choice.",
+      "Civil aircraft to autonomous platform Germany — KUM Services GmbH, Konstanz converts civil aircraft into HPAA autonomous platforms faster and at lower cost than purpose-built UAV programmes.",
     targetKeywords: [
+      "civil aircraft to autonomous platform Germany",
+      "civil aircraft to autonomous platform",
+      "civil aircraft conversion Germany",
       "civil aircraft conversion",
+      "manned to unmanned conversion Germany",
       "affordable autonomous aircraft",
-      "low cost ISR",
       "fast aircraft conversion",
       "rapid fielding aircraft",
       "manned to unmanned conversion",

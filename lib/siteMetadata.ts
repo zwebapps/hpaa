@@ -14,7 +14,7 @@ const appName = env.NEXT_PUBLIC_APP_NAME;
  */
 export function getSeoRootDescription(): string {
   return [
-    "HPAA (High Performance Autonomous Aircraft) — robot aircraft Germany: KUM Services GmbH, Konstanz converts civil aircraft into high performance autonomous aircraft platforms for ISR, cargo, strike and special missions.",
+    "HPAA (High Performance Autonomous Aircraft) — civil aircraft to autonomous platform Germany: KUM Services GmbH, Konstanz converts civil aircraft into high performance autonomous aircraft platforms for ISR, cargo, strike and special missions.",
     "Robot aircraft Germany and worldwide. Fast fielding, EASA Part-145 partner, worldwide support.",
   ]
     .join(" ")
@@ -25,6 +25,9 @@ export function getSeoRootDescription(): string {
 export const siteKeywords: string[] = [
   "HPAA",
   "hpaa",
+  "civil aircraft to autonomous platform Germany",
+  "civil aircraft to autonomous platform",
+  "civil aircraft conversion Germany",
   "robot aircraft Germany",
   "robot aircraft Konstanz",
   "aircraft robot Germany",

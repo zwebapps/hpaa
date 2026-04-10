@@ -1,21 +1,22 @@
 import type { SeoMetaBlock } from "./seoTypes";
 
 /**
- * Keyword clusters and meta copy only — no standalone article URLs.
- * Wire blocks to real routes via `segmentMetadata` and `buildRootMetadata` in `lib/siteMetadata.ts`.
+ * Off-page SEO only: titles/descriptions for `<head>`, OG/Twitter, and JSON-LD — not `site-content.json` body copy.
+ * Homepage uses brand `<title>` from `buildRootMetadata`; put query phrases in `metaDescription` (and `getSeoRootDescription`).
  */
 export const seoMetaBlocks: SeoMetaBlock[] = [
   {
     id: "hpaa-overview",
     title: "What Is a High Performance Autonomous Aircraft (HPAA)?",
-    metaTitle: "HPAA & Aircraft Robot | KUM Services Konstanz",
+    metaTitle: "HPAA Aircraft Conversion | KUM Services GmbH Germany",
     metaDescription:
-      "KUM Services Konstanz: civil aircraft to HPAA and aircraft robot platforms for ISR, cargo, strike & special missions. Fast fielding, EASA Part-145 partner, worldwide support.",
+      "Aircraft robot Konstanz — KUM Services: civil aircraft to HPAA and mission platforms for ISR, cargo, strike & special missions. Fast fielding, EASA Part-145 partner, worldwide support.",
     targetKeywords: [
+      "aircraft robot Konstanz",
+      "robot aircraft Konstanz",
       "HPAA",
       "hpaa",
       "aircraft robot",
-      "aircraft robot Konstanz",
       "robot aircraft",
       "high performance autonomous aircraft",
       "autonomous aircraft conversion",

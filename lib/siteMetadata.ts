@@ -9,12 +9,13 @@ import { getSiteUrl } from "./siteUrl";
 const appName = env.NEXT_PUBLIC_APP_NAME;
 
 /**
- * Homepage meta description only (Google/OG/Twitter). Does not change visible hero copy in site-content.json.
+ * Off-page meta description only (Google/OG/Twitter, JSON-LD). Does not change visible copy in site-content.json.
+ * Homepage `<title>` stays brand-facing via `buildRootMetadata` (`titleDefault`); query phrases belong here and in `metaDescription` blocks.
  */
 export function getSeoRootDescription(): string {
   return [
-    `${siteData.brand.name}, ${siteData.brand.tagline}: civil aircraft conversion to HPAA (high performance autonomous aircraft) and autonomous aircraft robot platforms.`,
-    "Aircraft robot and HPAA integration from Konstanz, Germany. Faster timelines than traditional programmes; EASA Part-145 partner network; worldwide support.",
+    "Aircraft robot Konstanz: KUM Services GmbH converts civil aircraft to HPAA (high performance autonomous aircraft) and autonomous aircraft robot platforms.",
+    "Robot aircraft Konstanz and worldwide: faster timelines than traditional programmes; EASA Part-145 partner network; worldwide support.",
   ]
     .join(" ")
     .replace(/\s+/g, " ")
@@ -346,14 +347,13 @@ export function buildRootMetadata(): Metadata {
   const titleDefault = `${appName} · ${siteData.brand.name} · ${siteData.brand.tagline}`;
   const defaultDescription = getSeoRootDescription();
   const overview = getSeoMetaById("hpaa-overview");
-  const rootTitle = overview?.metaTitle ?? titleDefault;
   const rootDescription = overview?.metaDescription ?? defaultDescription;
   const rootKeywords = Array.from(new Set([...siteKeywords, ...collectAllSeoMetaKeywords()]));
 
   return {
     metadataBase,
     title: {
-      default: rootTitle,
+      default: titleDefault,
       template: `%s · ${appName}`,
     },
     description: rootDescription,
@@ -390,7 +390,7 @@ export function buildRootMetadata(): Metadata {
       url: absoluteUrl("/"),
       siteName: appName,
       title: titleDefault,
-      description: defaultDescription,
+      description: rootDescription,
       images: [
         {
           url: defaultOgImage,
@@ -402,7 +402,7 @@ export function buildRootMetadata(): Metadata {
     },
     twitter: {
       card: "summary_large_image",
-      title: rootTitle,
+      title: titleDefault,
       description: rootDescription,
       images: [defaultOgImage],
     },

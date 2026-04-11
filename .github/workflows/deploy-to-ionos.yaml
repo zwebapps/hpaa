@@ -16,16 +16,27 @@ jobs:
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_KEY }}
           script: |
+            set -e
             cd /var/www/hpaa
 
             echo "Pulling latest code..."
             git pull origin main
 
             echo "Installing dependencies..."
-            npm install
+            npm ci --omit=dev || npm install
 
             echo "Building project..."
-            npm run build
+            NODE_ENV=production npm run build
 
             echo "Restarting PM2..."
-            pm2 restart hpaa || pm2 start npm --name hpaa -- start
+            pm2 restart hpaa \
+              --update-env \
+              --env production \
+              -- \
+            || pm2 start npm \
+              --name hpaa \
+              --env production \
+              -- start
+
+            pm2 save
+            echo "Deploy complete."

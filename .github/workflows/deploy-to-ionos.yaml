@@ -22,21 +22,15 @@ jobs:
             echo "Pulling latest code..."
             git pull origin main
 
-            echo "Installing dependencies..."
-            npm ci --omit=dev || npm install
+            echo "Installing dependencies (including devDependencies for build)..."
+            npm install
 
             echo "Building project..."
             NODE_ENV=production npm run build
 
             echo "Restarting PM2..."
-            pm2 restart hpaa \
-              --update-env \
-              --env production \
-              -- \
-            || pm2 start npm \
-              --name hpaa \
-              --env production \
-              -- start
+            pm2 restart hpaa --update-env \
+              || pm2 start npm --name hpaa -- start
 
             pm2 save
             echo "Deploy complete."

@@ -22,8 +22,11 @@ jobs:
             echo "Pulling latest code..."
             git pull origin main
 
-            echo "Installing dependencies (including devDependencies for build)..."
-            npm install
+            echo "Clean install from lock file..."
+            npm ci
+
+            echo "Clearing build cache..."
+            rm -rf .next
 
             echo "Building project..."
             NODE_ENV=production npm run build

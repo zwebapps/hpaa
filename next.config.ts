@@ -1,6 +1,11 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // mongodb reads its own package.json via relative paths at runtime; bundling it
+  // into Turbopack chunks breaks that lookup. nodemailer also has native-module
+  // dependencies that must stay unbundled.
+  serverExternalPackages: ["mongodb", "nodemailer"],
+
   async redirects() {
     return [
       // ── Previously indexed SEO article pages → nearest live equivalent ──

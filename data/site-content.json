@@ -15,7 +15,7 @@
         "imageUrl": "/theme/hpaa9.jpeg",
         "badgeText": "Konstanz, Germany · Aviation Specialists",
         "title": { "pre": "Aircraft Built", "emphasis": "Your Mission" },
-        "description": "KUM Services GmbH converts proven civil aircraft into customized platforms—delivering performance, reliability, and value faster than traditional programs.",
+        "description": "KUM Services GmbH converts proven civil aircraft into customized platforms—delivering performance, reliability, and value faster than traditional programs. High Performance Autonomous Aircraft (HPAA) specialists — robot aircraft conversion, Germany.",
         "primaryCta": { "href": "/#aircraft", "label": "Browse Aircraft" },
         "secondaryCta": { "href": "/#contact", "label": "Request a Quote" }
       },

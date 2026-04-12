@@ -15,7 +15,7 @@
         "imageUrl": "/theme/hpaa9.jpeg",
         "badgeText": "Konstanz, Germany · Aviation Specialists",
         "title": { "pre": "Aircraft Built", "emphasis": "Your Mission" },
-        "description": "KUM Services GmbH converts proven civil aircraft into customized autonomous aircraft platforms—delivering performance, reliability, and value faster than traditional programs. High Performance Autonomous Aircraft (HPAA) specialists — robot aircraft conversion, Germany.",
+        "description": "KUM Services GmbH converts proven civil aircraft into customized platforms—delivering performance, reliability, and value faster than traditional programs. Germany's HPAA (High Performance Autonomous Aircraft) and robot aircraft specialists, based in Konstanz.",
         "primaryCta": { "href": "/#aircraft", "label": "Browse Aircraft" },
         "secondaryCta": { "href": "/#contact", "label": "Request a Quote" }
       },
@@ -69,12 +69,12 @@
   "approach": {
     "eyebrow": "Our Approach",
     "title": { "pre": "Purpose-Built.", "emphasis": "Proven Performance." },
-    "description": "The conversion of civil aircrafts to high performance autonomous aircraft (HPAA) is the easiest and fastest way. Civil aircrafts equipped for special mission are built for many different usage and customer requirements can be met at an affordable price.",
+    "description": "The conversion of civil aircrafts to high performance autonomous aircraft (HPAA) is the easiest and fastest way. KUM Services GmbH, Konstanz Germany, equips civil aircraft for special missions—meeting customer requirements at an affordable price.",
     "primaryCta": { "href": "/#why-us", "label": "Our Advantage" },
     "secondaryCta": { "href": "/#aircraft", "label": "View Aircraft" },
     "featureImage": {
       "url": "/theme/hpaa11.jpeg",
-      "alt": "Aircraft fleet",
+      "alt": "HPAA autonomous aircraft fleet — robot aircraft conversion specialist, KUM Services GmbH Germany",
       "metricValue": "20+",
       "metricLabel": "Aircraft Types Available"
     }

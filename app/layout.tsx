@@ -52,6 +52,10 @@ export default function RootLayout({
       translate="no"
       className={`notranslate ${outfit.variable} ${cormorant.variable} ${playfair.variable} ${bebas.variable} ${dmSans.variable} ${spaceMono.variable} h-full antialiased`}
     >
+      <head>
+        {/* Preload the first hero image so LCP fires as early as possible */}
+        <link rel="preload" as="image" href="/theme/hpaa9.jpeg" />
+      </head>
       <body className="min-h-full flex flex-col" translate="no">
         {gAdsId && (
           <>

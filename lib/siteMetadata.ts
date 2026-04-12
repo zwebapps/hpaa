@@ -349,8 +349,8 @@ export function buildRootMetadata(): Metadata {
   const base = getSiteUrl();
   const metadataBase = new URL(base.endsWith("/") ? base : `${base}/`);
 
-  /** Include location from brand for local/geo-related queries (e.g. aircraft + Konstanz). */
-  const titleDefault = `${appName} · ${siteData.brand.name} · ${siteData.brand.tagline}`;
+  /** HPAA abbreviation first so search-term appears at the start of the title tag. */
+  const titleDefault = `HPAA — ${appName} | ${siteData.brand.name} · ${siteData.brand.tagline}`;
   const defaultDescription = getSeoRootDescription();
   const overview = getSeoMetaById("hpaa-overview");
   const rootDescription = overview?.metaDescription ?? defaultDescription;
@@ -415,6 +415,11 @@ export function buildRootMetadata(): Metadata {
     category: "technology",
     other: {
       google: "notranslate",
+      // Geo / location meta tags — help regional and government procurement search tools
+      "geo.region": "DE-BW",
+      "geo.placename": "Konstanz, Baden-Württemberg, Germany",
+      "geo.position": "47.6779;9.1732",
+      "ICBM": "47.6779, 9.1732",
     },
   };
 }

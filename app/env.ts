@@ -15,5 +15,6 @@ export const env = {
   NEXT_PUBLIC_APP_NAME: required("NEXT_PUBLIC_APP_NAME"),
   APP_SECRET: required("APP_SECRET"),
   NODE_ENV: optional("NODE_ENV"),
+  NEXT_PUBLIC_GOOGLE_ADS_ID: optional("NEXT_PUBLIC_GOOGLE_ADS_ID"),
 } as const;
 

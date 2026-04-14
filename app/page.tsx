@@ -5,6 +5,7 @@ import { ApplicationsSection } from "./home/sections/ApplicationsSection";
 import { PartnersSection } from "./home/sections/PartnersSection";
 import { ContactSection } from "./home/sections/ContactSection";
 import { siteData } from "@/data/siteData";
+import { linkKeywords } from "@/lib/linkKeywords";
 
 export default function Home() {
   return (
@@ -32,7 +33,7 @@ export default function Home() {
               <br />
               <em>{siteData.approach.title.emphasis}</em>
             </h2>
-            <p className="section-lead">{siteData.approach.description}</p>
+            <p className="section-lead">{linkKeywords(siteData.approach.description)}</p>
             <div style={{ marginTop: "2.5rem", display: "flex", gap: "1rem" }}>
               <a className="btn-gold" href={siteData.approach.primaryCta.href}>{siteData.approach.primaryCta.label}</a>
               <a

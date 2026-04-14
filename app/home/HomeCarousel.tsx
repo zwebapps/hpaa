@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { siteData } from "@/data/siteData";
+import { linkKeywords } from "@/lib/linkKeywords";
 
 type Slide = {
   id: string;
@@ -68,7 +69,7 @@ export function HomeCarousel() {
               <em>{slide.title.emphasis}</em>
             </h1>
             <div className="hero-divider" />
-            <p className="hero-sub">{slide.description}</p>
+            <p className="hero-sub">{linkKeywords(slide.description)}</p>
             <div className="hero-actions">
               <a className="btn-gold" href={slide.primaryCta.href}>
                 {slide.primaryCta.label}

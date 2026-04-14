@@ -10,6 +10,9 @@ const STATIC_PATHS: { path: string; changeFrequency: MetadataRoute.Sitemap[0]["c
     { path: "/why-us", changeFrequency: "monthly", priority: 0.85 },
     { path: "/partners", changeFrequency: "monthly", priority: 0.8 },
     { path: "/contact", changeFrequency: "monthly", priority: 0.85 },
+    { path: "/hpaa-germany", changeFrequency: "monthly", priority: 0.9 },
+    { path: "/robot-aircraft-germany", changeFrequency: "monthly", priority: 0.9 },
+    { path: "/autonomous-aircraft-germany", changeFrequency: "monthly", priority: 0.9 },
   ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

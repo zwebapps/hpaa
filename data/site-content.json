@@ -3,7 +3,7 @@
     "name": "KUM Services GmbH",
     "shortName": "KUM",
     "subName": "Services GmbH",
-    "tagline": "Konstanz, Germany",
+    "tagline": "Germany",
     "copyright": "© 2025 KUM Services GmbH · All Rights Reserved",
     "taxNo": "09048/02916 · FA Konstanz",
     "vatNo": "DE259550054"
@@ -13,9 +13,9 @@
       {
         "id": "mission",
         "imageUrl": "/theme/hpaa9.jpeg",
-        "badgeText": "Konstanz, Germany · Aviation Specialists",
+        "badgeText": "Germany · HPAA Specialists",
         "title": { "pre": "Aircraft Built", "emphasis": "Your Mission" },
-        "description": "KUM Services GmbH converts proven civil aircraft into customized platforms—delivering performance, reliability, and value faster than traditional programs. Germany's HPAA (High Performance Autonomous Aircraft) and robot aircraft specialists, based in Konstanz.",
+        "description": "KUM Services GmbH converts proven civil aircraft into customized platforms—delivering performance, reliability, and value faster than traditional programs. Germany's HPAA (High Performance Autonomous Aircraft) and robot aircraft specialists, based in Germany.",
         "primaryCta": { "href": "/#aircraft", "label": "Browse Aircraft" },
         "secondaryCta": { "href": "/#contact", "label": "Request a Quote" }
       },
@@ -69,7 +69,7 @@
   "approach": {
     "eyebrow": "Our Approach",
     "title": { "pre": "Purpose-Built.", "emphasis": "Proven Performance." },
-    "description": "The conversion of civil aircrafts to high performance autonomous aircraft (HPAA) is the easiest and fastest way. KUM Services GmbH, Konstanz Germany, equips civil aircraft for special missions—meeting customer requirements at an affordable price.",
+    "description": "The conversion of civil aircrafts to high performance autonomous aircraft (HPAA) is the easiest and fastest way. KUM Services GmbH, Germany, equips civil aircraft for special missions—meeting customer requirements at an affordable price.",
     "primaryCta": { "href": "/#why-us", "label": "Our Advantage" },
     "secondaryCta": { "href": "/#aircraft", "label": "View Aircraft" },
     "featureImage": {
@@ -108,7 +108,7 @@
     ],
     "callout": {
       "imageUrl": "/theme/beech-king-air-350-5.png",
-      "imageAlt": "Beech King Air 350 twin-turboprop aircraft — HPAA conversion platform, KUM Services GmbH Konstanz Germany",
+      "imageAlt": "Beech King Air 350 twin-turboprop aircraft — HPAA conversion platform, KUM Services GmbH, Germany",
       "eyebrow": "Key Advantage",
       "title": { "pre": "Not Identifiable.", "emphasis": "Fully Capable." },
       "description": "The aircrafts stay on civil registration and can be ferried to the place of operation with pilots. There is no need for special flight permits from authorities. Conversion to high performance autonomous aircraft (HPAA) is completed on site in a very short period, and the aircraft is not identifiable as HPAA.",
@@ -298,11 +298,11 @@
         "id": "kum",
         "layout": "image-text",
         "imageUrl": "/theme/kum-gmbh.png",
-        "imageAlt": "KUM Services GmbH — HPAA specialist integrator, civil aircraft to autonomous platform, Konstanz Germany",
+        "imageAlt": "KUM Services GmbH — HPAA specialist integrator, civil aircraft to autonomous platform, Germany",
         "label": "Lead Integrator",
         "title": "KUM Services GmbH",
         "role": "Programme Management",
-        "text": "Prime contractor responsible for end-to-end project management, system integration, and customer delivery. Based in Konstanz, Germany. Direct contact: info@kum-trading.consulting"
+        "text": "Prime contractor responsible for end-to-end project management, system integration, and customer delivery. Based in Germany. Direct contact: info@kum-trading.consulting"
       }
     ]
   },
@@ -313,7 +313,7 @@
     "lead": "Describe your operational needs and we will prepare a tailored aircraft recommendation with full technical specification and commercial terms.",
     "companyInfo": [
       { "label": "Company", "value": "KUM Services GmbH" },
-      { "label": "Address", "valueLines": ["Konstanz, Germany"] },
+      { "label": "Address", "valueLines": ["Germany"] },
       {
         "label": "Email",
         "value": "info@kum-trading.consulting",

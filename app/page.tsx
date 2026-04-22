@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { HomeCarousel } from "./home/HomeCarousel";
 import { WhyUsSection } from "./home/sections/WhyUsSection";
 import { AircraftSection } from "./home/sections/AircraftSection";
@@ -46,16 +47,12 @@ export default function Home() {
             </div>
           </div>
           <div style={{ position: "relative", height: 380 }}>
-            <img
+            <Image
+              fill
               src={siteData.approach.featureImage.url}
               alt={siteData.approach.featureImage.alt}
-              style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-                objectPosition: "center",
-                display: "block",
-              }}
+              style={{ objectFit: "cover", objectPosition: "center" }}
+              sizes="(max-width: 768px) 100vw, 50vw"
             />
             <div
               style={{

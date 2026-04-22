@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useMemo, useState } from "react";
 import { expandAircraftSlides } from "@/lib/aircraftImageSlides";
 
@@ -22,10 +23,13 @@ export function AircraftImageSlider({
 
   return (
     <div className="ac-img-slider" aria-label={`${altBase} image slider`}>
-      <img
+      <Image
+        fill
         src={slide.src}
         alt={`${altBase} — view ${active + 1} of ${slides.length}`}
         className={`ac-img-slider-img ac-img-slider-img--v${slide.variant}`}
+        sizes="100vw"
+        loading="lazy"
       />
 
       <div className="ac-img-slider-controls" aria-hidden="false">

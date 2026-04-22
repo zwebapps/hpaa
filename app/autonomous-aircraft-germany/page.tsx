@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { absoluteUrl } from "@/lib/absoluteUrl";
 import { getSiteUrl } from "@/lib/siteUrl";
@@ -18,7 +19,13 @@ export const metadata: Metadata = {
     "HPAA autonomous aircraft Germany",
     "KUM Services GmbH",
   ],
-  alternates: { canonical: absoluteUrl(CANONICAL) },
+  alternates: {
+    canonical: absoluteUrl(CANONICAL),
+    languages: {
+      en: absoluteUrl(CANONICAL),
+      "en-x-default": absoluteUrl(CANONICAL),
+    },
+  },
   openGraph: {
     type: "website",
     url: absoluteUrl(CANONICAL),
@@ -127,10 +134,12 @@ export default function AutonomousAircraftGermanyPage() {
           </div>
         </div>
         <div className="callout-img" style={{ order: 2 }}>
-          <img
+          <Image
+            fill
             src="/theme/hpaa11.jpeg"
             alt="Autonomous aircraft conversion programme — KUM Services GmbH Konstanz Germany"
-            className="partner-card-img"
+            style={{ objectFit: "cover" }}
+            sizes="(max-width: 768px) 100vw, 50vw"
           />
           <div className="callout-img-overlay" />
         </div>
@@ -157,11 +166,13 @@ export default function AutonomousAircraftGermanyPage() {
             { src: "/theme/beech-king-air-3500-3.png", alt: "Beechcraft King Air 350 autonomous aircraft — Germany", label: "King Air 350" },
             { src: "/theme/hpaa4.jpg", alt: "Autonomous aircraft platform — civil to HPAA conversion, Konstanz Germany", label: "HPAA Platform" },
           ].map((img) => (
-            <div key={img.src} style={{ position: "relative", overflow: "hidden" }}>
-              <img
+            <div key={img.src} style={{ position: "relative", overflow: "hidden", height: 200 }}>
+              <Image
+                fill
                 src={img.src}
                 alt={img.alt}
-                style={{ width: "100%", height: 200, objectFit: "cover", display: "block", filter: "saturate(0.8)" }}
+                style={{ objectFit: "cover", filter: "saturate(0.8)" }}
+                sizes="(max-width: 768px) 100vw, 25vw"
               />
               <div
                 style={{

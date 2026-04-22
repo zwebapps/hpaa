@@ -349,8 +349,11 @@ export function buildRootMetadata(): Metadata {
   const base = getSiteUrl();
   const metadataBase = new URL(base.endsWith("/") ? base : `${base}/`);
 
-  /** HPAA abbreviation first so search-term appears at the start of the title tag. */
-  const titleDefault = `HPAA — ${appName} | ${siteData.brand.name} · ${siteData.brand.tagline}`;
+  /**
+   * Keep the UI brand-first, but make the browser title keyword-forward.
+   * (Does not change visible page headings.)
+   */
+  const titleDefault = `HPAA Aircraft Conversion Germany | Robot Aircraft | ${siteData.brand.name}`;
   const defaultDescription = getSeoRootDescription();
   const overview = getSeoMetaById("hpaa-overview");
   const rootDescription = overview?.metaDescription ?? defaultDescription;
@@ -375,6 +378,10 @@ export function buildRootMetadata(): Metadata {
     },
     alternates: {
       canonical: absoluteUrl("/"),
+      languages: {
+        en: absoluteUrl("/"),
+        "en-x-default": absoluteUrl("/"),
+      },
     },
     robots: {
       index: true,

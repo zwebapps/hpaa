@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { absoluteUrl } from "@/lib/absoluteUrl";
 import { getSiteUrl } from "@/lib/siteUrl";
@@ -18,7 +19,13 @@ export const metadata: Metadata = {
     "autonomous robot aircraft Germany",
     "KUM Services GmbH",
   ],
-  alternates: { canonical: absoluteUrl(CANONICAL) },
+  alternates: {
+    canonical: absoluteUrl(CANONICAL),
+    languages: {
+      en: absoluteUrl(CANONICAL),
+      "en-x-default": absoluteUrl(CANONICAL),
+    },
+  },
   openGraph: {
     type: "website",
     url: absoluteUrl(CANONICAL),
@@ -107,10 +114,12 @@ export default function RobotAircraftGermanyPage() {
       {/* Image + content strip */}
       <div className="callout-strip reveal">
         <div className="callout-img">
-          <img
+          <Image
+            fill
             src="/theme/hpaa7.jpg"
             alt="Robot aircraft autonomous platform — KUM Services GmbH Konstanz Germany"
-            className="partner-card-img"
+            style={{ objectFit: "cover" }}
+            sizes="(max-width: 768px) 100vw, 50vw"
           />
           <div className="callout-img-overlay" />
         </div>
@@ -153,11 +162,13 @@ export default function RobotAircraftGermanyPage() {
             { src: "/theme/pilatus-pc-12-2.png", alt: "Pilatus PC-12 robot aircraft platform — KUM Services Konstanz", label: "Pilatus PC-12" },
             { src: "/theme/hpaa6.jpg", alt: "Robot aircraft autonomous platform — civil aircraft conversion Germany", label: "HPAA Platform" },
           ].map((img) => (
-            <div key={img.src} style={{ position: "relative", overflow: "hidden" }}>
-              <img
+            <div key={img.src} style={{ position: "relative", overflow: "hidden", height: 200 }}>
+              <Image
+                fill
                 src={img.src}
                 alt={img.alt}
-                style={{ width: "100%", height: 200, objectFit: "cover", display: "block", filter: "saturate(0.8)" }}
+                style={{ objectFit: "cover", filter: "saturate(0.8)" }}
+                sizes="(max-width: 768px) 100vw, 25vw"
               />
               <div
                 style={{
@@ -215,8 +226,12 @@ export default function RobotAircraftGermanyPage() {
           flight control.
         </p>
         <div style={{ display: "flex", gap: "1.5rem", marginTop: "2rem", flexWrap: "wrap" }}>
-          <img src="/theme/part-one-forty-five.png" alt="Part One-Forty Five GmbH — EASA Part-145 certified maintenance partner" style={{ height: 80, objectFit: "contain", filter: "brightness(0.9)" }} />
-          <img src="/theme/university-of-stuttgart.png" alt="University of Stuttgart — autonomous flight control research partner" style={{ height: 80, objectFit: "contain", filter: "brightness(0.9)" }} />
+          <div style={{ position: "relative", height: 80, width: 142 }}>
+            <Image fill src="/theme/part-one-forty-five.png" alt="Part One-Forty Five GmbH — EASA Part-145 certified maintenance partner" style={{ objectFit: "contain", filter: "brightness(0.9)" }} sizes="142px" />
+          </div>
+          <div style={{ position: "relative", height: 80, width: 142 }}>
+            <Image fill src="/theme/university-of-stuttgart.png" alt="University of Stuttgart — autonomous flight control research partner" style={{ objectFit: "contain", filter: "brightness(0.9)" }} sizes="142px" />
+          </div>
         </div>
       </section>
 

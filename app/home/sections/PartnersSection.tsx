@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { siteData } from "@/data/siteData";
 
 export function PartnersSection() {
@@ -31,7 +32,9 @@ export function PartnersSection() {
             className={`partner-card-new partner-row${item.layout === "text-image" ? " reverse" : ""} reveal${idx > 0 ? ` reveal-delay-${Math.min(idx, 3)}` : ""}`}
           >
             {item.layout !== "text-image" && (
-              <img src={item.imageUrl} alt={item.imageAlt} className="partner-card-img" />
+              <div className="partner-card-img" style={{ position: "relative" }}>
+                <Image fill src={item.imageUrl} alt={item.imageAlt} style={{ objectFit: "cover", objectPosition: "center" }} sizes="(max-width: 768px) 100vw, 50vw" />
+              </div>
             )}
             <div className="partner-card-body">
               <div className="partner-label">{item.label}</div>
@@ -40,7 +43,9 @@ export function PartnersSection() {
               <p className="partner-text">{item.text}</p>
             </div>
             {item.layout === "text-image" && (
-              <img src={item.imageUrl} alt={item.imageAlt} className="partner-card-img" />
+              <div className="partner-card-img" style={{ position: "relative" }}>
+                <Image fill src={item.imageUrl} alt={item.imageAlt} style={{ objectFit: "cover", objectPosition: "center" }} sizes="(max-width: 768px) 100vw, 50vw" />
+              </div>
             )}
           </div>
         ))}

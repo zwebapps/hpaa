@@ -64,6 +64,9 @@ export function HomeCarousel() {
               <span className="hero-badge-text">{slide.badgeText}</span>
             </div>
             <h1 className="hero-title">
+              <span className="sr-only">
+                HPAA Aircraft Conversion Germany — Robot Aircraft &amp; Autonomous Aircraft Platforms.{" "}
+              </span>
               {slide.title.pre}
               <br />
               <em>{slide.title.emphasis}</em>
@@ -88,7 +91,7 @@ export function HomeCarousel() {
               >
                 ‹
               </button>
-              <div className="hero-carousel-dots" role="tablist" aria-label="Carousel dots">
+              <div className="hero-carousel-dots" role="group" aria-label="Carousel navigation">
                 {slides.map((s, i) => (
                   <button
                     key={s.id}
@@ -96,7 +99,7 @@ export function HomeCarousel() {
                     className={`hero-carousel-dot ${i === active ? "active" : ""}`}
                     onClick={() => setActive(i)}
                     aria-label={`Go to slide ${i + 1}`}
-                    aria-current={i === active ? "true" : "false"}
+                    aria-pressed={i === active ? "true" : "false"}
                   />
                 ))}
               </div>

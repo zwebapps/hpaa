@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useMemo, useRef, useState, type MouseEvent } from "react";
 
 function clamp(n: number, min: number, max: number) {
@@ -50,10 +51,12 @@ export function AircraftMagnifier({
       onMouseLeave={() => setHover(false)}
       onMouseMove={onMove}
     >
-      <img
+      <Image
+        fill
         src={src}
         alt={alt}
         className={`ac-magnifier-main ac-magnifier-main--v${variant}`}
+        sizes="(max-width: 768px) 100vw, 50vw"
       />
 
       {hover ? (

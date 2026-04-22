@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useMemo, useRef, useState } from "react";
 import { AircraftMagnifier } from "./AircraftMagnifier";
 import { expandAircraftSlides } from "@/lib/aircraftImageSlides";
@@ -48,11 +49,15 @@ export function AircraftGallery({
                 className={`ac-thumb ${idx === active ? "active" : ""}`}
                 onClick={() => setActive(idx)}
                 aria-label={`Select image ${idx + 1}`}
+                style={{ position: "relative" }}
               >
-                <img
+                <Image
+                  fill
                   src={slide.src}
                   alt={`${altBase} thumbnail ${idx + 1}`}
                   className={`ac-thumb-img ac-thumb-img--v${slide.variant}`}
+                  sizes="84px"
+                  loading="lazy"
                 />
               </button>
             ))}

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { siteData } from "@/data/siteData";
 
 export function WhyUsSection() {
@@ -39,7 +40,13 @@ export function WhyUsSection() {
 
       <div className="callout-strip reveal">
         <div className="callout-img">
-          <img src={section.callout.imageUrl} alt={section.callout.imageAlt} />
+          <Image
+            fill
+            src={section.callout.imageUrl}
+            alt={section.callout.imageAlt}
+            style={{ objectFit: "cover" }}
+            sizes="(max-width: 768px) 100vw, 50vw"
+          />
           <div className="callout-img-overlay" />
         </div>
         <div className="callout-text">

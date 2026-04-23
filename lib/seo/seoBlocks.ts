@@ -165,6 +165,70 @@ export const seoMetaBlocks: SeoMetaBlock[] = [
     ],
   },
   {
+    id: "unmanned-aircraft-germany",
+    title: "Unmanned Aircraft Germany: Civil Aircraft to UAS Conversion",
+    metaTitle: "Unmanned Aircraft Germany | Civil Aircraft to UAS — KUM Services GmbH",
+    metaDescription:
+      "Unmanned aircraft Germany — KUM Services GmbH, Konstanz converts civil turboprop and turbofan aircraft into unmanned autonomous platforms (UAS) for ISR, cargo, strike and special missions. EASA Part-145 certified.",
+    targetKeywords: [
+      "unmanned aircraft Germany",
+      "unmanned aircraft conversion Germany",
+      "manned to unmanned conversion Germany",
+      "UAV conversion Germany",
+      "civil aircraft to UAS Germany",
+      "remotely piloted aircraft Germany",
+      "optionally piloted aircraft Germany",
+    ],
+  },
+  {
+    id: "drone-aircraft-conversion-germany",
+    title: "Drone Aircraft Conversion Germany: Civil to High-Performance Drone",
+    metaTitle: "Drone Aircraft Conversion Germany | Civil to Drone — KUM Services GmbH",
+    metaDescription:
+      "Drone aircraft conversion Germany — KUM Services GmbH, Konstanz converts civil turboprop and turbofan aircraft into high-performance drone platforms for ISR, cargo, strike and special missions. EASA Part-145 certified.",
+    targetKeywords: [
+      "drone aircraft conversion Germany",
+      "drone conversion Germany",
+      "civil aircraft to drone Germany",
+      "aircraft drone conversion Germany",
+      "convert aircraft to drone Germany",
+      "drone platform conversion Germany",
+      "UAV conversion Germany",
+    ],
+  },
+  {
+    id: "high-performance-combat-drones-germany",
+    title: "High-Performance Combat Drones Germany: Civil Aircraft for Strike Missions",
+    metaTitle: "High-Performance Combat Drones Germany | UCAV — KUM Services GmbH",
+    metaDescription:
+      "High-performance combat drones Germany — KUM Services GmbH, Konstanz converts proven civil aircraft into combat drone platforms for strike, ISR and special missions. Faster and lower cost than purpose-built UCAV programmes.",
+    targetKeywords: [
+      "high-performance combat drones Germany",
+      "combat drones Germany",
+      "combat drone Germany",
+      "high performance combat drone Germany",
+      "strike drone Germany",
+      "UCAV Germany",
+      "unmanned combat aerial vehicle Germany",
+      "armed drone Germany",
+    ],
+  },
+  {
+    id: "autonomous-platform-aircraft-germany",
+    title: "Autonomous Platform Aircraft Germany: Multi-Role Civil Aircraft Conversion",
+    metaTitle: "Autonomous Platform Aircraft Germany | HPAA — KUM Services GmbH",
+    metaDescription:
+      "Autonomous platform aircraft Germany — KUM Services GmbH, Konstanz converts proven civil aircraft into autonomous platform aircraft for ISR, cargo, strike and special missions. EASA Part-145 certified.",
+    targetKeywords: [
+      "autonomous platform aircraft Germany",
+      "autonomous aircraft platform Germany",
+      "civil aircraft to autonomous platform Germany",
+      "autonomous platform Germany",
+      "HPAA platform Germany",
+      "optionally piloted aircraft platform Germany",
+    ],
+  },
+  {
     id: "hpaa-faq",
     title: "Frequently Asked Questions: HPAA and Autonomous Aircraft Conversion",
     metaTitle: "HPAA FAQ — Autonomous Aircraft Conversion Questions Answered",

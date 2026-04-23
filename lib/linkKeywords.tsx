@@ -7,9 +7,14 @@ import type { ReactNode } from "react";
  * Only the FIRST occurrence of each phrase is linked.
  */
 const KEYWORD_LINKS: Array<{ phrase: string; href: string }> = [
-  { phrase: "robot aircraft",       href: "/robot-aircraft-germany" },
-  { phrase: "autonomous aircraft",  href: "/autonomous-aircraft-germany" },
-  { phrase: "HPAA",                 href: "/hpaa-germany" },
+  { phrase: "drone aircraft conversion",        href: "/drone-aircraft-conversion-germany" },
+  { phrase: "high-performance combat drones",   href: "/high-performance-combat-drones-germany" },
+  { phrase: "autonomous platform aircraft",     href: "/autonomous-platform-aircraft-germany" },
+  { phrase: "unmanned aircraft",                href: "/unmanned-aircraft-germany" },
+  { phrase: "robot aircraft",                   href: "/robot-aircraft-germany" },
+  { phrase: "robotic aircraft",                 href: "/robot-aircraft-germany" },
+  { phrase: "autonomous aircraft",              href: "/autonomous-aircraft-germany" },
+  { phrase: "HPAA",                             href: "/hpaa-germany" },
 ];
 
 const LINK_STYLE: React.CSSProperties = {

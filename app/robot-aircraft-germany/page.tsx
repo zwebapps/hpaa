@@ -14,9 +14,12 @@ export const metadata: Metadata = {
   keywords: [
     "robot aircraft Germany",
     "robot aircraft Konstanz",
+    "robotic aircraft Germany",
+    "robotic aircraft Konstanz",
     "aircraft robot Germany",
     "civil aircraft to robot aircraft",
     "autonomous robot aircraft Germany",
+    "robotic UAV Germany",
     "KUM Services GmbH",
   ],
   alternates: {
@@ -59,12 +62,59 @@ export default function RobotAircraftGermanyPage() {
         isPartOf: { "@id": `${base}/#website` },
         about: { "@id": `${base}/#hpaa` },
         publisher: { "@id": `${base}/#organization` },
+        keywords: "robot aircraft Germany, robotic aircraft Germany, robot aircraft Konstanz, aircraft robot Germany, civil aircraft to robot aircraft, autonomous robot aircraft Germany",
       },
       {
         "@type": "BreadcrumbList",
         itemListElement: [
           { "@type": "ListItem", position: 1, name: "Home", item: `${base}/` },
           { "@type": "ListItem", position: 2, name: "Robot Aircraft Germany", item: `${base}${CANONICAL}` },
+        ],
+      },
+      {
+        "@type": "FAQPage",
+        "@id": `${base}${CANONICAL}#faq`,
+        mainEntity: [
+          {
+            "@type": "Question",
+            name: "What is a robot aircraft in Germany?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "A robot aircraft is a civil-registered turboprop or turbofan aircraft that has been converted into a fully autonomous or optionally piloted platform. KUM Services GmbH, based in Konstanz, Germany, is Germany's dedicated robot aircraft conversion specialist — converting commercially certified airframes into high-performance autonomous systems for defence ministries, government agencies, and special operations commands worldwide.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Who provides robot aircraft conversion services in Germany?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "KUM Services GmbH, headquartered in Konstanz, Baden-Württemberg, Germany, is the specialist robot aircraft conversion provider in Germany. KUM Services converts proven civil turboprop and turbofan aircraft into robot aircraft autonomous platforms using EASA Part-145 certified maintenance procedures and autonomous flight control systems developed with the University of Stuttgart.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "What is the difference between a robot aircraft and a UAV?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "A robot aircraft (HPAA) is a proven civil-registered aircraft converted to autonomous operation, whereas a purpose-built UAV is designed from scratch for unmanned use. Robot aircraft offer decisive advantages: faster fielding, lower cost, civil registration for unrestricted ferry flights, global spare-parts networks, and no visual identification as a military system.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Can robot aircraft be operated in Germany without special permits?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Yes. Robot aircraft converted by KUM Services GmbH retain civil registration, which allows ferry flights to operating locations under standard civil aviation rules — without special overflight permits or diplomatic clearances. This significantly accelerates deployment timelines for defence and government customers.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "What missions can robot aircraft perform?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "KUM Services robot aircraft platforms can perform ISR (intelligence, surveillance and reconnaissance), cargo and aerial resupply, strike and payload delivery, counter-UAS operations, range extension missions, and attritable strike operations. Each platform is configured to the specific mission requirement of the customer.",
+            },
+          },
         ],
       },
     ],
@@ -232,6 +282,25 @@ export default function RobotAircraftGermanyPage() {
           <div style={{ position: "relative", height: 80, width: 142 }}>
             <Image fill src="/theme/university-of-stuttgart.png" alt="University of Stuttgart — autonomous flight control research partner" style={{ objectFit: "contain", filter: "brightness(0.9)" }} sizes="142px" />
           </div>
+        </div>
+      </section>
+
+      {/* Related pages */}
+      <section className="section">
+        <p className="section-eyebrow">Related Services</p>
+        <h2 className="section-heading">Explore <em>HPAA Capabilities</em></h2>
+        <div className="why-grid" style={{ marginTop: "2rem" }}>
+          {[
+            { href: "/hpaa-germany", t: "HPAA Germany", d: "High Performance Autonomous Aircraft — the complete HPAA conversion programme." },
+            { href: "/unmanned-aircraft-germany", t: "Unmanned Aircraft Germany", d: "Manned-to-unmanned conversion for defence and government operators." },
+            { href: "/drone-aircraft-conversion-germany", t: "Drone Aircraft Conversion Germany", d: "Civil aircraft to high-performance drone conversion programmes." },
+            { href: "/autonomous-platform-aircraft-germany", t: "Autonomous Platform Aircraft Germany", d: "Multi-role autonomous platform aircraft for defence and government." },
+          ].map((c) => (
+            <div key={c.href} className="why-card reveal">
+              <h3><Link href={c.href} style={{ color: "inherit", textDecoration: "none" }}>{c.t}</Link></h3>
+              <p>{c.d}</p>
+            </div>
+          ))}
         </div>
       </section>
 

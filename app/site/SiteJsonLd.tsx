@@ -89,6 +89,11 @@ export function SiteJsonLd() {
           "civil aircraft to autonomous platform Germany",
           "civil aircraft conversion Germany",
           "robot aircraft Germany",
+          "robotic aircraft Germany",
+          "unmanned aircraft Germany",
+          "drone aircraft conversion Germany",
+          "high-performance combat drones Germany",
+          "autonomous platform aircraft Germany",
           "autonomous aircraft robot",
           "aircraft robot Konstanz",
           "ISR platforms",
@@ -129,6 +134,15 @@ export function SiteJsonLd() {
         about: { "@id": `${base}/#hpaa` },
         inLanguage: "en",
         publisher: { "@id": `${base}/#organization` },
+        hasPart: [
+          { "@type": "WebPage", "@id": `${base}/hpaa-germany`, url: `${base}/hpaa-germany`, name: "HPAA Germany — High Performance Autonomous Aircraft" },
+          { "@type": "WebPage", "@id": `${base}/robot-aircraft-germany`, url: `${base}/robot-aircraft-germany`, name: "Robot Aircraft Germany — Robotic Aircraft Conversion" },
+          { "@type": "WebPage", "@id": `${base}/autonomous-aircraft-germany`, url: `${base}/autonomous-aircraft-germany`, name: "Autonomous Aircraft Germany" },
+          { "@type": "WebPage", "@id": `${base}/unmanned-aircraft-germany`, url: `${base}/unmanned-aircraft-germany`, name: "Unmanned Aircraft Germany — UAS Conversion" },
+          { "@type": "WebPage", "@id": `${base}/drone-aircraft-conversion-germany`, url: `${base}/drone-aircraft-conversion-germany`, name: "Drone Aircraft Conversion Germany" },
+          { "@type": "WebPage", "@id": `${base}/high-performance-combat-drones-germany`, url: `${base}/high-performance-combat-drones-germany`, name: "High-Performance Combat Drones Germany" },
+          { "@type": "WebPage", "@id": `${base}/autonomous-platform-aircraft-germany`, url: `${base}/autonomous-platform-aircraft-germany`, name: "Autonomous Platform Aircraft Germany" },
+        ],
       },
 
       // ── BreadcrumbList ───────────────────────────────────────────────────

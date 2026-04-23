@@ -32,6 +32,16 @@ HPAA = High Performance Autonomous Aircraft. Civil aircraft (turboprop or turbof
 - [Partners](${base}/partners): EASA Part-145 maintenance partner (Part One-Forty Five GmbH), university and avionics partners
 - [Contact / Request a Proposal](${base}/contact): Enquire about a tailored HPAA programme
 
+## HPAA Germany keyword pages
+
+- [HPAA Germany](${base}/hpaa-germany): High Performance Autonomous Aircraft Germany — HPAA conversion specialist KUM Services GmbH Konstanz
+- [Robot Aircraft Germany](${base}/robot-aircraft-germany): Robot aircraft and robotic aircraft Germany — civil aircraft to robot/autonomous platform conversion
+- [Autonomous Aircraft Germany](${base}/autonomous-aircraft-germany): Autonomous aircraft Germany — civil aircraft to autonomous platform conversion
+- [Unmanned Aircraft Germany](${base}/unmanned-aircraft-germany): Unmanned aircraft Germany — manned to unmanned conversion (UAS/UAV) by KUM Services GmbH
+- [Drone Aircraft Conversion Germany](${base}/drone-aircraft-conversion-germany): Drone aircraft conversion Germany — civil aircraft to high-performance drone platform
+- [High-Performance Combat Drones Germany](${base}/high-performance-combat-drones-germany): High-performance combat drones Germany — civil aircraft converted to combat drone (UCAV) platforms for strike and ISR
+- [Autonomous Platform Aircraft Germany](${base}/autonomous-platform-aircraft-germany): Autonomous platform aircraft Germany — civil aircraft to multi-role autonomous platform conversion
+
 ## Aircraft platforms
 
 ${aircraftList}

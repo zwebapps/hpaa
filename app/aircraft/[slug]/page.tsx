@@ -26,28 +26,52 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     };
   }
 
-  const description = aircraft.description.replace(/\s+/g, " ").trim().slice(0, 200);
+  const rawDescription = aircraft.description.replace(/\s+/g, " ").trim();
+  const metaDescription = `${aircraft.name} HPAA conversion — KUM Services GmbH, Konstanz, Germany. ${rawDescription.slice(0, 130).trim()} Autonomous aircraft platform, EASA Part-145 certified.`.slice(0, 200);
   const url = absoluteUrl(path);
   const ogImage = aircraft.images[0] ? absoluteUrl(aircraft.images[0]) : absoluteUrl("/theme/hpaa9.jpeg");
-  const pageTitle = `${aircraft.name} · ${appName}`;
+  const pageTitle = `${aircraft.name} HPAA Conversion Germany | Autonomous Aircraft Platform | KUM Services GmbH`;
 
   return {
-    title: aircraft.name,
-    description,
-    alternates: { canonical: url },
+    title: `${aircraft.name} HPAA Conversion Germany | KUM Services GmbH`,
+    description: metaDescription,
+    keywords: [
+      `${aircraft.name} HPAA conversion`,
+      `${aircraft.name} autonomous aircraft`,
+      `${aircraft.name} autonomous platform Germany`,
+      `${aircraft.name} conversion Germany`,
+      `${aircraft.name} robot aircraft`,
+      `${aircraft.name} unmanned conversion`,
+      "HPAA Germany",
+      "civil aircraft to autonomous platform Germany",
+      "aircraft conversion Germany",
+      "KUM Services GmbH",
+      "autonomous aircraft Germany",
+    ],
+    alternates: {
+      canonical: url,
+      languages: {
+        en: url,
+        "en-x-default": url,
+      },
+    },
     openGraph: {
       type: "website",
       url,
       title: pageTitle,
-      description,
+      description: metaDescription,
       siteName: appName,
-      images: [{ url: ogImage, alt: aircraft.name }],
+      images: [{ url: ogImage, alt: `${aircraft.name} — HPAA autonomous platform, KUM Services GmbH Germany` }],
     },
     twitter: {
       card: "summary_large_image",
       title: pageTitle,
-      description,
+      description: metaDescription,
       images: [ogImage],
+    },
+    other: {
+      "geo.region": "DE-BW",
+      "geo.placename": "Konstanz, Baden-Württemberg, Germany",
     },
   };
 }

@@ -65,7 +65,7 @@ export function HomeCarousel() {
             </div>
             <h1 className="hero-title">
               <span className="sr-only">
-                HPAA Aircraft Conversion Germany — Robot Aircraft &amp; Autonomous Aircraft Platforms.{" "}
+                HPAA Germany — Robot Aircraft, Robotic Aircraft, Unmanned Aircraft, Autonomous Aircraft, Drone Aircraft Conversion, High-Performance Combat Drones &amp; Autonomous Platform Aircraft Germany. KUM Services GmbH, Konstanz.{" "}
               </span>
               {slide.title.pre}
               <br />

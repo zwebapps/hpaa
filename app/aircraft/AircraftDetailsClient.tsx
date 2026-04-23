@@ -96,6 +96,13 @@ export function AircraftDetailsClient({ slug }: { slug: string }) {
               >
                 Back to Platforms
               </a>
+              <a
+                className="btn-ghost"
+                href="/hpaa-germany"
+                style={{ color: "var(--navy)", borderColor: "rgba(11,17,32,0.25)" }}
+              >
+                HPAA Germany
+              </a>
             </div>
           </div>
         </div>

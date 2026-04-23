@@ -15,7 +15,8 @@ const appName = env.NEXT_PUBLIC_APP_NAME;
 export function getSeoRootDescription(): string {
   return [
     "HPAA (High Performance Autonomous Aircraft) — civil aircraft to autonomous platform Germany: KUM Services GmbH, Konstanz converts civil aircraft into high performance autonomous aircraft platforms for ISR, cargo, strike and special missions.",
-    "Robot aircraft Germany and worldwide. Fast fielding, EASA Part-145 partner, worldwide support.",
+    "Robot aircraft Germany, robotic aircraft Germany, unmanned aircraft Germany, drone aircraft conversion Germany, high-performance combat drones Germany, autonomous platform aircraft Germany.",
+    "Fast fielding, EASA Part-145 partner, worldwide support.",
   ]
     .join(" ")
     .replace(/\s+/g, " ")
@@ -25,6 +26,18 @@ export function getSeoRootDescription(): string {
 export const siteKeywords: string[] = [
   "HPAA",
   "hpaa",
+  "HPAA germany",
+  "robotic aircraft germany",
+  "robotic aircraft",
+  "unmanned aircraft germany",
+  "unmanned aircraft conversion germany",
+  "drone aircraft conversion germany",
+  "drone aircraft germany",
+  "high-performance combat drones germany",
+  "combat drones germany",
+  "high performance combat drone germany",
+  "autonomous platform aircraft germany",
+  "autonomous aircraft platform germany",
   "civil aircraft to autonomous platform Germany",
   "civil aircraft to autonomous platform",
   "civil aircraft conversion Germany",
@@ -440,4 +453,8 @@ export const segmentMetadata = {
   whyUs: buildPageMetadataFromSeoBlockId("hpaa-vs-purpose-built", "/why-us"),
   partners: buildPageMetadataFromSeoBlockId("autonomous-flight-control", "/partners"),
   contact: buildPageMetadataFromSeoBlockId("defence-procurement-hpaa", "/contact"),
+  unmannedAircraftGermany: buildPageMetadataFromSeoBlockId("unmanned-aircraft-germany", "/unmanned-aircraft-germany"),
+  droneAircraftConversionGermany: buildPageMetadataFromSeoBlockId("drone-aircraft-conversion-germany", "/drone-aircraft-conversion-germany"),
+  highPerformanceCombatDronesGermany: buildPageMetadataFromSeoBlockId("high-performance-combat-drones-germany", "/high-performance-combat-drones-germany"),
+  autonomousPlatformAircraftGermany: buildPageMetadataFromSeoBlockId("autonomous-platform-aircraft-germany", "/autonomous-platform-aircraft-germany"),
 } as const;

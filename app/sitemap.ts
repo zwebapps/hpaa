@@ -13,6 +13,10 @@ const STATIC_PATHS: { path: string; changeFrequency: MetadataRoute.Sitemap[0]["c
     { path: "/hpaa-germany", changeFrequency: "monthly", priority: 0.9 },
     { path: "/robot-aircraft-germany", changeFrequency: "monthly", priority: 0.9 },
     { path: "/autonomous-aircraft-germany", changeFrequency: "monthly", priority: 0.9 },
+    { path: "/unmanned-aircraft-germany", changeFrequency: "monthly", priority: 0.9 },
+    { path: "/drone-aircraft-conversion-germany", changeFrequency: "monthly", priority: 0.9 },
+    { path: "/high-performance-combat-drones-germany", changeFrequency: "monthly", priority: 0.9 },
+    { path: "/autonomous-platform-aircraft-germany", changeFrequency: "monthly", priority: 0.9 },
   ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

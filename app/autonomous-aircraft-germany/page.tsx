@@ -59,12 +59,51 @@ export default function AutonomousAircraftGermanyPage() {
         isPartOf: { "@id": `${base}/#website` },
         about: { "@id": `${base}/#hpaa` },
         publisher: { "@id": `${base}/#organization` },
+        keywords: "autonomous aircraft Germany, autonomous aircraft conversion Germany, civil aircraft to autonomous platform Germany, HPAA autonomous aircraft Germany, KUM Services GmbH",
       },
       {
         "@type": "BreadcrumbList",
         itemListElement: [
           { "@type": "ListItem", position: 1, name: "Home", item: `${base}/` },
           { "@type": "ListItem", position: 2, name: "Autonomous Aircraft Germany", item: `${base}${CANONICAL}` },
+        ],
+      },
+      {
+        "@type": "FAQPage",
+        "@id": `${base}${CANONICAL}#faq`,
+        mainEntity: [
+          {
+            "@type": "Question",
+            name: "Who provides autonomous aircraft conversion in Germany?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "KUM Services GmbH, based in Konstanz, Baden-Württemberg, Germany, is Germany's specialist autonomous aircraft conversion provider. KUM Services converts proven civil turboprop and turbofan aircraft into fully autonomous platforms using EASA Part-145 certified maintenance procedures, advanced autonomous flight control systems, and academic flight control expertise from the University of Stuttgart.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "How does civil aircraft to autonomous platform conversion work?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "The conversion process begins with sourcing a proven civil airframe (Cessna 208, King Air 350, Pilatus PC-12, Citation 525B or C-130J) from the open civil aviation market. The aircraft is then fitted with autonomous flight control systems, BVLOS datalinks, mission-specific payload integration, and a ground control station. Conversion is completed on-site by EASA Part-145 certified technicians. The resulting autonomous aircraft retains civil registration.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "What autonomous aircraft platforms are available in Germany?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "KUM Services GmbH offers autonomous aircraft conversion programmes based on five proven civil airframes: Cessna 208 Caravan (light autonomous platform), Beechcraft King Air 350 (medium autonomous ISR platform), Pilatus PC-12 (versatile single-turboprop platform), Cessna Citation 525B (high-speed jet autonomous platform), and C-130J Super Hercules (heavy autonomous lift platform).",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Is autonomous aircraft conversion in Germany faster than buying a purpose-built UAV?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Yes. KUM Services autonomous aircraft conversion is completed on-site in a very short period — typically a fraction of the time required for purpose-built UAV programmes which can take years from contract to first flight. The civil-registered base aircraft can ferry to the customer's location without special permits, further reducing time to operational deployment.",
+            },
+          },
         ],
       },
     ],
@@ -213,6 +252,25 @@ export default function AutonomousAircraftGermanyPage() {
               <div className="why-card-num">{c.n}</div>
               <h3>{c.t}</h3>
               <p style={{ color: "rgba(248,245,239,0.65)" }}>{c.d}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Related pages */}
+      <section className="section">
+        <p className="section-eyebrow">Related Services</p>
+        <h2 className="section-heading">Explore <em>HPAA Capabilities</em></h2>
+        <div className="why-grid" style={{ marginTop: "2rem" }}>
+          {[
+            { href: "/hpaa-germany", t: "HPAA Germany", d: "High Performance Autonomous Aircraft — the complete HPAA conversion programme." },
+            { href: "/unmanned-aircraft-germany", t: "Unmanned Aircraft Germany", d: "Civil aircraft converted to fully unmanned aerial systems (UAS)." },
+            { href: "/drone-aircraft-conversion-germany", t: "Drone Aircraft Conversion Germany", d: "Full civil-to-drone conversion process and platform options." },
+            { href: "/autonomous-platform-aircraft-germany", t: "Autonomous Platform Aircraft Germany", d: "Multi-role autonomous platform aircraft for defence and government." },
+          ].map((c) => (
+            <div key={c.href} className="why-card reveal">
+              <h3><Link href={c.href} style={{ color: "inherit", textDecoration: "none" }}>{c.t}</Link></h3>
+              <p>{c.d}</p>
             </div>
           ))}
         </div>

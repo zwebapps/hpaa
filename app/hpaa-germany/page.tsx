@@ -59,12 +59,67 @@ export default function HpaaGermanyPage() {
         isPartOf: { "@id": `${base}/#website` },
         about: { "@id": `${base}/#hpaa` },
         publisher: { "@id": `${base}/#organization` },
+        keywords: "HPAA Germany, High Performance Autonomous Aircraft, HPAA Konstanz, civil aircraft to autonomous platform Germany, autonomous aircraft conversion Germany, KUM Services GmbH",
       },
       {
         "@type": "BreadcrumbList",
         itemListElement: [
           { "@type": "ListItem", position: 1, name: "Home", item: `${base}/` },
           { "@type": "ListItem", position: 2, name: "HPAA Germany", item: `${base}${CANONICAL}` },
+        ],
+      },
+      {
+        "@type": "FAQPage",
+        "@id": `${base}${CANONICAL}#faq`,
+        mainEntity: [
+          {
+            "@type": "Question",
+            name: "What is HPAA Germany?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "HPAA (High Performance Autonomous Aircraft) Germany refers to the civil aircraft to autonomous platform conversion service provided by KUM Services GmbH, based in Konstanz, Germany. KUM Services converts proven civil turboprop and turbofan aircraft — such as the Cessna 208, Beechcraft King Air 350, Pilatus PC-12, and C-130J — into fully autonomous or optionally piloted platforms for ISR, cargo, strike, and special missions.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "How long does HPAA conversion take in Germany?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "HPAA conversion by KUM Services GmbH is completed on-site in a very short period — significantly faster than any purpose-built UAV programme. Civil registration of the base aircraft allows ferry flights to the customer's location without special permits, further reducing deployment time.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "What is the cost of HPAA conversion compared to a purpose-built UAV?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "HPAA conversion by KUM Services GmbH is significantly lower cost than purpose-built unmanned aircraft programmes. Base airframes are sourced on the open civil aviation market at known prices. There are no non-recurring engineering costs. KUM Services provides fixed-price proposals covering aircraft acquisition, conversion, and mission system integration.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Is HPAA conversion EASA certified?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Yes. All HPAA conversion work by KUM Services GmbH is conducted with Part One-Forty Five GmbH, an EASA Part-145 certified maintenance organisation based at Neuhausen ob Eck Airfield, Germany. The autonomous flight control systems are developed with the Institute of Flight Mechanics and Flight Control (iFR) at the University of Stuttgart.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "What aircraft types can be converted to HPAA autonomous platforms?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "KUM Services GmbH converts a range of proven civil airframes to HPAA autonomous platforms, including: Cessna 208 Caravan, Beechcraft King Air 350, Pilatus PC-12, Cessna Citation 525B, and C-130J Super Hercules. Each airframe is selected based on mission requirements, payload capacity, range, and endurance.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Can HPAA platforms retain civil registration?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Yes. HPAA platforms converted by KUM Services GmbH retain their civil registration and external appearance throughout the conversion. This means no special ferry permits are required for flights to the operating location, and the platform is not visually identifiable as an autonomous or military system — a significant operational and diplomatic advantage.",
+            },
+          },
         ],
       },
     ],
@@ -237,6 +292,26 @@ export default function HpaaGermanyPage() {
               <div className="why-card-num">{c.n}</div>
               <h3>{c.t}</h3>
               <p style={{ color: "rgba(248,245,239,0.65)" }}>{c.d}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Related pages */}
+      <section className="section">
+        <p className="section-eyebrow">Related Services</p>
+        <h2 className="section-heading">Explore <em>HPAA Capabilities</em></h2>
+        <div className="why-grid" style={{ marginTop: "2rem" }}>
+          {[
+            { href: "/robot-aircraft-germany", t: "Robot Aircraft Germany", d: "Robot aircraft conversion for defence and special mission operators." },
+            { href: "/unmanned-aircraft-germany", t: "Unmanned Aircraft Germany", d: "Civil aircraft converted to fully unmanned aerial systems (UAS)." },
+            { href: "/drone-aircraft-conversion-germany", t: "Drone Aircraft Conversion Germany", d: "Full civil-to-drone conversion process and platform options." },
+            { href: "/high-performance-combat-drones-germany", t: "High-Performance Combat Drones Germany", d: "Combat drone platforms for strike, ISR and special missions." },
+            { href: "/autonomous-platform-aircraft-germany", t: "Autonomous Platform Aircraft Germany", d: "Multi-role autonomous platform aircraft for defence and government." },
+          ].map((c) => (
+            <div key={c.href} className="why-card reveal">
+              <h3><Link href={c.href} style={{ color: "inherit", textDecoration: "none" }}>{c.t}</Link></h3>
+              <p>{c.d}</p>
             </div>
           ))}
         </div>

@@ -32,6 +32,10 @@ export function buildPageMetadataFromSeoBlockId(
     keywords,
     alternates: {
       canonical: url,
+      languages: {
+        en: url,
+        "en-x-default": url,
+      },
     },
     openGraph: {
       type: "website",
@@ -45,6 +49,10 @@ export function buildPageMetadataFromSeoBlockId(
       title: block.metaTitle,
       description: block.metaDescription,
       images: [ogImage],
+    },
+    other: {
+      "geo.region": "DE-BW",
+      "geo.placename": "Konstanz, Baden-Württemberg, Germany",
     },
   };
 }

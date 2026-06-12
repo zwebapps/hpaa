@@ -15,6 +15,26 @@ import {
   type OutreachSendPayload,
 } from "./AdminOutreachCompanies";
 
+function outreachSendResultCopy(sent: number, failed: number, apiMessage?: string): Pick<AdminAlert, "title" | "message"> {
+  if (sent === 0 && apiMessage) {
+    return { title: "Outreach send complete", message: apiMessage };
+  }
+
+  const recipientWord = sent === 1 ? "recipient" : "recipients";
+  if (failed === 0) {
+    return {
+      title: "Outreach send complete",
+      message: `Your outreach email was delivered successfully to ${sent} ${recipientWord}.`,
+    };
+  }
+
+  const failedWord = failed === 1 ? "delivery attempt" : "delivery attempts";
+  return {
+    title: "Outreach send finished",
+    message: `Successfully sent to ${sent} ${recipientWord}. ${failed} ${failedWord} did not complete.`,
+  };
+}
+
 function outreachSendConfirmCopy(meta: OutreachSendMeta): Pick<AdminConfirm, "title" | "message" | "confirmLabel"> {
   const { count, mode } = meta;
   const companyWord = count === 1 ? "company" : "companies";
@@ -389,11 +409,10 @@ export function AdminDashboard() {
       if (!res.ok || !body.ok) throw new Error(body.error || "Send failed");
       confirmActionRef.current = null;
       setConfirm(null);
-      if (body.sent === 0 && body.message) {
-        showMsg("ok", body.message);
-      } else {
-        showMsg("ok", `Sent ${body.sent ?? 0} emails. ${body.failed ?? 0} failed.`);
-      }
+      const sent = body.sent ?? 0;
+      const failed = body.failed ?? 0;
+      const result = outreachSendResultCopy(sent, failed, body.message);
+      showAlert("success", result.title, result.message);
       await loadOutreach();
     } catch (e) {
       const text = e instanceof Error ? e.message : "Send failed";

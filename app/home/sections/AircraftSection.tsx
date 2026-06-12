@@ -1,4 +1,4 @@
-import { AircraftTabs } from "@/app/aircraft/AircraftTabs";
+import { AircraftTabs } from "@/app/(site)/aircraft/AircraftTabs";
 import { siteData } from "@/data/siteData";
 
 export function AircraftSection() {

@@ -1,16 +1,12 @@
 import defaultSiteContent from "@/data/site-content.json";
-import { getDb } from "@/lib/mongodb";
+import { ensureSchema, query } from "@/lib/postgres";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 
-const COLLECTION = "content";
 const SITE_CONTENT_KEY = "site-content";
 
-type SiteContentRecord = {
-  key: string;
+type SiteContentRow = {
   data: unknown;
-  updatedAt: Date;
-  createdAt: Date;
 };
 
 function isRecordLike(value: unknown): value is Record<string, unknown> {
@@ -19,22 +15,23 @@ function isRecordLike(value: unknown): value is Record<string, unknown> {
 
 /** Runtime site copy still comes from `data/site-content.json` via imports. DB is for API/admin and future use. */
 export async function getSiteContent() {
-  const db = await getDb();
-  const collection = db.collection<SiteContentRecord>(COLLECTION);
-  const current = await collection.findOne({ key: SITE_CONTENT_KEY });
+  await ensureSchema();
+  const result = await query<SiteContentRow>(
+    `SELECT data FROM content WHERE key = $1`,
+    [SITE_CONTENT_KEY],
+  );
+  const current = result.rows[0];
 
   if (current?.data && isRecordLike(current.data)) {
     return current.data;
   }
 
   const now = new Date();
-  await collection.updateOne(
-    { key: SITE_CONTENT_KEY },
-    {
-      $set: { data: defaultSiteContent, updatedAt: now },
-      $setOnInsert: { createdAt: now },
-    },
-    { upsert: true },
+  await query(
+    `INSERT INTO content (key, data, created_at, updated_at)
+     VALUES ($1, $2::jsonb, $3, $3)
+     ON CONFLICT (key) DO UPDATE SET data = EXCLUDED.data, updated_at = EXCLUDED.updated_at`,
+    [SITE_CONTENT_KEY, JSON.stringify(defaultSiteContent), now],
   );
 
   return defaultSiteContent;
@@ -45,23 +42,19 @@ export async function saveSiteContent(content: unknown) {
     throw new Error("Site content payload must be a JSON object.");
   }
 
-  const db = await getDb();
-  const collection = db.collection<SiteContentRecord>(COLLECTION);
+  await ensureSchema();
   const now = new Date();
-
-  await collection.updateOne(
-    { key: SITE_CONTENT_KEY },
-    {
-      $set: { data: content, updatedAt: now },
-      $setOnInsert: { createdAt: now },
-    },
-    { upsert: true },
+  await query(
+    `INSERT INTO content (key, data, created_at, updated_at)
+     VALUES ($1, $2::jsonb, $3, $3)
+     ON CONFLICT (key) DO UPDATE SET data = EXCLUDED.data, updated_at = EXCLUDED.updated_at`,
+    [SITE_CONTENT_KEY, JSON.stringify(content), now],
   );
 
   return content;
 }
 
-/** Load `data/site-content.json` from disk and upsert into MongoDB (sync file → database). */
+/** Load `data/site-content.json` from disk and upsert into PostgreSQL (sync file → database). */
 export async function seedSiteContentFromJsonFile() {
   const filePath = path.join(process.cwd(), "data", "site-content.json");
   const raw = await readFile(filePath, "utf8");

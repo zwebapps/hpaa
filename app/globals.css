@@ -1353,3 +1353,15 @@ footer {
   .contact-left-new, .contact-right-new { padding: 4rem 2rem; }
   .contact-info-grid { grid-template-columns: 1fr; gap: 2rem; }
 }
+
+/* Admin console: full-width without public site chrome */
+body:has(.admin-shell) #main-nav,
+body:has(.admin-shell) footer,
+body:has(.admin-login-page) #main-nav,
+body:has(.admin-login-page) footer {
+  display: none !important;
+}
+body:has(.admin-shell) .flex-1,
+body:has(.admin-login-page) .flex-1 {
+  flex: 1 1 auto;
+}

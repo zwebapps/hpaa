@@ -19,14 +19,14 @@ export function ScrollToHash() {
       window.setTimeout(() => section.classList.remove("section-focus-active"), 1300);
     };
 
-    const scrollToId = () => {
+    const scrollToId = (withFocus: boolean) => {
       if (pathname !== "/") return;
       const raw = window.location.hash;
       if (!raw || raw === "#") return;
       const id = decodeURIComponent(raw.slice(1));
       requestAnimationFrame(() => {
         document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-        triggerFocusAnimation(id);
+        if (withFocus) triggerFocusAnimation(id);
       });
     };
 
@@ -37,11 +37,14 @@ export function ScrollToHash() {
       triggerFocusAnimation(id);
     };
 
-    scrollToId();
-    window.addEventListener("hashchange", scrollToId);
+    // Initial load: scroll only — focus classes before hydrate cause mismatches on /#home.
+    const timer = window.setTimeout(() => scrollToId(false), 0);
+    const onHashChange = () => scrollToId(true);
+    window.addEventListener("hashchange", onHashChange);
     window.addEventListener(SECTION_FOCUS_EVENT, onSectionFocus as EventListener);
     return () => {
-      window.removeEventListener("hashchange", scrollToId);
+      window.clearTimeout(timer);
+      window.removeEventListener("hashchange", onHashChange);
       window.removeEventListener(SECTION_FOCUS_EVENT, onSectionFocus as EventListener);
     };
   }, [pathname]);

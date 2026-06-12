@@ -14,7 +14,7 @@ const appName = env.NEXT_PUBLIC_APP_NAME;
  */
 export function getSeoRootDescription(): string {
   return [
-    "HPAA (High Performance Autonomous Aircraft) — civil aircraft to autonomous platform Germany: KUM Services GmbH, Konstanz converts civil aircraft into high performance autonomous aircraft platforms for ISR, cargo, strike and special missions.",
+    "HPAA (High Performance Autonomous Aircraft) — civil aircraft to autonomous platform Germany: KUM Services GmbH converts civil aircraft into high performance autonomous aircraft platforms for ISR, cargo, strike and special missions.",
     "Robot aircraft Germany, robotic aircraft Germany, unmanned aircraft Germany, drone aircraft conversion Germany, high-performance combat drones Germany, autonomous platform aircraft Germany.",
     "Fast fielding, EASA Part-145 partner, worldwide support.",
   ]
@@ -42,14 +42,11 @@ export const siteKeywords: string[] = [
   "civil aircraft to autonomous platform",
   "civil aircraft conversion Germany",
   "robot aircraft Germany",
-  "robot aircraft Konstanz",
   "aircraft robot Germany",
-  "aircraft robot Konstanz",
   "robot aircraft",
   "aircraft robot",
   "autonomous aircraft robot",
   "HPAA Germany",
-  "HPAA Konstanz",
   "high performance autonomous aircraft",
   "high performance autonomous aircraft conversion",
   "autonomous aircraft",
@@ -246,13 +243,9 @@ export const siteKeywords: string[] = [
   "dual use aviation technology",
   "KUM Services GmbH",
   "KUM Services",
-  "Konstanz",
-  "Konstanz Germany",
   "Baden-Württemberg",
   "Bodensee",
   "Lake Constance",
-  "aviation Konstanz",
-  "aerospace Konstanz",
   "aviation company Germany",
   "aircraft conversion Germany",
   "aerospace Germany",
@@ -435,11 +428,7 @@ export function buildRootMetadata(): Metadata {
     category: "technology",
     other: {
       google: "notranslate",
-      // Geo / location meta tags — help regional and government procurement search tools
-      "geo.region": "DE-BW",
-      "geo.placename": "Konstanz, Baden-Württemberg, Germany",
-      "geo.position": "47.6779;9.1732",
-      "ICBM": "47.6779, 9.1732",
+      // Geo meta intentionally omitted (avoid over-specific locality in global B2B positioning)
     },
   };
 }

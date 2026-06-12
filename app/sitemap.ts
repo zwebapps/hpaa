@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { aircrafts } from "@/app/aircraft/aircraftData";
+import { aircrafts } from "@/app/(site)/aircraft/aircraftData";
 import { getSiteUrl } from "@/lib/siteUrl";
 
 const STATIC_PATHS: { path: string; changeFrequency: MetadataRoute.Sitemap[0]["changeFrequency"]; priority: number }[] =
@@ -10,6 +10,8 @@ const STATIC_PATHS: { path: string; changeFrequency: MetadataRoute.Sitemap[0]["c
     { path: "/why-us", changeFrequency: "monthly", priority: 0.85 },
     { path: "/partners", changeFrequency: "monthly", priority: 0.8 },
     { path: "/contact", changeFrequency: "monthly", priority: 0.85 },
+    { path: "/blog", changeFrequency: "weekly", priority: 0.8 },
+    { path: "/blog/what-is-hpaa", changeFrequency: "monthly", priority: 0.75 },
     { path: "/hpaa-germany", changeFrequency: "monthly", priority: 0.9 },
     { path: "/robot-aircraft-germany", changeFrequency: "monthly", priority: 0.9 },
     { path: "/autonomous-aircraft-germany", changeFrequency: "monthly", priority: 0.9 },

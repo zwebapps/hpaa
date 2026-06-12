@@ -1,3 +1,6 @@
+import { NextRequest } from "next/server";
+import { requireAdmin } from "@/lib/adminAuth";
+import { dbErrorPayload, formatDbError } from "@/lib/dbError";
 import { getSiteContent, saveSiteContent } from "@/lib/siteContentStore";
 
 export async function GET() {
@@ -5,12 +8,13 @@ export async function GET() {
     const data = await getSiteContent();
     return Response.json({ ok: true, data });
   } catch (error) {
-    const message = error instanceof Error ? error.message : "Failed to load site content.";
-    return Response.json({ ok: false, error: message }, { status: 500 });
+    return Response.json(dbErrorPayload(error), { status: 503 });
   }
 }
 
-export async function PUT(request: Request) {
+export async function PUT(request: NextRequest) {
+  const denied = requireAdmin(request);
+  if (denied) return denied;
   try {
     const body = (await request.json()) as { data?: unknown } | unknown;
     const payload =
@@ -21,7 +25,10 @@ export async function PUT(request: Request) {
     const data = await saveSiteContent(payload);
     return Response.json({ ok: true, data });
   } catch (error) {
-    const message = error instanceof Error ? error.message : "Failed to save site content.";
-    return Response.json({ ok: false, error: message }, { status: 400 });
+    const message = formatDbError(error);
+    if (message.includes("must be a JSON object")) {
+      return Response.json({ ok: false, error: message }, { status: 400 });
+    }
+    return Response.json(dbErrorPayload(error), { status: 503 });
   }
 }

@@ -7,7 +7,7 @@ import { getSiteUrl } from "@/lib/siteUrl";
 /**
  * Site-wide JSON-LD graph (Schema.org).
  * Off-page only — zero visible content rendered here.
- * Includes: Organization, WebSite, BreadcrumbList, Service (per application), FAQPage.
+ * Includes: Organization, WebSite, BreadcrumbList, Service (per application).
  */
 export function SiteJsonLd() {
   const base = getSiteUrl().replace(/\/$/, "");
@@ -24,18 +24,6 @@ export function SiteJsonLd() {
       description: card.description,
       serviceType: "Autonomous Aircraft Mission Service",
       provider: { "@id": `${base}/#organization` },
-    }),
-  );
-
-  // ── FAQ nodes (from whyUs cards, framed as Q&A) ───────────────────────────
-  const faqItems = siteData.whyUs.cards.map(
-    (card: { title: string; description: string }) => ({
-      "@type": "Question",
-      name: `Why choose HPAA: ${card.title}?`,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: card.description,
-      },
     }),
   );
 
@@ -64,23 +52,14 @@ export function SiteJsonLd() {
         name: siteData.brand.name,
         alternateName: [appName, siteData.brand.shortName],
         description:
-          "HPAA (High Performance Autonomous Aircraft) — robot aircraft Germany: KUM Services GmbH, Konstanz converts civil aircraft into high performance autonomous aircraft platforms for ISR, cargo, strike and special missions.",
+          "HPAA (High Performance Autonomous Aircraft) — robot aircraft Germany: KUM Services GmbH converts civil aircraft into high performance autonomous aircraft platforms for ISR, cargo, strike and special missions.",
         url: base,
         logo: { "@type": "ImageObject", url: logoUrl },
         image: ogImage,
         email: "info@kum-trading.consulting",
-        foundingLocation: "Konstanz, Germany",
-        address: {
-          "@type": "PostalAddress",
-          addressLocality: "Konstanz",
-          addressRegion: "Baden-Württemberg",
-          addressCountry: "DE",
-        },
-        areaServed: [
-          { "@type": "City", name: "Konstanz" },
-          { "@type": "AdministrativeArea", name: "Baden-Württemberg" },
-          { "@type": "Country", name: "Germany" },
-        ],
+        foundingLocation: "Germany",
+        address: { "@type": "PostalAddress", addressCountry: "DE" },
+        areaServed: [{ "@type": "Country", name: "Germany" }, "Worldwide"],
         knowsAbout: [
           { "@id": `${base}/#hpaa` },
           "HPAA",
@@ -95,7 +74,6 @@ export function SiteJsonLd() {
           "high-performance combat drones Germany",
           "autonomous platform aircraft Germany",
           "autonomous aircraft robot",
-          "aircraft robot Konstanz",
           "ISR platforms",
           "autonomous flight systems",
           "EASA Part-145 maintenance",
@@ -116,7 +94,7 @@ export function SiteJsonLd() {
         name: "HPAA",
         alternateName: "High Performance Autonomous Aircraft",
         description:
-          "HPAA (High Performance Autonomous Aircraft) — a civil-registered aircraft converted into a fully autonomous or optionally piloted platform for military, government, and special-mission operations. Specialist integrator: KUM Services GmbH, Konstanz, Germany.",
+          "HPAA (High Performance Autonomous Aircraft) — a civil-registered aircraft converted into a fully autonomous or optionally piloted platform for military, government, and special-mission operations. Specialist integrator: KUM Services GmbH (Germany).",
         termCode: "HPAA",
         inDefinedTermSet: {
           "@type": "DefinedTermSet",
@@ -154,16 +132,6 @@ export function SiteJsonLd() {
 
       // ── Service nodes (one per application) ─────────────────────────────
       ...serviceNodes,
-
-      // ── FAQPage ──────────────────────────────────────────────────────────
-      {
-        "@type": "FAQPage",
-        "@id": `${base}/#faq`,
-        name: "Why Choose HPAA — Frequently Asked Questions",
-        description:
-          "Common questions about high performance autonomous aircraft (HPAA) conversion by KUM Services GmbH, Konstanz.",
-        mainEntity: faqItems,
-      },
     ],
   };
 

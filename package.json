@@ -3,22 +3,32 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --webpack",
+    "dev:turbo": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "outreach:send-test": "node --env-file=.env scripts/send-outreach.mjs",
+    "outreach:send-bulk": "node --env-file=.env scripts/send-outreach.mjs --bulk",
+    "outreach:filter": "node scripts/filter-outreach-new.mjs",
+    "outreach:export-companies": "node scripts/export-older-companies-excel.mjs",
+    "test:admin": "node --env-file=.env scripts/test-admin.mjs",
+    "test:admin-login": "node --env-file=.env scripts/test-admin-login.mjs",
+    "test:all": "node --env-file=.env scripts/test-admin.mjs && node --env-file=.env scripts/test-admin-login.mjs && npm run build"
   },
   "dependencies": {
-    "mongodb": "^7.1.1",
+    "pg": "^8.16.0",
     "next": "16.2.1",
     "nodemailer": "^8.0.4",
     "react": "19.2.4",
     "react-dom": "19.2.4",
-    "resend": "^6.9.4"
+    "resend": "^6.9.4",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
+    "@types/pg": "^8.15.4",
     "@types/nodemailer": "^7.0.11",
     "@types/react": "^19",
     "@types/react-dom": "^19",

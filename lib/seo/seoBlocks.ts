@@ -10,10 +10,8 @@ export const seoMetaBlocks: SeoMetaBlock[] = [
     title: "What Is a High Performance Autonomous Aircraft (HPAA)?",
     metaTitle: "HPAA — High Performance Autonomous Aircraft | Robot Aircraft Germany",
     metaDescription:
-      "HPAA — High Performance Autonomous Aircraft. Robot aircraft Germany: KUM Services GmbH, Konstanz converts civil platforms into HPAA for ISR, cargo, strike & special missions. EASA Part-145 certified.",
+      "HPAA — High Performance Autonomous Aircraft. Robot aircraft Germany: KUM Services GmbH converts civil platforms into HPAA for ISR, cargo, strike & special missions. EASA Part-145 certified.",
     targetKeywords: [
-      "aircraft robot Konstanz",
-      "robot aircraft Konstanz",
       "HPAA",
       "hpaa",
       "aircraft robot",
@@ -22,7 +20,7 @@ export const seoMetaBlocks: SeoMetaBlock[] = [
       "autonomous aircraft conversion",
       "civil aircraft conversion",
       "KUM Services GmbH",
-      "KUM Services Konstanz",
+      "KUM Services",
     ],
   },
   {
@@ -30,7 +28,7 @@ export const seoMetaBlocks: SeoMetaBlock[] = [
     title: "Why Convert a Civil Aircraft Instead of Buying a Purpose-Built UAV?",
     metaTitle: "Civil Aircraft to Autonomous Platform Germany | HPAA Conversion",
     metaDescription:
-      "Civil aircraft to autonomous platform Germany — KUM Services GmbH, Konstanz converts civil aircraft into HPAA autonomous platforms faster and at lower cost than purpose-built UAV programmes.",
+      "Civil aircraft to autonomous platform Germany — KUM Services GmbH converts civil aircraft into HPAA autonomous platforms faster and at lower cost than purpose-built UAV programmes.",
     targetKeywords: [
       "civil aircraft to autonomous platform Germany",
       "civil aircraft to autonomous platform",
@@ -108,7 +106,7 @@ export const seoMetaBlocks: SeoMetaBlock[] = [
     title: "Choosing the Right HPAA Platform: From PC-12 to C-130J",
     metaTitle: "HPAA Platform Guide: King Air, PC-12, C-130 & More",
     metaDescription:
-      "Compare HPAA and aircraft robot-capable platforms — King Air 350, Pilatus PC-12, Cessna 208, Citation 525B and C-130J. Konstanz-based integration for ISR, cargo or strike.",
+      "Compare HPAA and aircraft robot-capable platforms — King Air 350, Pilatus PC-12, Cessna 208, Citation 525B and C-130J. Mission-ready integration for ISR, cargo or strike.",
     targetKeywords: [
       "King Air 350",
       "Pilatus PC-12",
@@ -120,7 +118,6 @@ export const seoMetaBlocks: SeoMetaBlock[] = [
       "special mission aircraft",
       "HPAA platform provider",
       "aircraft robot",
-      "HPAA Konstanz",
     ],
   },
   {
@@ -169,7 +166,7 @@ export const seoMetaBlocks: SeoMetaBlock[] = [
     title: "Unmanned Aircraft Germany: Civil Aircraft to UAS Conversion",
     metaTitle: "Unmanned Aircraft Germany | Civil Aircraft to UAS — KUM Services GmbH",
     metaDescription:
-      "Unmanned aircraft Germany — KUM Services GmbH, Konstanz converts civil turboprop and turbofan aircraft into unmanned autonomous platforms (UAS) for ISR, cargo, strike and special missions. EASA Part-145 certified.",
+      "Unmanned aircraft Germany — KUM Services GmbH converts civil turboprop and turbofan aircraft into unmanned autonomous platforms (UAS) for ISR, cargo, strike and special missions. EASA Part-145 certified.",
     targetKeywords: [
       "unmanned aircraft Germany",
       "unmanned aircraft conversion Germany",
@@ -185,7 +182,7 @@ export const seoMetaBlocks: SeoMetaBlock[] = [
     title: "Drone Aircraft Conversion Germany: Civil to High-Performance Drone",
     metaTitle: "Drone Aircraft Conversion Germany | Civil to Drone — KUM Services GmbH",
     metaDescription:
-      "Drone aircraft conversion Germany — KUM Services GmbH, Konstanz converts civil turboprop and turbofan aircraft into high-performance drone platforms for ISR, cargo, strike and special missions. EASA Part-145 certified.",
+      "Drone aircraft conversion Germany — KUM Services GmbH converts civil turboprop and turbofan aircraft into high-performance drone platforms for ISR, cargo, strike and special missions. EASA Part-145 certified.",
     targetKeywords: [
       "drone aircraft conversion Germany",
       "drone conversion Germany",
@@ -201,7 +198,7 @@ export const seoMetaBlocks: SeoMetaBlock[] = [
     title: "High-Performance Combat Drones Germany: Civil Aircraft for Strike Missions",
     metaTitle: "High-Performance Combat Drones Germany | UCAV — KUM Services GmbH",
     metaDescription:
-      "High-performance combat drones Germany — KUM Services GmbH, Konstanz converts proven civil aircraft into combat drone platforms for strike, ISR and special missions. Faster and lower cost than purpose-built UCAV programmes.",
+      "High-performance combat drones Germany — KUM Services GmbH converts proven civil aircraft into combat drone platforms for strike, ISR and special missions. Faster and lower cost than purpose-built UCAV programmes.",
     targetKeywords: [
       "high-performance combat drones Germany",
       "combat drones Germany",
@@ -218,7 +215,7 @@ export const seoMetaBlocks: SeoMetaBlock[] = [
     title: "Autonomous Platform Aircraft Germany: Multi-Role Civil Aircraft Conversion",
     metaTitle: "Autonomous Platform Aircraft Germany | HPAA — KUM Services GmbH",
     metaDescription:
-      "Autonomous platform aircraft Germany — KUM Services GmbH, Konstanz converts proven civil aircraft into autonomous platform aircraft for ISR, cargo, strike and special missions. EASA Part-145 certified.",
+      "Autonomous platform aircraft Germany — KUM Services GmbH converts proven civil aircraft into autonomous platform aircraft for ISR, cargo, strike and special missions. EASA Part-145 certified.",
     targetKeywords: [
       "autonomous platform aircraft Germany",
       "autonomous aircraft platform Germany",
@@ -233,7 +230,7 @@ export const seoMetaBlocks: SeoMetaBlock[] = [
     title: "Frequently Asked Questions: HPAA and Autonomous Aircraft Conversion",
     metaTitle: "HPAA FAQ — Autonomous Aircraft Conversion Questions Answered",
     metaDescription:
-      "Answers to the most common questions about HPAA conversion, platform selection, mission capability, EASA certification, and procurement. KUM Services GmbH Konstanz.",
+      "Answers to the most common questions about HPAA conversion, platform selection, mission capability, EASA certification, and procurement. KUM Services GmbH (Germany).",
     targetKeywords: [
       "HPAA",
       "autonomous aircraft conversion",

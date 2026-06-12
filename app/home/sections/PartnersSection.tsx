@@ -33,7 +33,7 @@ export function PartnersSection() {
           >
             {item.layout !== "text-image" && (
               <div className="partner-card-img" style={{ position: "relative" }}>
-                <Image fill src={item.imageUrl} alt={item.imageAlt} style={{ objectFit: "cover", objectPosition: "center" }} sizes="(max-width: 768px) 100vw, 50vw" />
+                <Image fill src={item.imageUrl} alt={item.imageAlt} style={{ objectFit: "cover", objectPosition: "center" }} sizes="(max-width: 768px) 90vw, 50vw" />
               </div>
             )}
             <div className="partner-card-body">
@@ -44,7 +44,7 @@ export function PartnersSection() {
             </div>
             {item.layout === "text-image" && (
               <div className="partner-card-img" style={{ position: "relative" }}>
-                <Image fill src={item.imageUrl} alt={item.imageAlt} style={{ objectFit: "cover", objectPosition: "center" }} sizes="(max-width: 768px) 100vw, 50vw" />
+                <Image fill src={item.imageUrl} alt={item.imageAlt} style={{ objectFit: "cover", objectPosition: "center" }} sizes="(max-width: 768px) 90vw, 50vw" />
               </div>
             )}
           </div>

@@ -21,7 +21,7 @@ export async function GET() {
 
 > ${siteData.brand.name}, ${siteData.brand.tagline}: specialist integrator converting civil-registered aircraft into HPAA (High Performance Autonomous Aircraft) and autonomous aircraft robot platforms for government, defence, and special-mission customers worldwide.
 
-HPAA = High Performance Autonomous Aircraft. Civil aircraft (turboprop or turbofan) are converted on-site into fully autonomous or optionally piloted platforms for ISR, cargo delivery, counter-UAS, range extension, and kinetic payload missions. Conversion retains civil registration so no special flight permits are required for ferry flights. EASA Part-145 certified maintenance partner. Based in Konstanz, Germany.
+HPAA = High Performance Autonomous Aircraft. Civil aircraft (turboprop or turbofan) are converted on-site into fully autonomous or optionally piloted platforms for ISR, cargo delivery, counter-UAS, range extension, and kinetic payload missions. Conversion retains civil registration so no special flight permits are required for ferry flights. EASA Part-145 certified maintenance partner. Based in Germany.
 
 ## Key pages
 
@@ -34,7 +34,7 @@ HPAA = High Performance Autonomous Aircraft. Civil aircraft (turboprop or turbof
 
 ## HPAA Germany keyword pages
 
-- [HPAA Germany](${base}/hpaa-germany): High Performance Autonomous Aircraft Germany — HPAA conversion specialist KUM Services GmbH Konstanz
+- [HPAA Germany](${base}/hpaa-germany): High Performance Autonomous Aircraft Germany — HPAA conversion specialist KUM Services GmbH
 - [Robot Aircraft Germany](${base}/robot-aircraft-germany): Robot aircraft and robotic aircraft Germany — civil aircraft to robot/autonomous platform conversion
 - [Autonomous Aircraft Germany](${base}/autonomous-aircraft-germany): Autonomous aircraft Germany — civil aircraft to autonomous platform conversion
 - [Unmanned Aircraft Germany](${base}/unmanned-aircraft-germany): Unmanned aircraft Germany — manned to unmanned conversion (UAS/UAV) by KUM Services GmbH
@@ -53,7 +53,7 @@ ${applicationList}
 ## Organisation
 
 - Company: ${siteData.brand.name}
-- Location: Konstanz, Baden-Württemberg, Germany
+- Location: Germany
 - Role: Lead integrator for HPAA conversion programmes
 - Email: info@kum-trading.consulting
 - Certification: EASA Part-145 partner (Part One-Forty Five GmbH)

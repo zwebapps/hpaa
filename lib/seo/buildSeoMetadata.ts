@@ -50,9 +50,6 @@ export function buildPageMetadataFromSeoBlockId(
       description: block.metaDescription,
       images: [ogImage],
     },
-    other: {
-      "geo.region": "DE-BW",
-      "geo.placename": "Konstanz, Baden-Württemberg, Germany",
-    },
+    other: {},
   };
 }

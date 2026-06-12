@@ -5,7 +5,7 @@
     "subName": "Services GmbH",
     "tagline": "Germany",
     "copyright": "© 2025 KUM Services GmbH · All Rights Reserved",
-    "taxNo": "09048/02916 · FA Konstanz",
+    "taxNo": "09048/02916 · FA",
     "vatNo": "DE259550054"
   },
   "heroCarousel": {
@@ -22,7 +22,7 @@
       {
         "id": "speed",
         "imageUrl": "/theme/hpaa10.jpg",
-        "badgeText": "Rapid conversion · Worldwide support",
+        "badgeText": "Short on-site conversion · Worldwide support",
         "title": { "pre": "Deploy Faster", "emphasis": "Operate Sooner" },
         "description": "Civil-registered platforms can ferry to your location and convert on-site—minimizing approvals, delays, and total time-to-operation.",
         "primaryCta": { "href": "/#why-us", "label": "Why Us" },
@@ -39,7 +39,7 @@
       }
     ],
     "stats": [
-      { "value": "Rapid", "label": "HPAA conversion" },
+      { "value": "Short time", "label": "On-site conversion" },
       { "value": "417kt", "label": "Top Speed" },
       { "value": "5,250km", "label": "Max Range" }
     ]

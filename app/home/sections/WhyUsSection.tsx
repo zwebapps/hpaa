@@ -45,7 +45,7 @@ export function WhyUsSection() {
             src={section.callout.imageUrl}
             alt={section.callout.imageAlt}
             style={{ objectFit: "cover" }}
-            sizes="(max-width: 768px) 100vw, 50vw"
+            sizes="(max-width: 768px) 90vw, 50vw"
           />
           <div className="callout-img-overlay" />
         </div>

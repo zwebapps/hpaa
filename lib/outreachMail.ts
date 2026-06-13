@@ -102,7 +102,7 @@ function createTransporter() {
 export function outreachFromAddress(): string {
   return (
     process.env.CONTACT_FROM_EMAIL?.trim() ||
-    `HPAA <${process.env.SMTP_USER!.trim()}>`
+    `HPAA | Robot Aircraft Germany <${process.env.SMTP_USER!.trim()}>`
   );
 }
 

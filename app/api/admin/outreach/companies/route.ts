@@ -6,6 +6,7 @@ import {
   deleteOutreachCompanies,
   getOutreachStats,
   listOutreachCompanies,
+  markCompaniesPending,
 } from "@/lib/outreachStore";
 
 export async function GET(request: NextRequest) {
@@ -37,6 +38,29 @@ export async function DELETE(request: NextRequest) {
     const { deleted } = await deleteOutreachCompanies(ids);
     const stats = await getOutreachStats();
     return Response.json({ ok: true, deleted, stats });
+  } catch (error) {
+    return Response.json(dbErrorPayload(error), { status: 503 });
+  }
+}
+
+export async function PATCH(request: NextRequest) {
+  const denied = requireAdmin(request);
+  if (denied) return denied;
+  try {
+    const body = (await request.json()) as { ids?: unknown; action?: unknown };
+    if (body.action !== "mark_pending") {
+      return Response.json({ ok: false, error: "Unsupported action" }, { status: 400 });
+    }
+    const ids = Array.isArray(body.ids)
+      ? body.ids.map((id) => String(id).trim()).filter(Boolean)
+      : [];
+    if (ids.length === 0) {
+      return Response.json({ ok: false, error: "No companies selected" }, { status: 400 });
+    }
+
+    const { updated } = await markCompaniesPending(ids);
+    const stats = await getOutreachStats();
+    return Response.json({ ok: true, updated, stats });
   } catch (error) {
     return Response.json(dbErrorPayload(error), { status: 503 });
   }

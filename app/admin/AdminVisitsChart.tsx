@@ -294,8 +294,8 @@ function LineChart({ points, maxCount }: { points: Point[]; maxCount: number }) 
           </filter>
         </defs>
 
-        {yTicks.map((tick) => (
-          <g key={tick.value}>
+        {yTicks.map((tick, i) => (
+          <g key={`y-tick-${i}-${tick.y}`}>
             <line
               x1={padX}
               y1={tick.y}

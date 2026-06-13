@@ -320,6 +320,23 @@ export async function markCompanySent(id: string, messageId: string) {
   );
 }
 
+export async function markCompaniesPending(ids: string[]) {
+  await ensureOutreachCollectionReady();
+  const uniqueIds = [...new Set(ids.map((id) => id.trim()).filter(Boolean))];
+  if (uniqueIds.length === 0) {
+    throw new Error("No companies selected");
+  }
+
+  const now = new Date();
+  const result = await query(
+    `UPDATE outreach_companies
+     SET sent_at = NULL, last_message_id = NULL, updated_at = $2
+     WHERE id = ANY($1::text[])`,
+    [uniqueIds, now],
+  );
+  return { updated: result.rowCount ?? 0 };
+}
+
 export async function getPendingOutreachCompanies(filter?: OutreachSendFilter) {
   await ensureOutreachCollectionReady();
 

@@ -381,6 +381,58 @@ export function AdminDashboard() {
     }
   };
 
+  const markPendingCompanies = (ids: string[]) => {
+    const count = ids.length;
+    confirmActionRef.current = () => executeMarkPendingCompanies(ids);
+    setConfirm({
+      title: count === 1 ? "Mark as pending?" : `Mark ${count} as pending?`,
+      message:
+        count === 1
+          ? "This company will be marked as pending and eligible to receive outreach email again."
+          : `These ${count} companies will be marked as pending and eligible to receive outreach email again.`,
+      confirmLabel: count === 1 ? "Mark as pending" : `Mark ${count} as pending`,
+      variant: "primary",
+    });
+  };
+
+  const executeMarkPendingCompanies = async (ids: string[]) => {
+    setConfirmBusy(true);
+    setBusy(true);
+    setMessage(null);
+    try {
+      const res = await fetch("/api/admin/outreach/companies", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action: "mark_pending", ids }),
+      });
+      const payload = (await res.json()) as {
+        ok: boolean;
+        updated?: number;
+        error?: string;
+      };
+      if (!res.ok || !payload.ok) throw new Error(payload.error || "Update failed");
+      confirmActionRef.current = null;
+      setConfirm(null);
+      const updated = payload.updated ?? 0;
+      showAlert(
+        "success",
+        "Status updated",
+        updated === 1
+          ? "1 company marked as pending."
+          : `${updated} companies marked as pending.`,
+      );
+      await loadOutreach();
+    } catch (e) {
+      const text = e instanceof Error ? e.message : "Update failed";
+      confirmActionRef.current = null;
+      setConfirm(null);
+      showAlert("error", "Could not update status", text);
+    } finally {
+      setConfirmBusy(false);
+      setBusy(false);
+    }
+  };
+
   const sendOutreach = (payload: OutreachSendPayload, meta: OutreachSendMeta) => {
     confirmActionRef.current = () => executeSendOutreach(payload);
     setConfirm({
@@ -726,6 +778,7 @@ export function AdminDashboard() {
                 busy={busy}
                 onSend={(payload, label) => void sendOutreach(payload, label)}
                 onDelete={(ids) => void deleteCompanies(ids)}
+                onMarkPending={(ids) => void markPendingCompanies(ids)}
               />
             </div>
           </>

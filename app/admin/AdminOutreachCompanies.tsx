@@ -28,6 +28,7 @@ type Props = {
   busy: boolean;
   onSend: (payload: OutreachSendPayload, meta: OutreachSendMeta) => void;
   onDelete: (ids: string[]) => void;
+  onMarkPending: (ids: string[]) => void;
 };
 
 type CountryOption = {
@@ -76,7 +77,7 @@ function PaginationBar({ page, totalPages, busy, onPageChange }: PaginationBarPr
   );
 }
 
-export function AdminOutreachCompanies({ companies, busy, onSend, onDelete }: Props) {
+export function AdminOutreachCompanies({ companies, busy, onSend, onDelete, onMarkPending }: Props) {
   const [statusFilter, setStatusFilter] = useState<StatusFilter>("all");
   const [countryKeys, setCountryKeys] = useState<Set<string> | null>(null);
   const [countryMenuOpen, setCountryMenuOpen] = useState(false);
@@ -170,6 +171,11 @@ export function AdminOutreachCompanies({ companies, busy, onSend, onDelete }: Pr
   const selectedPending = useMemo(
     () => pendingInFilter.filter((c) => selectedIds.has(c.id)),
     [pendingInFilter, selectedIds],
+  );
+
+  const selectedSent = useMemo(
+    () => filteredCompanies.filter((c) => selectedIds.has(c.id) && c.sentAt),
+    [filteredCompanies, selectedIds],
   );
 
   const sendPayload = useMemo((): OutreachSendPayload => {
@@ -377,7 +383,15 @@ export function AdminOutreachCompanies({ companies, busy, onSend, onDelete }: Pr
               disabled={busy || pendingOnPage.length === 0}
               onClick={selectAllPendingOnPage}
             >
-              Select all on page
+              Select page
+            </button>
+            <button
+              type="button"
+              className="admin-btn admin-btn-outline"
+              disabled={busy || selectedSent.length === 0}
+              onClick={() => onMarkPending(selectedSent.map((c) => c.id))}
+            >
+              Pending ({selectedSent.length})
             </button>
             <button
               type="button"
@@ -385,7 +399,7 @@ export function AdminOutreachCompanies({ companies, busy, onSend, onDelete }: Pr
               disabled={busy || selectedIds.size === 0}
               onClick={() => onDelete([...selectedIds])}
             >
-              Delete selected ({selectedIds.size})
+              Delete ({selectedIds.size})
             </button>
             <button
               type="button"
@@ -393,7 +407,7 @@ export function AdminOutreachCompanies({ companies, busy, onSend, onDelete }: Pr
               disabled={busy || selectedIds.size === 0}
               onClick={clearSelection}
             >
-              Clear selection
+              Clear
             </button>
             <button
               type="button"
@@ -411,7 +425,7 @@ export function AdminOutreachCompanies({ companies, busy, onSend, onDelete }: Pr
                 })
               }
             >
-              Send email — {sendLabel}
+              Send ({sendCount})
             </button>
           </div>
         </div>

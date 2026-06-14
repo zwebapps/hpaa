@@ -2,12 +2,15 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { OUTREACH_NO_COUNTRY, normalizeCountryKey } from "@/lib/outreachFilters";
+import type { OutreachSendStatus } from "@/lib/outreachNormalize";
 
 export type OutreachCompanyRow = {
   id: string;
   company_name: string;
   email: string;
   sentAt: string | null;
+  sendStatus: OutreachSendStatus;
+  sendError: string | null;
   country: string;
 };
 
@@ -22,6 +25,14 @@ export type OutreachSendMeta = {
 };
 
 type StatusFilter = "all" | "pending" | "sent";
+
+function isPendingStatus(status: OutreachSendStatus) {
+  return status === "pending" || status === "failed";
+}
+
+function isSentStatus(status: OutreachSendStatus) {
+  return status === "sent";
+}
 
 type Props = {
   companies: OutreachCompanyRow[];
@@ -124,7 +135,7 @@ export function AdminOutreachCompanies({ companies, busy, onSend, onDelete, onMa
         display: display || countryLabel(key),
       };
       row.total++;
-      if (!c.sentAt) row.pending++;
+      if (isPendingStatus(c.sendStatus)) row.pending++;
       map.set(key, row);
     }
     return [...map.entries()]
@@ -139,8 +150,8 @@ export function AdminOutreachCompanies({ companies, busy, onSend, onDelete, onMa
 
   const filteredCompanies = useMemo(() => {
     return companies.filter((c) => {
-      if (statusFilter === "pending" && c.sentAt) return false;
-      if (statusFilter === "sent" && !c.sentAt) return false;
+      if (statusFilter === "pending" && !isPendingStatus(c.sendStatus)) return false;
+      if (statusFilter === "sent" && !isSentStatus(c.sendStatus)) return false;
       if (countryKeys && countryKeys.size > 0) {
         const key = normalizeCountryKey(c.country);
         if (!countryKeys.has(key)) return false;
@@ -159,12 +170,12 @@ export function AdminOutreachCompanies({ companies, busy, onSend, onDelete, onMa
   }, [page, totalPages]);
 
   const pendingInFilter = useMemo(
-    () => filteredCompanies.filter((c) => !c.sentAt),
+    () => filteredCompanies.filter((c) => isPendingStatus(c.sendStatus)),
     [filteredCompanies],
   );
 
   const pendingOnPage = useMemo(
-    () => paginatedCompanies.filter((c) => !c.sentAt),
+    () => paginatedCompanies.filter((c) => isPendingStatus(c.sendStatus)),
     [paginatedCompanies],
   );
 
@@ -174,7 +185,7 @@ export function AdminOutreachCompanies({ companies, busy, onSend, onDelete, onMa
   );
 
   const selectedSent = useMemo(
-    () => filteredCompanies.filter((c) => selectedIds.has(c.id) && c.sentAt),
+    () => filteredCompanies.filter((c) => selectedIds.has(c.id) && isSentStatus(c.sendStatus)),
     [filteredCompanies, selectedIds],
   );
 
@@ -192,9 +203,12 @@ export function AdminOutreachCompanies({ companies, busy, onSend, onDelete, onMa
     selectedPending.length > 0
       ? selectedPending.length
       : countryKeys && countryKeys.size > 0
-        ? companies.filter((c) => !c.sentAt && countryKeys.has(normalizeCountryKey(c.country)))
-            .length
-        : companies.filter((c) => !c.sentAt).length;
+        ? companies.filter(
+            (c) =>
+              isPendingStatus(c.sendStatus) &&
+              countryKeys.has(normalizeCountryKey(c.country)),
+          ).length
+        : companies.filter((c) => isPendingStatus(c.sendStatus)).length;
 
   const sendLabel =
     selectedPending.length > 0
@@ -459,12 +473,18 @@ export function AdminOutreachCompanies({ companies, busy, onSend, onDelete, onMa
                 ) : (
                   paginatedCompanies.map((c) => {
                     const checked = selectedIds.has(c.id);
+                    const rowClass =
+                      c.sendStatus === "sent"
+                        ? "admin-table-row-sent"
+                        : c.sendStatus === "sending"
+                          ? "admin-table-row-sending"
+                          : c.sendStatus === "failed"
+                            ? "admin-table-row-failed"
+                            : "admin-table-row-pending";
                     return (
                       <tr
                         key={`${c.id}-${c.email}`}
-                        className={
-                          c.sentAt ? "admin-table-row-sent" : "admin-table-row-pending"
-                        }
+                        className={rowClass}
                       >
                         <td className="admin-table-check-col">
                           <input
@@ -479,8 +499,17 @@ export function AdminOutreachCompanies({ companies, busy, onSend, onDelete, onMa
                         <td className="admin-table-email">{c.email}</td>
                         <td className="admin-table-country">{c.country?.trim() || "—"}</td>
                         <td>
-                          {c.sentAt ? (
+                          {c.sendStatus === "sent" ? (
                             <span className="admin-badge admin-badge-sent">Sent</span>
+                          ) : c.sendStatus === "sending" ? (
+                            <span className="admin-badge admin-badge-sending">Sending</span>
+                          ) : c.sendStatus === "failed" ? (
+                            <span
+                              className="admin-badge admin-badge-failed"
+                              title={c.sendError || "Send failed"}
+                            >
+                              Failed
+                            </span>
                           ) : (
                             <span className="admin-badge admin-badge-pending">Pending</span>
                           )}

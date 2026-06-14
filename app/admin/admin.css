@@ -437,6 +437,16 @@
   color: #9a6700;
 }
 
+.admin-badge-sending {
+  background: #e8f0fe;
+  color: #1a56db;
+}
+
+.admin-badge-failed {
+  background: #fde8e8;
+  color: #b42318;
+}
+
 .admin-company-form {
   display: grid;
   gap: 0.85rem;
@@ -494,6 +504,22 @@
 
 .admin-table tbody tr.admin-table-row-pending td {
   border-bottom-color: #f0e6d0;
+}
+
+.admin-table tbody tr.admin-table-row-sending {
+  background: #f5f8ff;
+}
+
+.admin-table tbody tr.admin-table-row-sending td {
+  border-bottom-color: #d6e4ff;
+}
+
+.admin-table tbody tr.admin-table-row-failed {
+  background: #fff5f5;
+}
+
+.admin-table tbody tr.admin-table-row-failed td {
+  border-bottom-color: #f8d7da;
 }
 
 .admin-table tbody tr.admin-table-row-sent td {

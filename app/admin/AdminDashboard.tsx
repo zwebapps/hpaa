@@ -14,6 +14,7 @@ import {
   type OutreachSendMeta,
   type OutreachSendPayload,
 } from "./AdminOutreachCompanies";
+import { validEmail, type OutreachSendStatus } from "@/lib/outreachNormalize";
 
 function outreachSendResultCopy(sent: number, failed: number, apiMessage?: string): Pick<AdminAlert, "title" | "message"> {
   if (sent === 0 && apiMessage) {
@@ -61,7 +62,6 @@ function outreachSendConfirmCopy(meta: OutreachSendMeta): Pick<AdminConfirm, "ti
     confirmLabel: "Confirm and send",
   };
 }
-import { validEmail } from "@/lib/outreachNormalize";
 
 type Tab = "overview" | "outreach" | "content";
 
@@ -70,10 +70,12 @@ type Company = {
   company_name: string;
   email: string;
   sentAt: string | null;
+  sendStatus: OutreachSendStatus;
+  sendError: string | null;
   country: string;
 };
 
-type OutreachStats = { total: number; sent: number; pending: number };
+type OutreachStats = { total: number; sent: number; pending: number; sending: number; failed: number };
 
 type DbErrorState = { error: string; hint?: string; details?: Record<string, unknown> };
 
@@ -102,6 +104,8 @@ export function AdminDashboard() {
   const [confirm, setConfirm] = useState<AdminConfirm | null>(null);
   const [confirmBusy, setConfirmBusy] = useState(false);
   const confirmActionRef = useRef<(() => Promise<void>) | null>(null);
+  const activeSendIdsRef = useRef<Set<string>>(new Set());
+  const [sendPolling, setSendPolling] = useState(false);
   const [companyFormNotice, setCompanyFormNotice] = useState<string | null>(null);
 
   const showMsg = (type: "ok" | "err", text: string) => setMessage({ type, text });
@@ -167,8 +171,12 @@ export function AdminDashboard() {
       throw new Error(compPayload.error || `Failed to load companies (HTTP ${compRes.status})`);
     }
     setDbError(null);
-    setCompanies(compPayload.companies || []);
+    const nextCompanies = (compPayload.companies || []) as Company[];
+    setCompanies(nextCompanies);
     setStats(compPayload.stats || null);
+    if (nextCompanies.some((company) => company.sendStatus === "sending")) {
+      setSendPolling(true);
+    }
   }, []);
 
   const loadTemplate = useCallback(async (name: string) => {
@@ -214,6 +222,54 @@ export function AdminDashboard() {
     if (tab !== "outreach") return;
     void loadTemplate(previewName);
   }, [previewName, tab, loadTemplate]);
+
+  useEffect(() => {
+    if (!sendPolling) return;
+
+    let cancelled = false;
+
+    const tick = async () => {
+      if (cancelled) return;
+      try {
+        await fetch("/api/admin/outreach/process", { method: "POST" });
+        const compRes = await fetch("/api/admin/outreach/companies", { cache: "no-store" });
+        const compPayload = (await compRes.json()) as {
+          ok: boolean;
+          companies?: Company[];
+          stats?: OutreachStats;
+        };
+        if (!compRes.ok || !compPayload.ok) return;
+
+        const nextCompanies = compPayload.companies || [];
+        setCompanies(nextCompanies);
+        setStats(compPayload.stats || null);
+
+        const stillSending = nextCompanies.some((company) => company.sendStatus === "sending");
+        if (!stillSending) {
+          setSendPolling(false);
+          if (activeSendIdsRef.current.size > 0) {
+            const tracked = nextCompanies.filter((company) =>
+              activeSendIdsRef.current.has(company.id),
+            );
+            const sent = tracked.filter((company) => company.sendStatus === "sent").length;
+            const failed = tracked.filter((company) => company.sendStatus === "failed").length;
+            const result = outreachSendResultCopy(sent, failed);
+            showAlert("success", result.title, result.message);
+            activeSendIdsRef.current = new Set();
+          }
+        }
+      } catch {
+        /* keep polling on transient errors */
+      }
+    };
+
+    void tick();
+    const id = window.setInterval(() => void tick(), 2500);
+    return () => {
+      cancelled = true;
+      window.clearInterval(id);
+    };
+  }, [sendPolling]);
 
   const logout = async () => {
     await fetch("/api/admin/logout", { method: "POST" });
@@ -453,18 +509,33 @@ export function AdminDashboard() {
       });
       const body = (await res.json()) as {
         ok: boolean;
-        sent?: number;
-        failed?: number;
+        queued?: number;
+        ids?: string[];
         error?: string;
         message?: string;
       };
       if (!res.ok || !body.ok) throw new Error(body.error || "Send failed");
       confirmActionRef.current = null;
       setConfirm(null);
-      const sent = body.sent ?? 0;
-      const failed = body.failed ?? 0;
-      const result = outreachSendResultCopy(sent, failed, body.message);
-      showAlert("success", result.title, result.message);
+
+      const queued = body.queued ?? 0;
+      if (queued === 0) {
+        showAlert(
+          "success",
+          "Outreach send complete",
+          body.message || "No pending companies were queued.",
+        );
+        await loadOutreach();
+        return;
+      }
+
+      activeSendIdsRef.current = new Set(body.ids || []);
+      setSendPolling(true);
+      showMsg(
+        "ok",
+        body.message ||
+          "Email sending is in progress. Records will update automatically as each email is sent.",
+      );
       await loadOutreach();
     } catch (e) {
       const text = e instanceof Error ? e.message : "Send failed";
@@ -619,6 +690,12 @@ export function AdminDashboard() {
                 <div className="label">Pending</div>
                 <div className="value">{stats?.pending ?? 0}</div>
               </div>
+              {(stats?.sending ?? 0) > 0 ? (
+                <div className="admin-stat-card">
+                  <div className="label">Sending</div>
+                  <div className="value">{stats?.sending ?? 0}</div>
+                </div>
+              ) : null}
             </div>
 
             <div className="admin-panel">

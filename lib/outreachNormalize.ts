@@ -40,6 +40,8 @@ export function parseSentStatus(row: Record<string, unknown>): OutreachSentStatu
   return "unset";
 }
 
+export type OutreachSendStatus = "pending" | "sending" | "sent" | "failed";
+
 export type OutreachCompanyRecord = {
   id: string;
   company_name: string;
@@ -51,6 +53,9 @@ export type OutreachCompanyRecord = {
   headquarters: string;
   sentAt: Date | null;
   lastMessageId: string | null;
+  sendStatus: OutreachSendStatus;
+  sendError: string | null;
+  sendingAt: Date | null;
   createdAt: Date;
   updatedAt: Date;
 };
@@ -104,5 +109,8 @@ export function normalizeExcelRow(
     sentAt,
     sentStatus,
     lastMessageId: null,
+    sendStatus: sentStatus === "yes" ? "sent" : "pending",
+    sendError: null,
+    sendingAt: null,
   };
 }

@@ -1,13 +1,14 @@
+import { after } from "next/server";
 import { NextRequest } from "next/server";
 import { requireAdmin } from "@/lib/adminAuth";
 import { dbErrorPayload } from "@/lib/dbError";
-import {
-  delayMs,
-  sendOutreachEmail,
-  smtpConfigured,
-} from "@/lib/outreachMail";
+import { sendOutreachEmail, smtpConfigured } from "@/lib/outreachMail";
 import type { OutreachSendFilter } from "@/lib/outreachFilters";
-import { getPendingOutreachCompanies, markCompanySent } from "@/lib/outreachStore";
+import {
+  getPendingOutreachCompanies,
+  markCompaniesSending,
+} from "@/lib/outreachStore";
+import { startOutreachSendWorker } from "@/lib/outreachWorker";
 
 export async function POST(request: NextRequest) {
   const denied = requireAdmin(request);
@@ -27,7 +28,6 @@ export async function POST(request: NextRequest) {
       ids?: string[];
       countries?: string[];
     };
-    const delay = Number(process.env.OUTREACH_DELAY_MS) || 1500;
 
     if (body.test) {
       const testTo = (process.env.OUTREACH_TEST_TO || process.env.CONTACT_TO_EMAIL || "").trim();
@@ -69,38 +69,36 @@ export async function POST(request: NextRequest) {
     if (pending.length === 0) {
       return Response.json({
         ok: true,
-        sent: 0,
-        failed: 0,
-        results: [],
+        queued: 0,
+        ids: [],
         message: "No pending companies match this filter.",
       });
     }
 
-    const results: { id: string; email: string; ok: boolean; messageId?: string; error?: string }[] = [];
-
-    for (const company of pending) {
-      try {
-        const { messageId } = await sendOutreachEmail({
-          to: company.email,
-          recipientName: company.company_name,
-        });
-        await markCompanySent(company.id, messageId);
-        results.push({ id: company.id, email: company.email, ok: true, messageId });
-        await delayMs(delay);
-      } catch (err) {
-        results.push({
-          id: company.id,
-          email: company.email,
-          ok: false,
-          error: err instanceof Error ? err.message : "Send failed",
-        });
-      }
+    const { queued, ids } = await markCompaniesSending(pending.map((company) => company.id));
+    if (queued === 0) {
+      return Response.json({
+        ok: true,
+        queued: 0,
+        ids: [],
+        message: "No pending companies were queued. They may already be sending or sent.",
+      });
     }
 
-    const sent = results.filter((r) => r.ok).length;
-    const failed = results.filter((r) => !r.ok).length;
+    after(() => {
+      void startOutreachSendWorker();
+    });
 
-    return Response.json({ ok: true, sent, failed, results });
+    return Response.json(
+      {
+        ok: true,
+        queued,
+        ids,
+        message:
+          "Email sending is in progress. Records will update automatically as each email is sent.",
+      },
+      { status: 202 },
+    );
   } catch (error) {
     return Response.json(dbErrorPayload(error), { status: 503 });
   }

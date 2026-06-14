@@ -108,9 +108,20 @@ CREATE TABLE IF NOT EXISTS outreach_companies (
   headquarters     TEXT NOT NULL DEFAULT '',
   sent_at          TIMESTAMPTZ,
   last_message_id  TEXT,
+  send_status      TEXT NOT NULL DEFAULT 'pending',
+  send_error       TEXT,
+  sending_at       TIMESTAMPTZ,
   created_at       TIMESTAMPTZ NOT NULL DEFAULT NOW(),
   updated_at       TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
+
+ALTER TABLE outreach_companies ADD COLUMN IF NOT EXISTS send_status TEXT NOT NULL DEFAULT 'pending';
+ALTER TABLE outreach_companies ADD COLUMN IF NOT EXISTS send_error TEXT;
+ALTER TABLE outreach_companies ADD COLUMN IF NOT EXISTS sending_at TIMESTAMPTZ;
+
+UPDATE outreach_companies
+SET send_status = 'sent'
+WHERE sent_at IS NOT NULL AND send_status = 'pending';
 
 CREATE INDEX IF NOT EXISTS outreach_companies_company_name_idx
   ON outreach_companies (company_name);

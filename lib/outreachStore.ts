@@ -9,6 +9,7 @@ import {
   normalizeExcelRow,
   slugifyCompanyId,
   type OutreachCompanyRecord,
+  type OutreachSendStatus,
   validEmail,
 } from "@/lib/outreachNormalize";
 
@@ -16,6 +17,7 @@ export type { OutreachSendFilter } from "@/lib/outreachFilters";
 export { OUTREACH_NO_COUNTRY } from "@/lib/outreachFilters";
 
 const LEGACY_SEED_LOCK_ID = "legacy_json_seed";
+const STALE_SENDING_MINUTES = 30;
 
 type CompanyRow = OutreachCompanyRecord;
 
@@ -30,11 +32,21 @@ type DbCompanyRow = {
   headquarters: string;
   sent_at: Date | null;
   last_message_id: string | null;
+  send_status: string;
+  send_error: string | null;
+  sending_at: Date | null;
   created_at: Date;
   updated_at: Date;
 };
 
 let outreachMaintenancePromise: Promise<void> | null = null;
+
+function parseSendStatus(value: string | null | undefined, sentAt: Date | null): OutreachSendStatus {
+  if (value === "pending" || value === "sending" || value === "sent" || value === "failed") {
+    return value;
+  }
+  return sentAt ? "sent" : "pending";
+}
 
 async function ensureOutreachCollectionReady() {
   await ensureSchema();
@@ -71,6 +83,8 @@ function rowToRecord(row: CompanyRow) {
     headquarters: row.headquarters,
     sentAt: row.sentAt ? row.sentAt.toISOString() : null,
     lastMessageId: row.lastMessageId,
+    sendStatus: row.sendStatus,
+    sendError: row.sendError,
     createdAt: row.createdAt.toISOString(),
     updatedAt: row.updatedAt.toISOString(),
   };
@@ -88,6 +102,9 @@ function mapDbRow(row: DbCompanyRow): CompanyRow {
     headquarters: row.headquarters,
     sentAt: row.sent_at,
     lastMessageId: row.last_message_id,
+    sendStatus: parseSendStatus(row.send_status, row.sent_at),
+    sendError: row.send_error,
+    sendingAt: row.sending_at,
     createdAt: row.created_at,
     updatedAt: row.updated_at,
   };
@@ -95,7 +112,8 @@ function mapDbRow(row: DbCompanyRow): CompanyRow {
 
 const COMPANY_SELECT = `
   SELECT id, company_name, email, phone, website, country, city, headquarters,
-         sent_at, last_message_id, created_at, updated_at
+         sent_at, last_message_id, send_status, send_error, sending_at,
+         created_at, updated_at
   FROM outreach_companies
 `;
 
@@ -140,6 +158,19 @@ async function seedFromLegacyJsonIfPresent() {
   }
 }
 
+function resolveSendStatusForUpsert(options: {
+  normalizedSentStatus: "yes" | "no" | "unset";
+  sentAt: Date | null;
+  existingSendStatus: OutreachSendStatus;
+  preserveSent: boolean;
+}): OutreachSendStatus {
+  if (options.normalizedSentStatus === "yes" || options.sentAt) return "sent";
+  if (options.normalizedSentStatus === "no") return "pending";
+  if (options.preserveSent && options.existingSendStatus === "sent") return "sent";
+  if (options.existingSendStatus === "sending") return "sending";
+  return options.sentAt ? "sent" : "pending";
+}
+
 export async function upsertCompaniesFromRows(
   rows: Record<string, unknown>[],
   options: { preserveSent?: boolean } = {},
@@ -176,11 +207,21 @@ export async function upsertCompaniesFromRows(
         sentAt = normalized.sentAt ?? existingRow.sentAt;
       }
 
+      const sendStatus = resolveSendStatusForUpsert({
+        normalizedSentStatus: normalized.sentStatus,
+        sentAt,
+        existingSendStatus: existingRow.sendStatus,
+        preserveSent: Boolean(options.preserveSent),
+      });
+      const sendError = sendStatus === "pending" ? null : existingRow.sendError;
+      const sendingAt = sendStatus === "sending" ? existingRow.sendingAt : null;
+
       await query(
         `UPDATE outreach_companies SET
            id = $2, company_name = $3, email = $4, phone = $5, website = $6,
            country = $7, city = $8, headquarters = $9, sent_at = $10,
-           last_message_id = $11, updated_at = $12
+           last_message_id = $11, send_status = $12, send_error = $13,
+           sending_at = $14, updated_at = $15
          WHERE id = $1`,
         [
           existingRow.id,
@@ -194,16 +235,21 @@ export async function upsertCompaniesFromRows(
           normalized.headquarters,
           sentAt,
           existingRow.lastMessageId,
+          sendStatus,
+          sendError,
+          sendingAt,
           now,
         ],
       );
       updated++;
     } else {
+      const sendStatus = normalized.sentAt ? "sent" : "pending";
       await query(
         `INSERT INTO outreach_companies (
            id, company_name, email, phone, website, country, city, headquarters,
-           sent_at, last_message_id, created_at, updated_at
-         ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $11)`,
+           sent_at, last_message_id, send_status, send_error, sending_at,
+           created_at, updated_at
+         ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $14)`,
         [
           normalized.id,
           normalized.company_name,
@@ -215,6 +261,9 @@ export async function upsertCompaniesFromRows(
           normalized.headquarters,
           normalized.sentAt,
           normalized.lastMessageId,
+          sendStatus,
+          null,
+          null,
           now,
         ],
       );
@@ -264,8 +313,9 @@ export async function createOutreachCompany(input: CreateOutreachCompanyInput) {
   await query(
     `INSERT INTO outreach_companies (
        id, company_name, email, phone, website, country, city, headquarters,
-       sent_at, last_message_id, created_at, updated_at
-     ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, NULL, NULL, $9, $9)`,
+       sent_at, last_message_id, send_status, send_error, sending_at,
+       created_at, updated_at
+     ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, NULL, NULL, 'pending', NULL, NULL, $9, $9)`,
     [
       id,
       company_name,
@@ -290,6 +340,9 @@ export async function createOutreachCompany(input: CreateOutreachCompanyInput) {
     headquarters: [city, country].filter(Boolean).join(", "),
     sentAt: null,
     lastMessageId: null,
+    sendStatus: "pending",
+    sendError: null,
+    sendingAt: null,
     createdAt: now,
     updatedAt: now,
   };
@@ -314,10 +367,40 @@ export async function markCompanySent(id: string, messageId: string) {
   const now = new Date();
   await query(
     `UPDATE outreach_companies
-     SET sent_at = $2, last_message_id = $3, updated_at = $2
+     SET sent_at = $2, last_message_id = $3, send_status = 'sent',
+         send_error = NULL, sending_at = NULL, updated_at = $2
      WHERE id = $1`,
     [id, now, messageId],
   );
+}
+
+export async function markCompanyFailed(id: string, error: string) {
+  const now = new Date();
+  await query(
+    `UPDATE outreach_companies
+     SET send_status = 'failed', send_error = $2, sending_at = NULL, updated_at = $3
+     WHERE id = $1`,
+    [id, error, now],
+  );
+}
+
+export async function markCompaniesSending(ids: string[]) {
+  await ensureOutreachCollectionReady();
+  const uniqueIds = [...new Set(ids.map((id) => id.trim()).filter(Boolean))];
+  if (uniqueIds.length === 0) return { queued: 0, ids: [] as string[] };
+
+  const now = new Date();
+  const result = await query<{ id: string }>(
+    `UPDATE outreach_companies
+     SET send_status = 'sending', sending_at = $2, send_error = NULL, updated_at = $2
+     WHERE id = ANY($1::text[])
+       AND send_status IN ('pending', 'failed')
+       AND sent_at IS NULL
+     RETURNING id`,
+    [uniqueIds, now],
+  );
+  const queuedIds = result.rows.map((row) => row.id);
+  return { queued: queuedIds.length, ids: queuedIds };
 }
 
 export async function markCompaniesPending(ids: string[]) {
@@ -330,7 +413,8 @@ export async function markCompaniesPending(ids: string[]) {
   const now = new Date();
   const result = await query(
     `UPDATE outreach_companies
-     SET sent_at = NULL, last_message_id = NULL, updated_at = $2
+     SET sent_at = NULL, last_message_id = NULL, send_status = 'pending',
+         send_error = NULL, sending_at = NULL, updated_at = $2
      WHERE id = ANY($1::text[])`,
     [uniqueIds, now],
   );
@@ -341,7 +425,7 @@ export async function getPendingOutreachCompanies(filter?: OutreachSendFilter) {
   await ensureOutreachCollectionReady();
 
   const params: unknown[] = [];
-  let where = `sent_at IS NULL`;
+  let where = `send_status IN ('pending', 'failed') AND sent_at IS NULL`;
   if (filter?.ids?.length) {
     params.push(filter.ids);
     where += ` AND id = ANY($${params.length}::text[])`;
@@ -361,17 +445,46 @@ export async function getPendingOutreachCompanies(filter?: OutreachSendFilter) {
   return filterOutreachRecipients(docs, countryFilter);
 }
 
+export async function getNextSendingOutreachCompany() {
+  await ensureOutreachCollectionReady();
+  const result = await query<DbCompanyRow>(
+    COMPANY_SELECT +
+      ` WHERE send_status = 'sending'
+        ORDER BY sending_at ASC NULLS LAST, company_name ASC
+        LIMIT 1`,
+  );
+  const row = result.rows[0];
+  return row ? mapDbRow(row) : null;
+}
+
+export async function recoverStaleSendingOutreach() {
+  await ensureOutreachCollectionReady();
+  await query(
+    `UPDATE outreach_companies
+     SET send_status = 'pending', send_error = 'Send interrupted — retrying',
+         sending_at = NULL, updated_at = NOW()
+     WHERE send_status = 'sending'
+       AND sending_at IS NOT NULL
+       AND sending_at < NOW() - ($1::text || ' minutes')::interval`,
+    [String(STALE_SENDING_MINUTES)],
+  );
+}
+
 export async function getOutreachStats() {
   await ensureOutreachCollectionReady();
   const result = await query<{
     total: string;
     sent: string;
     pending: string;
+    sending: string;
+    failed: string;
   }>(`
     SELECT
       COUNT(*)::text AS total,
-      COUNT(*) FILTER (WHERE sent_at IS NOT NULL)::text AS sent,
-      COUNT(*) FILTER (WHERE sent_at IS NULL)::text AS pending
+      COUNT(*) FILTER (WHERE send_status = 'sent')::text AS sent,
+      COUNT(*) FILTER (WHERE send_status IN ('pending', 'failed'))::text AS pending,
+      COUNT(*) FILTER (WHERE send_status = 'sending')::text AS sending,
+      COUNT(*) FILTER (WHERE send_status = 'failed')::text AS failed
     FROM outreach_companies
   `);
   const row = result.rows[0];
@@ -379,5 +492,7 @@ export async function getOutreachStats() {
     total: Number(row?.total ?? 0),
     sent: Number(row?.sent ?? 0),
     pending: Number(row?.pending ?? 0),
+    sending: Number(row?.sending ?? 0),
+    failed: Number(row?.failed ?? 0),
   };
 }

@@ -91,7 +91,7 @@ export function AircraftDetailsClient({ slug }: { slug: string }) {
               </a>
               <a
                 className="btn-ghost"
-                href="/#aircraft"
+                href="/aircraft"
                 style={{ color: "var(--navy)", borderColor: "rgba(11,17,32,0.25)" }}
               >
                 Back to Platforms

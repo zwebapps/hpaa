@@ -107,7 +107,7 @@ export default async function AircraftDetailsPage({ params }: PageProps) {
             "@type": "BreadcrumbList",
             itemListElement: [
               { "@type": "ListItem", position: 1, name: "Home", item: `${base}/` },
-              { "@type": "ListItem", position: 2, name: "Aircraft", item: `${base}/#aircraft` },
+              { "@type": "ListItem", position: 2, name: "Aircraft", item: `${base}/aircraft` },
               { "@type": "ListItem", position: 3, name: aircraft.name, item: `${base}/aircraft/${slug}` },
             ],
           },

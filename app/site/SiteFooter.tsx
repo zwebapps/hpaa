@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { siteData } from "@/data/siteData";
+import { navRouteHref } from "@/lib/navRoutes";
 
 const SEO_PAGES = [
   { href: "/easa-part-145-mro-germany", label: "EASA Part-145 MRO Germany" },
@@ -25,13 +26,11 @@ export function SiteFooter() {
         {siteData.navigation.links
           .filter((link) => ["Home", "Aircraft", "Partners"].includes(link.label))
           .map((link) => (
-            <Link key={link.href} href={link.href} scroll={false}>
+            <Link key={link.href} href={navRouteHref(link.href)}>
               {link.label}
             </Link>
           ))}
-        <Link href={siteData.navigation.cta.href} scroll={false}>
-          Contact
-        </Link>
+        <Link href={navRouteHref(siteData.navigation.cta.href)}>Contact</Link>
       </div>
       <nav aria-label="HPAA Germany pages" className="sr-only">
         {SEO_PAGES.map((p) => (

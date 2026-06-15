@@ -30,11 +30,11 @@ export function SiteJsonLd() {
   // ── BreadcrumbList for main site sections ─────────────────────────────────
   const breadcrumbItems = [
     { name: "Home", url: `${base}/` },
-    { name: "Why HPAA", url: `${base}/#why-us` },
-    { name: "Aircraft", url: `${base}/#aircraft` },
-    { name: "Applications", url: `${base}/#applications` },
-    { name: "Partners", url: `${base}/#partners` },
-    { name: "Contact", url: `${base}/#contact` },
+    { name: "Why HPAA", url: `${base}/why-us` },
+    { name: "Aircraft", url: `${base}/aircraft` },
+    { name: "Applications", url: `${base}/applications` },
+    { name: "Partners", url: `${base}/partners` },
+    { name: "Contact", url: `${base}/contact` },
   ].map((item, idx) => ({
     "@type": "ListItem",
     position: idx + 1,

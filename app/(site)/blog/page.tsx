@@ -5,7 +5,7 @@ import { absoluteUrl } from "@/lib/absoluteUrl";
 export const metadata: Metadata = {
   title: "HPAA Blog | Robot-Aircraft",
   description:
-    "Technical notes and brief guides on HPAA (High Performance Autonomous Aircraft), robot aircraft conversion, autonomous aircraft platforms, and civil aircraft conversion in Germany.",
+    "Technical notes on EASA Part-145 MRO, aircraft modification, avionics integration, HPAA conversion, and civil aircraft platforms in Germany.",
   alternates: {
     canonical: absoluteUrl("/blog"),
     languages: { en: absoluteUrl("/blog"), "en-x-default": absoluteUrl("/blog") },
@@ -25,6 +25,17 @@ export default function BlogIndexPage() {
       </p>
 
       <div className="why-grid" style={{ marginTop: "2rem" }}>
+        <article className="why-card reveal">
+          <h2 style={{ marginTop: 0 }}>
+            <Link href="/blog/easa-part-145-aircraft-mro-germany" style={{ color: "inherit", textDecoration: "none" }}>
+              EASA Part-145 and Aircraft MRO in Germany
+            </Link>
+          </h2>
+          <p>
+            What operators should know about EASA Part-145 maintenance organisations and how certified
+            MRO supports modification and special mission programmes.
+          </p>
+        </article>
         <article className="why-card reveal">
           <h2 style={{ marginTop: 0 }}>
             <Link href="/blog/what-is-hpaa" style={{ color: "inherit", textDecoration: "none" }}>

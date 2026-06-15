@@ -2,6 +2,9 @@ import Link from "next/link";
 import { siteData } from "@/data/siteData";
 
 const SEO_PAGES = [
+  { href: "/easa-part-145-mro-germany", label: "EASA Part-145 MRO Germany" },
+  { href: "/aircraft-avionics-retrofit-germany", label: "Avionics Retrofit Germany" },
+  { href: "/special-mission-aircraft-conversion", label: "Special Mission Conversion" },
   { href: "/hpaa-germany", label: "HPAA Germany" },
   { href: "/robot-aircraft-germany", label: "Robot Aircraft Germany" },
   { href: "/autonomous-aircraft-germany", label: "Autonomous Aircraft Germany" },

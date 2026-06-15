@@ -1,8 +1,12 @@
-import { HashRedirect } from "@/app/site/HashRedirect";
+import { ContactSection } from "@/app/home/sections/ContactSection";
 import { segmentMetadata } from "@/lib/siteMetadata";
 
 export const metadata = segmentMetadata.contact;
 
 export default function ContactPage() {
-  return <HashRedirect sectionId="contact" />;
+  return (
+    <main>
+      <ContactSection />
+    </main>
+  );
 }

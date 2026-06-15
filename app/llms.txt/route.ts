@@ -32,6 +32,13 @@ HPAA = High Performance Autonomous Aircraft. Civil aircraft (turboprop or turbof
 - [Partners](${base}/partners): EASA Part-145 maintenance partner (Part One-Forty Five GmbH), university and avionics partners
 - [Contact / Request a Proposal](${base}/contact): Enquire about a tailored HPAA programme
 
+## MRO & systems integration (Germany)
+
+- [EASA Part-145 MRO Germany](${base}/easa-part-145-mro-germany): Certified aircraft maintenance, repair, and overhaul with Part One-Forty Five GmbH
+- [Aircraft Avionics Retrofit Germany](${base}/aircraft-avionics-retrofit-germany): Avionics retrofit, flight control, datalinks, and ISR sensor integration
+- [Special Mission Aircraft Conversion](${base}/special-mission-aircraft-conversion): Civil aircraft conversion for surveillance, ISR, and government missions
+- [Blog: EASA Part-145 MRO overview](${base}/blog/easa-part-145-aircraft-mro-germany): Guide for operators on Part-145 MRO in Germany
+
 ## HPAA Germany keyword pages
 
 - [HPAA Germany](${base}/hpaa-germany): High Performance Autonomous Aircraft Germany — HPAA conversion specialist KUM Services GmbH

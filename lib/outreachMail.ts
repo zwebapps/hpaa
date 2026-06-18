@@ -1,6 +1,11 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import nodemailer from "nodemailer";
+import {
+  appendToSentFolder,
+  buildRawMessage,
+  imapConfigured,
+} from "@/lib/mailImap";
 import { validEmail } from "@/lib/outreachNormalize";
 
 const TEMPLATE_PATH = path.join(
@@ -9,8 +14,6 @@ const TEMPLATE_PATH = path.join(
   "email",
   "outreach-send.html",
 );
-
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 function escapeHtml(s: string) {
   return String(s ?? "")
@@ -64,27 +67,6 @@ function emailFromSenderField(s: string) {
   return angle ? angle[1].trim() : trimmed;
 }
 
-function bccAutoDisabled() {
-  const v = process.env.OUTREACH_BCC_AUTO?.trim().toLowerCase();
-  return v === "false" || v === "0" || v === "off" || v === "no";
-}
-
-export function resolveBccRecipients(): string[] {
-  if (bccAutoDisabled()) return [];
-
-  const explicit = process.env.OUTREACH_BCC?.trim();
-  if (explicit && explicit.toLowerCase() !== "none") {
-    const parts = explicit.split(/[,;]+/).map((p) => p.trim()).filter(Boolean);
-    return [...new Set(parts.filter((e) => EMAIL_RE.test(e)))];
-  }
-
-  const fromConfigured = emailFromSenderField(process.env.CONTACT_FROM_EMAIL || "");
-  if (fromConfigured && validEmail(fromConfigured)) return [fromConfigured];
-
-  const user = process.env.SMTP_USER?.trim();
-  return user && validEmail(user) ? [user] : [];
-}
-
 function createTransporter() {
   const port = parseInt(process.env.SMTP_PORT || "587", 10);
   const secure = process.env.SMTP_SECURE === "true" || port === 465;
@@ -127,21 +109,37 @@ export async function sendOutreachEmail(options: {
   const subjectBase = outreachSubjectBase();
   const subject = options.test ? `[TEST] ${subjectBase}` : subjectBase;
   const from = outreachFromAddress();
-  const bccList = resolveBccRecipients();
-  const toLower = options.to.trim().toLowerCase();
-  const deduped = [...new Set(bccList.filter(validEmail))].filter(
-    (e) => e.toLowerCase() !== toLower,
-  );
-
-  const transporter = createTransporter();
-  const info = await transporter.sendMail({
+  const to = options.to.trim();
+  const mailOptions = {
     from,
-    to: options.to.trim(),
+    to,
     subject,
     text: `Outreach (plain text preview).\n\n${htmlToRoughText(html)}`,
     html,
-    ...(deduped.length ? { bcc: deduped } : {}),
+  };
+
+  const raw = await buildRawMessage(mailOptions);
+  const fromEmail = emailFromSenderField(from);
+  if (!validEmail(fromEmail)) {
+    throw new Error("CONTACT_FROM_EMAIL or SMTP_USER must contain a valid From address.");
+  }
+
+  const transporter = createTransporter();
+  const info = await transporter.sendMail({
+    envelope: { from: fromEmail, to: [to] },
+    raw,
   });
+
+  if (imapConfigured()) {
+    try {
+      await appendToSentFolder(raw);
+    } catch (err) {
+      console.warn(
+        "Outreach sent via SMTP but IMAP Sent append failed:",
+        err instanceof Error ? err.message : err,
+      );
+    }
+  }
 
   return { messageId: info.messageId || "", subject };
 }

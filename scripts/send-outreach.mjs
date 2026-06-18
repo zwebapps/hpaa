@@ -11,16 +11,23 @@
  *
  * Requires Node 20.6+ for --env-file=.env, or export SMTP_* / CONTACT_FROM_EMAIL manually.
  *
- * Copies (BCC archive): Each send BCCs your mailbox so outbound appears in inbox as a blind copy.
- *   Default recipients: parsed CONTACT_FROM_EMAIL (handles "Name <email>") else SMTP_USER.
- *   OUTREACH_BCC — comma-separated extra archive addresses (overrides default list when non-empty).
- *   OUTREACH_BCC_AUTO=false — disable BCC entirely.
+ * Sent archive (IMAP): After each SMTP send, appends the message to the mailbox Sent folder.
+ *   Uses IMAP_HOST (defaults from SMTP_HOST: smtp.* → imap.*), IMAP_PORT (993), IMAP_USER, IMAP_PASSWORD.
+ *   Falls back to SMTP_USER / SMTP_PASSWORD when IMAP credentials are omitted.
+ *   IMAP_SENT_FOLDER — override Sent folder path (auto-detected when omitted).
+ *   OUTREACH_IMAP_ARCHIVE=false — disable Sent-folder archiving.
  */
 
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import nodemailer from "nodemailer";
+import {
+  appendToSentFolder,
+  buildRawMessage,
+  imapArchiveDisabled,
+  imapConfigured,
+} from "./lib/mail-imap.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(__dirname, "..");
@@ -80,45 +87,38 @@ function emailFromSenderField(s) {
   return angle ? angle[1].trim() : trimmed;
 }
 
-function bccAutoDisabled() {
-  const v = process.env.OUTREACH_BCC_AUTO?.trim().toLowerCase();
-  return v === "false" || v === "0" || v === "off" || v === "no";
-}
-
-/** Normalised archive BCC addresses (no duplicates). Empty if disabled or unresolved. */
-function resolveBccRecipients() {
-  if (bccAutoDisabled()) return [];
-
-  const explicit = process.env.OUTREACH_BCC?.trim();
-  if (explicit && explicit.toLowerCase() !== "none") {
-    const parts = explicit.split(/[,;]+/).map((p) => p.trim()).filter(Boolean);
-    return [...new Set(parts.filter(validEmail))];
-  }
-
-  const fromConfigured = emailFromSenderField(process.env.CONTACT_FROM_EMAIL || "");
-  if (fromConfigured && validEmail(fromConfigured)) return [fromConfigured];
-
-  const user = process.env.SMTP_USER?.trim();
-  return user && validEmail(user) ? [user] : [];
-}
-
-async function sendOne(transporter, from, to, subject, html, { bccList = [] } = {}) {
-  const toLower = String(to).trim().toLowerCase();
-  const deduped = [...new Set(bccList.filter(validEmail).map((e) => e.trim()))].filter(
-    (e) => e.toLowerCase() !== toLower,
-  );
-
-  /** @type {import('nodemailer').SendMailOptions} */
-  const mail = {
+async function sendOne(transporter, from, to, subject, html) {
+  const mailOptions = {
     from,
     to,
     subject,
     text: `Outreach (plain text preview).\n\n${htmlToRoughText(html)}`,
     html,
   };
-  if (deduped.length) mail.bcc = deduped;
 
-  return transporter.sendMail(mail);
+  const raw = await buildRawMessage(mailOptions);
+  const fromEmail = emailFromSenderField(from);
+  if (!validEmail(fromEmail)) {
+    throw new Error("CONTACT_FROM_EMAIL or SMTP_USER must contain a valid From address.");
+  }
+
+  const info = await transporter.sendMail({
+    envelope: { from: fromEmail, to: [String(to).trim()] },
+    raw,
+  });
+
+  if (imapConfigured()) {
+    try {
+      await appendToSentFolder(raw);
+    } catch (err) {
+      console.warn(
+        "Sent via SMTP but IMAP Sent append failed:",
+        err instanceof Error ? err.message : err,
+      );
+    }
+  }
+
+  return info;
 }
 
 async function main() {
@@ -166,11 +166,10 @@ async function main() {
   const subjectBase =
     process.env.OUTREACH_SUBJECT?.trim() || "High-Performance Autonomous Aircraft (HPAA) Solutions";
 
-  const bccList = resolveBccRecipients();
-  if (bccList.length) {
-    console.log("Archive BCC (copy to your mailbox):", bccList.join(", "));
-  } else if (!bccAutoDisabled()) {
-    console.warn("No archive BCC: set CONTACT_FROM_EMAIL or SMTP_USER to a valid mailbox address.");
+  if (imapConfigured()) {
+    console.log("IMAP Sent archive enabled (", process.env.IMAP_HOST?.trim() || "derived from SMTP_HOST", ")");
+  } else if (!imapArchiveDisabled()) {
+    console.warn("IMAP Sent archive unavailable: set IMAP_HOST or SMTP_HOST plus mailbox credentials.");
   }
 
   if (!bulk) {
@@ -184,7 +183,7 @@ async function main() {
       (process.env.OUTREACH_TEST_NAME || "").trim() || String(row.name).trim();
     const html = fillTemplate(name);
     const subject = `[TEST] ${subjectBase}`;
-    const info = await sendOne(transporter, from, testTo, subject, html, { bccList });
+    const info = await sendOne(transporter, from, testTo, subject, html);
     console.log("Test sent to", testTo);
     console.log("Salutation name:", name, "(list row:", row.email, ")");
     console.log("MessageId:", info.messageId);
@@ -195,9 +194,7 @@ async function main() {
     const name = String(row.name).trim();
     const html = fillTemplate(name);
     const subject = subjectBase;
-    const info = await sendOne(transporter, from, row.email.trim(), subject, html, {
-      bccList,
-    });
+    const info = await sendOne(transporter, from, row.email.trim(), subject, html);
     console.log("Sent to", row.email, "—", name, info.messageId);
     await new Promise((r) => setTimeout(r, Number(process.env.OUTREACH_DELAY_MS) || 1500));
   }

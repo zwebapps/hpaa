@@ -2,7 +2,9 @@
 
 import { useEffect } from "react";
 
-const THEME = "royal";
+export type ThemeName = "royal";
+
+const THEME: ThemeName = "royal";
 
 /** Applies the single brand theme (CSS variables via `data-theme`). */
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
@@ -12,4 +14,13 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   return children;
+}
+
+/** Kept for compatibility — only the brand theme is available. */
+export function useTheme() {
+  return {
+    theme: THEME,
+    setTheme: () => {},
+    themes: [THEME] as ThemeName[],
+  };
 }

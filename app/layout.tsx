@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
 import { getSiteUrl } from "@/lib/siteUrl";
 
@@ -53,10 +54,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" translate="no" className="notranslate h-full" data-scroll-behavior="smooth">
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: faviconPinScript }} />
-      </head>
       <body className="min-h-full antialiased" translate="no">
+        <Script id="favicon-pin" strategy="beforeInteractive">
+          {faviconPinScript}
+        </Script>
         {children}
       </body>
     </html>

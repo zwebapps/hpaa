@@ -42,7 +42,7 @@ export function AircraftTabs() {
               </Link>
               <Link
                 className="btn-ghost"
-                href="/#contact"
+                href="/contact"
                 style={{ color: "var(--navy)", borderColor: "rgba(11,17,32,0.25)" }}
               >
                 Enquire

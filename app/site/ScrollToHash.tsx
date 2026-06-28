@@ -2,9 +2,9 @@
 
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
+import { SECTION_FOCUS_EVENT, scrollToHomeSection, stripHomeHashFromUrl } from "@/lib/scrollHomeSection";
 
-const SECTION_FOCUS_EVENT = "hpaa:section-focus";
-
+/** Legacy `/#section` bookmarks on `/`: scroll in-page, then drop the hash from the URL. */
 export function ScrollToHash() {
   const pathname = usePathname();
 
@@ -13,20 +13,21 @@ export function ScrollToHash() {
       const section = document.getElementById(id);
       if (!section) return;
       section.classList.remove("section-focus-active");
-      // Force reflow so repeated clicks retrigger CSS animation.
       void section.offsetWidth;
       section.classList.add("section-focus-active");
       window.setTimeout(() => section.classList.remove("section-focus-active"), 1300);
     };
 
-    const scrollToId = (withFocus: boolean) => {
+    const scrollFromHash = (withFocus: boolean) => {
       if (pathname !== "/") return;
       const raw = window.location.hash;
       if (!raw || raw === "#") return;
       const id = decodeURIComponent(raw.slice(1));
+
       requestAnimationFrame(() => {
-        document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+        scrollToHomeSection(id, { focus: false });
         if (withFocus) triggerFocusAnimation(id);
+        stripHomeHashFromUrl();
       });
     };
 
@@ -37,11 +38,11 @@ export function ScrollToHash() {
       triggerFocusAnimation(id);
     };
 
-    // Initial load: scroll only — focus classes before hydrate cause mismatches on /#home.
-    const timer = window.setTimeout(() => scrollToId(false), 0);
-    const onHashChange = () => scrollToId(true);
+    const timer = window.setTimeout(() => scrollFromHash(false), 0);
+    const onHashChange = () => scrollFromHash(true);
     window.addEventListener("hashchange", onHashChange);
     window.addEventListener(SECTION_FOCUS_EVENT, onSectionFocus as EventListener);
+
     return () => {
       window.clearTimeout(timer);
       window.removeEventListener("hashchange", onHashChange);

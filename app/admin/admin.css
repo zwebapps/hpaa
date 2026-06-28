@@ -1205,6 +1205,21 @@
   font-size: 1rem;
 }
 
+.admin-login-back {
+  margin: 1.25rem 0 0;
+  text-align: center;
+  font-size: 0.875rem;
+}
+
+.admin-login-back a {
+  color: #2f6fb0;
+  text-decoration: none;
+}
+
+.admin-login-back a:hover {
+  text-decoration: underline;
+}
+
 .admin-bar-chart {
   display: flex;
   align-items: flex-end;

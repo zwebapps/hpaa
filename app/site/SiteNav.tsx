@@ -1,16 +1,18 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 import { siteData } from "@/data/siteData";
-import { useTheme } from "@/app/theme/ThemeProvider";
-import { navRouteHref } from "@/lib/navRoutes";
+import { NavHashLink } from "./NavHashLink";
+import { SCROLL_SECTION_EVENT } from "./ScrollSpy";
 
 const links = siteData.navigation.links;
 
 export function SiteNav() {
   const pathname = usePathname();
-  const { theme, setTheme } = useTheme();
+  const [activeSection, setActiveSection] = useState("home");
 
   const onHome = pathname === "/";
   const onWhyUs = pathname === "/why-us";
@@ -20,7 +22,19 @@ export function SiteNav() {
   const onAircraftList = pathname === "/aircraft";
   const onAircraftDetail = pathname.startsWith("/aircraft/") && pathname !== "/aircraft";
 
-  const ctaHref = navRouteHref(siteData.navigation.cta.href);
+  useEffect(() => {
+    if (!onHome) return;
+
+    const onSection = (event: Event) => {
+      const id = (event as CustomEvent<{ id?: string }>).detail?.id;
+      if (id) setActiveSection(id);
+    };
+
+    window.addEventListener(SCROLL_SECTION_EVENT, onSection as EventListener);
+    return () => window.removeEventListener(SCROLL_SECTION_EVENT, onSection as EventListener);
+  }, [onHome]);
+
+  const ctaActive = onHome ? activeSection === "contact" : onContact;
 
   return (
     <nav id="main-nav">
@@ -28,74 +42,48 @@ export function SiteNav() {
         href="/"
         className="nav-brand"
         style={{ textDecoration: "none", color: "inherit" }}
+        aria-label="Robot Aircraft — Home"
       >
-        <div className="nav-brand-mark">
-          <span>K</span>
-        </div>
+        <Image
+          src="/robot-aircraft-icon.svg"
+          alt=""
+          width={64}
+          height={64}
+          className="nav-brand-icon"
+          priority
+          aria-hidden
+        />
         <div className="nav-brand-text">
-          <span className="nav-brand-name">{siteData.brand.shortName}</span>
-          <span className="nav-brand-sub">{siteData.brand.subName}</span>
+          <span className="nav-brand-name">Robot</span>
+          <span className="nav-brand-sub">Aircraft</span>
         </div>
+        <span className="sr-only">{siteData.brand.name}</span>
       </Link>
 
       <ul className="nav-links">
         {links.map((l) => {
-          const href = navRouteHref(l.href);
-          const active =
-            (l.hash === "#home" && onHome) ||
-            (l.hash === "#why-us" && onWhyUs) ||
-            (l.hash === "#applications" && onApplications) ||
-            (l.hash === "#partners" && onPartners) ||
-            (l.hash === "#aircraft" && (onAircraftList || onAircraftDetail));
+          const sectionId = l.hash.slice(1);
+          const active = onHome
+            ? activeSection === sectionId
+            : (l.hash === "#home" && onHome) ||
+              (l.hash === "#why-us" && onWhyUs) ||
+              (l.hash === "#applications" && onApplications) ||
+              (l.hash === "#partners" && onPartners) ||
+              (l.hash === "#aircraft" && (onAircraftList || onAircraftDetail));
 
           return (
             <li key={l.href}>
-              <Link href={href} className={active ? "active" : ""}>
+              <NavHashLink href={l.href} className={active ? "active" : ""}>
                 {l.label}
-              </Link>
+              </NavHashLink>
             </li>
           );
         })}
       </ul>
 
-      <Link href={ctaHref} className={`nav-cta ${onContact ? "active" : ""}`}>
+      <NavHashLink href={siteData.navigation.cta.href} className={`nav-cta ${ctaActive ? "active" : ""}`}>
         {siteData.navigation.cta.label}
-      </Link>
-
-      <div className="theme-switcher" aria-label="Theme switcher">
-        <button
-          type="button"
-          className={`theme-chip ${theme === "royal" ? "active" : ""}`}
-          onClick={() => setTheme("royal")}
-          aria-label="Use royal theme"
-        >
-          Royal
-        </button>
-        <button
-          type="button"
-          className={`theme-chip ${theme === "ocean" ? "active" : ""}`}
-          onClick={() => setTheme("ocean")}
-          aria-label="Use ocean theme"
-        >
-          Ocean
-        </button>
-        <button
-          type="button"
-          className={`theme-chip ${theme === "sunset" ? "active" : ""}`}
-          onClick={() => setTheme("sunset")}
-          aria-label="Use sunset theme"
-        >
-          Sunset
-        </button>
-        <button
-          type="button"
-          className={`theme-chip ${theme === "ember" ? "active" : ""}`}
-          onClick={() => setTheme("ember")}
-          aria-label="Use ember theme"
-        >
-          Ember
-        </button>
-      </div>
+      </NavHashLink>
     </nav>
   );
 }

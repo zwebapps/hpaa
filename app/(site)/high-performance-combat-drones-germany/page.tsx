@@ -197,8 +197,8 @@ export default function HighPerformanceCombatDronesGermanyPage() {
             that no purpose-built UCAV can match.
           </p>
           <div style={{ marginTop: "2rem", display: "flex", gap: "1rem", flexWrap: "wrap" }}>
-            <Link className="btn-gold" href="/#contact">Request a Proposal</Link>
-            <Link className="btn-ghost" href="/#aircraft">View Platforms</Link>
+            <Link className="btn-gold" href="/contact">Request a Proposal</Link>
+            <Link className="btn-ghost" href="/aircraft">View Platforms</Link>
           </div>
         </div>
       </div>
@@ -276,7 +276,7 @@ export default function HighPerformanceCombatDronesGermanyPage() {
           worldwide.
         </p>
         <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
-          <Link className="btn-gold" href="/#contact">Request a Proposal</Link>
+          <Link className="btn-gold" href="/contact">Request a Proposal</Link>
           <Link className="btn-ghost" href="/">Back to Home</Link>
         </div>
       </section>

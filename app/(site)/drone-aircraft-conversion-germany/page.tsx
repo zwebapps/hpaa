@@ -184,8 +184,8 @@ export default function DroneAircraftConversionGermanyPage() {
             for ferry flights, no diplomatic clearances needed.
           </p>
           <div style={{ marginTop: "2rem", display: "flex", gap: "1rem", flexWrap: "wrap" }}>
-            <Link className="btn-gold" href="/#contact">Request a Proposal</Link>
-            <Link className="btn-ghost" href="/#aircraft">View Platforms</Link>
+            <Link className="btn-gold" href="/contact">Request a Proposal</Link>
+            <Link className="btn-ghost" href="/aircraft">View Platforms</Link>
           </div>
         </div>
         <div className="callout-img" style={{ order: 2 }}>
@@ -298,7 +298,7 @@ export default function DroneAircraftConversionGermanyPage() {
           ministries, government agencies, and special operations commands worldwide.
         </p>
         <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
-          <Link className="btn-gold" href="/#contact">Request a Proposal</Link>
+          <Link className="btn-gold" href="/contact">Request a Proposal</Link>
           <Link className="btn-ghost" href="/">Back to Home</Link>
         </div>
       </section>

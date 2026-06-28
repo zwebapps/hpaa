@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 136" role="img" aria-label="Robot Aircraft">
+  <g transform="translate(0,8)">
+    <path d="M0 64 L56 0 L43 64 L56 128 Z" fill="#0a2540"/>
+    <path d="M16 64 L56 18 L47 64 L56 110 Z" fill="#2f6fb0"/>
+  </g>
+  <text x="84" y="60" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="800" fill="#0a2540" letter-spacing="1">ROBOT</text>
+  <text x="84" y="104" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="300" fill="#2f6fb0" letter-spacing="2">AIRCRAFT</text>
+</svg>

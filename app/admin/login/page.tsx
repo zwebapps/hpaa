@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { type FormEvent, useState } from "react";
 
@@ -52,6 +53,9 @@ export default function AdminLoginPage() {
           {busy ? "Signing in…" : "Sign in"}
         </button>
         {error ? <p className="admin-msg err" style={{ marginTop: "1rem" }}>{error}</p> : null}
+        <p className="admin-login-back">
+          <Link href="/">← Back to website</Link>
+        </p>
       </form>
     </div>
   );

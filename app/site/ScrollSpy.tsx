@@ -4,8 +4,9 @@ import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 
 const SECTION_IDS = ["home", "approach", "why-us", "aircraft", "applications", "partners", "contact"] as const;
-const HASH_SYNC_EVENT = "hpaa:hash-sync";
+export const SCROLL_SECTION_EVENT = "hpaa:scroll-section";
 
+/** Tracks visible homepage section without mutating the URL (hash changes retrigger favicon). */
 export function ScrollSpy() {
   const pathname = usePathname();
 
@@ -22,7 +23,7 @@ export function ScrollSpy() {
     let ticking = false;
 
     const syncByScrollPosition = () => {
-      const navOffset = 88; // nav height + buffer
+      const navOffset = 88;
       const markerY = window.scrollY + navOffset;
 
       let nextActive = sections[0]?.id ?? "";
@@ -34,8 +35,9 @@ export function ScrollSpy() {
       if (!nextActive || nextActive === activeId) return;
 
       activeId = nextActive;
-      window.history.replaceState(null, "", `/#${nextActive}`);
-      window.dispatchEvent(new Event(HASH_SYNC_EVENT));
+      window.dispatchEvent(
+        new CustomEvent(SCROLL_SECTION_EVENT, { detail: { id: nextActive } }),
+      );
     };
 
     const onScrollOrResize = () => {

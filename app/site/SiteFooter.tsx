@@ -1,6 +1,9 @@
+"use client";
+
+import Image from "next/image";
 import Link from "next/link";
 import { siteData } from "@/data/siteData";
-import { navRouteHref } from "@/lib/navRoutes";
+import { NavHashLink } from "./NavHashLink";
 
 const SEO_PAGES = [
   { href: "/easa-part-145-mro-germany", label: "EASA Part-145 MRO Germany" },
@@ -19,18 +22,24 @@ export function SiteFooter() {
   return (
     <footer>
       <div className="footer-brand">
-        {siteData.brand.name}
-        <span>{siteData.brand.tagline}</span>
+        <Image
+          src="/robot-aircraft-light.svg"
+          alt="Robot Aircraft"
+          width={300}
+          height={136}
+          className="footer-brand-logo"
+        />
+        <span className="footer-brand-tagline">{siteData.brand.tagline}</span>
       </div>
       <div className="footer-links">
         {siteData.navigation.links
           .filter((link) => ["Home", "Aircraft", "Partners"].includes(link.label))
           .map((link) => (
-            <Link key={link.href} href={navRouteHref(link.href)}>
+            <NavHashLink key={link.href} href={link.href}>
               {link.label}
-            </Link>
+            </NavHashLink>
           ))}
-        <Link href={navRouteHref(siteData.navigation.cta.href)}>Contact</Link>
+        <NavHashLink href={siteData.navigation.cta.href}>Contact</NavHashLink>
       </div>
       <nav aria-label="HPAA Germany pages" className="sr-only">
         {SEO_PAGES.map((p) => (

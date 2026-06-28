@@ -86,7 +86,7 @@ export function AircraftDetailsClient({ slug }: { slug: string }) {
             ) : null}
 
             <div style={{ display: "flex", gap: "1rem", marginTop: "2rem", flexWrap: "wrap" }}>
-              <a className="btn-gold" href="/#contact">
+              <a className="btn-gold" href="/contact">
                 Enquire About This Aircraft
               </a>
               <a

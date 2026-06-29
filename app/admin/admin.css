@@ -177,7 +177,7 @@
 
 .admin-nav button.active {
   background: var(--gold);
-  color: var(--navy);
+  color: var(--on-accent, var(--navy));
 }
 
 .admin-nav-short {
@@ -358,7 +358,7 @@
 .admin-btn-gold,
 .admin-shell .btn-gold {
   background: var(--gold);
-  color: var(--navy);
+  color: var(--on-accent, var(--navy));
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
@@ -1548,7 +1548,7 @@
 
 .admin-visits-toggle button.active {
   background: var(--gold);
-  color: var(--navy);
+  color: var(--on-accent, var(--navy));
 }
 
 .admin-visits-chart-area {

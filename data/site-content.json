@@ -32,7 +32,7 @@
         "id": "capability",
         "imageUrl": "/theme/hpaa3.png",
         "badgeText": "Multi-mission · Proven airframes",
-        "title": { "pre": "Capability First", "emphasis": "No Compromises" },
+        "title": { "pre": "Capability First", "emphasis": "Mission Ready" },
         "description": "From ISR and surveillance to cargo delivery and countering hostile high performance autonomous aircraft—configure the airframe to match mission needs, not the other way around.",
         "primaryCta": { "href": "/#applications", "label": "View Applications" },
         "secondaryCta": { "href": "/#aircraft", "label": "See Platforms" }

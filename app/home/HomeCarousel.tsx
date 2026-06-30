@@ -70,7 +70,7 @@ export function HomeCarousel() {
               <span className="sr-only">
                 HPAA Germany — Robot Aircraft, Robotic Aircraft, Unmanned Aircraft, Autonomous Aircraft, Drone Aircraft Conversion, High-Performance Combat Drones &amp; Autonomous Platform Aircraft Germany. KUM Services GmbH.{" "}
               </span>
-              {slide.title.pre}
+              <span className="hero-title-pre">{slide.title.pre}</span>
               <br />
               <em>{slide.title.emphasis}</em>
             </h1>

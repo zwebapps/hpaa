@@ -610,6 +610,10 @@ nav {
   opacity: 0; animation: slideUp 0.8s 0.6s ease forwards;
 }
 .hero-title em { font-style: italic; color: var(--gold-light); }
+.hero-carousel .hero-title-pre,
+.hero-carousel .hero-title em {
+  white-space: nowrap;
+}
 .hero-divider {
   width: 60px; height: 1px; background: var(--gold);
   margin: 1.8rem 0;
@@ -684,8 +688,23 @@ nav {
 .hero-carousel-controls {
   margin-top: 2rem;
   display: flex;
+  gap: 0.6rem;
   align-items: center;
-  gap: 1rem;
+}
+/* Keep slide copy from jumping when badge/title/description length changes */
+.hero-carousel .hero-badge {
+  min-height: 2.75rem;
+  align-items: center;
+}
+.hero-carousel .hero-title {
+  min-height: calc(2 * 1.05 * clamp(3.2rem, 7vw, 6.5rem));
+}
+.hero-carousel .hero-sub {
+  min-height: 8.75rem;
+}
+@media (max-width: 768px) {
+  .hero-carousel .hero-badge { min-height: 3.5rem; }
+  .hero-carousel .hero-sub { min-height: 11.5rem; }
 }
 .hero-carousel-arrow {
   width: 38px; height: 38px;

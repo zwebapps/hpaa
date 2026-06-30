@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { absoluteUrl } from "@/lib/absoluteUrl";
+import { HPAA_GERMANY_PATH, HPAA_VIDEO_PATH } from "@/lib/aiDiscovery";
 import { getSiteUrl } from "@/lib/siteUrl";
 
-const CANONICAL = "/hpaa-germany";
-const VIDEO_PATH = "/high_performance_autonomous_aircraft.mp4";
+const CANONICAL = HPAA_GERMANY_PATH;
+const VIDEO_PATH = HPAA_VIDEO_PATH;
 const VIDEO_POSTER = "/theme/hpaa-video-poster.jpg";
 const OG_IMAGE = VIDEO_POSTER;
 
@@ -22,16 +23,32 @@ export const metadata: Metadata = {
     "supervised autonomy",
     "HPAA Germany",
     "KUM Services GmbH",
+    "high performance autonomous aircraft Germany",
+    "robot aircraft Germany",
   ],
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+      "max-video-preview": -1,
+    },
+  },
   alternates: {
     canonical: absoluteUrl(CANONICAL),
     languages: {
       en: absoluteUrl(CANONICAL),
       "en-x-default": absoluteUrl(CANONICAL),
     },
+    types: {
+      "text/plain": absoluteUrl("/llms.txt"),
+    },
   },
   openGraph: {
-    type: "website",
+    type: "video.other",
     url: absoluteUrl(CANONICAL),
     title: "High-Performance Autonomous Aircraft | Robot Aircraft",
     description:
@@ -42,6 +59,14 @@ export const metadata: Metadata = {
         width: 1200,
         height: 630,
         alt: "High-performance autonomous aircraft on the runway",
+      },
+    ],
+    videos: [
+      {
+        url: absoluteUrl(VIDEO_PATH),
+        width: 832,
+        height: 464,
+        type: "video/mp4",
       },
     ],
   },
@@ -111,6 +136,12 @@ export default function HpaaGermanyPage() {
         about: { "@id": `${base}/#hpaa` },
         publisher: { "@id": `${base}/#organization` },
         video: { "@id": videoSchemaId },
+        primaryImageOfPage: absoluteUrl(VIDEO_POSTER),
+        mainEntity: { "@id": videoSchemaId },
+        speakable: {
+          "@type": "SpeakableSpecification",
+          cssSelector: [".page-header-content--video", "#faq"],
+        },
         keywords:
           "high-performance autonomous aircraft, autonomous cargo aircraft, pilotless aircraft, unmanned aircraft system, supervised autonomy, HPAA Germany, KUM Services GmbH",
       },

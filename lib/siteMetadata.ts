@@ -236,6 +236,9 @@ export function buildRootMetadata(): Metadata {
         en: absoluteUrl("/"),
         "en-x-default": absoluteUrl("/"),
       },
+      types: {
+        "text/plain": absoluteUrl("/llms.txt"),
+      },
     },
     robots: {
       index: true,

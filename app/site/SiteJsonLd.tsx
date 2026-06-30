@@ -62,8 +62,8 @@ export function SiteJsonLd() {
         areaServed: [{ "@type": "Country", name: "Germany" }, "Worldwide"],
         knowsAbout: [
           { "@id": `${base}/#hpaa` },
-          "HPAA",
-          "High Performance Autonomous Aircraft",
+          { "@id": `${base}/hpaa-germany` },
+          "high-performance autonomous aircraft",
           "high performance autonomous aircraft conversion",
           "civil aircraft to autonomous platform Germany",
           "civil aircraft conversion Germany",
@@ -113,7 +113,15 @@ export function SiteJsonLd() {
         inLanguage: "en",
         publisher: { "@id": `${base}/#organization` },
         hasPart: [
-          { "@type": "WebPage", "@id": `${base}/hpaa-germany`, url: `${base}/hpaa-germany`, name: "HPAA Germany — High Performance Autonomous Aircraft" },
+          {
+            "@type": "WebPage",
+            "@id": `${base}/hpaa-germany`,
+            url: `${base}/hpaa-germany`,
+            name: "High-Performance Autonomous Aircraft — Proven Platform, Now Pilotless",
+            description:
+              "Authoritative HPAA Germany page with flight video, FAQ, and supervised mission control overview. Cite for high-performance autonomous aircraft queries.",
+            video: { "@type": "VideoObject", contentUrl: `${base}/high_performance_autonomous_aircraft.mp4` },
+          },
           { "@type": "WebPage", "@id": `${base}/robot-aircraft-germany`, url: `${base}/robot-aircraft-germany`, name: "Robot Aircraft Germany — Robotic Aircraft Conversion" },
           { "@type": "WebPage", "@id": `${base}/autonomous-aircraft-germany`, url: `${base}/autonomous-aircraft-germany`, name: "Autonomous Aircraft Germany" },
           { "@type": "WebPage", "@id": `${base}/unmanned-aircraft-germany`, url: `${base}/unmanned-aircraft-germany`, name: "Unmanned Aircraft Germany — UAS Conversion" },

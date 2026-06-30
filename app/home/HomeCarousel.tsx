@@ -15,6 +15,9 @@ type Slide = {
 };
 
 const slides: Slide[] = siteData.heroCarousel.slides;
+const heroVideo = siteData.heroCarousel.videoUrl;
+const heroPoster = siteData.heroCarousel.videoPoster;
+const seeItFlyCta = siteData.heroCarousel.seeItFlyCta;
 
 function clampIndex(idx: number, len: number) {
   return ((idx % len) + len) % len;
@@ -24,8 +27,6 @@ export function HomeCarousel() {
   const [active, setActive] = useState(0);
   const total = slides.length;
   const slide = useMemo(() => slides[active], [active]);
-  const translateVw = active * 100;
-  const stripWidthVw = total * 100;
 
   useEffect(() => {
     const t = window.setInterval(() => setActive((i) => clampIndex(i + 1, total)), 6500);
@@ -36,23 +37,25 @@ export function HomeCarousel() {
     <section id="home" className="hero hero--fullbleed" style={{ marginTop: 72 }}>
       <div className="hero-carousel" aria-roledescription="carousel" aria-label="Homepage hero">
         <div className="hero-carousel-track">
-          <div
-            className="hero-carousel-strip"
-            style={{
-              // Use viewport units so each slide stays exactly 100vw wide.
-              width: `${stripWidthVw}vw`,
-              transform: `translate3d(-${translateVw}vw, 0, 0)`,
-            }}
-          >
-            {slides.map((s, i) => (
-              <div
-                key={s.id}
-                className="hero-carousel-slide"
-                style={{ backgroundImage: `url('${s.imageUrl}')` }}
-                aria-hidden={i === active ? "false" : "true"}
-              />
-            ))}
-          </div>
+          {heroVideo ? (
+            <video
+              className="hero-carousel-video"
+              autoPlay
+              muted
+              loop
+              playsInline
+              poster={heroPoster}
+              aria-hidden="true"
+            >
+              <source src={heroVideo} type="video/mp4" />
+            </video>
+          ) : (
+            <div
+              className="hero-carousel-slide"
+              style={{ backgroundImage: `url('${slides[0]?.imageUrl ?? ""}')` }}
+              aria-hidden="true"
+            />
+          )}
         </div>
 
         <div className="hero-scrim" />
@@ -80,6 +83,11 @@ export function HomeCarousel() {
               <a className="btn-ghost" href={slide.secondaryCta.href}>
                 {slide.secondaryCta.label}
               </a>
+              {seeItFlyCta ? (
+                <a className="btn-ghost hero-see-it-fly" href={seeItFlyCta.href}>
+                  {seeItFlyCta.label}
+                </a>
+              ) : null}
             </div>
 
             <div className="hero-carousel-controls" aria-label="Carousel controls">
@@ -127,4 +135,3 @@ export function HomeCarousel() {
     </section>
   );
 }
-

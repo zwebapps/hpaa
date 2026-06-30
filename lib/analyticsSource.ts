@@ -1,7 +1,43 @@
+/** Hostnames used during local development — excluded from referrer analytics. */
+export function isLocalDevelopmentHost(host: string): boolean {
+  const h = host.trim().toLowerCase().replace(/^www\./, "");
+  return h === "localhost" || h === "127.0.0.1" || h === "[::1]";
+}
+
+export function isLocalDevelopmentReferrer(referrer?: string | null): boolean {
+  const raw = referrer?.trim();
+  if (!raw) return false;
+
+  const bare = raw.toLowerCase().replace(/^www\./, "");
+  if (
+    bare === "localhost" ||
+    bare.startsWith("localhost/") ||
+    bare.startsWith("localhost:") ||
+    bare === "127.0.0.1" ||
+    bare.startsWith("127.0.0.1/") ||
+    bare.startsWith("127.0.0.1:")
+  ) {
+    return true;
+  }
+
+  try {
+    return isLocalDevelopmentHost(new URL(raw).hostname);
+  } catch {
+    return /^https?:\/\/(localhost|127\.0\.0\.1|\[::1\])([:/]|$)/i.test(raw);
+  }
+}
+
+/** Returns null for empty or local-development referrers before DB storage. */
+export function normalizeReferrerForStorage(referrer?: string | null): string | null {
+  if (!referrer?.trim()) return null;
+  if (isLocalDevelopmentReferrer(referrer)) return null;
+  return referrer.trim().slice(0, 500);
+}
+
 /** Classify document.referrer into a stable traffic source label. */
 export function trafficSourceFromReferrer(referrer?: string | null): string {
   const raw = referrer?.trim();
-  if (!raw) return "Direct / none";
+  if (!raw || isLocalDevelopmentReferrer(raw)) return "Direct / none";
 
   try {
     const host = new URL(raw).hostname.replace(/^www\./, "").toLowerCase();
@@ -26,7 +62,7 @@ export function trafficSourceFromReferrer(referrer?: string | null): string {
 
 export function formatReferrerLabel(referrer?: string | null): string {
   const raw = referrer?.trim();
-  if (!raw) return "(direct)";
+  if (!raw || isLocalDevelopmentReferrer(raw)) return "(direct)";
   try {
     const u = new URL(raw);
     return u.hostname + (u.pathname !== "/" ? u.pathname : "");

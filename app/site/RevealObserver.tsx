@@ -1,21 +1,27 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 
+/** Wait for route segment hydration before mutating reveal classNames. */
+const REVEAL_DELAY_MS = 150;
+
 export function RevealObserver() {
+  const pathname = usePathname();
+
   useEffect(() => {
     let obs: IntersectionObserver | null = null;
     let cancelled = false;
+    let onScroll: (() => void) | null = null;
 
     const observe = () => {
-      const observer = obs;
-      if (!observer) return;
-      document.querySelectorAll(".reveal:not(.visible)").forEach((el) => observer.observe(el));
+      if (!obs) return;
+      document.querySelectorAll(".reveal:not(.visible)").forEach((el) => obs!.observe(el));
     };
 
-    // Defer until after hydration — classList changes before hydrate cause mismatches.
     const timer = window.setTimeout(() => {
       if (cancelled) return;
+
       obs = new IntersectionObserver(
         (entries) => {
           entries.forEach((e) => {
@@ -24,18 +30,19 @@ export function RevealObserver() {
         },
         { threshold: 0.08 },
       );
+
+      onScroll = () => observe();
       observe();
-      window.addEventListener("scroll", observe, { passive: true });
-    }, 0);
+      window.addEventListener("scroll", onScroll, { passive: true });
+    }, REVEAL_DELAY_MS);
 
     return () => {
       cancelled = true;
       window.clearTimeout(timer);
-      window.removeEventListener("scroll", observe);
+      if (onScroll) window.removeEventListener("scroll", onScroll);
       obs?.disconnect();
     };
-  }, []);
+  }, [pathname]);
 
   return null;
 }
-

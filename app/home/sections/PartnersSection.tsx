@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { siteData } from "@/data/siteData";
 
 export function PartnersSection() {
@@ -23,6 +24,11 @@ export function PartnersSection() {
       <section className="section" style={{ paddingBottom: "2rem" }}>
         <p className="section-lead" style={{ maxWidth: "100%" }}>
           {section.lead}
+        </p>
+        <p className="section-lead" style={{ maxWidth: "100%", marginTop: "1rem" }}>
+          See the{" "}
+          <Link href="/hpaa-germany">high-performance autonomous aircraft</Link>{" "}
+          demonstration — proven airframe, autonomy integration, and supervised mission control.
         </p>
       </section>
       <div className="partner-strip" style={{ marginBottom: "5rem" }}>

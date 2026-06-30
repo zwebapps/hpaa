@@ -5,17 +5,22 @@ import { absoluteUrl } from "@/lib/absoluteUrl";
 import { getSiteUrl } from "@/lib/siteUrl";
 
 const CANONICAL = "/hpaa-germany";
-const OG_IMAGE = "/theme/hpaa9.jpeg";
+const VIDEO_PATH = "/high_performance_autonomous_aircraft.mp4";
+const VIDEO_POSTER = "/theme/hpaa-video-poster.jpg";
+const OG_IMAGE = VIDEO_POSTER;
 
 export const metadata: Metadata = {
-  title: "HPAA Germany — High Performance Autonomous Aircraft | KUM Services GmbH",
+  title: "High-Performance Autonomous Aircraft | Robot Aircraft",
   description:
-    "HPAA Germany: KUM Services GmbH converts proven civil turboprop and turbofan aircraft into High Performance Autonomous Aircraft (HPAA) for ISR, cargo, strike and special missions. Faster and lower cost than purpose-built UAV programmes.",
+    "A proven full-size aircraft platform, now pilotless. See our high-performance autonomous aircraft for cargo, surveillance and payload missions under supervised mission control.",
   keywords: [
+    "high-performance autonomous aircraft",
+    "autonomous cargo aircraft",
+    "pilotless aircraft",
+    "unmanned aircraft system",
+    "UAS",
+    "supervised autonomy",
     "HPAA Germany",
-    "High Performance Autonomous Aircraft Germany",
-    "civil aircraft to autonomous platform Germany",
-    "autonomous aircraft conversion Germany",
     "KUM Services GmbH",
   ],
   alternates: {
@@ -28,55 +33,123 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: absoluteUrl(CANONICAL),
-    title: "HPAA Germany — High Performance Autonomous Aircraft | KUM Services GmbH",
+    title: "High-Performance Autonomous Aircraft | Robot Aircraft",
     description:
-      "KUM Services GmbH — Germany's HPAA specialist. Civil aircraft converted to autonomous platforms for ISR, cargo, strike and special missions.",
-    images: [{ url: absoluteUrl(OG_IMAGE), width: 1200, height: 630, alt: "HPAA Germany — KUM Services GmbH" }],
+      "A proven full-size aircraft platform, now pilotless. High-performance autonomous aircraft for cargo, surveillance and payload missions under supervised mission control.",
+    images: [
+      {
+        url: absoluteUrl(OG_IMAGE),
+        width: 1200,
+        height: 630,
+        alt: "High-performance autonomous aircraft on the runway",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "HPAA Germany | KUM Services GmbH",
-    description: "High Performance Autonomous Aircraft conversion (HPAA) in Germany.",
+    title: "High-Performance Autonomous Aircraft | Robot Aircraft",
+    description:
+      "Proven civilian platform, now pilotless — supervised mission control for cargo, surveillance and payload missions.",
     images: [absoluteUrl(OG_IMAGE)],
   },
 };
 
+const VIDEO_FAQ = [
+  {
+    q: "What is a high-performance autonomous aircraft?",
+    a: "It is a full-size, capable aircraft that flies without an onboard pilot, built on a proven airframe so it can carry substantial payloads over long distances — distinct from small consumer or commercial drones.",
+  },
+  {
+    q: "Is the aircraft fully autonomous or remotely piloted?",
+    a: "It flies autonomously but operates under supervised mission control. Ground-based operators monitor every system in real time and retain authority over the mission.",
+  },
+  {
+    q: "What payloads can it carry?",
+    a: "Because it is based on a proven civilian platform rather than a small drone airframe, it supports meaningful cargo, sensor, and equipment payloads. Specific capacity depends on configuration — contact us for figures.",
+  },
+  {
+    q: "What can it be used for?",
+    a: "Unmanned cargo and logistics, long-endurance surveillance and monitoring, and heavy or specialised payload missions.",
+  },
+] as const;
+
+const MISSION_USES = [
+  {
+    icon: "📦",
+    title: "Unmanned cargo and logistics",
+    text: "Moving payloads between sites, to remote or hard-to-reach locations, or along routes where a crewed flight is costly or risky — without putting a pilot in the seat.",
+  },
+  {
+    icon: "👁",
+    title: "Long-endurance surveillance",
+    text: "Wide-area patrol, infrastructure inspection, border and maritime monitoring, and persistent observation where time on station is the whole point.",
+  },
+  {
+    icon: "⚙",
+    title: "Heavy-payload sensor missions",
+    text: "When the payload is large, power-hungry, or specialised, you need an aircraft with real lift and real electrical capacity — not a consumer airframe stretched past its limits.",
+  },
+] as const;
+
 export default function HpaaGermanyPage() {
   const base = getSiteUrl().replace(/\/$/, "");
+  const pageUrl = `${base}${CANONICAL}`;
+  const videoSchemaId = `${pageUrl}#video`;
 
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "WebPage",
-        "@id": `${base}${CANONICAL}`,
-        url: `${base}${CANONICAL}`,
-        name: "HPAA Germany — High Performance Autonomous Aircraft",
+        "@id": pageUrl,
+        url: pageUrl,
+        name: "High-Performance Autonomous Aircraft — Proven Platform, Now Pilotless",
         description:
-          "KUM Services GmbH converts proven civil aircraft into HPAA autonomous platforms for ISR, cargo, strike and special missions.",
+          "A proven full-size civilian aircraft platform converted into a high-performance autonomous aircraft: payload-capable, long-endurance, pilotless, and operated under supervised mission control.",
         inLanguage: "en",
         isPartOf: { "@id": `${base}/#website` },
         about: { "@id": `${base}/#hpaa` },
         publisher: { "@id": `${base}/#organization` },
-        keywords: "HPAA Germany, High Performance Autonomous Aircraft, civil aircraft to autonomous platform Germany, autonomous aircraft conversion Germany, KUM Services GmbH",
+        video: { "@id": videoSchemaId },
+        keywords:
+          "high-performance autonomous aircraft, autonomous cargo aircraft, pilotless aircraft, unmanned aircraft system, supervised autonomy, HPAA Germany, KUM Services GmbH",
+      },
+      {
+        "@type": "VideoObject",
+        "@id": videoSchemaId,
+        name: "High-Performance Autonomous Aircraft — Proven Platform, Now Pilotless",
+        description:
+          "A proven full-size civilian aircraft platform converted into a high-performance autonomous aircraft: payload-capable, long-endurance, pilotless, and operated under supervised mission control.",
+        thumbnailUrl: absoluteUrl(VIDEO_POSTER),
+        uploadDate: "2026-06-30",
+        duration: "PT36S",
+        contentUrl: absoluteUrl(VIDEO_PATH),
+        embedUrl: pageUrl,
+        inLanguage: "en",
+        publisher: { "@id": `${base}/#organization` },
       },
       {
         "@type": "BreadcrumbList",
         itemListElement: [
           { "@type": "ListItem", position: 1, name: "Home", item: `${base}/` },
-          { "@type": "ListItem", position: 2, name: "HPAA Germany", item: `${base}${CANONICAL}` },
+          { "@type": "ListItem", position: 2, name: "HPAA Germany", item: pageUrl },
         ],
       },
       {
         "@type": "FAQPage",
-        "@id": `${base}${CANONICAL}#faq`,
+        "@id": `${pageUrl}#faq`,
         mainEntity: [
+          ...VIDEO_FAQ.map((item) => ({
+            "@type": "Question",
+            name: item.q,
+            acceptedAnswer: { "@type": "Answer", text: item.a },
+          })),
           {
             "@type": "Question",
             name: "What is HPAA Germany?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "HPAA (High Performance Autonomous Aircraft) Germany refers to the civil aircraft to autonomous platform conversion service provided by KUM Services GmbH (Germany). KUM Services converts proven civil turboprop and turbofan aircraft — such as the Cessna 208, Beechcraft King Air 350, Pilatus PC-12, and C-130J — into fully autonomous or optionally piloted platforms for ISR, cargo, strike, and special missions.",
+              text: "HPAA (High Performance Autonomous Aircraft) Germany refers to the civil aircraft to autonomous platform conversion service provided by KUM Services GmbH (Germany). KUM Services converts proven civil turboprop and turbofan aircraft into fully autonomous or optionally piloted platforms for ISR, cargo, strike, and special missions.",
             },
           },
           {
@@ -84,15 +157,7 @@ export default function HpaaGermanyPage() {
             name: "How long does HPAA conversion take in Germany?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "HPAA conversion by KUM Services GmbH is completed on-site in a very short period — significantly faster than any purpose-built UAV programme. Civil registration of the base aircraft allows ferry flights to the customer's location without special permits, further reducing deployment time.",
-            },
-          },
-          {
-            "@type": "Question",
-            name: "What is the cost of HPAA conversion compared to a purpose-built UAV?",
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: "HPAA conversion by KUM Services GmbH is significantly lower cost than purpose-built unmanned aircraft programmes. Base airframes are sourced on the open civil aviation market at known prices. There are no non-recurring engineering costs. KUM Services provides fixed-price proposals covering aircraft acquisition, conversion, and mission system integration.",
+              text: "HPAA conversion by KUM Services GmbH is completed on-site in a very short period — significantly faster than any purpose-built UAV programme. Civil registration of the base aircraft allows ferry flights to the customer's location without special permits.",
             },
           },
           {
@@ -100,15 +165,7 @@ export default function HpaaGermanyPage() {
             name: "Is HPAA conversion EASA certified?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Yes. All HPAA conversion work by KUM Services GmbH is conducted with Part One-Forty Five GmbH, an EASA Part-145 certified maintenance organisation based at Neuhausen ob Eck Airfield, Germany. The autonomous flight control systems are developed with the Institute of Flight Mechanics and Flight Control (iFR) at the University of Stuttgart.",
-            },
-          },
-          {
-            "@type": "Question",
-            name: "What aircraft types can be converted to HPAA autonomous platforms?",
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: "KUM Services GmbH converts a range of proven civil airframes to HPAA autonomous platforms, including: Cessna 208 Caravan, Beechcraft King Air 350, Pilatus PC-12, Cessna Citation 525B, and C-130J Super Hercules. Each airframe is selected based on mission requirements, payload capacity, range, and endurance.",
+              text: "Yes. All HPAA conversion work by KUM Services GmbH is conducted with Part One-Forty Five GmbH, an EASA Part-145 certified maintenance organisation based at Neuhausen ob Eck Airfield, Germany.",
             },
           },
           {
@@ -116,7 +173,7 @@ export default function HpaaGermanyPage() {
             name: "Can HPAA platforms retain civil registration?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Yes. HPAA platforms converted by KUM Services GmbH retain their civil registration and external appearance throughout the conversion. This means no special ferry permits are required for flights to the operating location, and the platform is not visually identifiable as an autonomous or military system — a significant operational and diplomatic advantage.",
+              text: "Yes. HPAA platforms retain civil registration and external appearance throughout conversion — no special ferry permits required, and the platform is not visually identifiable as an autonomous system.",
             },
           },
         ],
@@ -125,93 +182,303 @@ export default function HpaaGermanyPage() {
   };
 
   return (
-    <>
+    <div className="hpaa-page">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      {/* Hero */}
       <div className="page-header" style={{ minHeight: 420 }}>
         <div
           className="page-header-bg"
-          style={{ backgroundImage: "url('/theme/hpaa9.jpeg')" }}
+          style={{ backgroundImage: `url('${VIDEO_POSTER}')` }}
           aria-hidden="true"
         />
         <div className="page-header-scrim" />
         <div className="page-header-content" style={{ padding: "6rem 2rem 4rem" }}>
           <p className="section-eyebrow">KUM Services GmbH · Germany</p>
-          <h1 className="section-heading" style={{ maxWidth: 720 }}>
-            HPAA Germany —{" "}
-            <em>High Performance Autonomous Aircraft</em>
+          <h1 className="section-heading" style={{ maxWidth: 780 }}>
+            <span style={{ whiteSpace: "nowrap" }}>High-Performance Autonomous Aircraft</span>
+            <br />
+            <em style={{ whiteSpace: "nowrap" }}>A Proven Platform, Now Pilotless</em>
           </h1>
         </div>
       </div>
 
-      {/* Introduction */}
-      <section className="section">
-        <p className="section-eyebrow">What Is HPAA?</p>
-        <h2 className="section-heading">
-          Civil Aircraft Converted to <em>Autonomous Platforms</em>
-        </h2>
-        <p className="section-lead">
-          HPAA — High Performance Autonomous Aircraft — is a proven civil-registered turboprop or
-          turbofan aircraft converted into a fully autonomous or optionally piloted platform
-          operating at tactical altitudes for military, government, and special-mission operations.
-          KUM Services GmbH is Germany&apos;s dedicated HPAA
-          conversion specialist, delivering operational autonomous aircraft platforms faster and at
-          lower cost than any purpose-built UAV programme.
-        </p>
+      <section className="hpaa-video-stage" aria-label="HPAA flight video">
+        <div className="hpaa-featured-inner">
+          <div className="hpaa-video-wrap">
+            <video
+              controls
+              preload="metadata"
+              playsInline
+              poster={VIDEO_POSTER}
+              title="Proven civilian aircraft platform → autonomy integration → pilotless flight → supervised mission control"
+              className="hpaa-video-player"
+            >
+              <source src={VIDEO_PATH} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            <div className="hpaa-video-meta">
+              <p className="hpaa-video-caption">
+                Proven civilian platform → autonomy integration → pilotless flight → supervised
+                mission control
+              </p>
+              <p className="hpaa-video-duration">0:36</p>
+            </div>
+          </div>
+        </div>
       </section>
 
-      {/* Image + definition strip */}
-      <div className="callout-strip reveal">
-        <div className="callout-img">
-          <Image
-            fill
-            src="/theme/beech-king-air-350-5.png"
-            alt="Beech King Air 350 — HPAA conversion platform, KUM Services GmbH Germany"
-            style={{ objectFit: "cover" }}
-            sizes="(max-width: 768px) 90vw, 50vw"
-          />
-          <div className="callout-img-overlay" />
-        </div>
-        <div className="callout-text">
-          <p className="section-eyebrow">Germany&apos;s HPAA Specialist</p>
-          <h2 className="callout-heading">
-            KUM Services GmbH
-            <br />
-            <em>Germany</em>
-          </h2>
-          <p className="callout-body">
-            HPAA conversion programmes by KUM Services GmbH utilise proven civil turboprop and
-            turbofan airframes — Cessna 208, Beechcraft King Air 350, Pilatus PC-12, Cessna
-            Citation 525B, and C-130J — sourced on the open civil aviation market. Conversion is
-            completed on-site in a very short period using EASA Part-145 certified maintenance
-            procedures. The resulting HPAA platform retains civil registration, requires no special
-            ferry permits, and is not visually identifiable as an autonomous system.
-          </p>
-          <div style={{ marginTop: "2rem", display: "flex", gap: "1rem", flexWrap: "wrap" }}>
-            <Link className="btn-gold" href="/contact">Request a Proposal</Link>
-            <Link className="btn-ghost" href="/aircraft">View Platforms</Link>
+      <div className="hpaa-landscape-block">
+        <div className="callout-strip reveal">
+          <div className="callout-img">
+            <Image
+              fill
+              src="/theme/hpaa8.jpg"
+              alt="High-performance autonomous aircraft in flight — HPAA demonstration"
+              style={{ objectFit: "cover" }}
+              sizes="(max-width: 768px) 90vw, 50vw"
+            />
+            <div className="callout-img-overlay" />
+          </div>
+          <div className="callout-text">
+            <p className="section-eyebrow">Flight demonstration</p>
+            <h2 className="callout-heading">
+              A proven platform, <em>now pilotless</em>
+            </h2>
+            <p className="callout-body">
+              Most unmanned aircraft start small. We started with a proven, full-size civilian
+              aircraft — and made it fly itself. The result is a high-performance autonomous
+              aircraft that carries real payloads over real distances, without a pilot on board,
+              under continuous supervised mission control from the ground.
+            </p>
+            <p className="callout-body" style={{ marginTop: "1rem" }}>
+              This is what separates a high-performance autonomous aircraft from a hobby-class
+              drone: certified-grade airframe heritage, true payload capacity, long endurance, and
+              an autonomy stack mature enough to be trusted with demanding missions.
+            </p>
           </div>
         </div>
       </div>
 
-      {/* Advantages grid */}
+      <div className="hpaa-landscape-block">
+        <div className="callout-strip callout-strip--text-start reveal">
+          <div className="callout-text">
+            <p className="section-eyebrow">Proven platform</p>
+            <h2 className="callout-heading">
+              Why build autonomy on a <em>proven aircraft</em>
+            </h2>
+            <p className="callout-body">
+              The fastest way to an unreliable unmanned aircraft is to design a brand-new airframe
+              and bolt autonomy onto it. We took the opposite route — inheriting decades of
+              aerodynamic, structural, and systems maturity from an established civilian platform.
+              That foundation means meaningful payloads, endurance and range beyond multirotor
+              drones, and predictable behaviour before the pilot is removed.
+            </p>
+          </div>
+          <div className="callout-img">
+            <Image
+              fill
+              src="/theme/hpaa6.jpg"
+              alt="Proven civilian aircraft platform — HPAA conversion base airframe"
+              style={{ objectFit: "cover" }}
+              sizes="(max-width: 768px) 90vw, 50vw"
+            />
+            <div className="callout-img-overlay" />
+          </div>
+        </div>
+      </div>
+
+      <div className="hpaa-landscape-block">
+        <div className="callout-strip reveal">
+          <div className="callout-img">
+            <Image
+              fill
+              src="/theme/hpaa11.jpeg"
+              alt="Supervised mission control for high-performance autonomous aircraft"
+              style={{ objectFit: "cover" }}
+              sizes="(max-width: 768px) 90vw, 50vw"
+            />
+            <div className="callout-img-overlay" />
+          </div>
+          <div className="callout-text">
+            <p className="section-eyebrow">Supervised autonomy</p>
+            <h2 className="callout-heading">
+              Pilotless, but never <em>unsupervised</em>
+            </h2>
+            <p className="callout-body">
+              Every mission runs under supervised mission control. Operators see flight systems,
+              navigation, power, and payload status in real time — and can intervene at any point.
+              The cockpit may be empty; the mission is watched second by second.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <section className="section">
+        <p className="section-eyebrow">Mission applications</p>
+        <h2 className="section-heading">
+          What a high-performance autonomous aircraft <em>is used for</em>
+        </h2>
+        <p className="section-lead" style={{ marginBottom: "2rem", maxWidth: 920 }}>
+          A large autonomous aircraft built on a proven platform opens missions that small drones
+          cannot serve — with the cost and risk profile of an{" "}
+          <strong>unmanned aircraft system (UAS)</strong>.
+        </p>
+        <div className="usage-grid">
+          {MISSION_USES.map((item) => (
+            <div key={item.title} className="usage-card reveal">
+              <div className="usage-card-icon">{item.icon}</div>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <div className="hpaa-landscape-block">
+        <div className="callout-strip callout-strip--text-start reveal">
+          <div className="callout-text">
+            <p className="section-eyebrow">Integration</p>
+            <h2 className="callout-heading">
+              How the autonomy is <em>integrated</em>
+            </h2>
+            <p className="callout-body">
+              Turning a proven airframe into a high-performance autonomous aircraft is an engineering
+              discipline, not a kit. Flight control, redundant navigation, secure command-and-control
+              links, health monitoring, and mission control software are integrated so the aircraft
+              flies reliably and reports honestly to supervisors on the ground.
+            </p>
+          </div>
+          <div className="callout-img">
+            <Image
+              fill
+              src="/theme/hpaa7.jpg"
+              alt="Autonomy integration on proven civilian aircraft — HPAA Germany"
+              style={{ objectFit: "cover" }}
+              sizes="(max-width: 768px) 90vw, 50vw"
+            />
+            <div className="callout-img-overlay" />
+          </div>
+        </div>
+      </div>
+
+      <section className="section" id="faq">
+        <p className="section-eyebrow">FAQ</p>
+        <h2 className="section-heading">Frequently asked <em>questions</em></h2>
+        <div className="why-grid" style={{ marginTop: "2rem" }}>
+          {VIDEO_FAQ.map((item) => (
+            <div key={item.q} className="why-card reveal">
+              <h3>{item.q}</h3>
+              <p>
+                {item.q === "What payloads can it carry?" ? (
+                  <>
+                    {item.a.replace("contact us for figures.", "")}
+                    <Link href="/contact">contact us</Link> for figures.
+                  </>
+                ) : (
+                  item.a
+                )}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="section" style={{ paddingTop: 0 }}>
+        <div className="hpaa-cta-panel reveal">
+          <p className="section-eyebrow">See the platform in action</p>
+          <h2 className="section-heading">
+            Evaluate <em>autonomous aircraft</em> for your mission
+          </h2>
+          <p className="section-lead" style={{ margin: "1rem auto 2rem", maxWidth: 560 }}>
+            From proven airframe to pilotless flight under supervised mission control — if you are
+            evaluating autonomous aircraft for cargo, surveillance, or payload missions, we would
+            welcome the conversation.
+          </p>
+          <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
+            <Link className="btn-gold" href="/contact">
+              Request a briefing
+            </Link>
+            <Link className="btn-ghost" href="/aircraft">
+              View platforms
+            </Link>
+          </div>
+          <p className="hpaa-related-links">
+            Related:{" "}
+            <Link href="/autonomous-aircraft-germany">autonomous aircraft Germany</Link>
+            {" · "}
+            <Link href="/unmanned-aircraft-germany">unmanned aircraft Germany</Link>
+            {" · "}
+            <Link href="/aircraft">aircraft catalogue</Link>
+          </p>
+        </div>
+      </section>
+
+      <div className="hpaa-landscape-block">
+        <div className="callout-strip reveal">
+          <div className="callout-img">
+            <Image
+              fill
+              src="/theme/beech-king-air-350-5.png"
+              alt="Beech King Air 350 — HPAA conversion platform, KUM Services GmbH Germany"
+              style={{ objectFit: "cover" }}
+              sizes="(max-width: 768px) 90vw, 50vw"
+            />
+            <div className="callout-img-overlay" />
+          </div>
+          <div className="callout-text">
+            <p className="section-eyebrow">Germany&apos;s HPAA Specialist</p>
+            <h2 className="callout-heading">
+              KUM Services GmbH
+              <br />
+              <em>Germany</em>
+            </h2>
+            <p className="callout-body">
+              HPAA conversion programmes utilise proven civil turboprop and turbofan airframes —
+              Cessna 208, Beechcraft King Air 350, Pilatus PC-12, Citation 525B, and C-130J — with
+              on-site conversion under EASA Part-145 certified maintenance procedures.
+            </p>
+            <div style={{ marginTop: "2rem", display: "flex", gap: "1rem", flexWrap: "wrap" }}>
+              <Link className="btn-gold" href="/contact">
+                Request a Proposal
+              </Link>
+              <Link className="btn-ghost" href="/aircraft">
+                View Platforms
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <section className="section">
         <p className="section-eyebrow">Key Advantages</p>
-        <h2 className="section-heading">Why Choose <em>HPAA Conversion?</em></h2>
-        <p className="section-lead" style={{ marginBottom: "2.5rem" }}>
-          HPAA Germany programmes offer decisive advantages over purpose-built unmanned development
-          for defence ministries, government agencies, and special operations commands.
-        </p>
-        <div className="why-grid">
+        <h2 className="section-heading">
+          Why Choose <em>HPAA Conversion?</em>
+        </h2>
+        <div className="why-grid" style={{ marginTop: "2rem" }}>
           {[
-            { n: "01", t: "Speed of Fielding", d: "HPAA conversion is completed on-site in a very short period. No purpose-built facilities or authority permits are required. Civil registration allows ferry flights under standard aviation rules." },
-            { n: "02", t: "Cost Efficiency", d: "Base airframes are sourced on the open civil market at known prices. There are no non-recurring engineering costs. Programme pricing is fixed and transparent." },
-            { n: "03", t: "Operational Discretion", d: "HPAA platforms retain the external appearance of the base civil aircraft. They are not visually identifiable as autonomous or military systems — a significant operational advantage." },
-            { n: "04", t: "Global Support", d: "Aircraft types such as the Cessna 208 and King Air 350 are supported by service centres and spare parts distributors on every inhabited continent." },
+            {
+              n: "01",
+              t: "Speed of Fielding",
+              d: "On-site conversion in a very short period. Civil registration allows ferry flights under standard aviation rules.",
+            },
+            {
+              n: "02",
+              t: "Cost Efficiency",
+              d: "Base airframes sourced on the open civil market at known prices. Fixed, transparent programme pricing.",
+            },
+            {
+              n: "03",
+              t: "Operational Discretion",
+              d: "Platforms retain the external appearance of the base civil aircraft.",
+            },
+            {
+              n: "04",
+              t: "Global Support",
+              d: "Cessna 208 and King Air 350 types supported by service centres on every inhabited continent.",
+            },
           ].map((c) => (
             <div key={c.n} className="why-card reveal">
               <div className="why-card-num">{c.n}</div>
@@ -222,113 +489,45 @@ export default function HpaaGermanyPage() {
         </div>
       </section>
 
-      {/* Platform images */}
       <section className="section" style={{ paddingTop: 0 }}>
-        <p className="section-eyebrow">HPAA Platforms — Germany</p>
-        <h2 className="section-heading">Available <em>Aircraft</em></h2>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-            gap: "1.5rem",
-            marginTop: "2rem",
-          }}
-        >
-          {[
-            { src: "/theme/cessna-208-1.png", alt: "Cessna 208 HPAA conversion platform — KUM Services GmbH Germany", label: "Cessna 208" },
-            { src: "/theme/pilatus-pc-12-1.png", alt: "Pilatus PC-12 HPAA conversion platform — KUM Services GmbH Germany", label: "Pilatus PC-12" },
-            { src: "/theme/beech-king-air-3500-1.png", alt: "Beechcraft King Air 350 HPAA conversion — autonomous aircraft Germany", label: "King Air 350" },
-            { src: "/theme/hpaa11.jpeg", alt: "HPAA autonomous aircraft fleet — robot aircraft conversion, KUM Services GmbH Germany", label: "HPAA Fleet" },
-          ].map((img) => (
-            <div key={img.src} style={{ position: "relative", overflow: "hidden", height: 200 }}>
-              <Image
-                fill
-                src={img.src}
-                alt={img.alt}
-                style={{ objectFit: "cover", filter: "saturate(0.8)" }}
-                sizes="(max-width: 768px) 45vw, 25vw"
-              />
-              <div
-                style={{
-                  position: "absolute",
-                  bottom: 0,
-                  left: 0,
-                  right: 0,
-                  padding: "0.6rem 1rem",
-                  background: "rgba(11,17,32,0.75)",
-                  fontSize: "0.72rem",
-                  letterSpacing: "0.2em",
-                  textTransform: "uppercase",
-                  color: "var(--gold-light)",
-                }}
-              >
-                {img.label}
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Mission applications */}
-      <section className="section" style={{ background: "var(--navy)", color: "var(--cream)" }}>
-        <p className="section-eyebrow" style={{ color: "var(--gold-light)" }}>Mission Applications</p>
-        <h2 className="section-heading" style={{ color: "var(--warm-white)" }}>
-          HPAA Germany — <em>Operational Roles</em>
-        </h2>
-        <p className="section-lead" style={{ marginBottom: "2rem" }}>
-          KUM Services HPAA autonomous aircraft Germany platforms are employed across a wide
-          spectrum of mission roles for defence and government operators worldwide.
-        </p>
-        <div className="why-grid">
-          {[
-            { n: "ISR", t: "Surveillance & Reconnaissance", d: "Persistent EO/IR, SAR, and SIGINT coverage with high-altitude endurance platforms for intelligence collection." },
-            { n: "CGO", t: "Cargo & Aerial Resupply", d: "GPS-guided parachute and direct-landing delivery to forward operating locations in contested or austere environments." },
-            { n: "STK", t: "Strike & Defensive Operations", d: "Precision guided munitions delivery, loitering munition carriage, and kinetic effects missions." },
-            { n: "RNG", t: "Range Extension", d: "HPAA platforms operating as airborne launch points extend effective weapon range well beyond ground or sea-based launch capability." },
-            { n: "ATK", t: "Attritable Strike Operations", d: "Selected HPAA platforms can be configured for one-way attack missions. Civil-sourced airframes available at known market prices make attritable operations significantly more cost-effective than purpose-built systems." },
-          ].map((c) => (
-            <div key={c.n} className="why-card reveal" style={{ borderColor: "rgba(184,150,90,0.15)" }}>
-              <div className="why-card-num">{c.n}</div>
-              <h3>{c.t}</h3>
-              <p style={{ color: "rgba(248,245,239,0.65)" }}>{c.d}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Related pages */}
-      <section className="section">
         <p className="section-eyebrow">Related Services</p>
-        <h2 className="section-heading">Explore <em>HPAA Capabilities</em></h2>
+        <h2 className="section-heading">
+          Explore <em>HPAA Capabilities</em>
+        </h2>
         <div className="why-grid" style={{ marginTop: "2rem" }}>
           {[
-            { href: "/robot-aircraft-germany", t: "Robot Aircraft Germany", d: "Robot aircraft conversion for defence and special mission operators." },
-            { href: "/unmanned-aircraft-germany", t: "Unmanned Aircraft Germany", d: "Civil aircraft converted to fully unmanned aerial systems (UAS)." },
-            { href: "/drone-aircraft-conversion-germany", t: "Drone Aircraft Conversion Germany", d: "Full civil-to-drone conversion process and platform options." },
-            { href: "/high-performance-combat-drones-germany", t: "High-Performance Combat Drones Germany", d: "Combat drone platforms for strike, ISR and special missions." },
-            { href: "/autonomous-platform-aircraft-germany", t: "Autonomous Platform Aircraft Germany", d: "Multi-role autonomous platform aircraft for defence and government." },
+            {
+              href: "/autonomous-aircraft-germany",
+              t: "Autonomous Aircraft Germany",
+              d: "Civil aircraft converted to fully autonomous platforms.",
+            },
+            {
+              href: "/unmanned-aircraft-germany",
+              t: "Unmanned Aircraft Germany",
+              d: "Civil aircraft converted to fully unmanned aerial systems (UAS).",
+            },
+            {
+              href: "/robot-aircraft-germany",
+              t: "Robot Aircraft Germany",
+              d: "Robot aircraft conversion for defence and special mission operators.",
+            },
+            {
+              href: "/aircraft",
+              t: "Aircraft Catalogue",
+              d: "Platform specifications and conversion options.",
+            },
           ].map((c) => (
             <div key={c.href} className="why-card reveal">
-              <h3><Link href={c.href} style={{ color: "inherit", textDecoration: "none" }}>{c.t}</Link></h3>
+              <h3>
+                <Link href={c.href} style={{ color: "inherit", textDecoration: "none" }}>
+                  {c.t}
+                </Link>
+              </h3>
               <p>{c.d}</p>
             </div>
           ))}
         </div>
       </section>
-
-      {/* CTA */}
-      <section className="section" style={{ textAlign: "center" }}>
-        <p className="section-eyebrow">Contact</p>
-        <h2 className="section-heading">Start Your <em>HPAA Programme</em></h2>
-        <p className="section-lead" style={{ margin: "1rem auto 2rem", maxWidth: 560 }}>
-          KUM Services GmbH — HPAA conversion programmes for defence
-          ministries, government agencies, and special operations commands worldwide.
-        </p>
-        <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
-          <Link className="btn-gold" href="/contact">Request a Proposal</Link>
-          <Link className="btn-ghost" href="/">Back to Home</Link>
-        </div>
-      </section>
-    </>
+    </div>
   );
 }

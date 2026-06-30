@@ -24,12 +24,15 @@ function escapeHtml(s: string): string {
 }
 
 const THEME = {
-  navy: "#0b1120",
-  cream: "#f8f5ef",
-  gold: "#b8965a",
-  goldPale: "#f0e4cc",
-  slate: "#4a5568",
-  slateLight: "#718096",
+  navy: "#0a2540",
+  cream: "#f4f7fb",
+  warmWhite: "#fafcff",
+  accent: "#2f6fb0",
+  accentLight: "#4d8fd0",
+  accentPale: "#d0e4f5",
+  slate: "#3d5068",
+  slateLight: "#5a7390",
+  onAccent: "#ffffff",
 } as const;
 
 type CustomerConfirmationInput = {
@@ -78,15 +81,15 @@ function buildCustomerConfirmation(p: CustomerConfirmationInput) {
   const submissionHtml = escapeHtml(submission).replace(/\n/g, "<br />");
 
   const html = `
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:#e8e4dc;border-collapse:collapse;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:${THEME.cream};border-collapse:collapse;">
   <tr>
     <td align="center" style="padding:28px 16px;font-family:Arial,Helvetica,sans-serif;">
-      <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="max-width:600px;border-collapse:collapse;background-color:${THEME.cream};border:1px solid rgba(11,17,32,0.1);box-shadow:0 4px 24px rgba(11,17,32,0.06);">
+      <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="max-width:600px;border-collapse:collapse;background-color:${THEME.warmWhite};border:1px solid rgba(47,111,176,0.12);box-shadow:0 4px 24px rgba(10,37,64,0.08);">
         <tr>
-          <td style="background-color:${THEME.navy};padding:22px 28px;border-bottom:3px solid ${THEME.gold};">
-            <p style="margin:0;font-family:Georgia,'Times New Roman',serif;font-size:20px;font-weight:400;letter-spacing:0.06em;color:${THEME.cream};">HPAA</p>
-            <p style="margin:10px 0 0;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:${THEME.gold};">High Performance Autonomous Aircraft</p>
-            <p style="margin:14px 0 0;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(248,245,239,0.75);">KUM Services GmbH</p>
+          <td style="background-color:${THEME.navy};padding:22px 28px;border-bottom:3px solid ${THEME.accent};">
+            <p style="margin:0;font-family:Georgia,'Times New Roman',serif;font-size:20px;font-weight:400;letter-spacing:0.06em;color:${THEME.warmWhite};">Robot Aircraft</p>
+            <p style="margin:10px 0 0;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:${THEME.accentLight};">High Performance Autonomous Aircraft</p>
+            <p style="margin:14px 0 0;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(250,252,255,0.75);">KUM Services GmbH</p>
           </td>
         </tr>
         <tr>
@@ -94,11 +97,11 @@ function buildCustomerConfirmation(p: CustomerConfirmationInput) {
             <p style="margin:0 0 18px;">Dear ${escapeHtml(p.fullName)},</p>
             <p style="margin:0 0 14px;">This is an <strong style="color:${THEME.navy};font-weight:600;">automatic reply</strong> to confirm we have received your message.</p>
             <p style="margin:0 0 22px;">Our team will get in contact with you shortly.</p>
-            <p style="margin:0 0 8px;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:${THEME.gold};">Your message</p>
+            <p style="margin:0 0 8px;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:${THEME.accent};">Your message</p>
             <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
               <tr>
-                <td style="background-color:${THEME.goldPale};border-left:4px solid ${THEME.gold};padding:18px 20px;font-family:Georgia,'Times New Roman',serif;font-size:14px;line-height:1.6;color:${THEME.navy};">
-                  <span style="color:${THEME.gold};font-size:26px;line-height:0;vertical-align:-3px;font-family:Georgia,serif;">&ldquo;</span><span style="font-family:Georgia,'Times New Roman',serif;">${submissionHtml}</span><span style="color:${THEME.gold};font-size:26px;line-height:0;vertical-align:-3px;font-family:Georgia,serif;">&rdquo;</span>
+                <td style="background-color:${THEME.accentPale};border-left:4px solid ${THEME.accent};padding:18px 20px;font-family:Georgia,'Times New Roman',serif;font-size:14px;line-height:1.6;color:${THEME.navy};">
+                  <span style="color:${THEME.accent};font-size:26px;line-height:0;vertical-align:-3px;font-family:Georgia,serif;">&ldquo;</span><span style="font-family:Georgia,'Times New Roman',serif;">${submissionHtml}</span><span style="color:${THEME.accent};font-size:26px;line-height:0;vertical-align:-3px;font-family:Georgia,serif;">&rdquo;</span>
                 </td>
               </tr>
             </table>

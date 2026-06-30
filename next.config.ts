@@ -6,7 +6,8 @@ const nextConfig: NextConfig = {
       // ── Previously indexed SEO article pages → nearest live equivalent ──
       { source: "/resources",                              destination: "/",            permanent: true },
       { source: "/faq",                                   destination: "/why-us",      permanent: true },
-      { source: "/about/hpaa",                            destination: "/",            permanent: true },
+      { source: "/hpaa",                                  destination: "/hpaa-germany", permanent: true },
+      { source: "/about/hpaa",                            destination: "/hpaa-germany", permanent: true },
       { source: "/about/:path*",                          destination: "/",            permanent: true },
       { source: "/articles/hpaa-vs-purpose-built-uav",   destination: "/why-us",      permanent: true },
       { source: "/articles/defence-procurement-hpaa",    destination: "/contact",     permanent: true },

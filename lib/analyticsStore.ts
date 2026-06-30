@@ -1,4 +1,9 @@
-import { formatReferrerLabel, trafficSourceFromReferrer } from "@/lib/analyticsSource";
+import {
+  formatReferrerLabel,
+  isLocalDevelopmentReferrer,
+  normalizeReferrerForStorage,
+  trafficSourceFromReferrer,
+} from "@/lib/analyticsSource";
 import { ensureSchema, query } from "@/lib/postgres";
 
 export type PageViewDoc = {
@@ -20,7 +25,7 @@ export async function recordPageView(path: string, referrer?: string) {
   await ensureSchema();
   await query(
     `INSERT INTO page_views (path, at, referrer) VALUES ($1, $2, $3)`,
-    [normalized, new Date(), referrer?.slice(0, 500) ?? null],
+    [normalized, new Date(), normalizeReferrerForStorage(referrer)],
   );
 }
 
@@ -67,6 +72,7 @@ export async function getAnalyticsSummary() {
   const sourceCounts = new Map<string, number>();
   const referrerCounts = new Map<string, number>();
   for (const row of referrersRes.rows) {
+    if (isLocalDevelopmentReferrer(row.referrer)) continue;
     const source = trafficSourceFromReferrer(row.referrer ?? undefined);
     sourceCounts.set(source, (sourceCounts.get(source) ?? 0) + 1);
     const refLabel = formatReferrerLabel(row.referrer ?? undefined);
@@ -75,11 +81,23 @@ export async function getAnalyticsSummary() {
 
   const topSources = [...sourceCounts.entries()]
     .map(([source, count]) => ({ source, count }))
+    .filter(
+      ({ source }) =>
+        source !== "localhost" &&
+        !source.startsWith("localhost/") &&
+        source !== "127.0.0.1",
+    )
     .sort((a, b) => b.count - a.count)
     .slice(0, 10);
 
   const topReferrers = [...referrerCounts.entries()]
     .map(([referrer, count]) => ({ referrer, count }))
+    .filter(
+      ({ referrer }) =>
+        referrer !== "localhost" &&
+        !referrer.startsWith("localhost/") &&
+        !referrer.startsWith("127.0.0.1"),
+    )
     .sort((a, b) => b.count - a.count)
     .slice(0, 10);
 

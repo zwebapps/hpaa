@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { siteData } from "@/data/siteData";
 
 export function WhyUsSection() {
@@ -26,6 +27,12 @@ export function WhyUsSection() {
       <section className="section" style={{ paddingBottom: "3rem" }}>
         <p className="section-lead" style={{ maxWidth: "100%" }}>
           {section.lead}
+        </p>
+        <p className="section-lead" style={{ maxWidth: "100%", marginTop: "1rem" }}>
+          Watch our{" "}
+          <Link href="/hpaa-germany">high-performance autonomous aircraft</Link>{" "}
+          in flight — from proven civilian platform to pilotless operation under supervised mission
+          control.
         </p>
         <div className="why-grid">
           {section.cards.map((card, idx) => (

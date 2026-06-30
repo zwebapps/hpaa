@@ -9,13 +9,19 @@
     "vatNo": "DE259550054"
   },
   "heroCarousel": {
+    "videoUrl": "/high_performance_autonomous_aircraft.mp4",
+    "videoPoster": "/theme/hpaa-video-poster.jpg",
+    "seeItFlyCta": {
+      "href": "/hpaa-germany",
+      "label": "Watch in action"
+    },
     "slides": [
       {
         "id": "mission",
         "imageUrl": "/theme/hpaa9.jpeg",
         "badgeText": "Germany · HPAA Specialists",
         "title": { "pre": "Aircraft Built", "emphasis": "Your Mission" },
-        "description": "KUM Services GmbH converts proven civil aircraft into customized platforms—delivering performance, reliability, and value faster than traditional programs. Germany's HPAA (High Performance Autonomous Aircraft) and robot aircraft specialists, based in Germany.",
+        "description": "KUM Services GmbH converts proven civil aircraft into customized autonomous aircraft and unmanned aircraft (UAV) platforms—delivering performance, reliability, and value faster than traditional programmes. Germany's HPAA and robot aircraft specialists.",
         "primaryCta": { "href": "/#aircraft", "label": "Browse Aircraft" },
         "secondaryCta": { "href": "/#contact", "label": "Request a Quote" }
       },
@@ -24,7 +30,7 @@
         "imageUrl": "/theme/hpaa10.jpg",
         "badgeText": "Short on-site conversion · Worldwide support",
         "title": { "pre": "Deploy Faster", "emphasis": "Operate Sooner" },
-        "description": "Civil-registered platforms can ferry to your location and convert on-site—minimizing approvals, delays, and total time-to-operation.",
+        "description": "Civil-registered unmanned aircraft platforms ferry to your location and convert on-site—minimizing approvals, delays, and total time-to-operation for autonomous mission readiness.",
         "primaryCta": { "href": "/#why-us", "label": "Why Us" },
         "secondaryCta": { "href": "/#contact", "label": "Talk to Us" }
       },
@@ -33,7 +39,7 @@
         "imageUrl": "/theme/hpaa3.png",
         "badgeText": "Multi-mission · Proven airframes",
         "title": { "pre": "Capability First", "emphasis": "Mission Ready" },
-        "description": "From ISR and surveillance to cargo delivery and countering hostile high performance autonomous aircraft—configure the airframe to match mission needs, not the other way around.",
+        "description": "From ISR and surveillance to autonomous cargo delivery and countering hostile high performance autonomous aircraft—configure the airframe to match mission needs, not the other way around.",
         "primaryCta": { "href": "/#applications", "label": "View Applications" },
         "secondaryCta": { "href": "/#aircraft", "label": "See Platforms" }
       }

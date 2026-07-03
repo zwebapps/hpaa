@@ -229,9 +229,9 @@ export default function HpaaGermanyPage() {
         <div className="page-header-content" style={{ padding: "6rem 2rem 4rem" }}>
           <p className="section-eyebrow">KUM Services GmbH · Germany</p>
           <h1 className="section-heading" style={{ maxWidth: 780 }}>
-            <span style={{ whiteSpace: "nowrap" }}>High-Performance Autonomous Aircraft</span>
+            <span className="nowrap-desktop">High-Performance Autonomous Aircraft</span>
             <br />
-            <em style={{ whiteSpace: "nowrap" }}>A Proven Platform, Now Pilotless</em>
+            <em className="nowrap-desktop">A Proven Platform, Now Pilotless</em>
           </h1>
         </div>
       </div>

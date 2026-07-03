@@ -8,22 +8,23 @@ const CANONICAL = "/autonomous-platform-aircraft-germany";
 const OG_IMAGE = "/theme/hpaa9.jpeg";
 
 export const metadata: Metadata = {
-  title: "Autonomous Platform Aircraft Germany | Civil Aircraft Conversion — KUM Services GmbH",
+  title: "Autonomous Platform Aircraft: Airframes & Payload Integration — KUM Services GmbH",
   description:
-    "Autonomous platform aircraft Germany: KUM Services GmbH converts proven civil turboprop and turbofan aircraft into autonomous platform aircraft for ISR, cargo, strike and special missions. EASA Part-145 certified. Fast, affordable, globally supported.",
+    "Which airframe fits your autonomous mission? Compare the Cessna 208 Caravan, Pilatus PC-12, King Air 350, Citation 525B and C-130J — and the payloads they carry: EO/IR, SAR, comms relay, cargo systems. Platform selection and payload integration from Germany, serving customers worldwide.",
   keywords: [
-    "autonomous platform aircraft Germany",
-    "autonomous aircraft platform Germany",
-    "civil aircraft to autonomous platform Germany",
-    "autonomous platform Germany",
-    "HPAA platform Germany",
-    "autonomous aircraft Germany",
-    "civil to autonomous platform Germany",
-    "optionally piloted aircraft platform Germany",
-    "OPA Germany",
-    "autonomous systems Germany",
+    "autonomous platform aircraft",
+    "autonomous aircraft platform selection",
+    "autonomous aircraft payload integration",
+    "EO/IR sensor integration autonomous aircraft",
+    "SAR payload autonomous platform",
+    "communications relay aircraft autonomous",
+    "autonomous cargo aircraft platform",
+    "Cessna 208 autonomous platform",
+    "Pilatus PC-12 autonomous platform",
+    "King Air 350 autonomous ISR platform",
+    "C-130J autonomous heavy lift",
+    "multi-role autonomous aircraft Germany",
     "KUM Services GmbH",
-    "HPAA Germany",
   ],
   alternates: {
     canonical: absoluteUrl(CANONICAL),
@@ -35,15 +36,15 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: absoluteUrl(CANONICAL),
-    title: "Autonomous Platform Aircraft Germany | KUM Services GmbH",
+    title: "Autonomous Platform Aircraft: Airframes & Payload Integration | KUM Services GmbH",
     description:
-      "KUM Services GmbH — autonomous platform aircraft specialist. Civil turboprop and turbofan aircraft converted to autonomous platforms for defence and government.",
-    images: [{ url: absoluteUrl(OG_IMAGE), width: 1200, height: 630, alt: "Autonomous Platform Aircraft Germany — KUM Services GmbH" }],
+      "Match the airframe to the mission: five proven civil platforms, from light utility to heavy lift, with modular EO/IR, SAR, comms relay and cargo payload integration. Engineered in Germany, delivered worldwide.",
+    images: [{ url: absoluteUrl(OG_IMAGE), width: 1200, height: 630, alt: "Autonomous Platform Aircraft — Airframes and Payload Integration — KUM Services GmbH" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Autonomous Platform Aircraft Germany | KUM Services GmbH",
-    description: "Civil aircraft to autonomous platform conversion in Germany.",
+    title: "Autonomous Platform Aircraft: Airframes & Payload Integration | KUM Services GmbH",
+    description: "Platform selection and payload integration for autonomous aircraft — from Germany, worldwide.",
     images: [absoluteUrl(OG_IMAGE)],
   },
 };
@@ -58,20 +59,20 @@ export default function AutonomousPlatformAircraftGermanyPage() {
         "@type": "WebPage",
         "@id": `${base}${CANONICAL}`,
         url: `${base}${CANONICAL}`,
-        name: "Autonomous Platform Aircraft Germany — KUM Services GmbH",
+        name: "Autonomous Platform Aircraft: Airframes & Payload Integration — KUM Services GmbH",
         description:
-          "KUM Services GmbH converts proven civil aircraft into autonomous platform aircraft for ISR, cargo, strike and special missions in Germany and worldwide.",
+          "Guide to selecting the right airframe for an autonomous mission — Cessna 208 Caravan, Pilatus PC-12, King Air 350, Citation 525B, C-130J — and integrating EO/IR, SAR, communications relay and cargo payloads. From KUM Services GmbH in Germany, for customers worldwide.",
         inLanguage: "en",
         isPartOf: { "@id": `${base}/#website` },
         about: { "@id": `${base}/#hpaa` },
         publisher: { "@id": `${base}/#organization` },
-        keywords: "autonomous platform aircraft Germany, civil aircraft to autonomous platform Germany, HPAA platform Germany, autonomous aircraft Germany",
+        keywords: "autonomous platform aircraft, airframe selection, payload integration, EO/IR sensors, SAR, communications relay, autonomous cargo aircraft, multi-role reconfiguration, KUM Services GmbH Germany",
       },
       {
         "@type": "BreadcrumbList",
         itemListElement: [
           { "@type": "ListItem", position: 1, name: "Home", item: `${base}/` },
-          { "@type": "ListItem", position: 2, name: "Autonomous Platform Aircraft Germany", item: `${base}${CANONICAL}` },
+          { "@type": "ListItem", position: 2, name: "Autonomous Platform Aircraft — Airframes & Payload Integration", item: `${base}${CANONICAL}` },
         ],
       },
       {
@@ -80,44 +81,44 @@ export default function AutonomousPlatformAircraftGermanyPage() {
         mainEntity: [
           {
             "@type": "Question",
-            name: "What is an autonomous platform aircraft in Germany?",
+            name: "Which airframe is best for autonomous ISR missions?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "An autonomous platform aircraft in Germany is a proven civil-registered turboprop or turbofan aircraft converted into a fully autonomous multi-role platform by KUM Services GmbH. The HPAA (High Performance Autonomous Aircraft) conversion programme delivers autonomous platform capability for ISR, cargo, strike, counter-UAS, and range extension missions — faster and at lower cost than any purpose-built autonomous aircraft programme.",
+              text: "For persistent, multi-sensor ISR the Beechcraft King Air 350 is the benchmark choice: its twin-turboprop configuration, high-altitude endurance, and generous cabin volume support EO/IR turrets, SAR, and SIGINT equipment operating together. Where a smaller logistical footprint matters, the Cessna 208 Caravan or Pilatus PC-12 carry a single primary sensor efficiently, while the Cessna Citation 525B adds jet speed for rapid transit to distant surveillance areas.",
             },
           },
           {
             "@type": "Question",
-            name: "What autonomous aircraft platforms does KUM Services offer in Germany?",
+            name: "What payloads can be integrated on an autonomous platform aircraft?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "KUM Services GmbH offers autonomous platform aircraft based on five civil airframes: Cessna 208 Caravan (light multi-role autonomous platform), Beechcraft King Air 350 (medium autonomous ISR and strike platform), Pilatus PC-12 (single-turboprop autonomous platform), Cessna Citation 525B (high-speed autonomous jet platform), and C-130J Super Hercules (heavy autonomous platform for large payload and long-range missions).",
+              text: "KUM Services GmbH integrates mission payloads through modular mechanical, power, and data interfaces on each converted airframe. Typical payloads include stabilised EO/IR sensor turrets, synthetic aperture radar (SAR), signals collection equipment, airborne communications relay packages, cargo handling and aerial delivery systems, and mission computers that fuse sensor data onboard. Payload fit is engineered per airframe and validated during the conversion programme.",
             },
           },
           {
             "@type": "Question",
-            name: "What missions can autonomous platform aircraft perform?",
+            name: "Can one platform be reconfigured for multiple missions?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "KUM Services autonomous platform aircraft can perform: ISR (EO/IR, SAR, SIGINT, border surveillance, maritime patrol), cargo and aerial resupply (GPS-guided parachute and direct-landing delivery), strike operations (precision guided munitions, loitering munitions, attritable attack), counter-UAS (kinetic and electronic defeat of hostile drones), and range extension (airborne launch platform for weapons and sensors).",
+              text: "Yes. The HPAA conversion architecture uses standardised payload interfaces so a single autonomous platform aircraft can move between roles — for example an ISR sensor fit one week and a cargo or communications relay configuration the next. Reconfiguration is a maintenance-level task performed with EASA Part-145 certified procedures rather than a new engineering programme, which keeps a small fleet operationally flexible.",
             },
           },
           {
             "@type": "Question",
-            name: "How does civil aircraft to autonomous platform conversion work in Germany?",
+            name: "What is the heaviest platform available for autonomous conversion?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "KUM Services GmbH converts civil aircraft to autonomous platforms in Germany by: sourcing a proven civil airframe from the open aviation market; installing autonomous flight control systems (developed with the University of Stuttgart), BVLOS datalinks, and mission-specific payload systems; providing a ground control station; and completing on-site validation. All work is performed by EASA Part-145 certified technicians (Part One-Forty Five GmbH, Neuhausen ob Eck).",
+              text: "The C-130J Super Hercules is the heaviest airframe in the KUM Services autonomous conversion portfolio. It is selected when missions demand maximum payload mass and volume — heavy cargo resupply, large-area ISR with multiple simultaneous sensor systems, or long-endurance communications relay. Its rear ramp and cargo handling system also support autonomous aerial delivery of palletised loads.",
             },
           },
         ],
       },
       {
         "@type": "Service",
-        name: "Autonomous Platform Aircraft Conversion Germany",
+        name: "Autonomous Platform Selection & Payload Integration",
         description:
-          "KUM Services GmbH converts civil-registered turboprop and turbofan aircraft into autonomous platform aircraft (HPAA) for defence, government, and special-mission customers worldwide. EASA Part-145 certified.",
-        serviceType: "Autonomous Platform Aircraft Conversion",
+          "KUM Services GmbH advises on airframe selection and integrates EO/IR, SAR, communications relay, cargo and mission-computer payloads on autonomous platform aircraft. Engineered in Germany with EASA Part-145 certified partners, delivered to customers worldwide.",
+        serviceType: "Autonomous Aircraft Platform Selection and Payload Integration",
         provider: { "@id": `${base}/#organization` },
         areaServed: [
           { "@type": "Country", name: "Germany" },
@@ -143,58 +144,60 @@ export default function AutonomousPlatformAircraftGermanyPage() {
         />
         <div className="page-header-scrim" />
         <div className="page-header-content" style={{ padding: "6rem 2rem 4rem" }}>
-          <p className="section-eyebrow">KUM Services GmbH · Germany</p>
+          <p className="section-eyebrow">KUM Services GmbH · Germany · Worldwide Delivery</p>
           <h1 className="section-heading" style={{ maxWidth: 720 }}>
-            Autonomous Platform Aircraft Germany —{" "}
-            <em>Civil Aircraft Conversion Specialist</em>
+            Autonomous Platform Aircraft —{" "}
+            <em>Airframes &amp; Payload Integration</em>
           </h1>
         </div>
       </div>
 
       {/* Introduction */}
       <section className="section">
-        <p className="section-eyebrow">Civil Aircraft to Autonomous Platform</p>
+        <p className="section-eyebrow">Match the Airframe to the Mission</p>
         <h2 className="section-heading">
-          Germany&apos;s Autonomous Platform Aircraft <em>Specialist</em>
+          Which Platform Fits <em>Your Mission?</em>
         </h2>
         <p className="section-lead">
-          KUM Services GmbH delivers autonomous platform
-          aircraft conversion programmes that transform proven civil-registered turboprop and
-          turbofan airframes into fully autonomous multi-role platforms for military, government,
-          and special-mission operations. The HPAA (High Performance Autonomous Aircraft)
-          conversion approach is the fastest and most cost-effective path to operational autonomous
-          platform capability — significantly faster than any purpose-built autonomous aircraft
-          development programme, and at a fraction of the cost.
+          Every successful autonomous aircraft programme starts with two engineering decisions:
+          the right airframe and the right payload fit. KUM Services GmbH converts five proven
+          civil airframes — from the light-utility Cessna 208 Caravan to the heavy-lift C-130J —
+          into autonomous platforms, then integrates the sensors, communications, and cargo
+          systems the mission demands. This page explains how the platforms differ, how payload
+          integration works, and how a single aircraft can be reconfigured across ISR, cargo,
+          communications relay, and special-mission roles. Engineered in Germany; delivered to
+          operators worldwide.
         </p>
       </section>
 
-      {/* Callout */}
+      {/* Callout with image */}
       <div className="callout-strip reveal">
         <div className="callout-text" style={{ order: 1 }}>
-          <p className="section-eyebrow">Platform Architecture</p>
+          <p className="section-eyebrow">Platform Selection Logic</p>
           <h2 className="callout-heading">
-            Multi-Role. <em>Autonomous. Proven.</em>
+            Endurance. Altitude. <em>Payload.</em>
           </h2>
           <p className="callout-body">
-            The KUM Services autonomous platform aircraft concept is built on proven civil
-            airframes — Cessna 208, Beechcraft King Air 350, Pilatus PC-12, Cessna Citation 525B,
-            and C-130J. Each base aircraft carries an established reliability record and benefits
-            from a global maintenance and spare-parts network. The autonomous platform layer adds
-            advanced flight control systems, AI-assisted mission planning, BVLOS datalinks, and
-            modular payload interfaces — enabling rapid reconfiguration between ISR, cargo, strike,
-            counter-UAS, and range extension missions. All conversion work is completed on-site by
-            EASA Part-145 certified technicians.
+            Airframe choice is a trade-off. Lighter turboprops such as the Cessna 208 and Pilatus
+            PC-12 offer long loiter times, austere-field access, and a small logistical footprint —
+            at the cost of payload volume. The King Air 350 balances altitude, endurance, and cabin
+            space for multi-sensor ISR fits. The Citation 525B trades loiter time for jet speed and
+            higher operating altitude, reaching distant mission areas quickly. The C-130J stands
+            apart as the heavy option where payload mass and internal volume dominate the
+            requirement. KUM Services assesses the mission profile first — station time, sensor
+            suite, cargo load, transit distance — then recommends the airframe, rather than the
+            other way around.
           </p>
           <div style={{ marginTop: "2rem", display: "flex", gap: "1rem", flexWrap: "wrap" }}>
-            <Link className="btn-gold" href="/contact">Request a Proposal</Link>
-            <Link className="btn-ghost" href="/aircraft">View Platforms</Link>
+            <Link className="btn-gold" href="/contact">Discuss Your Mission Profile</Link>
+            <Link className="btn-ghost" href="/aircraft">View All Platforms</Link>
           </div>
         </div>
         <div className="callout-img" style={{ order: 2 }}>
           <Image
             fill
             src="/theme/hpaa11.jpeg"
-            alt="Autonomous platform aircraft — KUM Services GmbH Germany"
+            alt="Autonomous platform aircraft payload integration — KUM Services GmbH Germany"
             style={{ objectFit: "cover" }}
             sizes="(max-width: 768px) 90vw, 50vw"
           />
@@ -202,17 +205,22 @@ export default function AutonomousPlatformAircraftGermanyPage() {
         </div>
       </div>
 
-      {/* Platform options */}
+      {/* Platform comparison */}
       <section className="section">
-        <p className="section-eyebrow">Autonomous Platform Aircraft — Germany</p>
-        <h2 className="section-heading">Platform <em>Options</em></h2>
+        <p className="section-eyebrow">The Airframe Portfolio</p>
+        <h2 className="section-heading">Five Platforms, <em>Five Mission Classes</em></h2>
+        <p className="section-lead" style={{ marginBottom: "2rem" }}>
+          Each airframe in the KUM Services portfolio occupies a distinct point on the
+          endurance–altitude–payload envelope. All are sourced from the open civil market with
+          verified reliability records and global spares support.
+        </p>
         <div className="why-grid" style={{ marginTop: "2rem" }}>
           {[
-            { n: "208", t: "Cessna 208 Caravan", d: "The definitive light autonomous platform aircraft. Proven in thousands of commercial operating hours worldwide. Ideal for ISR, cargo delivery, and attritable strike missions requiring minimal logistical footprint." },
-            { n: "350", t: "Beechcraft King Air 350", d: "The benchmark medium autonomous platform aircraft. Twin-turboprop reliability with high-altitude endurance. Suited for persistent ISR, SIGINT, SAR, and multi-sensor special mission configurations." },
-            { n: "PC12", t: "Pilatus PC-12", d: "Single-turboprop performance with exceptional range and payload capacity. A proven special mission autonomous platform for ISR, cargo, and personnel missions in austere environments." },
-            { n: "525B", t: "Cessna Citation 525B", d: "High-speed business jet performance converted to an autonomous strike or ISR platform. Jet performance provides rapid transit to target areas and extended standoff capability." },
-            { n: "C130", t: "C-130J Super Hercules", d: "The heavy autonomous platform aircraft option for maximum payload, range, and endurance. Suited to large-area ISR, heavy cargo resupply, and strategic-level autonomous platform missions." },
+            { n: "208", t: "Cessna 208 Caravan — Light Utility", d: "The entry point to autonomous operations. Long loiter at low operating cost, short and unpaved field capability, and a cabin suited to a single primary sensor or light cargo. Best for single-sensor ISR and light resupply missions with minimal ground infrastructure." },
+            { n: "PC12", t: "Pilatus PC-12 — Versatile Single Turboprop", d: "A step up in speed, range, and cabin volume while retaining single-engine economy and austere-field access. Its large cargo door supports flexible payload installation — a proven special-mission platform for ISR, light cargo, and communications relay in remote environments." },
+            { n: "350", t: "Beechcraft King Air 350 — Medium ISR", d: "The benchmark medium ISR airframe worldwide. Twin-turboprop redundancy, high-altitude endurance, and cabin space for EO/IR, SAR, and signals payloads operating simultaneously. The default recommendation for persistent multi-sensor surveillance." },
+            { n: "525B", t: "Cessna Citation 525B — High-Speed Jet", d: "Jet transit speed and higher operating altitude for missions where reaching the area quickly matters more than loiter time — wide-area maritime patrol, rapid-response ISR, and high-altitude communications relay over extended distances." },
+            { n: "C130", t: "C-130J Super Hercules — Heavy Lift", d: "The heavy end of the portfolio. Maximum payload mass and internal volume, a rear cargo ramp for palletised aerial delivery, and the endurance for strategic-scale autonomous cargo, large-area ISR, and long-duration relay missions." },
           ].map((c) => (
             <div key={c.n} className="why-card reveal">
               <div className="why-card-num">{c.n}</div>
@@ -223,19 +231,66 @@ export default function AutonomousPlatformAircraftGermanyPage() {
         </div>
       </section>
 
-      {/* Mission roles */}
+      {/* Platform image grid */}
+      <section className="section" style={{ paddingTop: 0 }}>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+            gap: "1.5rem",
+          }}
+        >
+          {[
+            { src: "/theme/cessna-208-3.png", alt: "Cessna 208 Caravan — light utility autonomous platform aircraft", label: "Cessna 208 Caravan" },
+            { src: "/theme/pilatus-pc-12-3.png", alt: "Pilatus PC-12 — versatile single-turboprop autonomous platform", label: "Pilatus PC-12" },
+            { src: "/theme/beech-king-air-3500-3.png", alt: "Beechcraft King Air 350 — medium autonomous ISR platform", label: "King Air 350" },
+          ].map((img) => (
+            <div key={img.src} style={{ position: "relative", overflow: "hidden", height: 200 }}>
+              <Image
+                fill
+                src={img.src}
+                alt={img.alt}
+                style={{ objectFit: "cover", filter: "saturate(0.8)" }}
+                sizes="(max-width: 768px) 45vw, 25vw"
+              />
+              <div
+                style={{
+                  position: "absolute",
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  padding: "0.6rem 1rem",
+                  background: "rgba(11,17,32,0.75)",
+                  fontSize: "0.72rem",
+                  letterSpacing: "0.2em",
+                  textTransform: "uppercase",
+                  color: "var(--gold-light)",
+                }}
+              >
+                {img.label}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Payload integration */}
       <section className="section" style={{ background: "var(--navy)", color: "var(--cream)" }}>
-        <p className="section-eyebrow" style={{ color: "var(--gold-light)" }}>Mission Roles</p>
+        <p className="section-eyebrow" style={{ color: "var(--gold-light)" }}>Payload Integration</p>
         <h2 className="section-heading" style={{ color: "var(--warm-white)" }}>
-          Autonomous Platform Aircraft — <em>Operational Roles</em>
+          What the Platforms <em>Carry</em>
         </h2>
+        <p className="section-lead" style={{ color: "rgba(248,245,239,0.75)" }}>
+          Payloads mount through standardised mechanical, power, and data interfaces engineered
+          into each conversion. Integration is validated on the ground and in flight before
+          handover.
+        </p>
         <div className="why-grid" style={{ marginTop: "2rem" }}>
           {[
-            { n: "ISR", t: "Intelligence & Surveillance", d: "Persistent EO/IR, SAR, and SIGINT coverage. High-altitude endurance autonomous platforms deliver sustained intelligence collection, border monitoring, and maritime patrol." },
-            { n: "CGO", t: "Cargo & Resupply", d: "Autonomous aerial delivery of critical supplies. GPS-guided parachute and direct-landing delivery systems for forward operating locations in contested environments." },
-            { n: "STK", t: "Strike Operations", d: "Precision guided munitions delivery, loitering munition carriage, and kinetic effects. Autonomous platform aircraft configured for precision strike or attritable attack missions." },
-            { n: "C-UAS", t: "Counter-UAS", d: "Airborne kinetic and electronic defeat of hostile unmanned aerial systems at altitude and extended range — beyond the capability of ground-based counter-UAS." },
-            { n: "EXT", t: "Range Extension", d: "Autonomous platform aircraft operating as airborne launch points, extending effective weapon and sensor range well beyond ground or sea-based capability." },
+            { n: "EO/IR", t: "EO/IR & SAR Sensors", d: "Stabilised electro-optical and infrared turrets for day/night imaging, paired with synthetic aperture radar for all-weather, wide-area mapping. Sensor selection is matched to the airframe's power and volume budget." },
+            { n: "COM", t: "Communications Relay", d: "Airborne relay packages that extend line-of-sight datalinks and radio networks across terrain and distance — turning the autonomous platform into a persistent node above the operating area." },
+            { n: "CGO", t: "Cargo & Airdrop Systems", d: "Internal cargo restraint, GPS-guided parachute delivery, and direct-landing resupply configurations. On the C-130J, ramp-based palletised airdrop supports autonomous delivery at scale." },
+            { n: "MSN", t: "Mission Computers", d: "Onboard processing that fuses sensor feeds, manages payload tasking, and pushes actionable products over the BVLOS datalink to the ground control station — reducing bandwidth demand and operator workload." },
           ].map((c) => (
             <div key={c.n} className="why-card reveal" style={{ borderColor: "rgba(184,150,90,0.15)" }}>
               <div className="why-card-num">{c.n}</div>
@@ -246,24 +301,23 @@ export default function AutonomousPlatformAircraftGermanyPage() {
         </div>
       </section>
 
-      {/* Partners */}
+      {/* Multi-role reconfiguration */}
       <section className="section">
-        <p className="section-eyebrow">Certified Partners</p>
-        <h2 className="section-heading">EASA Part-145 &amp; <em>University of Stuttgart</em></h2>
+        <p className="section-eyebrow">Multi-Role by Design</p>
+        <h2 className="section-heading">One Airframe, <em>Many Missions</em></h2>
         <p className="section-lead" style={{ marginBottom: "2rem" }}>
-          All KUM Services autonomous platform aircraft conversion programmes are conducted with
-          Part One-Forty Five GmbH (EASA Part-145 certified, Neuhausen ob Eck Airfield) and the
-          Institute of Flight Mechanics and Flight Control (iFR) at the University of Stuttgart —
-          ensuring every platform meets the highest standards of airworthiness and autonomous
-          flight control.
+          Because payloads attach through common interfaces, a converted platform is never locked
+          into a single role. An ISR-configured King Air 350 can be refitted as a communications
+          relay; a Caravan can swap its sensor turret for a cargo delivery fit. Reconfiguration is
+          performed as a maintenance-level task under EASA Part-145 certified procedures by our
+          partner Part One-Forty Five GmbH — supported by autonomous flight control expertise from
+          the Institute of Flight Mechanics and Flight Control (iFR) at the University of
+          Stuttgart. For operators, this means a small fleet covers a broad mission set, and
+          payload roadmaps can evolve without new airframe programmes.
         </p>
-        <div style={{ display: "flex", gap: "1.5rem", flexWrap: "wrap" }}>
-          <div style={{ position: "relative", height: 80, width: 142 }}>
-            <Image fill src="/theme/part-one-forty-five.png" alt="Part One-Forty Five GmbH — EASA Part-145 certified maintenance partner" style={{ objectFit: "contain", filter: "brightness(0.9)" }} sizes="142px" />
-          </div>
-          <div style={{ position: "relative", height: 80, width: 142 }}>
-            <Image fill src="/theme/university-of-stuttgart.png" alt="University of Stuttgart — autonomous flight control research partner" style={{ objectFit: "contain", filter: "brightness(0.9)" }} sizes="142px" />
-          </div>
+        <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
+          <Link className="btn-gold" href="/contact">Request a Payload Study</Link>
+          <Link className="btn-ghost" href="/aircraft">Compare Platforms</Link>
         </div>
       </section>
 
@@ -273,10 +327,10 @@ export default function AutonomousPlatformAircraftGermanyPage() {
         <h2 className="section-heading">Explore <em>HPAA Capabilities</em></h2>
         <div className="why-grid" style={{ marginTop: "2rem" }}>
           {[
-            { href: "/hpaa-germany", t: "HPAA Germany", d: "High Performance Autonomous Aircraft — the complete HPAA conversion programme." },
-            { href: "/autonomous-aircraft-germany", t: "Autonomous Aircraft Germany", d: "Autonomous aircraft conversion for defence and government operators." },
-            { href: "/unmanned-aircraft-germany", t: "Unmanned Aircraft Germany", d: "Manned-to-unmanned conversion programmes for defence and government." },
-            { href: "/high-performance-combat-drones-germany", t: "High-Performance Combat Drones Germany", d: "Combat drone platforms for strike, ISR and special missions." },
+            { href: "/autonomous-aircraft-germany", t: "Autonomous Aircraft Germany", d: "The programme overview — why civil-to-autonomous conversion beats purpose-built development." },
+            { href: "/robot-aircraft-germany", t: "Robot Aircraft Germany", d: "The technology stack — flight control systems, autonomy software, and BVLOS datalinks." },
+            { href: "/unmanned-aircraft-germany", t: "Unmanned Aircraft Germany", d: "Certification and airspace — how converted aircraft are approved and operated." },
+            { href: "/drone-aircraft-conversion-germany", t: "Drone Aircraft Conversion Germany", d: "The conversion process — from airframe sourcing to on-site handover, step by step." },
           ].map((c) => (
             <div key={c.href} className="why-card reveal">
               <h3><Link href={c.href} style={{ color: "inherit", textDecoration: "none" }}>{c.t}</Link></h3>
@@ -289,15 +343,15 @@ export default function AutonomousPlatformAircraftGermanyPage() {
       {/* CTA */}
       <section className="section" style={{ textAlign: "center" }}>
         <p className="section-eyebrow">Contact</p>
-        <h2 className="section-heading">Start Your <em>Autonomous Platform Programme</em></h2>
+        <h2 className="section-heading">Find the Right <em>Platform and Payload</em></h2>
         <p className="section-lead" style={{ margin: "1rem auto 2rem", maxWidth: 560 }}>
-          KUM Services GmbH — autonomous platform aircraft conversion
-          programmes for defence ministries, government agencies, and special operations commands
-          worldwide.
+          Tell us your mission profile — station time, sensors, cargo, transit distance — and
+          KUM Services GmbH will recommend the airframe and payload fit. Serving defence
+          ministries, government agencies, and special-mission operators worldwide from Germany.
         </p>
         <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
           <Link className="btn-gold" href="/contact">Request a Proposal</Link>
-          <Link className="btn-ghost" href="/">Back to Home</Link>
+          <Link className="btn-ghost" href="/aircraft">View Platforms</Link>
         </div>
       </section>
     </>

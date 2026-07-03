@@ -1121,6 +1121,7 @@ nav {
   gap: 0.75rem;
   padding: 1rem 0;
   overflow-x: auto;
+  min-width: 0;
 }
 .ac-gallery-thumbs-wrap {
   display: flex;
@@ -1384,7 +1385,7 @@ nav {
 /* ── FOOTER ── */
 footer {
   background: var(--navy); padding: 3rem 5vw;
-  display: grid; grid-template-columns: 1fr auto 1fr;
+  display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: center; border-top: 1px solid rgba(184,150,90,0.15);
 }
 .footer-brand { display: flex; flex-direction: column; align-items: flex-start; gap: 0.35rem; }
@@ -1424,14 +1425,15 @@ footer {
   box-shadow: var(--ui-card-shadow);
   border: var(--ui-panel-border);
 }
-.footer-links { display: flex; gap: 2.5rem; justify-content: center; }
+.footer-links { display: flex; flex-wrap: wrap; gap: 1rem 2.5rem; justify-content: center; min-width: 0; }
 .footer-links a { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(248,245,239,0.4); text-decoration: none; transition: color 0.2s; }
 .footer-links a:hover { color: var(--gold-light); }
 .footer-copy { font-size: 0.68rem; color: rgba(248,245,239,0.25); text-align: right; }
 
 /* ── REVEAL ANIMATIONS ── */
 .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.65s ease, transform 0.65s ease; }
-.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal.visible,
+.reveal[data-visible="true"] { opacity: 1; transform: translateY(0); }
 .reveal-delay-1 { transition-delay: 0.1s; }
 .reveal-delay-2 { transition-delay: 0.2s; }
 .reveal-delay-3 { transition-delay: 0.3s; }
@@ -1501,17 +1503,35 @@ footer {
   .theme-switcher::-webkit-scrollbar { display: none; }
   .theme-chip { padding: 0.35rem 0.55rem; }
   .hero-stats { display: none; }
-  .hero { padding: 0 1.5rem 4rem; }
+  /* Hero text lives in an absolutely-positioned overlay (.hero-inner), so on
+     small screens it can grow taller than the hero and slide under the fixed
+     nav. On mobile, put the overlay back in normal flow so the hero grows
+     with its content, and scale the title down. */
+  .hero { height: auto; min-height: 0; padding: 0; }
+  .hero-carousel { height: auto; }
+  .hero-inner {
+    position: static;
+    padding: 2.5rem 1.5rem 3rem;
+    min-height: min(calc(100vh - 72px), 640px);
+    min-height: min(calc(100svh - 72px), 640px);
+  }
+  .hero-title { font-size: clamp(2.2rem, 9vw, 3.2rem); }
+  .hero-carousel .hero-title { min-height: calc(2 * 1.05 * clamp(2.2rem, 9vw, 3.2rem)); }
   .section { padding: 4rem 1.5rem; }
   .why-grid, .aircraft-panel.active, .callout-strip, .usage-grid, .contact-wrapper { grid-template-columns: 1fr; }
+  /* When callout strips stack to one column, the image cell has no intrinsic
+     height (next/image fill is absolutely positioned) — give it one. */
+  .callout-strip .callout-img { min-height: 280px; }
   .partner-card-new.partner-row { grid-template-columns: 1fr; min-height: unset; }
   .partner-card-new.partner-row .partner-card-img { height: 300px; min-height: 300px; }
   .partner-card-new.partner-row.reverse .partner-card-body,
   .partner-card-new.partner-row.reverse .partner-card-img { order: initial; }
-  footer { grid-template-columns: 1fr; gap: 1.5rem; text-align: center; }
+  footer { grid-template-columns: 1fr; gap: 1.5rem; text-align: center; justify-items: center; }
+  .footer-brand { align-items: center; text-align: center; }
   .footer-copy { text-align: center; }
   .footer-links { justify-content: center; }
-  .trust-bar { grid-template-columns: 1fr 1fr; }
+  .trust-bar { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .trust-item { padding: 1.25rem 1rem; }
   .usage-grid { grid-template-columns: 1fr; }
   .form-row { grid-template-columns: 1fr; }
   .page-header { margin-top: 72px; }
@@ -1529,4 +1549,153 @@ body:has(.admin-login-page) footer {
 body:has(.admin-shell) .flex-1,
 body:has(.admin-login-page) .flex-1 {
   flex: 1 1 auto;
+}
+
+/* ── Cookie consent banner (GDPR) ─────────────────────────────────────────── */
+.cookie-consent {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  background: var(--navy, #0a2540);
+  color: var(--on-accent, #fff);
+  border-top: 1px solid var(--gold, #2f6fb0);
+  box-shadow: 0 -6px 24px rgba(10, 37, 64, 0.28);
+}
+.cookie-consent__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+.cookie-consent__text {
+  flex: 1 1 320px;
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.92);
+}
+.cookie-consent__link {
+  color: var(--gold-pale, #d0e4f5);
+  text-decoration: underline;
+}
+.cookie-consent__actions {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+.cookie-btn {
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.6rem 1.1rem;
+  border-radius: var(--ui-radius, 0);
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+.cookie-btn--primary {
+  background: var(--gold, #2f6fb0);
+  color: #fff;
+}
+.cookie-btn--primary:hover {
+  background: var(--gold-light, #4d8fd0);
+}
+.cookie-btn--ghost {
+  background: transparent;
+  color: rgba(255, 255, 255, 0.92);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+.cookie-btn--ghost:hover {
+  border-color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+}
+.footer-cookie-btn {
+  font: inherit;
+  background: none;
+  border: none;
+  padding: 0;
+  color: inherit;
+  cursor: pointer;
+  text-decoration: none;
+}
+.footer-cookie-btn:hover {
+  text-decoration: underline;
+}
+@media (max-width: 640px) {
+  .cookie-consent__inner { padding: 0.9rem 1rem; }
+  .cookie-consent__actions { width: 100%; }
+  .cookie-btn { flex: 1; text-align: center; }
+}
+
+/* ── Aircraft detail layout ───────────────────────────────────────────────── */
+.ac-detail-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: 3rem;
+  align-items: start;
+}
+@media (max-width: 900px) {
+  .ac-detail-grid { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
+}
+
+/* ── Responsive text wrapping ─────────────────────────────────────────────── */
+/* Keeps headline phrases on one line on desktop, but lets them wrap on small
+   screens so long titles never overflow the viewport. */
+.nowrap-desktop { white-space: nowrap; }
+@media (max-width: 900px) {
+  .nowrap-desktop { white-space: normal; }
+  /* Hero carousel titles use nowrap for desktop line breaks — relax on mobile */
+  .hero-carousel .hero-title-pre,
+  .hero-carousel .hero-title em {
+    white-space: normal;
+  }
+}
+
+/* ── Mobile navigation (hamburger) ────────────────────────────────────────── */
+.nav-menu-toggle {
+  display: none;
+  width: 40px; height: 40px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--navy);
+  font-size: 1.2rem;
+  line-height: 1;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.nav-mobile-panel {
+  display: none;
+  position: fixed;
+  top: 72px; left: 0; right: 0;
+  z-index: 299;
+  background: rgba(253,252,250,0.98);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  max-height: calc(100dvh - 72px);
+  overflow-y: auto;
+}
+.nav-mobile-links { list-style: none; margin: 0; padding: 0.5rem 0 1rem; }
+.nav-mobile-links li { border-top: 1px solid var(--border); }
+.nav-mobile-links li:first-child { border-top: none; }
+.nav-mobile-links a {
+  display: block;
+  padding: 0.95rem 1.5rem;
+  color: var(--navy);
+  text-decoration: none;
+  font-size: 0.8rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
+.nav-mobile-links a:active { color: var(--gold); }
+@media (max-width: 900px) {
+  .nav-menu-toggle { display: inline-flex; }
+  .nav-mobile-panel.open { display: block; }
+  .nav-cta { display: none; }
 }

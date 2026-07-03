@@ -8,21 +8,20 @@ const CANONICAL = "/drone-aircraft-conversion-germany";
 const OG_IMAGE = "/theme/hpaa2.jpg";
 
 export const metadata: Metadata = {
-  title: "Drone Aircraft Conversion Germany | Civil to Autonomous Platform — KUM Services GmbH",
+  title: "Drone Aircraft Conversion: Process, Timeline & Cost — KUM Services GmbH",
   description:
-    "Drone aircraft conversion Germany: KUM Services GmbH converts proven civil turboprop and turbofan aircraft into high-performance drone platforms for ISR, cargo, strike and special missions. EASA Part-145 certified. Fast, low-cost, globally supported.",
+    "What does a drone aircraft conversion programme look like? KUM Services GmbH (Germany) explains the step-by-step conversion process — airframe sourcing, engineering, autonomous systems installation, ground testing, flight test — the timeline advantage over purpose-built UAV programmes, and the cost case. Delivered on-site, worldwide.",
   keywords: [
-    "drone aircraft conversion Germany",
-    "drone conversion Germany",
-    "civil aircraft to drone Germany",
-    "drone aircraft Germany",
-    "convert aircraft to drone Germany",
-    "drone platform conversion Germany",
-    "UAV conversion Germany",
-    "civil aircraft drone conversion",
+    "drone aircraft conversion process",
+    "drone conversion timeline",
+    "drone conversion cost",
+    "aircraft to drone conversion steps",
+    "on-site drone conversion",
+    "civil aircraft to drone conversion",
+    "drone conversion programme Germany",
+    "UAV conversion cost of ownership",
     "KUM Services GmbH",
     "HPAA Germany",
-    "autonomous aircraft Germany",
   ],
   alternates: {
     canonical: absoluteUrl(CANONICAL),
@@ -34,15 +33,15 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: absoluteUrl(CANONICAL),
-    title: "Drone Aircraft Conversion Germany | KUM Services GmbH",
+    title: "Drone Aircraft Conversion: Process, Timeline & Cost | KUM Services GmbH",
     description:
-      "KUM Services GmbH — drone aircraft conversion specialist. Civil turboprop and turbofan aircraft converted to high-performance drone platforms for defence and government.",
-    images: [{ url: absoluteUrl(OG_IMAGE), width: 1200, height: 630, alt: "Drone Aircraft Conversion Germany — KUM Services GmbH" }],
+      "The step-by-step drone conversion programme from KUM Services GmbH, Germany — from civil airframe sourcing to flight test and handover. Short timelines, known market prices, delivered on-site worldwide.",
+    images: [{ url: absoluteUrl(OG_IMAGE), width: 1200, height: 630, alt: "Drone Aircraft Conversion Process, Timeline & Cost — KUM Services GmbH" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Drone Aircraft Conversion Germany | KUM Services GmbH",
-    description: "Civil aircraft to high-performance drone conversion in Germany.",
+    title: "Drone Aircraft Conversion: Process, Timeline & Cost | KUM Services GmbH",
+    description: "The drone conversion programme step by step — timeline and cost advantages over purpose-built UAVs. On-site, worldwide.",
     images: [absoluteUrl(OG_IMAGE)],
   },
 };
@@ -57,20 +56,20 @@ export default function DroneAircraftConversionGermanyPage() {
         "@type": "WebPage",
         "@id": `${base}${CANONICAL}`,
         url: `${base}${CANONICAL}`,
-        name: "Drone Aircraft Conversion Germany — KUM Services GmbH",
+        name: "Drone Aircraft Conversion: Process, Timeline & Cost — KUM Services GmbH",
         description:
-          "KUM Services GmbH converts proven civil aircraft into high-performance drone platforms for ISR, cargo, strike and special missions in Germany and worldwide.",
+          "The step-by-step drone aircraft conversion programme from KUM Services GmbH, Germany: airframe sourcing on the open civil market, engineering and modification, autonomous systems installation, ground testing, and flight test with handover — completed on-site at the customer's location, worldwide, in a fraction of the time of purpose-built UAV programmes.",
         inLanguage: "en",
         isPartOf: { "@id": `${base}/#website` },
         about: { "@id": `${base}/#hpaa` },
         publisher: { "@id": `${base}/#organization` },
-        keywords: "drone aircraft conversion Germany, civil aircraft to drone Germany, UAV conversion Germany, aircraft drone conversion",
+        keywords: "drone aircraft conversion process, drone conversion timeline, drone conversion cost, aircraft to drone conversion steps, on-site drone conversion worldwide, KUM Services GmbH Germany",
       },
       {
         "@type": "BreadcrumbList",
         itemListElement: [
           { "@type": "ListItem", position: 1, name: "Home", item: `${base}/` },
-          { "@type": "ListItem", position: 2, name: "Drone Aircraft Conversion Germany", item: `${base}${CANONICAL}` },
+          { "@type": "ListItem", position: 2, name: "Drone Aircraft Conversion — Process, Timeline & Cost", item: `${base}${CANONICAL}` },
         ],
       },
       {
@@ -79,43 +78,43 @@ export default function DroneAircraftConversionGermanyPage() {
         mainEntity: [
           {
             "@type": "Question",
-            name: "What is drone aircraft conversion in Germany?",
+            name: "What are the steps of a drone aircraft conversion?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Drone aircraft conversion in Germany is the process of converting a proven civil-registered turboprop or turbofan aircraft into a high-performance drone platform. KUM Services GmbH is a specialist drone aircraft conversion provider — delivering high-performance drone capability at a fraction of the time and cost of purpose-built drone programmes.",
+              text: "A KUM Services GmbH drone conversion programme follows five phases: (1) sourcing a proven civil airframe on the open civil aviation market; (2) engineering and airframe modification by EASA Part-145 certified technicians; (3) installation of autonomous flight control systems, BVLOS datalinks, mission payloads and the ground control station; (4) ground testing of all systems; and (5) flight test, validation and handover with operator training and documentation.",
             },
           },
           {
             "@type": "Question",
-            name: "How do you convert a civil aircraft to a drone in Germany?",
+            name: "How long does a drone conversion take compared to a purpose-built UAV?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "KUM Services GmbH converts civil aircraft to drone platforms by: (1) sourcing a proven civil airframe from the open aviation market; (2) installing autonomous flight control systems, BVLOS datalinks and mission payload systems; (3) providing a ground control station; (4) completing on-site validation flights. All work is performed by EASA Part-145 certified technicians. The resulting drone aircraft retains civil registration.",
+              text: "Purpose-built UAV programmes typically take years from contract signature to first operational flight. Because a KUM Services conversion starts from a flying, civil-registered aircraft with a verified reliability record, the programme is completed in a fraction of that time. The base aircraft can also ferry to the customer's location under its civil registration, further shortening the path to operational deployment.",
             },
           },
           {
             "@type": "Question",
-            name: "What drone aircraft conversion services are available in Germany?",
+            name: "Where does the drone conversion take place?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "KUM Services GmbH offers drone aircraft conversion for: ISR drone platforms (EO/IR, SAR, SIGINT); cargo drone platforms (GPS-guided parachute and direct-landing delivery); strike drone platforms (precision guided munitions); counter-UAS drone platforms; and attritable drone platforms for one-way attack missions. All conversions are based on proven civil turboprop or turbofan airframes.",
+              text: "Conversion is performed on-site at the customer's own location, anywhere in the world. KUM Services GmbH deploys EASA Part-145 certified technicians and equipment to the customer's facility, so the aircraft, mission systems and ground control station remain under the customer's control throughout the programme.",
             },
           },
           {
             "@type": "Question",
-            name: "Is drone aircraft conversion in Germany cost-effective?",
+            name: "Why is converting a civil aircraft cheaper than buying a purpose-built drone?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Yes. Drone aircraft conversion by KUM Services GmbH is significantly more cost-effective than purpose-built drone programmes. Civil market airframe sourcing eliminates non-recurring engineering costs. Fixed-price proposals cover aircraft acquisition, conversion, and mission system integration. The lifecycle cost is substantially lower than purpose-built drone platforms with global spare-parts availability.",
+              text: "Civil airframes such as the Cessna 208, King Air 350, Pilatus PC-12, Citation 525B and C-130J are traded on the open market at known market prices, so acquisition cost is transparent and there are no non-recurring development or engineering charges to amortise. Over the life of the aircraft, global spare-parts availability and established civil maintenance networks keep the total cost of ownership substantially below that of purpose-built drone platforms.",
             },
           },
         ],
       },
       {
         "@type": "Service",
-        name: "Drone Aircraft Conversion Germany",
+        name: "Drone Aircraft Conversion Programme — Process, Timeline & Cost",
         description:
-          "KUM Services GmbH converts civil-registered turboprop and turbofan aircraft into high-performance drone platforms (HPAA) for defence, government, and special-mission customers worldwide. EASA Part-145 certified.",
+          "Step-by-step conversion of civil-registered turboprop and turbofan aircraft into high-performance drone platforms (HPAA), completed on-site at the customer's location worldwide by KUM Services GmbH, Germany. EASA Part-145 certified.",
         serviceType: "Drone Aircraft Conversion",
         provider: { "@id": `${base}/#organization` },
         areaServed: [
@@ -142,46 +141,49 @@ export default function DroneAircraftConversionGermanyPage() {
         />
         <div className="page-header-scrim" />
         <div className="page-header-content" style={{ padding: "6rem 2rem 4rem" }}>
-          <p className="section-eyebrow">KUM Services GmbH · Germany</p>
+          <p className="section-eyebrow">KUM Services GmbH · Germany · On-Site Worldwide</p>
           <h1 className="section-heading" style={{ maxWidth: 720 }}>
-            Drone Aircraft Conversion Germany —{" "}
-            <em>Civil Aircraft to High-Performance Drone</em>
+            Drone Aircraft Conversion —{" "}
+            <em>Process, Timeline &amp; Cost</em>
           </h1>
         </div>
       </div>
 
       {/* Introduction */}
       <section className="section">
-        <p className="section-eyebrow">Civil Aircraft to Drone Platform</p>
+        <p className="section-eyebrow">How a Conversion Programme Works</p>
         <h2 className="section-heading">
-          Germany&apos;s Drone Aircraft <em>Conversion Specialist</em>
+          From Civil Airframe to Operational Drone — <em>Step by Step</em>
         </h2>
         <p className="section-lead">
-          KUM Services GmbH specialises in the conversion of
-          proven civil-registered turboprop and turbofan aircraft into high-performance drone
-          platforms — delivering operational drone capability at a fraction of the time and cost of
-          any purpose-built system. The HPAA (High Performance Autonomous Aircraft) conversion
-          programme is Germany&apos;s most advanced civil-to-drone conversion service, trusted by
-          defence ministries, government agencies, and special operations commands worldwide.
+          What does a drone aircraft conversion programme actually look like — how long does it
+          take, and why does it cost less than a purpose-built system? KUM Services GmbH
+          (Germany) runs a structured, five-phase programme: a proven civil turboprop or turbofan
+          airframe is sourced on the open market at a known market price, engineered and modified,
+          fitted with autonomous flight systems, ground tested, and flight tested — all on-site at
+          the customer&apos;s location, anywhere in the world. This page walks through each phase,
+          the timeline advantage over multi-year purpose-built UAV programmes, and the total
+          cost-of-ownership case.
         </p>
       </section>
 
       {/* Callout */}
       <div className="callout-strip reveal">
         <div className="callout-text" style={{ order: 1 }}>
-          <p className="section-eyebrow">The Conversion Process</p>
+          <p className="section-eyebrow">Timeline &amp; Cost</p>
           <h2 className="callout-heading">
-            Civil Aircraft. <em>Drone Mission.</em>
+            Months, Not Years. <em>Known Market Prices.</em>
           </h2>
           <p className="callout-body">
-            Drone aircraft conversion by KUM Services GmbH begins with the selection of a proven
-            civil airframe — Cessna 208, Beechcraft King Air 350, Pilatus PC-12, Cessna Citation
-            525B, or C-130J — sourced directly from the open civil aviation market. The airframe is
-            then fitted with advanced autonomous flight control systems, mission-specific payload
-            integration, BVLOS datalinks, and a ground control station. Conversion is completed
-            on-site at the customer&apos;s location by EASA Part-145 certified technicians. The
-            resulting drone aircraft retains its civil registration — no special permits required
-            for ferry flights, no diplomatic clearances needed.
+            A purpose-built UAV programme carries years of development risk and non-recurring
+            engineering cost before the first aircraft flies. A KUM Services conversion inverts
+            that equation: the starting point is an aircraft that already flies — a Cessna 208,
+            King Air 350, Pilatus PC-12, Citation 525B, or C-130J — acquired on the open civil
+            market at a transparent, known market price. Conversion is completed on-site at the
+            customer&apos;s facility by EASA Part-145 certified technicians in a fraction of the
+            time of a clean-sheet programme, and the aircraft benefits from global civil
+            spare-parts availability and established maintenance networks for its entire service
+            life.
           </p>
           <div style={{ marginTop: "2rem", display: "flex", gap: "1rem", flexWrap: "wrap" }}>
             <Link className="btn-gold" href="/contact">Request a Proposal</Link>
@@ -192,7 +194,7 @@ export default function DroneAircraftConversionGermanyPage() {
           <Image
             fill
             src="/theme/hpaa10.jpg"
-            alt="Drone aircraft conversion — KUM Services GmbH Germany"
+            alt="Drone aircraft conversion programme in progress — KUM Services GmbH"
             style={{ objectFit: "cover" }}
             sizes="(max-width: 768px) 90vw, 50vw"
           />
@@ -200,17 +202,17 @@ export default function DroneAircraftConversionGermanyPage() {
         </div>
       </div>
 
-      {/* Conversion stages */}
+      {/* Conversion programme phases */}
       <section className="section">
-        <p className="section-eyebrow">Conversion Process</p>
-        <h2 className="section-heading">From Civil Aircraft <em>to Drone Platform</em></h2>
+        <p className="section-eyebrow">The Conversion Programme</p>
+        <h2 className="section-heading">Five Phases <em>to Handover</em></h2>
         <div className="why-grid" style={{ marginTop: "2rem" }}>
           {[
-            { n: "01", t: "Airframe Sourcing", d: "Civil turboprop or turbofan aircraft selected and acquired from the open civil aviation market. Airframe condition verified and baseline maintenance completed by EASA Part-145 engineers." },
-            { n: "02", t: "Autonomous Systems Integration", d: "Advanced autonomous flight control systems, AI-assisted mission planning software, and BVLOS-capable datalinks installed and calibrated to the specific airframe." },
-            { n: "03", t: "Payload & Mission Systems", d: "Mission-specific payload systems integrated — EO/IR sensors, SAR, SIGINT, cargo delivery equipment, or weapons stations — depending on the operational requirement." },
-            { n: "04", t: "Ground Control Station", d: "A customised ground control station (GCS) provided for each drone conversion programme. Satellite and line-of-sight datalink configurations available." },
-            { n: "05", t: "Validation & Delivery", d: "Full system validation flights completed. The converted drone aircraft is delivered with operator training, technical documentation, and worldwide support from EASA-certified engineers." },
+            { n: "01", t: "Airframe Sourcing", d: "A proven civil turboprop or turbofan airframe is selected and acquired on the open civil aviation market at a known market price. Condition and maintenance history are verified before purchase, and baseline maintenance is completed by EASA Part-145 engineers." },
+            { n: "02", t: "Engineering & Modification", d: "The airframe is prepared for autonomous operation: structural provisions, wiring, actuation interfaces, and mission-system fittings are engineered and installed against a documented modification plan, preserving the aircraft's certified maintenance baseline." },
+            { n: "03", t: "Autonomous Systems Installation", d: "Autonomous flight control systems, BVLOS-capable datalinks, mission payloads for ISR, cargo, or special missions, and the ground control station are installed and calibrated to the specific airframe." },
+            { n: "04", t: "Ground Testing", d: "Every system is exercised on the ground before flight: flight control end-to-end checks, datalink range and failover verification, payload functional testing, and ground control station rehearsals with the customer's operators." },
+            { n: "05", t: "Flight Test & Handover", d: "A structured flight test campaign validates autonomous operation across the mission envelope. The programme closes with handover: operator training, full technical documentation, and continuing worldwide support from EASA-certified engineers." },
           ].map((c) => (
             <div key={c.n} className="why-card reveal">
               <div className="why-card-num">{c.n}</div>
@@ -221,50 +223,23 @@ export default function DroneAircraftConversionGermanyPage() {
         </div>
       </section>
 
-      {/* Platform grid */}
+      {/* Timeline & cost advantages */}
       <section className="section" style={{ background: "var(--navy)", color: "var(--cream)" }}>
-        <p className="section-eyebrow" style={{ color: "var(--gold-light)" }}>Drone Platforms — Germany</p>
+        <p className="section-eyebrow" style={{ color: "var(--gold-light)" }}>Why Conversion Wins</p>
         <h2 className="section-heading" style={{ color: "var(--warm-white)" }}>
-          Available <em>Conversion Airframes</em>
+          The Timeline &amp; Cost <em>Advantage</em>
         </h2>
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-            gap: "1.5rem",
-            marginTop: "2rem",
-          }}
-        >
+        <div className="why-grid" style={{ marginTop: "2rem" }}>
           {[
-            { src: "/theme/cessna-208-2.png", alt: "Cessna 208 drone aircraft conversion — KUM Services GmbH Germany", label: "Cessna 208" },
-            { src: "/theme/beech-king-air-3500-1.png", alt: "King Air 350 drone conversion — autonomous drone Germany", label: "King Air 350" },
-            { src: "/theme/pilatus-pc-12-2.png", alt: "Pilatus PC-12 drone aircraft — civil to drone conversion Germany", label: "Pilatus PC-12" },
-            { src: "/theme/hpaa4.jpg", alt: "HPAA drone aircraft — civil aircraft conversion Germany", label: "HPAA Platform" },
-          ].map((img) => (
-            <div key={img.src} style={{ position: "relative", overflow: "hidden", height: 200 }}>
-              <Image
-                fill
-                src={img.src}
-                alt={img.alt}
-                style={{ objectFit: "cover", filter: "saturate(0.8)" }}
-                sizes="(max-width: 768px) 45vw, 25vw"
-              />
-              <div
-                style={{
-                  position: "absolute",
-                  bottom: 0,
-                  left: 0,
-                  right: 0,
-                  padding: "0.6rem 1rem",
-                  background: "rgba(11,17,32,0.75)",
-                  fontSize: "0.72rem",
-                  letterSpacing: "0.2em",
-                  textTransform: "uppercase",
-                  color: "var(--gold-light)",
-                }}
-              >
-                {img.label}
-              </div>
+            { n: "T-1", t: "Short Programme Timeline", d: "The programme starts from a flying aircraft, not a design study. Compared with purpose-built UAV programmes that can take years from contract to first flight, a conversion delivers operational capability in a fraction of the time." },
+            { n: "T-2", t: "On-Site, Worldwide", d: "Conversion takes place at the customer's own facility, anywhere in the world. No aircraft transfers between contractor sites, no waiting for factory slots — the airframe remains under the customer's control throughout." },
+            { n: "C-1", t: "Known Acquisition Cost", d: "Civil airframes trade on an open, liquid market with published price levels. There are no non-recurring engineering charges to amortise across a small fleet, and fixed-price proposals cover acquisition, conversion, and mission-system integration." },
+            { n: "C-2", t: "Lower Cost of Ownership", d: "Global civil spare-parts availability, established maintenance networks, and EASA Part-145 procedures keep lifecycle cost substantially below purpose-built drone platforms — for ISR, cargo, and special-mission operations alike." },
+          ].map((c) => (
+            <div key={c.n} className="why-card reveal" style={{ borderColor: "rgba(184,150,90,0.15)" }}>
+              <div className="why-card-num">{c.n}</div>
+              <h3>{c.t}</h3>
+              <p style={{ color: "rgba(248,245,239,0.65)" }}>{c.d}</p>
             </div>
           ))}
         </div>
@@ -276,10 +251,10 @@ export default function DroneAircraftConversionGermanyPage() {
         <h2 className="section-heading">Explore <em>HPAA Capabilities</em></h2>
         <div className="why-grid" style={{ marginTop: "2rem" }}>
           {[
-            { href: "/hpaa-germany", t: "HPAA Germany", d: "High Performance Autonomous Aircraft — the complete HPAA conversion programme." },
-            { href: "/unmanned-aircraft-germany", t: "Unmanned Aircraft Germany", d: "Civil aircraft converted to fully unmanned aerial systems (UAS)." },
-            { href: "/high-performance-combat-drones-germany", t: "High-Performance Combat Drones Germany", d: "Combat-capable drone platforms for strike, ISR and special missions." },
-            { href: "/autonomous-aircraft-germany", t: "Autonomous Aircraft Germany", d: "Autonomous aircraft conversion for defence and government operators." },
+            { href: "/autonomous-aircraft-germany", t: "Autonomous Aircraft Germany", d: "Overview of the civil-to-autonomous aircraft conversion service and platform family." },
+            { href: "/robot-aircraft-germany", t: "Robot Aircraft Germany", d: "The technology stack behind conversions — flight control, datalinks, and autonomy systems." },
+            { href: "/unmanned-aircraft-germany", t: "Unmanned Aircraft Germany", d: "Certification and airspace considerations for converted unmanned aircraft." },
+            { href: "/autonomous-platform-aircraft-germany", t: "Autonomous Platform Aircraft Germany", d: "Platform options and payload configurations for ISR, cargo, and special missions." },
           ].map((c) => (
             <div key={c.href} className="why-card reveal">
               <h3><Link href={c.href} style={{ color: "inherit", textDecoration: "none" }}>{c.t}</Link></h3>
@@ -292,10 +267,10 @@ export default function DroneAircraftConversionGermanyPage() {
       {/* CTA */}
       <section className="section" style={{ textAlign: "center" }}>
         <p className="section-eyebrow">Contact</p>
-        <h2 className="section-heading">Start Your <em>Drone Conversion Programme</em></h2>
+        <h2 className="section-heading">Scope Your <em>Conversion Programme</em></h2>
         <p className="section-lead" style={{ margin: "1rem auto 2rem", maxWidth: 560 }}>
-          KUM Services GmbH — drone aircraft conversion programmes for defence
-          ministries, government agencies, and special operations commands worldwide.
+          KUM Services GmbH — fixed-price drone conversion programmes delivered on-site,
+          worldwide, for defence ministries, government agencies, and special-mission operators.
         </p>
         <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
           <Link className="btn-gold" href="/contact">Request a Proposal</Link>

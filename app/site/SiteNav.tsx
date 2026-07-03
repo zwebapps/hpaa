@@ -13,6 +13,14 @@ const links = siteData.navigation.links;
 export function SiteNav() {
   const pathname = usePathname();
   const [activeSection, setActiveSection] = useState("home");
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  // Close the mobile menu on route change (state adjustment during render)
+  const [lastPathname, setLastPathname] = useState(pathname);
+  if (lastPathname !== pathname) {
+    setLastPathname(pathname);
+    setMenuOpen(false);
+  }
 
   const onHome = pathname === "/";
   const onWhyUs = pathname === "/why-us";
@@ -84,6 +92,34 @@ export function SiteNav() {
       <NavHashLink href={siteData.navigation.cta.href} className={`nav-cta ${ctaActive ? "active" : ""}`}>
         {siteData.navigation.cta.label}
       </NavHashLink>
+
+      <button
+        type="button"
+        className="nav-menu-toggle"
+        aria-label={menuOpen ? "Close menu" : "Open menu"}
+        aria-expanded={menuOpen}
+        aria-controls="mobile-nav-panel"
+        onClick={() => setMenuOpen((open) => !open)}
+      >
+        <span aria-hidden="true">{menuOpen ? "✕" : "☰"}</span>
+      </button>
+
+      <div id="mobile-nav-panel" className={`nav-mobile-panel ${menuOpen ? "open" : ""}`}>
+        <ul className="nav-mobile-links">
+          {links.map((l) => (
+            <li key={l.href}>
+              <NavHashLink href={l.href} onClick={() => setMenuOpen(false)}>
+                {l.label}
+              </NavHashLink>
+            </li>
+          ))}
+          <li>
+            <NavHashLink href={siteData.navigation.cta.href} onClick={() => setMenuOpen(false)}>
+              {siteData.navigation.cta.label}
+            </NavHashLink>
+          </li>
+        </ul>
+      </div>
     </nav>
   );
 }

@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { siteData } from "@/data/siteData";
 import { NavHashLink } from "./NavHashLink";
+import { openConsentBanner } from "@/lib/consent";
 
 const SEO_PAGES = [
   { href: "/easa-part-145-mro-germany", label: "EASA Part-145 MRO Germany" },
@@ -40,6 +41,11 @@ export function SiteFooter() {
             </NavHashLink>
           ))}
         <NavHashLink href={siteData.navigation.cta.href}>Contact</NavHashLink>
+        <Link href="/privacy-policy">Privacy Policy</Link>
+        <Link href="/cookie-policy">Cookie Policy</Link>
+        <button type="button" className="footer-cookie-btn" onClick={openConsentBanner}>
+          Cookie preferences
+        </button>
       </div>
       <nav aria-label="HPAA Germany pages" className="sr-only">
         {SEO_PAGES.map((p) => (

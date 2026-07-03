@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { AircraftGallery } from "./AircraftGallery";
 import { getAircraftBySlug } from "./aircraftData";
 
@@ -43,14 +44,7 @@ export function AircraftDetailsClient({ slug }: { slug: string }) {
           </p>
         ) : null}
 
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1.1fr 0.9fr",
-            gap: "3rem",
-            alignItems: "start",
-          }}
-        >
+        <div className="ac-detail-grid">
           <div>
             <AircraftGallery images={aircraft.images} altBase={aircraft.name} />
           </div>
@@ -86,23 +80,23 @@ export function AircraftDetailsClient({ slug }: { slug: string }) {
             ) : null}
 
             <div style={{ display: "flex", gap: "1rem", marginTop: "2rem", flexWrap: "wrap" }}>
-              <a className="btn-gold" href="/contact">
+              <Link className="btn-gold" href="/contact">
                 Enquire About This Aircraft
-              </a>
-              <a
+              </Link>
+              <Link
                 className="btn-ghost"
                 href="/aircraft"
                 style={{ color: "var(--navy)", borderColor: "rgba(11,17,32,0.25)" }}
               >
                 Back to Platforms
-              </a>
-              <a
+              </Link>
+              <Link
                 className="btn-ghost"
                 href="/hpaa-germany"
                 style={{ color: "var(--navy)", borderColor: "rgba(11,17,32,0.25)" }}
               >
                 HPAA Germany
-              </a>
+              </Link>
             </div>
           </div>
         </div>

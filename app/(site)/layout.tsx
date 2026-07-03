@@ -1,11 +1,12 @@
 import { Bebas_Neue, Cormorant_Garamond, DM_Sans, Outfit, Playfair_Display, Space_Mono } from "next/font/google";
-import Script from "next/script";
 import { buildRootMetadata } from "@/lib/siteMetadata";
 import { SiteFooter } from "../site/SiteFooter";
 import { SiteJsonLd } from "../site/SiteJsonLd";
 import { SiteNav } from "../site/SiteNav";
 import { ThemeProvider } from "@/app/theme/ThemeProvider";
 import { AnalyticsScripts } from "../site/AnalyticsScripts";
+import { ConsentedAnalytics } from "../site/ConsentedAnalytics";
+import { CookieConsent } from "../site/CookieConsent";
 import { SiteClientEffectsLoader } from "./SiteClientEffectsLoader";
 
 const outfit = Outfit({ variable: "--font-outfit", subsets: ["latin"], display: "swap" });
@@ -42,7 +43,6 @@ const spaceMono = Space_Mono({
 
 export const metadata = buildRootMetadata();
 
-const gAdsId = process.env.NEXT_PUBLIC_GOOGLE_ADS_ID;
 const fontClass = [
   outfit.variable,
   cormorant.variable,
@@ -59,18 +59,8 @@ export default function SiteLayout({
 }>) {
   return (
     <div className={fontClass}>
-      {gAdsId ? (
-        <>
-          <Script
-            src={`https://www.googletagmanager.com/gtag/js?id=${gAdsId}`}
-            strategy="lazyOnload"
-          />
-          <Script id="google-ads-init" strategy="lazyOnload">
-            {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${gAdsId}');`}
-          </Script>
-        </>
-      ) : null}
       <AnalyticsScripts />
+      <ConsentedAnalytics />
       <SiteJsonLd />
       <ThemeProvider>
         <SiteClientEffectsLoader />
@@ -78,6 +68,7 @@ export default function SiteLayout({
         <div className="flex-1">{children}</div>
         <SiteFooter />
       </ThemeProvider>
+      <CookieConsent />
     </div>
   );
 }

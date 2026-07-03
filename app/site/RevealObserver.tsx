@@ -3,7 +3,7 @@
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 
-/** Wait for route segment hydration before mutating reveal classNames. */
+/** Small delay so above-the-fold reveals don't flash on first paint. */
 const REVEAL_DELAY_MS = 150;
 
 export function RevealObserver() {
@@ -16,7 +16,9 @@ export function RevealObserver() {
 
     const observe = () => {
       if (!obs) return;
-      document.querySelectorAll(".reveal:not(.visible)").forEach((el) => obs!.observe(el));
+      document
+        .querySelectorAll(".reveal:not(.visible):not([data-visible])")
+        .forEach((el) => obs!.observe(el));
     };
 
     const timer = window.setTimeout(() => {
@@ -25,7 +27,10 @@ export function RevealObserver() {
       obs = new IntersectionObserver(
         (entries) => {
           entries.forEach((e) => {
-            if (e.isIntersecting) e.target.classList.add("visible");
+            // Use a data attribute rather than className: React does not render
+            // `data-visible`, so mutating it never causes a hydration mismatch,
+            // even if this observer fires before a streamed segment hydrates.
+            if (e.isIntersecting) e.target.setAttribute("data-visible", "true");
           });
         },
         { threshold: 0.08 },

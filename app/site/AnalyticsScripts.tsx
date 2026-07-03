@@ -2,12 +2,13 @@ import Script from "next/script";
 import { getPublicAnalyticsIds } from "@/lib/analyticsIntegrations";
 
 /**
- * Optional third-party analytics (Plausible, GA4, Umami).
- * Set env vars to enable — all are no-op when unset.
+ * Cookieless analytics only (Plausible, Umami) — GDPR-exempt, so they run
+ * without consent. Cookie-based trackers (GA4, Google Ads) live in
+ * ConsentedAnalytics and load only after the user accepts.
+ * All are no-ops when their env var is unset.
  */
 export function AnalyticsScripts() {
-  const { plausibleDomain, gaMeasurementId, umamiWebsiteId, umamiScriptSrc } =
-    getPublicAnalyticsIds();
+  const { plausibleDomain, umamiWebsiteId, umamiScriptSrc } = getPublicAnalyticsIds();
 
   return (
     <>
@@ -18,17 +19,6 @@ export function AnalyticsScripts() {
           src="https://plausible.io/js/script.js"
           strategy="afterInteractive"
         />
-      ) : null}
-      {gaMeasurementId ? (
-        <>
-          <Script
-            src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
-            strategy="lazyOnload"
-          />
-          <Script id="ga4-init" strategy="lazyOnload">
-            {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${gaMeasurementId}',{send_page_view:true});`}
-          </Script>
-        </>
       ) : null}
       {umamiWebsiteId ? (
         <Script

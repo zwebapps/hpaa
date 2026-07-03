@@ -8,16 +8,17 @@ const CANONICAL = "/robot-aircraft-germany";
 const OG_IMAGE = "/theme/hpaa5.jpg";
 
 export const metadata: Metadata = {
-  title: "Robot Aircraft Germany | Civil Aircraft Conversion — KUM Services GmbH",
+  title: "Robot Aircraft Technology | Autonomous Flight Control Systems — KUM Services GmbH",
   description:
-    "Robot aircraft Germany: KUM Services GmbH converts proven civil turboprop and turbofan aircraft into autonomous robot aircraft platforms for ISR, cargo, strike and special missions. EASA Part-145 certified.",
+    "Robot aircraft technology explained: autonomous flight control systems, redundant actuation, sensor fusion, BVLOS datalinks, and ground control stations. The autonomy stack KUM Services GmbH installs to turn civil aircraft into robot aircraft — engineered in Germany, deployed worldwide.",
   keywords: [
+    "robot aircraft technology",
+    "autonomous flight control system",
     "robot aircraft Germany",
-    "robotic aircraft Germany",
-    "aircraft robot Germany",
-    "civil aircraft to robot aircraft",
-    "autonomous robot aircraft Germany",
-    "robotic UAV Germany",
+    "BVLOS datalink aircraft",
+    "ground control station aircraft",
+    "sensor fusion autonomous aircraft",
+    "redundant actuation flight control",
     "KUM Services GmbH",
   ],
   alternates: {
@@ -30,15 +31,15 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: absoluteUrl(CANONICAL),
-    title: "Robot Aircraft Germany | KUM Services GmbH",
+    title: "Robot Aircraft Technology | KUM Services GmbH",
     description:
-      "KUM Services GmbH — robot aircraft conversion specialist. Civil turboprop and turbofan aircraft converted to autonomous platforms for defence and government.",
-    images: [{ url: absoluteUrl(OG_IMAGE), width: 1200, height: 630, alt: "Robot Aircraft Germany — KUM Services GmbH" }],
+      "The autonomy stack behind robot aircraft: flight control computers, redundant actuation, sensor fusion, BVLOS datalinks, and ground control stations — engineered in Germany, deployed worldwide.",
+    images: [{ url: absoluteUrl(OG_IMAGE), width: 1200, height: 630, alt: "Robot Aircraft Technology — KUM Services GmbH" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Robot Aircraft Germany | KUM Services GmbH",
-    description: "Civil aircraft to robot aircraft conversion in Germany.",
+    title: "Robot Aircraft Technology | KUM Services GmbH",
+    description: "Autonomous flight control, BVLOS datalinks, and ground control station technology for robot aircraft.",
     images: [absoluteUrl(OG_IMAGE)],
   },
 };
@@ -53,20 +54,20 @@ export default function RobotAircraftGermanyPage() {
         "@type": "WebPage",
         "@id": `${base}${CANONICAL}`,
         url: `${base}${CANONICAL}`,
-        name: "Robot Aircraft Germany — KUM Services GmbH",
+        name: "Robot Aircraft Technology — Autonomous Flight Control Systems | KUM Services GmbH",
         description:
-          "KUM Services GmbH converts proven civil aircraft into robot aircraft autonomous platforms for ISR, cargo, strike and special missions.",
+          "The technology that turns a civil aircraft into a robot aircraft: autonomous flight control computers, redundant actuation, sensor fusion, BVLOS datalinks, and ground control stations — engineered in Germany by KUM Services GmbH and deployed worldwide.",
         inLanguage: "en",
         isPartOf: { "@id": `${base}/#website` },
         about: { "@id": `${base}/#hpaa` },
         publisher: { "@id": `${base}/#organization` },
-        keywords: "robot aircraft Germany, robotic aircraft Germany, aircraft robot Germany, civil aircraft to robot aircraft, autonomous robot aircraft Germany",
+        keywords: "robot aircraft technology, autonomous flight control system, BVLOS datalink, ground control station, sensor fusion, redundant actuation, robot aircraft Germany, KUM Services GmbH",
       },
       {
         "@type": "BreadcrumbList",
         itemListElement: [
           { "@type": "ListItem", position: 1, name: "Home", item: `${base}/` },
-          { "@type": "ListItem", position: 2, name: "Robot Aircraft Germany", item: `${base}${CANONICAL}` },
+          { "@type": "ListItem", position: 2, name: "Robot Aircraft Technology", item: `${base}${CANONICAL}` },
         ],
       },
       {
@@ -75,42 +76,34 @@ export default function RobotAircraftGermanyPage() {
         mainEntity: [
           {
             "@type": "Question",
-            name: "What is a robot aircraft in Germany?",
+            name: "What flight control system do robot aircraft use?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "A robot aircraft is a civil-registered turboprop or turbofan aircraft that has been converted into a fully autonomous or optionally piloted platform. KUM Services GmbH (Germany) is a robot aircraft conversion specialist — converting commercially certified airframes into high-performance autonomous systems for defence ministries, government agencies, and special operations commands worldwide.",
+              text: "KUM Services robot aircraft are fitted with an autonomous flight control system built around a flight control computer that commands redundant actuators on the aircraft's existing flight controls, engine, and systems. The system executes the full mission profile — taxi, take-off, en-route flight, and landing — autonomously, while a ground control station supervises the mission and can intervene at any time.",
             },
           },
           {
             "@type": "Question",
-            name: "Who provides robot aircraft conversion services in Germany?",
+            name: "How are robot aircraft controlled beyond visual line of sight?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "KUM Services GmbH (Germany) provides robot aircraft conversion. KUM Services converts proven civil turboprop and turbofan aircraft into robot aircraft autonomous platforms using EASA Part-145 certified maintenance procedures and autonomous flight control systems developed with the University of Stuttgart.",
+              text: "Robot aircraft operate beyond visual line of sight (BVLOS) using redundant datalinks that connect the aircraft to its ground control station. Command, telemetry, and payload data are exchanged over these links throughout the mission. Operators at the ground control station supervise the flight and issue mission-level commands rather than flying the aircraft manually.",
             },
           },
           {
             "@type": "Question",
-            name: "What is the difference between a robot aircraft and a UAV?",
+            name: "What happens if the datalink to a robot aircraft is lost?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "A robot aircraft (HPAA) is a proven civil-registered aircraft converted to autonomous operation, whereas a purpose-built UAV is designed from scratch for unmanned use. Robot aircraft offer decisive advantages: faster fielding, lower cost, civil registration for unrestricted ferry flights, global spare-parts networks, and no visual identification as a military system.",
+              text: "The autonomy stack is designed so the aircraft does not depend on a continuous datalink to fly safely. If the connection to the ground control station is interrupted, the flight control system continues to execute the pre-planned mission and follows defined lost-link procedures, such as continuing to a planned waypoint or returning to a recovery location, until the link is re-established.",
             },
           },
           {
             "@type": "Question",
-            name: "Can robot aircraft be operated in Germany without special permits?",
+            name: "What role does the University of Stuttgart play in robot aircraft technology?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Yes. Robot aircraft converted by KUM Services GmbH retain civil registration, which allows ferry flights to operating locations under standard civil aviation rules — without special overflight permits or diplomatic clearances. This significantly accelerates deployment timelines for defence and government customers.",
-            },
-          },
-          {
-            "@type": "Question",
-            name: "What missions can robot aircraft perform?",
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: "KUM Services robot aircraft platforms can perform ISR (intelligence, surveillance and reconnaissance), cargo and aerial resupply, strike and payload delivery, counter-UAS operations, range extension missions, and attritable strike operations. Each platform is configured to the specific mission requirement of the customer.",
+              text: "KUM Services GmbH develops its autonomous flight control technology in collaboration with the Institute of Flight Mechanics and Flight Control (iFR) at the University of Stuttgart. This academic partnership provides the flight mechanics and flight control expertise behind the autonomy stack, complementing the EASA Part-145 certified maintenance procedures used during physical conversion.",
             },
           },
         ],
@@ -134,27 +127,28 @@ export default function RobotAircraftGermanyPage() {
         />
         <div className="page-header-scrim" />
         <div className="page-header-content" style={{ padding: "6rem 2rem 4rem" }}>
-          <p className="section-eyebrow">KUM Services GmbH · Germany</p>
+          <p className="section-eyebrow">KUM Services GmbH · Engineered in Germany, Deployed Worldwide</p>
           <h1 className="section-heading" style={{ maxWidth: 720 }}>
-            Robot Aircraft Germany —{" "}
-            <em>Civil Aircraft Conversion Specialist</em>
+            Robot Aircraft Technology —{" "}
+            <em>The Autonomy Stack</em>
           </h1>
         </div>
       </div>
 
       {/* Introduction */}
       <section className="section">
-        <p className="section-eyebrow">What Is a Robot Aircraft?</p>
+        <p className="section-eyebrow">What Turns an Aircraft into a Robot Aircraft?</p>
         <h2 className="section-heading">
-          Proven Civil Aircraft. <em>Autonomous Capability.</em>
+          Autonomous Flight Control. <em>Engineered, Not Improvised.</em>
         </h2>
         <p className="section-lead">
-          A robot aircraft is a proven civil-registered turboprop or turbofan aircraft converted
-          into a fully autonomous or optionally piloted platform. KUM Services GmbH is a dedicated robot aircraft conversion specialist —
-          transforming commercially certified airframes into high-performance autonomous systems
-          for defence ministries, government agencies, and special operations commands worldwide.
-          The approach delivers operational robot aircraft capability in a fraction of the time and
-          cost of any purpose-built unmanned programme.
+          A robot aircraft is a proven civil airframe fitted with a complete autonomy stack: an
+          autonomous flight control system commanding redundant actuation on the existing flight
+          controls, sensor fusion for navigation and situational awareness, BVLOS datalinks, and a
+          ground control station for supervised mission control. KUM Services GmbH engineers and
+          integrates this technology in Germany — in collaboration with the Institute of Flight
+          Mechanics and Flight Control (iFR) at the University of Stuttgart — and deploys it on
+          customer aircraft worldwide. This page explains each layer of that stack.
         </p>
       </section>
 
@@ -164,25 +158,27 @@ export default function RobotAircraftGermanyPage() {
           <Image
             fill
             src="/theme/hpaa7.jpg"
-            alt="Robot aircraft autonomous platform — KUM Services GmbH Germany"
+            alt="Robot aircraft autonomy stack — autonomous flight control integration by KUM Services GmbH"
             style={{ objectFit: "cover" }}
             sizes="(max-width: 768px) 90vw, 50vw"
           />
           <div className="callout-img-overlay" />
         </div>
         <div className="callout-text">
-          <p className="section-eyebrow">Robot Aircraft Conversion</p>
+          <p className="section-eyebrow">Supervised Autonomy</p>
           <h2 className="callout-heading">
-            On-Site. Fast. <em>Operational.</em>
+            The Aircraft Flies. <em>The Operator Supervises.</em>
           </h2>
           <p className="callout-body">
-            KUM Services GmbH robot aircraft conversion programmes source proven civil airframes —
-            Cessna 208, Beechcraft King Air 350, Pilatus PC-12, Cessna Citation 525B, C-130J —
-            directly from the open civil aviation market. Conversion is completed on-site at the
-            customer&apos;s location by EASA Part-145 certified technicians. The resulting robot
-            aircraft retains its civil registration, requires no special overflight permits for
-            ferry flights, and is not visually identifiable as an autonomous platform — a decisive
-            operational advantage.
+            KUM Services robot aircraft are not remotely piloted in the traditional sense. The
+            autonomous flight control system executes the full mission profile — taxi, take-off,
+            en-route flight, payload operation, and landing — while operators at the ground
+            control station supervise the mission and issue mission-level commands over redundant
+            BVLOS datalinks. Redundant actuators on the flight controls and engine, combined with
+            fused navigation sensors, allow the aircraft to continue flying safely through
+            individual component or datalink interruptions. The result is a robot aircraft that
+            behaves predictably, follows defined procedures, and keeps the human in supervisory
+            control at all times.
           </p>
           <div style={{ marginTop: "2rem", display: "flex", gap: "1rem", flexWrap: "wrap" }}>
             <Link className="btn-gold" href="/contact">Request a Proposal</Link>
@@ -191,23 +187,51 @@ export default function RobotAircraftGermanyPage() {
         </div>
       </div>
 
-      {/* Platform images */}
+      {/* Technology stack */}
+      <section className="section" style={{ background: "var(--navy)", color: "var(--cream)" }}>
+        <p className="section-eyebrow" style={{ color: "var(--gold-light)" }}>Technology Stack</p>
+        <h2 className="section-heading" style={{ color: "var(--warm-white)" }}>
+          Inside the <em>Autonomy Stack</em>
+        </h2>
+        <div className="why-grid" style={{ marginTop: "2rem" }}>
+          {[
+            { n: "FCC", t: "Flight Control Computer", d: "The core of the robot aircraft: an autonomous flight control computer that plans and executes the full mission profile — taxi, take-off, en-route flight, and landing — developed with flight control expertise from the University of Stuttgart." },
+            { n: "ACT", t: "Redundant Actuation", d: "Redundant actuators installed on the aircraft's existing flight controls, engine, and systems translate flight control commands into physical control inputs, with redundancy to tolerate individual component faults." },
+            { n: "SNS", t: "Sensor Fusion", d: "Navigation and air-data sensors are fused into a single consistent picture of aircraft state, giving the flight control system reliable position, attitude, and speed information throughout the mission." },
+            { n: "COM", t: "Datalink & Comms", d: "Redundant BVLOS datalinks carry command, telemetry, and payload data between aircraft and ground control station. Defined lost-link procedures keep the aircraft on a safe, predictable flight path if a link is interrupted." },
+            { n: "GCS", t: "Ground Control Station", d: "The ground control station is the operator's interface for supervised mission control: mission planning, real-time monitoring, mission-level commands, and payload management — without manually flying the aircraft." },
+            { n: "PAY", t: "Payload Interface", d: "A mission payload interface connects EO/IR sensors, communications equipment, and cargo systems to the autonomy stack, so ISR, cargo, special mission, and range or communications relay roles can be configured per customer." },
+          ].map((c) => (
+            <div key={c.n} className="why-card reveal" style={{ borderColor: "rgba(184,150,90,0.15)" }}>
+              <div className="why-card-num">{c.n}</div>
+              <h3>{c.t}</h3>
+              <p style={{ color: "rgba(248,245,239,0.65)" }}>{c.d}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* One stack, multiple airframes */}
       <section className="section">
-        <p className="section-eyebrow">Robot Aircraft Platforms — Germany</p>
-        <h2 className="section-heading">Available <em>Aircraft Types</em></h2>
+        <p className="section-eyebrow">One Autonomy Stack — Multiple Airframes</p>
+        <h2 className="section-heading">Integrated on <em>Proven Aircraft</em></h2>
+        <p className="section-lead" style={{ marginBottom: "2rem" }}>
+          The same autonomy stack is adapted to each supported airframe — from the Cessna 208 to
+          the King Air 350 and Pilatus PC-12 — so operators gain a common ground control station
+          and supervised mission workflow across their robot aircraft fleet.
+        </p>
         <div
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
             gap: "1.5rem",
-            marginTop: "2rem",
           }}
         >
           {[
-            { src: "/theme/cessna-208-2.png", alt: "Cessna 208 robot aircraft conversion — KUM Services GmbH Germany", label: "Cessna 208" },
-            { src: "/theme/beech-king-air-3500-2.png", alt: "King Air 350 robot aircraft — autonomous platform Germany", label: "King Air 350" },
-            { src: "/theme/pilatus-pc-12-2.png", alt: "Pilatus PC-12 robot aircraft platform — KUM Services GmbH Germany", label: "Pilatus PC-12" },
-            { src: "/theme/hpaa6.jpg", alt: "Robot aircraft autonomous platform — civil aircraft conversion Germany", label: "HPAA Platform" },
+            { src: "/theme/cessna-208-2.png", alt: "Cessna 208 fitted with autonomous flight control technology — KUM Services GmbH", label: "Cessna 208" },
+            { src: "/theme/beech-king-air-3500-2.png", alt: "King Air 350 with robot aircraft autonomy stack — KUM Services GmbH", label: "King Air 350" },
+            { src: "/theme/pilatus-pc-12-2.png", alt: "Pilatus PC-12 autonomous flight control integration — KUM Services GmbH", label: "Pilatus PC-12" },
+            { src: "/theme/hpaa6.jpg", alt: "Robot aircraft technology — autonomy stack integration on civil airframe", label: "HPAA Platform" },
           ].map((img) => (
             <div key={img.src} style={{ position: "relative", overflow: "hidden", height: 200 }}>
               <Image
@@ -238,46 +262,26 @@ export default function RobotAircraftGermanyPage() {
         </div>
       </section>
 
-      {/* Advantages */}
-      <section className="section">
-        <p className="section-eyebrow">Why Robot Aircraft Conversion</p>
-        <h2 className="section-heading">Key <em>Operational Advantages</em></h2>
-        <div className="why-grid" style={{ marginTop: "2rem" }}>
-          {[
-            { n: "01", t: "Civil Registration", d: "Robot aircraft retain civil registration and external appearance. No diplomatic clearances or special overflight permits required for ferry flights to the operating location." },
-            { n: "02", t: "Short deployment window", d: "On-site conversion completed in a very short period without purpose-built facilities. Significantly faster than any purpose-built unmanned aircraft programme." },
-            { n: "03", t: "Proven Airframes", d: "Every base aircraft has accumulated thousands of commercial flying hours. Reliability is established and maintenance networks are global." },
-            { n: "04", t: "Affordable Programmes", d: "Civil market sourcing eliminates non-recurring engineering costs. Fixed-price proposals cover aircraft acquisition, conversion, and mission system integration." },
-            { n: "05", t: "Attritable Strike Operations", d: "Selected robot aircraft platforms can be configured for one-way attack missions. Civil-sourced airframes at known market prices make attritable operations significantly more cost-effective than purpose-built systems." },
-          ].map((c) => (
-            <div key={c.n} className="why-card reveal">
-              <div className="why-card-num">{c.n}</div>
-              <h3>{c.t}</h3>
-              <p>{c.d}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* Partners strip */}
       <section className="section" style={{ background: "var(--navy)", paddingTop: "3rem", paddingBottom: "3rem" }}>
-        <p className="section-eyebrow" style={{ color: "var(--gold-light)" }}>Certified Partners</p>
+        <p className="section-eyebrow" style={{ color: "var(--gold-light)" }}>Engineering Partners</p>
         <h2 className="section-heading" style={{ color: "var(--warm-white)", marginBottom: "1.5rem" }}>
-          EASA Part-145 & <em>University of Stuttgart</em>
+          University of Stuttgart & <em>EASA Part-145</em>
         </h2>
         <p className="section-lead">
-          All KUM Services robot aircraft conversion programmes in Germany are conducted with
-          Part One-Forty Five GmbH (EASA Part-145 certified, Neuhausen ob Eck Airfield) and the
-          Institute of Flight Mechanics and Flight Control (iFR) at the University of Stuttgart —
-          ensuring every platform meets the highest standards of airworthiness and autonomous
-          flight control.
+          The autonomous flight control technology behind every KUM Services robot aircraft is
+          developed in collaboration with the Institute of Flight Mechanics and Flight Control
+          (iFR) at the University of Stuttgart. Physical integration of the autonomy stack is
+          carried out with Part One-Forty Five GmbH (EASA Part-145 certified, Neuhausen ob Eck
+          Airfield) — combining academic flight control research with certified maintenance
+          engineering.
         </p>
         <div style={{ display: "flex", gap: "1.5rem", marginTop: "2rem", flexWrap: "wrap" }}>
           <div style={{ position: "relative", height: 80, width: 142 }}>
-            <Image fill src="/theme/part-one-forty-five.png" alt="Part One-Forty Five GmbH — EASA Part-145 certified maintenance partner" style={{ objectFit: "contain", filter: "brightness(0.9)" }} sizes="142px" />
+            <Image fill src="/theme/university-of-stuttgart.png" alt="University of Stuttgart — autonomous flight control research partner" style={{ objectFit: "contain", filter: "brightness(0.9)" }} sizes="142px" />
           </div>
           <div style={{ position: "relative", height: 80, width: 142 }}>
-            <Image fill src="/theme/university-of-stuttgart.png" alt="University of Stuttgart — autonomous flight control research partner" style={{ objectFit: "contain", filter: "brightness(0.9)" }} sizes="142px" />
+            <Image fill src="/theme/part-one-forty-five.png" alt="Part One-Forty Five GmbH — EASA Part-145 certified maintenance partner" style={{ objectFit: "contain", filter: "brightness(0.9)" }} sizes="142px" />
           </div>
         </div>
       </section>
@@ -288,10 +292,10 @@ export default function RobotAircraftGermanyPage() {
         <h2 className="section-heading">Explore <em>HPAA Capabilities</em></h2>
         <div className="why-grid" style={{ marginTop: "2rem" }}>
           {[
-            { href: "/hpaa-germany", t: "HPAA Germany", d: "High Performance Autonomous Aircraft — the complete HPAA conversion programme." },
-            { href: "/unmanned-aircraft-germany", t: "Unmanned Aircraft Germany", d: "Manned-to-unmanned conversion for defence and government operators." },
-            { href: "/drone-aircraft-conversion-germany", t: "Drone Aircraft Conversion Germany", d: "Civil aircraft to high-performance drone conversion programmes." },
-            { href: "/autonomous-platform-aircraft-germany", t: "Autonomous Platform Aircraft Germany", d: "Multi-role autonomous platform aircraft for defence and government." },
+            { href: "/autonomous-aircraft-germany", t: "Autonomous Aircraft Germany", d: "Programme overview — civil aircraft converted into autonomous platforms." },
+            { href: "/unmanned-aircraft-germany", t: "Unmanned Aircraft Germany", d: "Certification and airspace — how unmanned conversions are approved and operated." },
+            { href: "/drone-aircraft-conversion-germany", t: "Drone Aircraft Conversion Germany", d: "The conversion process — from airframe sourcing to on-site completion." },
+            { href: "/autonomous-platform-aircraft-germany", t: "Autonomous Platform Aircraft Germany", d: "Platforms and payloads — airframe options and mission equipment." },
           ].map((c) => (
             <div key={c.href} className="why-card reveal">
               <h3><Link href={c.href} style={{ color: "inherit", textDecoration: "none" }}>{c.t}</Link></h3>
@@ -304,10 +308,10 @@ export default function RobotAircraftGermanyPage() {
       {/* CTA */}
       <section className="section" style={{ textAlign: "center" }}>
         <p className="section-eyebrow">Contact</p>
-        <h2 className="section-heading">Start Your <em>Robot Aircraft Programme</em></h2>
+        <h2 className="section-heading">Discuss the <em>Technology for Your Mission</em></h2>
         <p className="section-lead" style={{ margin: "1rem auto 2rem", maxWidth: 560 }}>
-          KUM Services GmbH — robot aircraft conversion for defence ministries,
-          government agencies, and special operations commands worldwide.
+          KUM Services GmbH — autonomous flight control and robot aircraft technology, engineered
+          in Germany and deployed for government and special-mission operators worldwide.
         </p>
         <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
           <Link className="btn-gold" href="/contact">Request a Proposal</Link>

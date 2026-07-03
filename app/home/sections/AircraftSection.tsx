@@ -21,7 +21,7 @@ export function AircraftSection() {
         </div>
       </div>
 
-      <section className="section" style={{ paddingBottom: 0, paddingTop: "3rem" }}>
+      <section className="section" style={{ paddingBottom: 0 }}>
         <p className="section-lead reveal reveal-delay-1" style={{ marginBottom: "2.5rem" }}>
           {section.lead}
         </p>

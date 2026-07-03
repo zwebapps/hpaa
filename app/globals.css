@@ -861,7 +861,9 @@ nav {
 .trust-text span { font-size: 0.7rem; color: rgba(248,245,239,0.45); letter-spacing: 0.05em; margin-top: 2px; display: block; }
 
 /* ── SECTION BASE ── */
-.section { padding: 7rem 5vw; }
+.section { padding: 5rem 5vw; }
+/* Sections directly below a header image sit closer to it */
+.page-header + .section, .page-header + section { padding-top: 3rem; }
 .section-eyebrow {
   font-size: 0.68rem; letter-spacing: 0.4em; text-transform: uppercase;
   color: var(--gold); margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.8rem;
@@ -890,10 +892,22 @@ nav {
 
 /* ── IMG HEADER ── */
 .page-header {
-  height: 400px; position: relative; overflow: hidden;
-  display: flex; align-items: flex-end; padding: 3.5rem 5vw;
+  height: auto; min-height: 320px; position: relative; overflow: hidden;
+  display: flex; align-items: flex-end; padding: 3rem 5vw;
   margin-top: 72px;
 }
+/* The 72px top margin exists to clear the fixed nav on standalone pages.
+   Homepage sections embed the same header mid-page, where it would just be a
+   blank strip — remove it there. */
+#why-us .page-header,
+#aircraft .page-header,
+#applications .page-header,
+#partners .page-header,
+#contact .page-header {
+  margin-top: 0;
+}
+/* Aircraft section keeps its tighter desktop spacing (was inline padding) */
+#aircraft .page-header + .section { padding-top: 3rem; }
 .page-header-bg {
   position: absolute; inset: 0;
   background-size: cover; background-position: center;
@@ -1011,7 +1025,7 @@ nav {
   flex-direction: column;
   justify-content: center;
 }
-.aircraft-model { font-family: var(--font-heading), serif; font-size: 2.4rem; font-weight: 300; color: var(--navy); line-height: 1.1; }
+.aircraft-model { font-family: var(--font-heading), serif; font-size: clamp(1.7rem, 6vw, 2.4rem); font-weight: 300; color: var(--navy); line-height: 1.1; }
 .aircraft-category { font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin: 0.5rem 0 2rem; }
 .spec-table { width: 100%; border-collapse: collapse; margin-bottom: 1.5rem; }
 .spec-table tr { border-bottom: 1px solid rgba(11,17,32,0.06); }
@@ -1517,7 +1531,10 @@ footer {
   }
   .hero-title { font-size: clamp(2.2rem, 9vw, 3.2rem); }
   .hero-carousel .hero-title { min-height: calc(2 * 1.05 * clamp(2.2rem, 9vw, 3.2rem)); }
-  .section { padding: 4rem 1.5rem; }
+  .section { padding: 3rem 1.5rem 3.5rem; }
+  /* Sections that directly follow a header image sit closer to it */
+  .page-header + .section, .page-header + section { padding-top: 2rem; }
+  #aircraft .page-header + .section { padding-top: 2rem; }
   .why-grid, .aircraft-panel.active, .callout-strip, .usage-grid, .contact-wrapper { grid-template-columns: 1fr; }
   /* When callout strips stack to one column, the image cell has no intrinsic
      height (next/image fill is absolutely positioned) — give it one. */
@@ -1534,7 +1551,11 @@ footer {
   .trust-item { padding: 1.25rem 1rem; }
   .usage-grid { grid-template-columns: 1fr; }
   .form-row { grid-template-columns: 1fr; }
-  .page-header { margin-top: 72px; }
+  /* Slimmer section headers on mobile: 400px of bottom-anchored image is
+     mostly empty space above two lines of text on a phone. height:auto lets
+     headers with long wrapped titles grow instead of clipping. */
+  .page-header { margin-top: 72px; height: auto; min-height: 260px; padding: 2rem 1.5rem; }
+  .page-header .page-header-content { padding: 1rem 0 0; }
   .contact-left-new, .contact-right-new { padding: 4rem 2rem; }
   .contact-info-grid { grid-template-columns: 1fr; gap: 2rem; }
 }

@@ -246,7 +246,7 @@ export const seoMetaBlocks: SeoMetaBlock[] = [
     title: "EASA Part-145 MRO and Aircraft Maintenance in Germany",
     metaTitle: "EASA Part-145 MRO Germany | Aircraft Maintenance — KUM Services GmbH",
     metaDescription:
-      "EASA Part-145 aircraft MRO Germany — KUM Services GmbH programmes with Part One-Forty Five GmbH for certified maintenance, modification, and special mission conversion on civil turboprop and turbofan platforms.",
+      "EASA Part 145 MRO services in Germany offering expert aircraft maintenance, repair, and overhaul. Trust us for reliable and certified solutions.",
     targetKeywords: [
       "EASA Part 145 maintenance organisation Germany",
       "EASA Part-145 MRO Germany",

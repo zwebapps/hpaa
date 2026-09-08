@@ -10,7 +10,7 @@ const OG_IMAGE = "/theme/hpaa2.jpg";
 export const metadata: Metadata = {
   title: "Drone Aircraft Conversion: Process, Timeline & Cost — KUM Services GmbH",
   description:
-    "What does a drone aircraft conversion programme look like? KUM Services GmbH (Germany) explains the step-by-step conversion process — airframe sourcing, engineering, autonomous systems installation, ground testing, flight test — the timeline advantage over purpose-built UAV programmes, and the cost case. Delivered on-site, worldwide.",
+    "Discover expert drone aircraft conversion services in Germany. Enhance your UAV capabilities with our innovative solutions and trusted expertise.",
   keywords: [
     "drone aircraft conversion process",
     "drone conversion timeline",

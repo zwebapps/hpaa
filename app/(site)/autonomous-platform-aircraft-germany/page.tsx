@@ -10,7 +10,7 @@ const OG_IMAGE = "/theme/hpaa9.jpeg";
 export const metadata: Metadata = {
   title: "Autonomous Platform Aircraft: Airframes & Payload Integration — KUM Services GmbH",
   description:
-    "Which airframe fits your autonomous mission? Compare the Cessna 208 Caravan, Pilatus PC-12, King Air 350, Citation 525B and C-130J — and the payloads they carry: EO/IR, SAR, comms relay, cargo systems. Platform selection and payload integration from Germany, serving customers worldwide.",
+    "Discover advanced autonomous platform aircraft by Robot Aircraft in Germany, designed for precision, reliability, and cutting-edge technology.",
   keywords: [
     "autonomous platform aircraft",
     "autonomous aircraft platform selection",

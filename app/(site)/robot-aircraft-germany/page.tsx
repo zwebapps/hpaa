@@ -10,7 +10,7 @@ const OG_IMAGE = "/theme/hpaa5.jpg";
 export const metadata: Metadata = {
   title: "Robot Aircraft Technology | Autonomous Flight Control Systems — KUM Services GmbH",
   description:
-    "Robot aircraft technology explained: autonomous flight control systems, redundant actuation, sensor fusion, BVLOS datalinks, and ground control stations. The autonomy stack KUM Services GmbH installs to turn civil aircraft into robot aircraft — engineered in Germany, deployed worldwide.",
+    "Discover Robot Aircraft Germany's advanced unmanned aerial systems, designed for precision and reliability in diverse applications and industries.",
   keywords: [
     "robot aircraft technology",
     "autonomous flight control system",

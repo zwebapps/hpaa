@@ -1,13 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import { siteData } from "@/data/siteData";
+import { SkyHarvestVideo } from "./SkyHarvestVideo";
 
 export function WhyUsSection() {
   const section = siteData.whyUs;
 
   return (
     <div id="why-us">
-      <div className="page-header">
+      <div className="page-header page-header--video">
         <div
           className="page-header-bg"
           style={{ backgroundImage: `url('${section.headerBg}')` }}
@@ -15,20 +16,21 @@ export function WhyUsSection() {
         />
         <div className="page-header-scrim" />
         <div className="page-header-content">
-          <p className="section-eyebrow">{section.eyebrow}</p>
-          <h2 className="section-heading">
-            {section.title.pre}
-            <br />
-            <em>{section.title.emphasis}</em>
-          </h2>
+          <div className="page-header-copy">
+            <p className="section-eyebrow">{section.eyebrow}</p>
+            <h2 className="section-heading">
+              {section.title.pre}
+              <br />
+              <em>{section.title.emphasis}</em>
+            </h2>
+            <p className="page-header-lead">{section.lead}</p>
+          </div>
+          <SkyHarvestVideo />
         </div>
       </div>
 
       <section className="section" style={{ paddingBottom: "3rem" }}>
         <p className="section-lead" style={{ maxWidth: "100%" }}>
-          {section.lead}
-        </p>
-        <p className="section-lead" style={{ maxWidth: "100%", marginTop: "1rem" }}>
           Watch our{" "}
           <Link href="/hpaa-germany">high-performance autonomous aircraft</Link>{" "}
           in flight — from proven civilian platform to pilotless operation under supervised mission

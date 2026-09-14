@@ -152,7 +152,8 @@ export default function HpaaGermanyPage() {
         description:
           "A proven full-size civilian aircraft platform converted into a high-performance autonomous aircraft: payload-capable, long-endurance, pilotless, and operated under supervised mission control.",
         thumbnailUrl: absoluteUrl(VIDEO_POSTER),
-        uploadDate: "2026-06-30",
+        // Google requires a full ISO 8601 datetime with a time zone offset.
+        uploadDate: "2026-06-30T09:00:00+02:00",
         duration: "PT36S",
         contentUrl: absoluteUrl(VIDEO_PATH),
         embedUrl: pageUrl,

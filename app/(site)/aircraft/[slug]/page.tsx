@@ -82,26 +82,29 @@ export default async function AircraftDetailsPage({ params }: PageProps) {
     ? {
         "@context": "https://schema.org",
         "@graph": [
+          // Aircraft are shown as conversion platforms, not sold — so this is a
+          // Service (HPAA conversion of this airframe), not a Product. Product
+          // markup without offers/review/aggregateRating is flagged by Google.
           {
-            "@type": "Product",
-            "@id": `${base}/aircraft/${slug}#product`,
-            name: aircraft.name,
+            "@type": "Service",
+            "@id": `${base}/aircraft/${slug}#service`,
+            name: `${aircraft.name} HPAA conversion`,
             description: aircraft.description.replace(/\s+/g, " ").trim(),
+            serviceType: "Civil aircraft to High Performance Autonomous Aircraft (HPAA) conversion",
             category: aircraft.category,
             url: `${base}/aircraft/${slug}`,
             image: aircraft.images[0]
               ? absoluteUrl(aircraft.images[0])
               : absoluteUrl("/theme/hpaa9.jpeg"),
-            brand: {
-              "@type": "Organization",
-              "@id": `${base}/#organization`,
+            provider: { "@id": `${base}/#organization` },
+            areaServed: [{ "@type": "Country", name: "Germany" }, "Worldwide"],
+            about: {
+              "@type": "Thing",
+              name: aircraft.name,
+              description: aircraft.specs
+                .map((s: { label: string; value: string }) => `${s.label}: ${s.value}`)
+                .join("; "),
             },
-            additionalProperty: aircraft.specs.map((s: { label: string; value: string }) => ({
-              "@type": "PropertyValue",
-              name: s.label,
-              value: s.value,
-            })),
-            // BreadcrumbList for this aircraft page
           },
           {
             "@type": "BreadcrumbList",

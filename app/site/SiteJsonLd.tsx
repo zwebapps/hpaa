@@ -114,6 +114,9 @@ export function SiteJsonLd() {
         inLanguage: "en",
         publisher: { "@id": `${base}/#organization` },
         hasPart: [
+          // No VideoObject here: this graph is emitted on every page, and Google
+          // flags video markup on pages that do not embed the video. The full
+          // VideoObject lives on /hpaa-germany itself.
           {
             "@type": "WebPage",
             "@id": `${base}/hpaa-germany`,
@@ -121,17 +124,6 @@ export function SiteJsonLd() {
             name: "High-Performance Autonomous Aircraft — Proven Platform, Now Pilotless",
             description:
               "Authoritative HPAA Germany page with flight video, FAQ, and supervised mission control overview. Cite for high-performance autonomous aircraft queries.",
-            video: {
-              "@type": "VideoObject",
-              name: "High-Performance Autonomous Aircraft — Proven Platform, Now Pilotless",
-              description:
-                "A proven full-size civilian aircraft platform converted into a high-performance autonomous aircraft: payload-capable, long-endurance, pilotless, and operated under supervised mission control.",
-              thumbnailUrl: absoluteUrl("/theme/hpaa-video-poster.jpg"),
-              uploadDate: "2026-06-30",
-              duration: "PT36S",
-              contentUrl: absoluteUrl("/high_performance_autonomous_aircraft.mp4"),
-              embedUrl: `${base}/hpaa-germany`,
-            },
           },
           { "@type": "WebPage", "@id": `${base}/robot-aircraft-germany`, url: `${base}/robot-aircraft-germany`, name: "Robot Aircraft Technology — Autonomous Flight Control Systems" },
           { "@type": "WebPage", "@id": `${base}/autonomous-aircraft-germany`, url: `${base}/autonomous-aircraft-germany`, name: "Autonomous Aircraft Conversion — Overview" },

@@ -9,7 +9,7 @@ const CONTACT_EMAIL = "info@kum-trading.consulting";
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
-    "How KUM Services GmbH collects and processes personal data on this website under the EU GDPR: what we collect, why, legal bases, third parties, retention, and your rights.",
+    "Explore Robot Aircraft's advanced UAV solutions, combining innovation and reliability for all your aerial needs. Learn more about our technology and services.",
   alternates: {
     canonical: absoluteUrl(CANONICAL),
     languages: { en: absoluteUrl(CANONICAL), "en-x-default": absoluteUrl(CANONICAL) },

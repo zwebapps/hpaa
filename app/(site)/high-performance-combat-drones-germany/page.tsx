@@ -10,7 +10,7 @@ const OG_IMAGE = "/theme/hpaa3.png";
 export const metadata: Metadata = {
   title: "High-Performance Combat Drones Germany | HPAA Strike Platforms — KUM Services GmbH",
   description:
-    "High-performance combat drones Germany: KUM Services GmbH converts proven civil aircraft into high-performance combat drone platforms for strike, ISR, and special missions. EASA Part-145 certified. Faster and lower cost than purpose-built combat UAS.",
+    "Explore Germany's high-performance combat drones designed for advanced military applications. Discover cutting-edge technology and superior aerial capabilities.",
   keywords: [
     "high-performance combat drones Germany",
     "combat drones Germany",

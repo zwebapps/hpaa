@@ -10,7 +10,7 @@ const OG_IMAGE = "/theme/hpaa1.jpg";
 export const metadata: Metadata = {
   title: "Unmanned Aircraft Certification | EASA Part-145 Conversion — KUM Services GmbH",
   description:
-    "How unmanned aircraft conversions stay certified and airworthy: EASA Part-145 certified maintenance and modification, retained civil registration, continued airworthiness, BVLOS approvals and airspace integration. Certified in Germany, operated worldwide by KUM Services GmbH.",
+    "Explore Germany's leading unmanned aircraft solutions with Robot Aircraft. Innovative drone technology tailored for diverse applications and industries.",
   keywords: [
     "unmanned aircraft certification",
     "EASA Part-145 unmanned aircraft",

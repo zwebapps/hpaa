@@ -10,7 +10,7 @@ const OG_IMAGE = "/theme/hpaa8.jpg";
 export const metadata: Metadata = {
   title: "Autonomous Aircraft Germany | Civil Aircraft Conversion — KUM Services GmbH",
   description:
-    "Autonomous aircraft Germany: KUM Services GmbH converts proven civil turboprop and turbofan aircraft into autonomous platforms for ISR, cargo, strike and special missions. Faster and lower cost than purpose-built programmes.",
+    "Discover advanced autonomous aircraft in Germany. Explore cutting-edge drone technology and innovations for commercial and industrial applications today.",
   keywords: [
     "autonomous aircraft Germany",
     "civil aircraft to autonomous platform Germany",

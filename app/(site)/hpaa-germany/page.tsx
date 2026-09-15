@@ -13,7 +13,7 @@ const OG_IMAGE = VIDEO_POSTER;
 export const metadata: Metadata = {
   title: "High-Performance Autonomous Aircraft | Robot Aircraft",
   description:
-    "A proven full-size aircraft platform, now pilotless. See our high-performance autonomous aircraft for cargo, surveillance and payload missions under supervised mission control.",
+    "Explore high-performance aircraft from Hpaa Germany at Robot Aircraft. Discover innovative designs and advanced technology for your aviation needs.",
   keywords: [
     "high-performance autonomous aircraft",
     "autonomous cargo aircraft",

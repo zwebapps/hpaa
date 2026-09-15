@@ -10,7 +10,7 @@ export const seoMetaBlocks: SeoMetaBlock[] = [
     title: "What Is a High Performance Autonomous Aircraft (HPAA)?",
     metaTitle: "HPAA — High Performance Autonomous Aircraft | Robot Aircraft Germany",
     metaDescription:
-      "HPAA — High Performance Autonomous Aircraft. Robot aircraft Germany: KUM Services GmbH converts civil platforms into HPAA for ISR, cargo, strike & special missions. EASA Part-145 certified.",
+      "Explore Robot-Aircraft's cutting-edge drones and UAV solutions for every industry. Innovate with reliable, advanced aerial technology tailored for your needs.",
     targetKeywords: [
       "HPAA",
       "hpaa",
@@ -28,7 +28,7 @@ export const seoMetaBlocks: SeoMetaBlock[] = [
     title: "Why Convert a Civil Aircraft Instead of Buying a Purpose-Built UAV?",
     metaTitle: "Civil Aircraft to Autonomous Platform Germany | HPAA Conversion",
     metaDescription:
-      "Civil aircraft to autonomous platform Germany — KUM Services GmbH converts civil aircraft into HPAA autonomous platforms faster and at lower cost than purpose-built UAV programmes.",
+      "Discover why Robot Aircraft is your top choice for innovative drone solutions, delivering quality, reliability, and cutting-edge technology in every product.",
     targetKeywords: [
       "civil aircraft to autonomous platform Germany",
       "civil aircraft to autonomous platform",
@@ -106,7 +106,7 @@ export const seoMetaBlocks: SeoMetaBlock[] = [
     title: "Choosing the Right HPAA Platform: From PC-12 to C-130J",
     metaTitle: "HPAA Platform Guide: King Air, PC-12, C-130 & More",
     metaDescription:
-      "Compare HPAA and aircraft robot-capable platforms — King Air 350, Pilatus PC-12, Cessna 208, Citation 525B and C-130J. Mission-ready integration for ISR, cargo or strike.",
+      "Explore a wide range of advanced robotic aircraft designed for various applications. Discover innovative, reliable, and cutting-edge drone technology today.",
     targetKeywords: [
       "King Air 350",
       "Pilatus PC-12",
@@ -244,9 +244,9 @@ export const seoMetaBlocks: SeoMetaBlock[] = [
   {
     id: "easa-part-145-mro",
     title: "EASA Part-145 MRO and Aircraft Maintenance in Germany",
-    metaTitle: "EASA Part-145 MRO Germany | Aircraft Maintenance — KUM Services GmbH",
+    metaTitle: "EASA Part 145 MRO Services in Germany - Robot Aircraft",
     metaDescription:
-      "EASA Part-145 aircraft MRO Germany — KUM Services GmbH programmes with Part One-Forty Five GmbH for certified maintenance, modification, and special mission conversion on civil turboprop and turbofan platforms.",
+      "Discover our trusted partners in robotics and aircraft technology, committed to innovation and excellence. Join us to explore cutting-edge solutions today.",
     targetKeywords: [
       "EASA Part 145 maintenance organisation Germany",
       "EASA Part-145 MRO Germany",
@@ -265,7 +265,7 @@ export const seoMetaBlocks: SeoMetaBlock[] = [
     title: "Aircraft Avionics Retrofit and Mission Systems Integration",
     metaTitle: "Aircraft Avionics Retrofit Germany | Mission Systems — KUM Services GmbH",
     metaDescription:
-      "Aircraft avionics retrofit and mission systems integration Germany — flight control, datalinks, EO/IR and ISR sensor installation on civil platforms. EASA Part-145 partner network.",
+      "Upgrade your aircraft avionics with Robot-Aircraft in Germany. Expert retrofits ensure safety, compliance, and modern technology integration.",
     targetKeywords: [
       "aircraft avionics retrofit",
       "avionics integration aircraft",
@@ -282,9 +282,9 @@ export const seoMetaBlocks: SeoMetaBlock[] = [
   {
     id: "special-mission-conversion",
     title: "Special Mission Aircraft Conversion in Germany",
-    metaTitle: "Special Mission Aircraft Conversion Germany | Surveillance — KUM Services GmbH",
+    metaTitle: "Special Mission Aircraft Conversion | Robot Aircraft",
     metaDescription:
-      "Special mission aircraft conversion Germany — civil turboprop and business jet platforms configured for surveillance, ISR, and government mission systems. EASA Part-145 certified modification partner.",
+      "Explore our expert Special Mission Aircraft Conversion services, designed to customize drones for your unique operational needs and enhance mission success.",
     targetKeywords: [
       "special mission aircraft conversion",
       "special mission aircraft modification Europe",
@@ -302,7 +302,7 @@ export const seoMetaBlocks: SeoMetaBlock[] = [
     title: "Contact KUM Services — MRO, Modification and HPAA Enquiries",
     metaTitle: "Contact KUM Services GmbH | MRO & Aircraft Modification Germany",
     metaDescription:
-      "Contact KUM Services GmbH for EASA Part-145 MRO, aircraft modification, avionics integration, special mission conversion, and HPAA programme proposals. Confidential enquiries welcome.",
+      "Contact Robot Aircraft for expert drone solutions and innovative unmanned aircraft technology. Connect with us today to learn more and get started!",
     targetKeywords: [
       "aircraft modification enquiry Germany",
       "EASA Part-145 MRO contact",

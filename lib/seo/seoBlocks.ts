@@ -265,7 +265,7 @@ export const seoMetaBlocks: SeoMetaBlock[] = [
     title: "Aircraft Avionics Retrofit and Mission Systems Integration",
     metaTitle: "Aircraft Avionics Retrofit Germany | Mission Systems — KUM Services GmbH",
     metaDescription:
-      "Aircraft avionics retrofit and mission systems integration Germany — flight control, datalinks, EO/IR and ISR sensor installation on civil platforms. EASA Part-145 partner network.",
+      "Expert aircraft avionics retrofit in Germany. Enhance your aircraft with the latest technology for safety, efficiency, and compliance. Contact us today!",
     targetKeywords: [
       "aircraft avionics retrofit",
       "avionics integration aircraft",

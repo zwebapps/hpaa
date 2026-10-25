@@ -1520,11 +1520,13 @@ footer {
   /* Hero text lives in an absolutely-positioned overlay (.hero-inner), so on
      small screens it can grow taller than the hero and slide under the fixed
      nav. On mobile, put the overlay back in normal flow so the hero grows
-     with its content, and scale the title down. */
+     with its content, and scale the title down. Keep it positioned (relative,
+     not static) so its z-index still lifts the buttons above .hero-scrim —
+     otherwise the scrim swallows every tap on the hero CTAs. */
   .hero { height: auto; min-height: 0; padding: 0; }
   .hero-carousel { height: auto; }
   .hero-inner {
-    position: static;
+    position: relative;
     padding: 2.5rem 1.5rem 3rem;
     min-height: min(calc(100vh - 72px), 640px);
     min-height: min(calc(100svh - 72px), 640px);

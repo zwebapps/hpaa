@@ -63,9 +63,15 @@ export default function SiteLayout({
       <ConsentedAnalytics />
       <SiteJsonLd />
       {/* Without JavaScript the scroll-reveal never runs: show everything as-is. */}
-      <noscript>
-        <style>{`.reveal, .reveal *, .reveal .aircraft-img-side, .reveal .partner-card-img, .reveal .ac-media-figure { opacity: 1 !important; transform: none !important; clip-path: none !important; filter: none !important; }`}</style>
-      </noscript>
+      {/* Raw HTML so React never manages this <style>: a React-rendered <style> is a
+          "hoistable" resource, and inside <noscript> it has no DOM node on the client,
+          which crashed React with "Cannot read properties of null (reading 'removeChild')". */}
+      <noscript
+        dangerouslySetInnerHTML={{
+          __html:
+            "<style>.reveal, .reveal *, .reveal .aircraft-img-side, .reveal .partner-card-img, .reveal .ac-media-figure { opacity: 1 !important; transform: none !important; clip-path: none !important; filter: none !important; }</style>",
+        }}
+      />
       <ThemeProvider>
         <SiteClientEffectsLoader />
         <SiteNav />

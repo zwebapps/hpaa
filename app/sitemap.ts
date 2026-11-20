@@ -46,7 +46,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${base}/aircraft/${encodeURIComponent(a.slug)}`,
     lastModified,
     changeFrequency: "monthly" as const,
-    priority: 0.75,
+    // Rich product pages (with summary/FAQ) are lead pages: rank them higher.
+    priority: (a as { summary?: string }).summary ? 0.85 : 0.75,
   }));
 
   return [...staticEntries, ...aircraftEntries];

@@ -1,7 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { siteData } from "@/data/siteData";
+import { trackLead } from "@/lib/trackEvent";
+
+/** Plain-text query value, trimmed and length-capped (used only to pre-fill inputs). */
+function readQueryText(params: URLSearchParams, key: string, max: number): string {
+  return (params.get(key) ?? "").replace(/[\u0000-\u001f<>]/g, "").trim().slice(0, max);
+}
 
 function regValue(raw: string | undefined) {
   return raw?.trim() ? raw : "—";
@@ -72,6 +78,18 @@ export function ContactSection() {
   const [honeypot, setHoneypot] = useState("");
   const [status, setStatus] = useState<FormStatus>("idle");
   const [feedback, setFeedback] = useState<string | null>(null);
+  const [sourcePage, setSourcePage] = useState<string | undefined>(undefined);
+
+  // Pre-fill from links like /contact?interest=CoAX%20600&from=/aircraft/… (read on the
+  // client so the page stays statically rendered).
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const prefill = readQueryText(params, "interest", 200);
+    const from = readQueryText(params, "from", 200);
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- one-time sync from the URL
+    if (prefill) setInterest((current) => current || prefill);
+    if (from.startsWith("/")) setSourcePage(from);
+  }, []);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -109,6 +127,7 @@ export function ContactSection() {
         return;
       }
       setStatus("success");
+      trackLead({ interest, source: sourcePage ?? window.location.pathname });
       setFeedback("Thank you — your enquiry was sent. We will respond as soon as we can.");
       setFullName("");
       setOrg("");
@@ -161,7 +180,7 @@ export function ContactSection() {
             </div>
           </div>
         </div>
-        <div className="contact-right-new">
+        <div className="contact-right-new" id="contact-form">
           <div className="form-heading">{section.form.heading}</div>
           <p className="form-sub">{section.form.sub}</p>
           <form className="form-fields" onSubmit={handleSubmit} noValidate>

@@ -1776,3 +1776,195 @@ body:has(.admin-login-page) .flex-1 {
    route (same section markup). When the section is the first thing in <main>
    there is a fixed nav above it, so restore the clearance there. */
 main > #why-us:first-child .page-header { margin-top: 72px; }
+
+/* ── Aircraft rich detail page (e.g. CoAX 600) ───────────────────────────── */
+.ac-h1-sub {
+  display: block;
+  margin-top: 0.4rem;
+  font-family: var(--font-body), sans-serif;
+  font-size: clamp(0.85rem, 1.4vw, 1.15rem);
+  font-weight: 400;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+}
+.ac-stats {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  background: var(--navy);
+  margin: 0;
+}
+.ac-stat {
+  padding: 1.6rem 1.25rem;
+  border-right: 1px solid rgba(250, 252, 255, 0.08);
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 0.35rem;
+}
+.ac-stat:last-child { border-right: none; }
+.ac-stat dd {
+  margin: 0;
+  font-family: var(--font-heading), serif;
+  font-size: clamp(1.6rem, 2.4vw, 2.3rem);
+  font-weight: 300;
+  line-height: 1;
+  color: var(--warm-white);
+}
+.ac-stat dt {
+  font-size: 0.66rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(250, 252, 255, 0.7);
+}
+.ac-summary { margin-bottom: 3rem; max-width: 980px; }
+.ac-summary .section-lead { font-size: 1.08rem; margin-top: 0; }
+.ac-cta-row { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.8rem; }
+.ac-btn-ghost-dark { color: var(--navy); border-color: rgba(11, 17, 32, 0.25); }
+.ac-rich .btn-gold:focus-visible,
+.ac-rich .btn-ghost:focus-visible,
+.ac-faq-item summary:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+.ac-side-heading {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+.spec-table th {
+  padding: 0.75rem 0;
+  text-align: left;
+  font-weight: 400;
+  color: var(--slate-light);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  width: 45%;
+  vertical-align: top;
+}
+.ac-rich .spec-table th + td { font-weight: 500; color: var(--navy); text-align: right; padding: 0.75rem 0; font-size: 0.88rem; }
+.ac-highlights { list-style: none; padding: 0; margin: 0; }
+.ac-highlights li {
+  position: relative;
+  padding: 0.55rem 0 0.55rem 1.4rem;
+  font-size: 0.92rem;
+  line-height: 1.7;
+  color: var(--slate);
+}
+.ac-highlights li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 1.15rem;
+  width: 0.6rem;
+  height: 2px;
+  background: var(--gold);
+}
+.ac-band { background: var(--cream); }
+.ac-grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 2.5rem; }
+.ac-media {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 4rem;
+  align-items: center;
+}
+.ac-media--flip .ac-media-text { order: 2; }
+.ac-media-heading { font-size: clamp(1.9rem, 3vw, 2.9rem); }
+.ac-media-text .section-lead + .section-lead { margin-top: 1rem; }
+.ac-media-images { display: grid; gap: 0.75rem; }
+.ac-media-images--2 { grid-template-columns: 1fr 1fr; }
+.ac-media-images--3 { grid-template-columns: 1fr 1fr 1fr; }
+.ac-media-figure { margin: 0; overflow: hidden; background: var(--cream); border: 1px solid var(--border-light); }
+.ac-media-figure img { display: block; width: 100%; height: auto; }
+.ac-media-images--2 .ac-media-figure img,
+.ac-media-images--3 .ac-media-figure img { aspect-ratio: 2 / 3; object-fit: cover; }
+.ac-spec-groups {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem 3rem;
+  margin-top: 2.5rem;
+}
+.ac-spec-group { margin-bottom: 0; }
+.ac-spec-group caption {
+  text-align: left;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--navy);
+  padding-bottom: 0.6rem;
+  border-bottom: 2px solid var(--gold);
+}
+.ac-related { max-width: none; margin: 2rem 0 0; }
+.ac-faq { margin-top: 2.5rem; border-top: 1px solid var(--border); max-width: 980px; }
+.ac-faq-item { border-bottom: 1px solid var(--border); background: var(--warm-white); }
+.ac-faq-item summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 1.25rem 3rem 1.25rem 1.5rem;
+  position: relative;
+  min-height: 44px;
+}
+.ac-faq-item summary::-webkit-details-marker { display: none; }
+.ac-faq-item summary::after {
+  content: "+";
+  position: absolute;
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.4rem;
+  color: var(--gold);
+}
+.ac-faq-item[open] summary::after { content: "−"; }
+.ac-faq-item summary h3 {
+  display: inline;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--navy);
+  line-height: 1.5;
+}
+.ac-faq-item p {
+  padding: 0 1.5rem 1.4rem;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--slate);
+  max-width: 820px;
+}
+.ac-sticky-cta { display: none; }
+@media (max-width: 1100px) {
+  .ac-stats { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .ac-stat:nth-child(3) { border-right: none; }
+  .ac-stat:nth-child(-n + 3) { border-bottom: 1px solid rgba(250, 252, 255, 0.08); }
+  .ac-spec-groups { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 900px) {
+  .ac-grid-3 { grid-template-columns: minmax(0, 1fr); }
+  .ac-media { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
+  .ac-media--flip .ac-media-text { order: 0; }
+}
+@media (max-width: 640px) {
+  .ac-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ac-stat { padding: 1.1rem 1rem; }
+  .ac-stat:nth-child(3) { border-right: 1px solid rgba(250, 252, 255, 0.08); }
+  .ac-stat:nth-child(2n) { border-right: none; }
+  .ac-stat:nth-child(-n + 4) { border-bottom: 1px solid rgba(250, 252, 255, 0.08); }
+  .ac-spec-groups { grid-template-columns: minmax(0, 1fr); }
+  .ac-cta-row > a { flex: 1 1 100%; text-align: center; }
+  .ac-sticky-cta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    position: sticky;
+    bottom: 0;
+    z-index: 40;
+    padding: 0.7rem 1rem calc(0.7rem + env(safe-area-inset-bottom));
+    background: var(--navy);
+    border-top: 1px solid rgba(250, 252, 255, 0.12);
+  }
+  .ac-sticky-cta-name { color: var(--warm-white); font-size: 0.85rem; letter-spacing: 0.12em; text-transform: uppercase; }
+  .ac-sticky-cta .btn-gold { padding: 0.75rem 1.4rem; min-height: 44px; }
+}

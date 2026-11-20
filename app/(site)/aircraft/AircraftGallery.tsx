@@ -9,9 +9,12 @@ import { THUMB_SIZES } from "@/lib/imageSizes";
 export function AircraftGallery({
   images,
   altBase,
+  alts,
 }: {
   images: string[];
   altBase: string;
+  /** Optional per-image alt text (same order as `images`). */
+  alts?: string[];
 }) {
   const safeImages = useMemo(() => images.filter(Boolean), [images]);
   const slides = useMemo(() => expandAircraftSlides(safeImages), [safeImages]);
@@ -20,11 +23,14 @@ export function AircraftGallery({
 
   if (slides.length === 0) return null;
   const current = slides[active]!;
+  // Per-image alts only line up when every image is its own slide (3+ images).
+  const altFor = (idx: number) =>
+    alts && slides.length === safeImages.length ? (alts[idx] ?? altBase) : altBase;
 
   return (
     <div className="ac-gallery">
       <div className="ac-gallery-main">
-        <AircraftMagnifier src={current.src} alt={altBase} variant={current.variant} />
+        <AircraftMagnifier src={current.src} alt={altFor(active)} variant={current.variant} />
       </div>
 
       {slides.length > 1 ? (
@@ -49,13 +55,14 @@ export function AircraftGallery({
                 type="button"
                 className={`ac-thumb ${idx === active ? "active" : ""}`}
                 onClick={() => setActive(idx)}
-                aria-label={`Select image ${idx + 1}`}
+                aria-label={`Show image ${idx + 1}: ${altFor(idx)}`}
+                aria-pressed={idx === active}
                 style={{ position: "relative" }}
               >
                 <Image
                   fill
                   src={slide.src}
-                  alt={`${altBase} thumbnail ${idx + 1}`}
+                  alt=""
                   className={`ac-thumb-img ac-thumb-img--v${slide.variant}`}
                   sizes={THUMB_SIZES}
                   loading="lazy"

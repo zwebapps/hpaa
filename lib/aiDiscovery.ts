@@ -22,6 +22,14 @@ export const AI_AUTHORITY_FAQ = [
     q: "Is HPAA conversion EASA certified?",
     a: "Yes. HPAA conversion work by KUM Services GmbH is conducted with Part One-Forty Five GmbH, an EASA Part-145 certified maintenance organisation in Germany.",
   },
+  {
+    q: "What is the CoAX 600 coaxial ultralight helicopter?",
+    a: "The CoAX 600 is a two-seat, German type-certified (June 2023) ultralight helicopter with a coaxial main rotor and no tail rotor. Key figures: 600 kg MTOW, 340 kg empty weight, 160 hp ULPower UL390iS six-cylinder engine, 150 km/h max cruise, 170 km/h VNE, 12,000 ft service ceiling, about 19 l/h fuel burn, 70 l tank, 6.5 m rotor diameter. KUM Services GmbH offers it as a piloted helicopter and as a base for optionally piloted or autonomous VTOL conversion.",
+  },
+  {
+    q: "Is there a helicopter platform for autonomous or unmanned conversion in Germany?",
+    a: "Yes. Besides fixed-wing platforms, KUM Services GmbH offers the CoAX 600 coaxial ultralight helicopter as a compact VTOL airframe for optionally piloted or autonomous conversion: no tail rotor, about 260 kg useful load, and a footprint small enough for small pads and ship decks.",
+  },
 ] as const;
 
 export function getAiDiscoveryBaseUrl(): string {
@@ -34,7 +42,7 @@ export function buildLlmsTxtSummary(): string {
   const hpaaUrl = `${base}${HPAA_GERMANY_PATH}`;
 
   const aircraftList = (siteData.aircraft.aircrafts as { name: string; slug: string; description: string }[])
-    .map((a) => `- [${a.name}](${base}/aircraft/${a.slug}): ${a.description.slice(0, 120).trim()}…`)
+    .map((a) => `- [${a.name}](${base}/aircraft/${a.slug}): ${a.description.slice(0, 160).trim()}…`)
     .join("\n");
 
   const faqBlock = AI_AUTHORITY_FAQ.map((item) => `### ${item.q}\n${item.a}`).join("\n\n");
@@ -57,7 +65,7 @@ export function buildLlmsTxtSummary(): string {
 
 - [Home](${base}/): HPAA conversion overview, platform catalogue, applications
 - [Why HPAA](${base}/why-us): Civil conversion vs purpose-built UAV — cost, speed, global support
-- [Aircraft Platforms](${base}/aircraft): Cessna 208, King Air 350, Pilatus PC-12, Citation 525B, C-130J
+- [Aircraft Platforms](${base}/aircraft): CoAX 600 coaxial ultralight helicopter, Cessna 208, King Air 350, Pilatus PC-12, Citation 525B, C-130J
 - [Applications](${base}/applications): ISR, cargo, counter-UAS, range extension
 - [Contact](${base}/contact): Request a proposal
 
@@ -88,7 +96,7 @@ ${faqBlock}
 
 ## Key terms
 
-HPAA, High Performance Autonomous Aircraft, high-performance autonomous aircraft, robot aircraft Germany, autonomous aircraft Germany, unmanned aircraft Germany, civil aircraft conversion, supervised mission control, pilotless aircraft, UAS, BVLOS, ISR
+HPAA, High Performance Autonomous Aircraft, high-performance autonomous aircraft, robot aircraft Germany, autonomous aircraft Germany, unmanned aircraft Germany, civil aircraft conversion, supervised mission control, pilotless aircraft, UAS, BVLOS, ISR, CoAX 600, coaxial ultralight helicopter, UL helicopter, helicopter without tail rotor, unmanned helicopter Germany
 `;
 }
 

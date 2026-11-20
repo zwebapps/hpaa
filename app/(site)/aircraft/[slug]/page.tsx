@@ -27,27 +27,38 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 
   const rawDescription = aircraft.description.replace(/\s+/g, " ").trim();
-  const metaDescription = `${aircraft.name} HPAA conversion — KUM Services GmbH (Germany). ${rawDescription.slice(0, 130).trim()} Autonomous aircraft platform, EASA Part-145 certified.`.slice(0, 200);
+  const metaDescription =
+    aircraft.seoDescription ??
+    `${aircraft.name} HPAA conversion — KUM Services GmbH (Germany). ${rawDescription.slice(0, 130).trim()} Autonomous aircraft platform, EASA Part-145 certified.`.slice(0, 200);
   const url = absoluteUrl(path);
-  const ogImage = aircraft.images[0] ? absoluteUrl(aircraft.images[0]) : absoluteUrl("/theme/hpaa9.jpeg");
-  const pageTitle = `${aircraft.name} HPAA Conversion Germany | Autonomous Aircraft Platform | KUM Services GmbH`;
+  const ogSrc = aircraft.ogImage ?? aircraft.images[0];
+  const ogImage = ogSrc ? absoluteUrl(ogSrc) : absoluteUrl("/theme/hpaa9.jpeg");
+  const ogAlt =
+    aircraft.imageAlts?.[0] ?? `${aircraft.name} — HPAA autonomous platform, KUM Services GmbH Germany`;
+  // A custom SEO title is already tuned to ~60 chars, so skip the site-wide " · App name" suffix.
+  const title: Metadata["title"] = aircraft.seoTitle
+    ? { absolute: aircraft.seoTitle }
+    : `${aircraft.name} HPAA Conversion Germany | KUM Services GmbH`;
+  const pageTitle =
+    aircraft.seoTitle ?? `${aircraft.name} HPAA Conversion Germany | Autonomous Aircraft Platform | KUM Services GmbH`;
+  const keywords = aircraft.keywords ?? [
+    `${aircraft.name} HPAA conversion`,
+    `${aircraft.name} autonomous aircraft`,
+    `${aircraft.name} autonomous platform Germany`,
+    `${aircraft.name} conversion Germany`,
+    `${aircraft.name} robot aircraft`,
+    `${aircraft.name} unmanned conversion`,
+    "HPAA Germany",
+    "civil aircraft to autonomous platform Germany",
+    "aircraft conversion Germany",
+    "KUM Services GmbH",
+    "autonomous aircraft Germany",
+  ];
 
   return {
-    title: `${aircraft.name} HPAA Conversion Germany | KUM Services GmbH`,
+    title,
     description: metaDescription,
-    keywords: [
-      `${aircraft.name} HPAA conversion`,
-      `${aircraft.name} autonomous aircraft`,
-      `${aircraft.name} autonomous platform Germany`,
-      `${aircraft.name} conversion Germany`,
-      `${aircraft.name} robot aircraft`,
-      `${aircraft.name} unmanned conversion`,
-      "HPAA Germany",
-      "civil aircraft to autonomous platform Germany",
-      "aircraft conversion Germany",
-      "KUM Services GmbH",
-      "autonomous aircraft Germany",
-    ],
+    keywords,
     alternates: {
       canonical: url,
       languages: {
@@ -61,7 +72,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       title: pageTitle,
       description: metaDescription,
       siteName: appName,
-      images: [{ url: ogImage, alt: `${aircraft.name} — HPAA autonomous platform, KUM Services GmbH Germany` }],
+      images: [{ url: ogImage, alt: ogAlt, ...(aircraft.ogImage ? { width: 1200, height: 630 } : {}) }],
     },
     twitter: {
       card: "summary_large_image",
@@ -88,20 +99,30 @@ export default async function AircraftDetailsPage({ params }: PageProps) {
           {
             "@type": "Service",
             "@id": `${base}/aircraft/${slug}#service`,
-            name: `${aircraft.name} HPAA conversion`,
-            description: aircraft.description.replace(/\s+/g, " ").trim(),
-            serviceType: "Civil aircraft to High Performance Autonomous Aircraft (HPAA) conversion",
+            name: aircraft.subtitle
+              ? `${aircraft.name} ${aircraft.subtitle}: sales and autonomous conversion`
+              : `${aircraft.name} HPAA conversion`,
+            description: (aircraft.summary ?? aircraft.description).replace(/\s+/g, " ").trim(),
+            serviceType: aircraft.subtitle
+              ? `${aircraft.subtitle} supply and optionally piloted / autonomous conversion`
+              : "Civil aircraft to High Performance Autonomous Aircraft (HPAA) conversion",
             category: aircraft.category,
             url: `${base}/aircraft/${slug}`,
-            image: aircraft.images[0]
-              ? absoluteUrl(aircraft.images[0])
-              : absoluteUrl("/theme/hpaa9.jpeg"),
+            image: aircraft.imageAlts?.length
+              ? aircraft.images.map((src, i) => ({
+                  "@type": "ImageObject",
+                  contentUrl: absoluteUrl(src),
+                  caption: aircraft.imageAlts?.[i] ?? aircraft.name,
+                }))
+              : aircraft.images[0]
+                ? absoluteUrl(aircraft.images[0])
+                : absoluteUrl("/theme/hpaa9.jpeg"),
             provider: { "@id": `${base}/#organization` },
             areaServed: [{ "@type": "Country", name: "Germany" }, "Worldwide"],
             about: {
               "@type": "Thing",
-              name: aircraft.name,
-              description: aircraft.specs
+              name: aircraft.subtitle ? `${aircraft.name} ${aircraft.subtitle}` : aircraft.name,
+              description: (aircraft.specGroups?.flatMap((g) => g.rows) ?? aircraft.specs)
                 .map((s: { label: string; value: string }) => `${s.label}: ${s.value}`)
                 .join("; "),
             },
@@ -114,6 +135,20 @@ export default async function AircraftDetailsPage({ params }: PageProps) {
               { "@type": "ListItem", position: 3, name: aircraft.name, item: `${base}/aircraft/${slug}` },
             ],
           },
+          // FAQPage only when the questions are rendered visibly on the page.
+          ...(aircraft.faq?.length
+            ? [
+                {
+                  "@type": "FAQPage",
+                  "@id": `${base}/aircraft/${slug}#faq`,
+                  mainEntity: aircraft.faq.map((item) => ({
+                    "@type": "Question",
+                    name: item.question,
+                    acceptedAnswer: { "@type": "Answer", text: item.answer },
+                  })),
+                },
+              ]
+            : []),
         ],
       }
     : null;
@@ -123,7 +158,7 @@ export default async function AircraftDetailsPage({ params }: PageProps) {
       {jsonLd && (
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
         />
       )}
       <AircraftDetailsClient slug={slug} />

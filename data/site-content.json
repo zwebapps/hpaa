@@ -128,6 +128,489 @@
     "lead": "Each platform is selected for operational suitability and a proven track record. Suitable airframes are converted and integrated into high performance autonomous aircraft (HPAA) for your mission.",
     "aircrafts": [
       {
+        "slug": "coax-600-coaxial-ultralight-helicopter",
+        "name": "CoAX 600",
+        "subtitle": "Coaxial Ultralight Helicopter",
+        "category": "VTOL · Coaxial UL Helicopter · Piloted or Autonomous",
+        "images": [
+          "/aircraft/coax-600/coax-600-hangar-front.webp",
+          "/aircraft/coax-600/coax-600-castle-flyby.webp",
+          "/aircraft/coax-600/coax-600-wind-farm.webp",
+          "/aircraft/coax-600/coax-600-front-view.webp",
+          "/aircraft/coax-600/coax-600-underside-sun.webp",
+          "/aircraft/coax-600/coax-600-red-hover.webp"
+        ],
+        "imageAlts": [
+          "CoAX 600 coaxial ultralight helicopter, front view in a hangar with both rotor planes visible",
+          "CoAX 600 coaxial helicopter in flight past a hilltop castle in Germany",
+          "CoAX 600 ultralight helicopter flying through a wind farm, an inspection use case",
+          "CoAX 600 two-seat helicopter on a pad, front view showing the skids and stacked rotors",
+          "CoAX 600 coaxial helicopter seen from below against the sun",
+          "CoAX 600 coaxial helicopter hovering low over a grass field"
+        ],
+        "specs": [
+          {
+            "label": "Max cruise speed",
+            "value": "150 km/h (81 kt)"
+          },
+          {
+            "label": "Service ceiling",
+            "value": "12,000 ft / approx. 3,660 m"
+          },
+          {
+            "label": "MTOW",
+            "value": "600 kg"
+          },
+          {
+            "label": "Powerplant",
+            "value": "ULPower UL390iS, 160 hp"
+          },
+          {
+            "label": "Rotor system",
+            "value": "Coaxial, no tail rotor"
+          }
+        ],
+        "description": "The CoAX 600 is a two-seat coaxial ultralight helicopter with German type certification. Two counter-rotating rotor planes on one mast remove the need for a tail rotor, and the full 160 hp of its six-cylinder engine goes into lift. Available as a piloted UL helicopter, and as a compact VTOL base for optionally piloted or autonomous conversion.",
+        "details": [
+          "No tail rotor: counter-rotating rotors cancel torque, which removes a major hazard on the ground and in flight.",
+          "600 kg MTOW, 340 kg empty weight, 150 km/h cruise, 12,000 ft ceiling and about 19 l/h fuel burn.",
+          "German UL-helicopter type certificate issued June 2023. Built in Germany."
+        ],
+        "ogImage": "/aircraft/coax-600/coax-600-og.jpg",
+        "seoTitle": "CoAX 600 Coaxial Ultralight Helicopter: Specs & Price",
+        "seoDescription": "CoAX 600: two-seat coaxial UL helicopter with no tail rotor. 160 hp, 600 kg MTOW, 150 km/h cruise, German type certificate. Specs, autonomous conversion and enquiry.",
+        "keywords": [
+          "CoAX 600",
+          "CoAX 600 helicopter",
+          "coaxial ultralight helicopter",
+          "ultralight helicopter Germany",
+          "UL helicopter",
+          "coaxial helicopter",
+          "helicopter without tail rotor",
+          "two-seat ultralight helicopter",
+          "unmanned helicopter Germany",
+          "optionally piloted helicopter",
+          "autonomous helicopter conversion",
+          "VTOL autonomous aircraft Germany"
+        ],
+        "summary": "The CoAX 600 is a two-seat ultralight helicopter (UL class, 600 kg maximum take-off weight) with a coaxial main rotor: two counter-rotating rotor planes on a single mast. Because their torque cancels out, it needs no tail rotor. A 160 hp ULPower UL390iS six-cylinder engine drives it to a 150 km/h cruise and a 12,000 ft service ceiling on about 19 litres of fuel per hour. It holds a German type certificate (June 2023) and is offered both as a piloted helicopter and as a base airframe for optionally piloted or autonomous VTOL missions.",
+        "keyStats": [
+          {
+            "value": "600 kg",
+            "label": "Max take-off weight"
+          },
+          {
+            "value": "160 hp",
+            "label": "Six-cylinder engine"
+          },
+          {
+            "value": "150 km/h",
+            "label": "Max cruise speed"
+          },
+          {
+            "value": "12,000 ft",
+            "label": "Service ceiling"
+          },
+          {
+            "value": "19 l/h",
+            "label": "Fuel consumption"
+          },
+          {
+            "value": "0",
+            "label": "Tail rotors"
+          }
+        ],
+        "featuresHeading": "Why coaxial: no tail rotor",
+        "features": [
+          {
+            "title": "No tail rotor, fewer hazards",
+            "text": "The two rotor planes turn in opposite directions, so their torque cancels out and no tail rotor is needed. That removes one of the most common causes of helicopter accidents and makes it safer to work around the aircraft on the ground."
+          },
+          {
+            "title": "All the power goes into lift",
+            "text": "A conventional helicopter spends part of its engine power driving the tail rotor. In the CoAX 600 the full engine output turns the main rotor, which gives noticeably more lift for its weight class."
+          },
+          {
+            "title": "Teetering rotor, longer service life",
+            "text": "Each rotor plane carries two blades on a central flapping hinge. This teetering layout keeps the centre of gravity steady while the blades turn and takes load off the blades and mast, so the structure lasts longer."
+          },
+          {
+            "title": "More energy for autorotation",
+            "text": "With 2 × 2 blades, the rotor stores much more kinetic energy than a single two-blade rotor. If the engine stops, the pilot has more time and control for an autorotation landing."
+          },
+          {
+            "title": "Compact, VTOL-ready footprint",
+            "text": "At 7.2 m long with a 6.5 m rotor and 1.65 m skid width, it fits small pads, trailers and ship decks. That compact size, plus about 260 kg of useful load, makes it a strong base for an optionally piloted or autonomous VTOL platform."
+          },
+          {
+            "title": "German type-certified",
+            "text": "The CoAX 600 received its German UL-helicopter type certificate on 27 June 2023. Its predecessor was the first coaxial ultralight helicopter certified in Germany, in 2017."
+          }
+        ],
+        "specGroups": [
+          {
+            "title": "General",
+            "rows": [
+              {
+                "label": "Seats",
+                "value": "1 pilot + 1 passenger"
+              },
+              {
+                "label": "Category",
+                "value": "Ultralight (UL) helicopter"
+              },
+              {
+                "label": "Rotor system",
+                "value": "Coaxial, teetering, 2 × 2 blades"
+              },
+              {
+                "label": "Certification",
+                "value": "German type certificate, 27 June 2023"
+              },
+              {
+                "label": "Origin",
+                "value": "Made in Germany"
+              }
+            ]
+          },
+          {
+            "title": "Dimensions",
+            "rows": [
+              {
+                "label": "Overall length",
+                "value": "7.20 m"
+              },
+              {
+                "label": "Fuselage length",
+                "value": "5.61 m"
+              },
+              {
+                "label": "Height",
+                "value": "2.80 m"
+              },
+              {
+                "label": "Skid width",
+                "value": "1.65 m"
+              },
+              {
+                "label": "Rotor diameter",
+                "value": "6.50 m"
+              }
+            ]
+          },
+          {
+            "title": "Masses and capacities",
+            "rows": [
+              {
+                "label": "Minimum empty weight",
+                "value": "340 kg"
+              },
+              {
+                "label": "Max take-off weight (MTOW)",
+                "value": "600 kg"
+              },
+              {
+                "label": "Useful load (MTOW − empty)",
+                "value": "260 kg"
+              },
+              {
+                "label": "Fuel tank",
+                "value": "70 l"
+              }
+            ]
+          },
+          {
+            "title": "Flight performance",
+            "rows": [
+              {
+                "label": "Max cruise speed",
+                "value": "150 km/h (81 kt)"
+              },
+              {
+                "label": "Never-exceed speed (VNE)",
+                "value": "170 km/h (92 kt)"
+              },
+              {
+                "label": "Fuel consumption",
+                "value": "approx. 19 l/h"
+              },
+              {
+                "label": "Service ceiling",
+                "value": "12,000 ft / approx. 3,660 m"
+              }
+            ]
+          },
+          {
+            "title": "Rotor blades",
+            "rows": [
+              {
+                "label": "Number of blades",
+                "value": "2 × 2"
+              },
+              {
+                "label": "Rotor plane diameter",
+                "value": "6,500 mm"
+              },
+              {
+                "label": "Blade length",
+                "value": "3,020 mm"
+              },
+              {
+                "label": "Blade chord",
+                "value": "220 mm"
+              },
+              {
+                "label": "Blade weight",
+                "value": "8.2 kg each"
+              },
+              {
+                "label": "Twist (from R500)",
+                "value": "6.5°"
+              },
+              {
+                "label": "Tip speed at 100 % rpm",
+                "value": "155 m/s"
+              },
+              {
+                "label": "Material",
+                "value": "Fibre composite"
+              }
+            ]
+          },
+          {
+            "title": "Engine: ULPower UL390iS",
+            "rows": [
+              {
+                "label": "Type",
+                "value": "6-cylinder, 4-stroke, air-cooled"
+              },
+              {
+                "label": "Displacement",
+                "value": "3.9 l"
+              },
+              {
+                "label": "Bore",
+                "value": "105.6 mm"
+              },
+              {
+                "label": "Compression ratio",
+                "value": "9.1 : 1"
+              },
+              {
+                "label": "Max power",
+                "value": "160 hp (118 kW) at 3,300 rpm"
+              },
+              {
+                "label": "Max continuous power",
+                "value": "145 hp at 2,800 rpm"
+              },
+              {
+                "label": "Max torque",
+                "value": "370 Nm at 2,800 rpm"
+              },
+              {
+                "label": "Fuel system",
+                "value": "Multipoint fuel injection"
+              },
+              {
+                "label": "Fuel",
+                "value": "Gasoline, min. 98 octane"
+              },
+              {
+                "label": "Ignition",
+                "value": "Dual ignition"
+              },
+              {
+                "label": "Generator / starter",
+                "value": "50 A integrated / 1.2 kW electric"
+              },
+              {
+                "label": "Dry weight",
+                "value": "85.3 kg (100 kg with fluids)"
+              }
+            ]
+          }
+        ],
+        "mediaSections": [
+          {
+            "id": "rotor-system",
+            "eyebrow": "Rotor system",
+            "title": "Two rotor planes, one precision mast",
+            "paragraphs": [
+              "The rotor mast is the heart of the CoAX 600. It carries both rotor planes and combines several aerospace materials under a hard-wearing protective coating. Each plane uses a teetering hub: two opposing blades on a central flapping hinge, a proven layout that keeps loads on the mast low.",
+              "The blades were developed for this aircraft and are made from fibre-composite materials. Each is 3,020 mm long with a 220 mm chord and 6.5° of twist, and runs at a tip speed of 155 m/s at 100 % rpm. The result is a long service life and consistent behaviour in flight."
+            ],
+            "images": [
+              {
+                "src": "/aircraft/coax-600/coax-600-rotor-mast.webp",
+                "alt": "CoAX 600 coaxial rotor mast with upper and lower teetering hubs and control rods",
+                "width": 1023,
+                "height": 1535
+              },
+              {
+                "src": "/aircraft/coax-600/coax-600-rotor-mast-cad.webp",
+                "alt": "Engineering drawing of the CoAX 600 coaxial rotor mast and gearbox",
+                "width": 478,
+                "height": 886
+              },
+              {
+                "src": "/aircraft/coax-600/coax-600-rotor-blades.webp",
+                "alt": "Set of four fibre-composite rotor blades with orange tips for the CoAX 600",
+                "width": 590,
+                "height": 885
+              }
+            ]
+          },
+          {
+            "id": "engine",
+            "eyebrow": "Powerplant",
+            "title": "160 hp of fuel-injected six-cylinder power",
+            "paragraphs": [
+              "The CoAX 600 uses the ULPower UL390iS, an air-cooled six-cylinder four-stroke engine with 3.9 litres of displacement. It delivers 160 hp at 3,300 rpm and 145 hp continuously, with 370 Nm of torque. That is plenty of reserve for a 600 kg helicopter, with a distinctive sound to match.",
+              "Multipoint fuel injection, dual ignition, an integrated 50 A generator and an electric starter keep the engine reliable and easy to operate. It runs on gasoline of at least 98 octane."
+            ],
+            "images": [
+              {
+                "src": "/aircraft/coax-600/coax-600-engine.webp",
+                "alt": "ULPower UL390iS six-cylinder air-cooled aircraft engine used in the CoAX 600",
+                "width": 885,
+                "height": 664
+              }
+            ]
+          },
+          {
+            "id": "cabin",
+            "eyebrow": "Visibility & cabin",
+            "title": "A panoramic view, with or without doors",
+            "paragraphs": [
+              "A large windscreen, lower front windows and full-height door glazing give the crew an unusually wide field of view, with nothing in the way.",
+              "The CoAX 600 can also be flown with the doors removed, which gives a completely open side view. That suits aerial photography, filming, survey and observation flights, and on hot days it makes flying feel truly open."
+            ],
+            "images": [
+              {
+                "src": "/aircraft/coax-600/coax-600-workshop-front.webp",
+                "alt": "CoAX 600 front view in the workshop showing the large bubble windscreen",
+                "width": 1019,
+                "height": 1535
+              },
+              {
+                "src": "/aircraft/coax-600/coax-600-open-cabin.webp",
+                "alt": "CoAX 600 two-seat cabin with the door open, showing seats, harnesses and cyclic control",
+                "width": 1019,
+                "height": 1535
+              }
+            ]
+          },
+          {
+            "id": "cockpit",
+            "eyebrow": "Cockpit & avionics",
+            "title": "A cockpit configured to your mission",
+            "paragraphs": [
+              "Choose anything from a classic round-gauge panel to a full glass cockpit with a large EFIS display. Instruments, avionics and comfort options are specified for each customer, whether for private flying, training or mission work.",
+              "For autonomous or optionally piloted conversion, the panel and the electrical system are the integration points for flight-control computers, datalinks and mission sensors."
+            ],
+            "images": [
+              {
+                "src": "/aircraft/coax-600/coax-600-cockpit-glass.webp",
+                "alt": "CoAX 600 glass cockpit with EFIS primary flight display and backup gauges",
+                "width": 806,
+                "height": 1075
+              },
+              {
+                "src": "/aircraft/coax-600/coax-600-cockpit-display.webp",
+                "alt": "CoAX 600 cockpit with a large multifunction display and twin analogue gauges",
+                "width": 708,
+                "height": 944
+              },
+              {
+                "src": "/aircraft/coax-600/coax-600-cockpit-analog.webp",
+                "alt": "CoAX 600 cockpit with a classic round-gauge instrument panel",
+                "width": 580,
+                "height": 396
+              }
+            ]
+          },
+          {
+            "id": "dimensions",
+            "eyebrow": "Dimensions",
+            "title": "Compact outside, grown-up inside",
+            "paragraphs": [
+              "The CoAX 600 is 7.20 m long overall, 5.61 m along the fuselage, 2.80 m high, with 1.65 m between the skids and a 6.50 m rotor diameter. Its clean, modern shape is small enough for trailers, small helipads and ship decks."
+            ],
+            "images": [
+              {
+                "src": "/aircraft/coax-600/coax-600-three-view.webp",
+                "alt": "CoAX 600 three-view drawing with dimensions: 7,200 mm length, 6,500 mm rotor diameter, 1,650 mm skid width",
+                "width": 1920,
+                "height": 1358
+              }
+            ]
+          }
+        ],
+        "useCasesHeading": "Mission roles",
+        "useCases": [
+          {
+            "title": "Private flying & training",
+            "text": "An economical two-seat UL helicopter for private pilots and flight schools, with the safety advantage of having no tail rotor."
+          },
+          {
+            "title": "Aerial photography & film",
+            "text": "Doors-off operation and a panoramic canopy give camera crews an unobstructed view."
+          },
+          {
+            "title": "Infrastructure inspection",
+            "text": "Low-speed handling and a compact rotor footprint suit wind-farm, power-line and pipeline inspection."
+          },
+          {
+            "title": "Border & maritime observation",
+            "text": "Small enough for patrol-vessel decks and remote pads. It can be fitted with sensors for coastal and border monitoring."
+          },
+          {
+            "title": "Optionally piloted / autonomous VTOL",
+            "text": "Without a tail rotor to protect and with about 260 kg of useful load, the CoAX 600 is a practical airframe for conversion to optionally piloted or autonomous operation under supervised mission control."
+          }
+        ],
+        "faq": [
+          {
+            "question": "What is the CoAX 600?",
+            "answer": "The CoAX 600 is a two-seat coaxial ultralight helicopter with a 600 kg maximum take-off weight. It has two counter-rotating rotor planes on one mast and no tail rotor, is powered by a 160 hp ULPower UL390iS engine, and holds a German type certificate issued in June 2023."
+          },
+          {
+            "question": "What is a coaxial helicopter, and why has it no tail rotor?",
+            "answer": "A coaxial helicopter has two main rotors stacked on the same mast that turn in opposite directions. Their torque cancels out, so no tail rotor is needed to stop the fuselage from spinning. That removes a major hazard and puts all of the engine power into lift."
+          },
+          {
+            "question": "How fast and how high can the CoAX 600 fly?",
+            "answer": "Maximum cruise speed is 150 km/h (81 kt), never-exceed speed (VNE) is 170 km/h, and the service ceiling is 12,000 ft (about 3,660 m)."
+          },
+          {
+            "question": "How much fuel does the CoAX 600 use?",
+            "answer": "About 19 litres per hour of gasoline (minimum 98 octane), from a 70-litre tank."
+          },
+          {
+            "question": "How much can the CoAX 600 carry?",
+            "answer": "The minimum empty weight is 340 kg and the maximum take-off weight is 600 kg, which leaves about 260 kg of useful load for crew, fuel and equipment."
+          },
+          {
+            "question": "Is the CoAX 600 certified in Germany?",
+            "answer": "Yes. The CoAX 600 received its German type certificate as an ultralight (UL) helicopter on 27 June 2023."
+          },
+          {
+            "question": "Can the CoAX 600 be flown without doors?",
+            "answer": "Yes. It can be operated with the doors removed for a fully open side view, which is popular for aerial photography and observation flights."
+          },
+          {
+            "question": "Can the CoAX 600 be converted to unmanned or autonomous operation?",
+            "answer": "Yes. With no tail rotor, a compact footprint and about 260 kg of useful load, the CoAX 600 is a suitable base for optionally piloted or autonomous VTOL operation. KUM Services GmbH assesses each mission and engineers the conversion, including flight-control, datalink and sensor integration, on request."
+          },
+          {
+            "question": "How do I get a price or arrange a demonstration?",
+            "answer": "Send an enquiry through the contact form with \"CoAX 600\" as your aircraft interest. We reply with the full specification sheet, configuration options and pricing, and arrange a demonstration or a call."
+          }
+        ],
+        "enquiryInterest": "CoAX 600 coaxial ultralight helicopter"
+      },
+      {
         "slug": "citation-525b",
         "name": "CESSNA CITATION 525B",
         "category": "EXAMPLE · Business Jet",

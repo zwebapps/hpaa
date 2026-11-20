@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { aircrafts } from "./aircraftData";
+import { aircrafts, enquiryHref } from "./aircraftData";
 import { AircraftImageSlider } from "./AircraftImageSlider";
 
 export function AircraftTabs() {
@@ -11,7 +11,10 @@ export function AircraftTabs() {
       {aircrafts.map((aircraft) => (
         <div key={aircraft.slug} className="aircraft-panel active">
           <div className="aircraft-img-side">
-            <AircraftImageSlider images={[...aircraft.images]} altBase={aircraft.name} />
+            <AircraftImageSlider
+              images={[...aircraft.images]}
+              altBase={aircraft.subtitle ? `${aircraft.name} ${aircraft.subtitle}` : aircraft.name}
+            />
             <div className="aircraft-img-overlay">
               <span className="aircraft-badge-img">Platform Gallery</span>
             </div>
@@ -19,6 +22,7 @@ export function AircraftTabs() {
 
           <div className="aircraft-info-side">
             <div className="aircraft-model">{aircraft.name}</div>
+            {aircraft.subtitle ? <div className="aircraft-category">{aircraft.subtitle}</div> : null}
             {aircraft.category ? <div className="aircraft-category">{aircraft.category}</div> : null}
 
             {aircraft.specs.length > 0 ? (
@@ -42,7 +46,7 @@ export function AircraftTabs() {
               </Link>
               <Link
                 className="btn-ghost"
-                href="/contact"
+                href={enquiryHref(aircraft)}
                 style={{ color: "var(--navy)", borderColor: "rgba(11,17,32,0.25)" }}
               >
                 Enquire

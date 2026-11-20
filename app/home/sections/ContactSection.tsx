@@ -153,14 +153,19 @@ export function ContactSection() {
             backgroundPosition: "center",
           }}
         >
-          <p className="section-eyebrow">{section.eyebrow}</p>
-          <h2 className="section-heading">
+          <span className="contact-radar" aria-hidden="true">
+            <span />
+            <span />
+            <span />
+          </span>
+          <p className="section-eyebrow reveal contact-rise">{section.eyebrow}</p>
+          <h2 className="section-heading reveal contact-rise">
             {section.title.pre}
             <br />
             <em>{section.title.emphasis}</em>
           </h2>
-          <p className="section-lead">{section.lead}</p>
-          <div className="contact-info-grid">
+          <p className="section-lead reveal contact-rise">{section.lead}</p>
+          <div className="contact-info-grid reveal contact-rise">
             <div className="contact-info-col">
               {section.companyInfo.map((info) => (
                 <ContactInfoBlock key={info.label} info={info} />
@@ -181,9 +186,13 @@ export function ContactSection() {
           </div>
         </div>
         <div className="contact-right-new" id="contact-form">
-          <div className="form-heading">{section.form.heading}</div>
-          <p className="form-sub">{section.form.sub}</p>
-          <form className="form-fields" onSubmit={handleSubmit} noValidate>
+          <div className="form-heading reveal contact-rise">{section.form.heading}</div>
+          <p className="form-sub reveal contact-rise">{section.form.sub}</p>
+          <form
+            className={`form-fields reveal contact-form-reveal form-status--${status}`}
+            onSubmit={handleSubmit}
+            noValidate
+          >
             <input
               type="text"
               name="_hp"
@@ -308,6 +317,7 @@ export function ContactSection() {
               </button>
               {feedback ? (
                 <p
+                  key={feedback}
                   className={`form-feedback ${status === "success" ? "form-feedback--ok" : "form-feedback--err"}`}
                   role="status"
                 >

@@ -15,17 +15,21 @@ export function WhyUsSection() {
           aria-hidden="true"
         />
         <div className="page-header-scrim" />
+        {/* Faint engineering-drawing grid: "built to your spec". */}
+        <div className="why-blueprint" aria-hidden="true" />
         <div className="page-header-content">
-          <div className="page-header-copy">
+          <div className="page-header-copy why-copy reveal">
             <p className="section-eyebrow">{section.eyebrow}</p>
             <h2 className="section-heading">
               {section.title.pre}
               <br />
-              <em>{section.title.emphasis}</em>
+              <em className="why-mark">{section.title.emphasis}</em>
             </h2>
             <p className="page-header-lead">{section.lead}</p>
           </div>
-          <SkyHarvestVideo />
+          <div className="why-video reveal">
+            <SkyHarvestVideo />
+          </div>
         </div>
       </div>
 

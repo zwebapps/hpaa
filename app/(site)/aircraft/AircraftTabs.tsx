@@ -9,7 +9,9 @@ export function AircraftTabs() {
   return (
     <div className="aircraft-wrapper" aria-label="Aircraft platforms list">
       {aircrafts.map((aircraft) => (
-        <div key={aircraft.slug} className="aircraft-panel active">
+        <div key={aircraft.slug} className="aircraft-panel active reveal ac-flight-card">
+          {/* Decorative "contrail" line drawn along the top edge on hover/focus. */}
+          <span className="ac-contrail" aria-hidden="true" />
           <div className="aircraft-img-side">
             <AircraftImageSlider
               images={[...aircraft.images]}

@@ -62,6 +62,10 @@ export default function SiteLayout({
       <AnalyticsScripts />
       <ConsentedAnalytics />
       <SiteJsonLd />
+      {/* Without JavaScript the scroll-reveal never runs: show everything as-is. */}
+      <noscript>
+        <style>{`.reveal, .reveal *, .reveal .aircraft-img-side, .reveal .partner-card-img, .reveal .ac-media-figure { opacity: 1 !important; transform: none !important; clip-path: none !important; filter: none !important; }`}</style>
+      </noscript>
       <ThemeProvider>
         <SiteClientEffectsLoader />
         <SiteNav />

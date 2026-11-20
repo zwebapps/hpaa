@@ -61,7 +61,7 @@ export default function WhatIsHpaaPage() {
         High Performance Autonomous Aircraft Explained
       </h1>
 
-      <p className="section-lead" style={{ maxWidth: 980 }}>
+      <p className="section-lead">
         HPAA (High Performance Autonomous Aircraft) is a proven civil aircraft converted into a fully
         autonomous or optionally piloted platform. The core idea is simple: start with a reliable
         civil airframe and integrate autonomous flight control, datalinks, and mission systems to
@@ -98,7 +98,7 @@ export default function WhatIsHpaaPage() {
         <h2 className="section-heading" style={{ fontSize: "2rem" }}>
           Next reading
         </h2>
-        <p className="section-lead" style={{ maxWidth: 980 }}>
+        <p className="section-lead">
           For HPAA services and platform details, see{" "}
           <Link href="/hpaa-germany">HPAA Germany</Link> and the{" "}
           <Link href="/aircraft">Aircraft</Link> platform pages.

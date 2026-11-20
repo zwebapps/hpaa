@@ -32,11 +32,12 @@ export function PartnersSection() {
         </p>
       </section>
       <div className="partner-strip" style={{ marginBottom: "5rem" }}>
-        {section.items.map((item, idx) => (
+        {section.items.map((item) => (
           <div
             key={item.id}
-            className={`partner-card-new partner-row${item.layout === "text-image" ? " reverse" : ""} reveal${idx > 0 ? ` reveal-delay-${Math.min(idx, 3)}` : ""}`}
+            className={`partner-card-new partner-row partner-flight${item.layout === "text-image" ? " reverse" : ""} reveal`}
           >
+            <span className="ac-contrail partner-contrail" aria-hidden="true" />
             {item.layout !== "text-image" && (
               <div className="partner-card-img" style={{ position: "relative" }}>
                 <Image fill src={item.imageUrl} alt={item.imageAlt} style={{ objectFit: "cover", objectPosition: "center" }} sizes="(max-width: 768px) 90vw, 50vw" />

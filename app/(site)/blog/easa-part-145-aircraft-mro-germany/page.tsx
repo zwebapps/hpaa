@@ -65,7 +65,7 @@ export default function EasaPart145BlogPage() {
         <em>What Operators Should Know</em>
       </h1>
 
-      <p className="section-lead" style={{ maxWidth: 980 }}>
+      <p className="section-lead">
         For charter operators, lessors, government agencies, and special mission customers, choosing
         the right maintenance and modification partner is as important as selecting the airframe.
         EASA Part-145 certification provides the regulated framework for maintenance, repair, and
@@ -105,7 +105,7 @@ export default function EasaPart145BlogPage() {
         <h2 className="section-heading" style={{ fontSize: "2rem" }}>
           Platform and service pages
         </h2>
-        <p className="section-lead" style={{ maxWidth: 980 }}>
+        <p className="section-lead">
           Learn more about certified MRO and integration services:{" "}
           <Link href="/easa-part-145-mro-germany">EASA Part-145 MRO Germany</Link>,{" "}
           <Link href="/aircraft-avionics-retrofit-germany">Avionics Retrofit Germany</Link>, and{" "}

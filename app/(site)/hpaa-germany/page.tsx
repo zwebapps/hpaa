@@ -353,7 +353,7 @@ export default function HpaaGermanyPage() {
         <h2 className="section-heading">
           What a high-performance autonomous aircraft <em>is used for</em>
         </h2>
-        <p className="section-lead" style={{ marginBottom: "2rem", maxWidth: 920 }}>
+        <p className="section-lead" style={{ marginBottom: "2rem" }}>
           A large autonomous aircraft built on a proven platform opens missions that small drones
           cannot serve — with the cost and risk profile of an{" "}
           <strong>unmanned aircraft system (UAS)</strong>.

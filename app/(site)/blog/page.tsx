@@ -19,7 +19,7 @@ export default function BlogIndexPage() {
       <h1 className="section-heading">
         HPAA Blog — <em>High Performance Autonomous Aircraft</em>
       </h1>
-      <p className="section-lead" style={{ maxWidth: 880 }}>
+      <p className="section-lead">
         Practical overviews and mission-focused explanations for HPAA conversion, robot aircraft, and
         autonomous aircraft platforms.
       </p>

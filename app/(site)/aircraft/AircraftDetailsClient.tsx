@@ -1,8 +1,8 @@
-import Image from "next/image";
 import Link from "next/link";
 import { HALF_COLUMN_SIZES } from "@/lib/imageSizes";
 import { AircraftGallery } from "./AircraftGallery";
 import { TrackedLink } from "./TrackedLink";
+import { ZoomableFigures } from "./ZoomableFigures";
 import { enquiryHref, getAircraftBySlug, type Aircraft } from "./aircraftData";
 
 /**
@@ -29,8 +29,8 @@ export function AircraftDetailsClient({ slug }: { slug: string }) {
   const conversionHref = enquiryHref(aircraft, "autonomous / optionally piloted conversion");
 
   return (
-    <main className={isRich ? "ac-rich" : undefined}>
-      <div className="page-header">
+    <main className={`ac-detail${isRich ? " ac-rich" : ""}`}>
+      <div className="page-header ac-detail-hero">
         <div
           className="page-header-bg"
           style={{ backgroundImage: `url('${headerBg}')` }}
@@ -58,7 +58,7 @@ export function AircraftDetailsClient({ slug }: { slug: string }) {
       {aircraft.keyStats?.length ? (
         <dl className="ac-stats" aria-label={`${aircraft.name} key figures`}>
           {aircraft.keyStats.map((s) => (
-            <div key={s.label} className="ac-stat">
+            <div key={s.label} className="ac-stat reveal">
               <dt>{s.label}</dt>
               <dd>{s.value}</dd>
             </div>
@@ -98,11 +98,11 @@ export function AircraftDetailsClient({ slug }: { slug: string }) {
         ) : null}
 
         <div className="ac-detail-grid">
-          <div>
+          <div className="reveal ac-from-left">
             <AircraftGallery images={aircraft.images} altBase={aircraft.name} alts={aircraft.imageAlts} />
           </div>
 
-          <div>
+          <div className="reveal ac-from-right ac-side-panel">
             {aircraft.category && !aircraft.subtitle ? (
               <div className="section-eyebrow" style={{ marginBottom: "1rem" }}>
                 {aircraft.category}
@@ -184,7 +184,7 @@ function RichSections({
           </h2>
           <div className="why-grid ac-grid-3">
             {aircraft.features.map((f, idx) => (
-              <div key={f.title} className="why-card">
+              <div key={f.title} className="why-card reveal ac-lift">
                 <div className="why-card-num" aria-hidden="true">
                   {String(idx + 1).padStart(2, "0")}
                 </div>
@@ -200,7 +200,7 @@ function RichSections({
         <section
           key={m.id}
           id={m.id}
-          className={`section ac-media${idx % 2 === 1 ? " ac-media--flip" : ""}`}
+          className={`section ac-media reveal${idx % 2 === 1 ? " ac-media--flip" : ""}`}
           aria-labelledby={`${m.id}-heading`}
         >
           <div className="ac-media-text">
@@ -215,18 +215,10 @@ function RichSections({
             ))}
           </div>
           <div className={`ac-media-images ac-media-images--${Math.min(m.images.length, 3)}`}>
-            {m.images.map((img) => (
-              <figure key={img.src} className="ac-media-figure">
-                <Image
-                  src={img.src}
-                  alt={img.alt}
-                  width={img.width}
-                  height={img.height}
-                  sizes={m.images.length > 1 ? "(max-width: 900px) 45vw, 25vw" : HALF_COLUMN_SIZES}
-                  loading="lazy"
-                />
-              </figure>
-            ))}
+            <ZoomableFigures
+              images={m.images}
+              sizes={m.images.length > 1 ? "(max-width: 900px) 45vw, 25vw" : HALF_COLUMN_SIZES}
+            />
           </div>
         </section>
       ))}
@@ -239,7 +231,7 @@ function RichSections({
           </h2>
           <div className="ac-spec-groups">
             {aircraft.specGroups.map((g) => (
-              <table key={g.title} className="spec-table ac-spec-group">
+              <table key={g.title} className="spec-table ac-spec-group reveal">
                 <caption>{g.title}</caption>
                 <tbody>
                   {g.rows.map((row) => (
@@ -263,7 +255,7 @@ function RichSections({
           </h2>
           <div className="why-grid ac-grid-3">
             {aircraft.useCases.map((u) => (
-              <div key={u.title} className="why-card">
+              <div key={u.title} className="why-card reveal ac-lift">
                 <h3>{u.title}</h3>
                 <p>{u.text}</p>
               </div>
@@ -287,7 +279,7 @@ function RichSections({
           </h2>
           <div className="ac-faq">
             {aircraft.faq.map((item, idx) => (
-              <details key={item.question} className="ac-faq-item" open={idx === 0}>
+              <details key={item.question} className="ac-faq-item reveal" open={idx === 0}>
                 <summary>
                   <h3>{item.question}</h3>
                 </summary>
@@ -299,7 +291,7 @@ function RichSections({
       ) : null}
 
       <section className="section" style={{ paddingTop: "3rem" }}>
-        <div className="hpaa-cta-panel">
+        <div className="hpaa-cta-panel reveal ac-cta-flight">
           <p className="section-eyebrow" style={{ justifyContent: "center" }}>
             Next step
           </p>

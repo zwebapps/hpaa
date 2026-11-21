@@ -1,92 +1,154 @@
 name: Deploy to VPS
 
+# The site is BUILT here on GitHub's runner (plenty of memory) and only the
+# finished build is copied to the VPS. The VPS (1.6 GB RAM) never runs
+# `next build`, which previously exhausted its memory and froze the server.
+#
+# Safety: the live site keeps serving its current build until the new one is
+# uploaded and swapped in; a failed health check restores the previous build.
+
 on:
   push:
     branches: ["main"]
+  workflow_dispatch:
 
 # Never run two deploys at once on the same server.
 concurrency:
   group: deploy-vps
   cancel-in-progress: false
 
+env:
+  APP_DIR: /var/www/hpaa
+  SITE_URL_CHECK: https://www.robot-aircraft.com/
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
 
     steps:
-      - name: Deploy via SSH
-        uses: appleboy/ssh-action@v1.0.3
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Set up SSH
+        env:
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+          VPS_SSH_KEY: ${{ secrets.VPS_SSH_KEY }}
+        run: |
+          mkdir -p ~/.ssh
+          printf '%s\n' "$VPS_SSH_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -H "$VPS_HOST" >> ~/.ssh/known_hosts 2>/dev/null
+          cat >> ~/.ssh/config <<CFG
+          Host vps
+            HostName $VPS_HOST
+            User ${{ secrets.VPS_USER }}
+            IdentityFile ~/.ssh/deploy_key
+            ServerAliveInterval 30
+          CFG
+
+      - name: Read server Node.js version
+        id: node
+        run: echo "version=$(ssh vps 'node -v' | tr -d 'v\r')" >> "$GITHUB_OUTPUT"
+
+      - name: Set up Node.js (same version as the server)
+        uses: actions/setup-node@v4
         with:
-          host: ${{ secrets.VPS_HOST }}
-          username: ${{ secrets.VPS_USER }}
-          key: ${{ secrets.VPS_SSH_KEY }}
-          command_timeout: 15m
-          script: |
-            # Safe deploy: the live site keeps serving its current build until a
-            # new one has built successfully. A failed install or build leaves the
-            # live site untouched; a failed health check restores the old build.
-            set -e
-            cd /var/www/hpaa
+          node-version: ${{ steps.node.outputs.version }}
+          cache: npm
 
-            PREV_SHA=$(git rev-parse HEAD)
-            echo "Live commit: $PREV_SHA"
+      - name: Fetch public build settings from the server
+        # Only NEXT_PUBLIC_* and SITE_URL are copied: they are baked into the
+        # pages at build time. Secrets (database, mail, admin) stay on the server
+        # and are read at runtime from its own .env.
+        run: |
+          ssh vps "grep -E '^(NEXT_PUBLIC_[A-Z0-9_]*|SITE_URL)=' $APP_DIR/.env || true" > .env.production.local
+          echo "Public settings fetched: $(cut -d= -f1 .env.production.local | tr '\n' ' ')"
 
-            restore_source() {
-              echo "Restoring previous code and dependencies ($PREV_SHA)..."
-              git reset --hard "$PREV_SHA"
-              if [ -d node_modules.prev ]; then
-                rm -rf node_modules
-                mv node_modules.prev node_modules
-              fi
-              rm -rf .next-build
-            }
+      - name: Install dependencies
+        run: npm ci
 
-            echo "Pulling latest code..."
-            git pull origin main || { echo "git pull failed"; exit 1; }
+      - name: Build
+        env:
+          NODE_ENV: production
+          # Required by app/env.ts at import time; only used at request time,
+          # where the server's real value applies. Never shipped.
+          APP_SECRET: build-placeholder-not-used-at-runtime
+        run: |
+          npm run build
+          test -f .next/BUILD_ID
 
-            echo "Backing up dependencies..."
-            rm -rf node_modules.prev
-            if [ -d node_modules ]; then cp -al node_modules node_modules.prev; fi
+      - name: Upload build to the server (beside the live build)
+        run: |
+          rm -rf .next/cache
+          ssh vps "rm -rf $APP_DIR/.next-build && mkdir -p $APP_DIR/.next-build"
+          tar -C .next -czf - . | ssh vps "tar -C $APP_DIR/.next-build -xzf -"
+          ssh vps "test -f $APP_DIR/.next-build/BUILD_ID"
 
-            echo "Clean install from lock file..."
+      - name: Update code, swap build, restart, health check
+        run: |
+          ssh vps "APP_DIR=$APP_DIR SITE_URL_CHECK=$SITE_URL_CHECK bash -s" <<'REMOTE'
+          set -e
+          cd "$APP_DIR"
+
+          PREV_SHA=$(git rev-parse HEAD)
+          echo "Live commit: $PREV_SHA"
+
+          restore_source() {
+            echo "Restoring previous code ($PREV_SHA)..."
+            git reset --hard "$PREV_SHA"
+            if [ -d node_modules.prev ]; then rm -rf node_modules; mv node_modules.prev node_modules; fi
+          }
+
+          echo "Updating code..."
+          git fetch origin main
+          git reset --hard origin/main
+          echo "Now at: $(git rev-parse --short HEAD)"
+
+          # Reinstall packages only when the lock file changed (cheap on memory).
+          rm -rf node_modules.prev
+          if ! git diff --quiet "$PREV_SHA" HEAD -- package-lock.json; then
+            echo "package-lock.json changed: installing packages..."
+            cp -al node_modules node_modules.prev
             if ! npm ci; then
               echo "npm ci failed. Live site untouched."
               restore_source
+              rm -rf .next-build
               exit 1
             fi
+          else
+            echo "Packages unchanged: skipping install."
+          fi
 
-            echo "Building into .next-build (live site keeps running)..."
-            rm -rf .next-build
-            if ! NEXT_DIST_DIR=.next-build NODE_ENV=production npm run build || [ ! -f .next-build/BUILD_ID ]; then
-              echo "Build failed. Live site untouched."
-              restore_source
-              exit 1
-            fi
+          echo "Swapping in the new build..."
+          rm -rf .next.prev
+          if [ -d .next ]; then mv .next .next.prev; fi
+          mv .next-build .next
 
-            echo "Swapping in the new build..."
-            rm -rf .next.prev
-            if [ -d .next ]; then mv .next .next.prev; fi
-            mv .next-build .next
+          echo "Restarting PM2..."
+          pm2 restart hpaa --update-env || pm2 start npm --name hpaa -- start
 
-            echo "Restarting PM2..."
-            pm2 restart hpaa --update-env || pm2 start npm --name hpaa -- start
+          echo "Health check..."
+          healthy=0
+          for i in 1 2 3 4 5 6 7 8 9 10; do
+            if curl -fsS -o /dev/null --max-time 10 "$SITE_URL_CHECK"; then healthy=1; break; fi
+            sleep 3
+          done
 
-            echo "Health check..."
-            healthy=0
-            for i in 1 2 3 4 5 6 7 8 9 10; do
-              if curl -fsS -o /dev/null --max-time 10 https://www.robot-aircraft.com/; then healthy=1; break; fi
-              sleep 3
-            done
+          if [ "$healthy" != "1" ]; then
+            echo "Health check failed. Rolling back to the previous build."
+            rm -rf .next
+            if [ -d .next.prev ]; then mv .next.prev .next; fi
+            restore_source
+            pm2 restart hpaa --update-env
+            exit 1
+          fi
 
-            if [ "$healthy" != "1" ]; then
-              echo "Health check failed. Rolling back to the previous build."
-              rm -rf .next
-              if [ -d .next.prev ]; then mv .next.prev .next; fi
-              restore_source
-              pm2 restart hpaa --update-env
-              exit 1
-            fi
+          pm2 save
+          rm -rf .next.prev node_modules.prev
+          echo "Deploy complete."
+          REMOTE
 
-            pm2 save
-            rm -rf .next.prev node_modules.prev
-            echo "Deploy complete."
+      - name: Remove local settings copy
+        if: always()
+        run: rm -f .env.production.local ~/.ssh/deploy_key

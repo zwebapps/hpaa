@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 import { siteData } from "@/data/siteData";
 import { trackLead } from "@/lib/trackEvent";
 
@@ -38,6 +38,12 @@ function ContactInfoBlock({
 }
 
 type FormStatus = "idle" | "sending" | "success" | "error";
+
+/** False in the server HTML and during hydration, true once React is running in the browser. */
+const subscribeNoop = () => () => {};
+function useIsHydrated(): boolean {
+  return useSyncExternalStore(subscribeNoop, () => true, () => false);
+}
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -79,6 +85,9 @@ export function ContactSection() {
   const [status, setStatus] = useState<FormStatus>("idle");
   const [feedback, setFeedback] = useState<string | null>(null);
   const [sourcePage, setSourcePage] = useState<string | undefined>(undefined);
+  // Until React has attached the submit handler, a click would make the browser send
+  // the form natively. Keep Submit disabled until then so that can never happen.
+  const hydrated = useIsHydrated();
 
   // Pre-fill from links like /contact?interest=CoAX%20600&from=/aircraft/… (read on the
   // client so the page stays statically rendered).
@@ -191,6 +200,9 @@ export function ContactSection() {
           <form
             className={`form-fields reveal contact-form-reveal form-status--${status}`}
             onSubmit={handleSubmit}
+            // POST, never the default GET: if a native submit ever slipped through, the
+            // visitor's details would go in the request body, not the page address.
+            method="post"
             noValidate
           >
             <input
@@ -311,7 +323,7 @@ export function ContactSection() {
               <button
                 className="form-submit"
                 type="submit"
-                disabled={status === "sending"}
+                disabled={!hydrated || status === "sending"}
               >
                 {status === "sending" ? "Sending…" : section.form.submitLabel}
               </button>

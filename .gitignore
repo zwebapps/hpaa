@@ -15,6 +15,10 @@
 
 # next.js
 /.next/
+# deploy: side build + previous build kept for rollback
+/.next-build/
+/.next.prev/
+/node_modules.prev
 /out/
 
 # production

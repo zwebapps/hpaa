@@ -1,6 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Deploys build into a side folder (NEXT_DIST_DIR=.next-build) while the live
+  // site keeps serving .next, then swap only after a successful build.
+  distDir: process.env.NEXT_DIST_DIR || ".next",
   async redirects() {
     return [
       // ── Previously indexed SEO article pages → nearest live equivalent ──

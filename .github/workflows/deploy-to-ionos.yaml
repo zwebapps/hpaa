@@ -4,6 +4,11 @@ on:
   push:
     branches: ["main"]
 
+# Never run two deploys at once on the same server.
+concurrency:
+  group: deploy-vps
+  cancel-in-progress: false
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -15,25 +20,73 @@ jobs:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_KEY }}
+          command_timeout: 15m
           script: |
+            # Safe deploy: the live site keeps serving its current build until a
+            # new one has built successfully. A failed install or build leaves the
+            # live site untouched; a failed health check restores the old build.
             set -e
             cd /var/www/hpaa
 
+            PREV_SHA=$(git rev-parse HEAD)
+            echo "Live commit: $PREV_SHA"
+
+            restore_source() {
+              echo "Restoring previous code and dependencies ($PREV_SHA)..."
+              git reset --hard "$PREV_SHA"
+              if [ -d node_modules.prev ]; then
+                rm -rf node_modules
+                mv node_modules.prev node_modules
+              fi
+              rm -rf .next-build
+            }
+
             echo "Pulling latest code..."
-            git pull origin main
+            git pull origin main || { echo "git pull failed"; exit 1; }
+
+            echo "Backing up dependencies..."
+            rm -rf node_modules.prev
+            if [ -d node_modules ]; then cp -al node_modules node_modules.prev; fi
 
             echo "Clean install from lock file..."
-            npm ci
+            if ! npm ci; then
+              echo "npm ci failed. Live site untouched."
+              restore_source
+              exit 1
+            fi
 
-            echo "Clearing build cache..."
-            rm -rf .next
+            echo "Building into .next-build (live site keeps running)..."
+            rm -rf .next-build
+            if ! NEXT_DIST_DIR=.next-build NODE_ENV=production npm run build || [ ! -f .next-build/BUILD_ID ]; then
+              echo "Build failed. Live site untouched."
+              restore_source
+              exit 1
+            fi
 
-            echo "Building project..."
-            NODE_ENV=production npm run build
+            echo "Swapping in the new build..."
+            rm -rf .next.prev
+            if [ -d .next ]; then mv .next .next.prev; fi
+            mv .next-build .next
 
             echo "Restarting PM2..."
-            pm2 restart hpaa --update-env \
-              || pm2 start npm --name hpaa -- start
+            pm2 restart hpaa --update-env || pm2 start npm --name hpaa -- start
+
+            echo "Health check..."
+            healthy=0
+            for i in 1 2 3 4 5 6 7 8 9 10; do
+              if curl -fsS -o /dev/null --max-time 10 https://www.robot-aircraft.com/; then healthy=1; break; fi
+              sleep 3
+            done
+
+            if [ "$healthy" != "1" ]; then
+              echo "Health check failed. Rolling back to the previous build."
+              rm -rf .next
+              if [ -d .next.prev ]; then mv .next.prev .next; fi
+              restore_source
+              pm2 restart hpaa --update-env
+              exit 1
+            fi
 
             pm2 save
+            rm -rf .next.prev node_modules.prev
             echo "Deploy complete."

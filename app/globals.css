@@ -3483,3 +3483,5 @@ nav {
   .why-video::before { inset: -10px -10px 28px -10px; }
   .why-video.reveal:not([data-visible="true"])::before { inset: 0 0 38px 0; }
 }
+/* Partner text: honour line breaks in the copy (e.g. "Direct contact" on its own line). */
+.partner-text { white-space: pre-line; }

@@ -2,6 +2,15 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import "./globals.css";
 import { getSiteUrl } from "@/lib/siteUrl";
+import { bebas, cormorant, dmSans, outfit, playfair, spaceMono } from "@/app/fonts";
+
+/**
+ * Font CSS variables must live on <html>: globals.css maps them to the theme tokens
+ * (--font-body, --font-heading, ...) on :root and [data-theme], which is <html>.
+ * Declared on a nested wrapper, those tokens resolved to nothing and every page
+ * fell back to the browser default serif (Times).
+ */
+const fontVariables = [outfit, cormorant, playfair, bebas, dmSans, spaceMono].map((f) => f.variable).join(" ");
 
 export const metadata: Metadata = {
   metadataBase: new URL(getSiteUrl()),
@@ -53,7 +62,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" translate="no" className="notranslate h-full" data-scroll-behavior="smooth">
+    <html lang="en" translate="no" className={`notranslate h-full ${fontVariables}`} data-scroll-behavior="smooth">
       <body className="min-h-full antialiased" translate="no">
         <Script id="favicon-pin" strategy="beforeInteractive">
           {faviconPinScript}
